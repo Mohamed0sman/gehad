@@ -28,6 +28,17 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    if (mobileMenuOpen) {
+      document.body.classList.add('overflow-hidden')
+    } else {
+      document.body.classList.remove('overflow-hidden')
+    }
+    return () => document.body.classList.remove('overflow-hidden')
+  }, [mobileMenuOpen])
+
   return (
     <header className={`sticky top-0 z-50 transition-all duration-300 ${
       scrolled 
@@ -57,10 +68,12 @@ export default function Header() {
         <div className="flex lg:hidden">
           <button
             type="button"
-            className="relative p-2 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 shadow-lg hover:shadow-xl"
-            onClick={() => setMobileMenuOpen(true)}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
+            onClick={() => setMobileMenuOpen((s) => !s)}
+            className="relative p-3 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-400"
           >
-            <span className="sr-only">فتح القائمة الرئيسية</span>
+            <span className="sr-only">{mobileMenuOpen ? 'غلق القائمة' : 'فتح القائمة الرئيسية'}</span>
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
             <div className="absolute -top-1 -right-1 w-3 h-3 bg-lime-400 rounded-full animate-pulse"></div>
           </button>
@@ -108,13 +121,16 @@ export default function Header() {
 
       {/* Enhanced Mobile menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden">
+        <div className="lg:hidden" id="mobile-menu">
           {/* Backdrop */}
           <div 
+            role="button"
+            tabIndex={0}
             className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"
             onClick={() => setMobileMenuOpen(false)}
+            onKeyDown={(e) => { if (e.key === 'Escape') setMobileMenuOpen(false) }}
           />
-          
+
           {/* Menu Panel */}
           <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gradient-to-br from-white via-blue-50 to-cyan-50 px-6 py-6 sm:max-w-sm border-l border-blue-200 shadow-2xl">
             
