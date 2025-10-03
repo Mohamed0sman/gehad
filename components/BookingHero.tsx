@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import { motion } from 'framer-motion'
 import { 
@@ -21,16 +21,20 @@ export default function BookingHero() {
 
       {/* Floating calendar icons */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(8)].map((_, index) => (
-          <motion.div
-            key={index}
-            className="absolute text-white/20"
-            initial={{ 
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-              opacity: 0,
-              scale: 0
-            }}
+        {(() => {
+          // safe access to window during SSR: provide fallback sizes
+          const safeInnerWidth = () => (typeof window !== 'undefined' ? window.innerWidth : 1200)
+          const safeInnerHeight = () => (typeof window !== 'undefined' ? window.innerHeight : 800)
+          return [...Array(8)].map((_, index) => (
+            <motion.div
+              key={index}
+              className="absolute text-white/20"
+              initial={{ 
+                x: Math.random() * safeInnerWidth(),
+                y: Math.random() * safeInnerHeight(),
+                opacity: 0,
+                scale: 0
+              }}
             animate={{ 
               y: [null, -100, 100, -50],
               opacity: [0, 0.3, 0.6, 0.3, 0],
@@ -43,14 +47,15 @@ export default function BookingHero() {
               delay: index * 0.5,
               ease: "easeInOut"
             }}
-            style={{
-              left: `${10 + index * 10}%`,
-              top: `${5 + index * 12}%`
-            }}
-          >
-            <CalendarDaysIcon className="w-8 h-8" />
-          </motion.div>
-        ))}
+              style={{
+                left: `${10 + index * 10}%`,
+                top: `${5 + index * 12}%`
+              }}
+            >
+              <CalendarDaysIcon className="w-8 h-8" />
+            </motion.div>
+          ))
+        })()}
       </div>
 
       <div className="relative mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 flex items-center min-h-screen">

@@ -20,6 +20,7 @@ export default function Header() {
   const pathname = usePathname()
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
     }
