@@ -14,6 +14,16 @@
   --font-body: var(--font-inter);
 }
 
+/* Brand color variables (professional palette) */
+:root {
+  --brand-primary-rgb: 11, 59, 102; /* #0B3B66 */
+  --brand-accent-rgb: 15, 163, 164; /* #0FA3A4 */
+  --brand-neutral-500-rgb: 111, 122, 134; /* #6F7A86 */
+  --brand-emphasis-rgb: 231, 177, 58; /* #E7B13A */
+  --brand-bg-start-rgb: 250, 251, 252; /* neutral 50 */
+  --brand-bg-end-rgb: 243, 244, 246; /* neutral 100 */
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 255, 255, 255;
@@ -386,10 +396,10 @@ html {
 
 /* Brand / unified palette utilities */
 :root {
-  --brand-600: 54, 65, 74; /* slate-700-ish rgb */
-  --brand-500: 71, 85, 105; /* slate-600-ish rgb */
-  --brand-bg-start: 249, 250, 251; /* gray-50 */
-  --brand-bg-end: 241, 245, 249; /* gray-100 */
+  --brand-600: 11, 59, 102;
+  --brand-500: 43, 107, 160;
+  --brand-bg-start: 250, 251, 252;
+  --brand-bg-end: 243, 244, 246;
 }
 
 .brand-gradient-text {

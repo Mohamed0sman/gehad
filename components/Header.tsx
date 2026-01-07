@@ -18,7 +18,6 @@ export default function Header() {
     { name: translations.nav.home, href: '/', icon: '🏠' },
     { name: translations.nav.about, href: '/about', icon: '👩‍💼' },
     { name: translations.nav.programs, href: '/programs', icon: '📚' },
-    { name: translations.nav.resources, href: '/resources', icon: '📄' },
     { name: translations.nav.blog, href: '/blog', icon: '✍️' },
     { name: translations.nav.contact, href: '/contact', icon: '📞' },
   ]

@@ -5,7 +5,6 @@ export const translations = {
       home: 'Home',
       about: 'About Me',
       programs: 'Programs',
-      resources: 'Resources',
       blog: 'Blog',
       contact: 'Contact',
       booking: 'Book Session'
@@ -1099,7 +1098,6 @@ export const translations = {
       home: 'الرئيسية',
       about: 'من أنا',
       programs: 'البرامج',
-      resources: 'الموارد',
       blog: 'المدونة',
       contact: 'اتصل بي',
       booking: 'احجز جلسة'
@@ -1402,7 +1400,7 @@ export const translations = {
           'مواءمة المهارات مع أسواق المستقبل'
         ],
         ratingText: 'تقييم العملاء 4.9/5',
-        freeNote: 'الجلسة الأولى مجانية تمامًا',
+        freeNote: 'الجلسة الأولى مجانية تماماً',
         cta: 'احجز جلستك المجانية'
       }
     },
@@ -1608,7 +1606,7 @@ export const translations = {
     // Footer
     footer: {
       tagline: 'تمكين المهن من خلال العلم والتعاطف والتصميم الاستراتيجي',
-      description: 'أخصائية تطوير مهني معتمدة من NCDA متخصصة في التوجيه النفسي والمهني. هدفي هو مساعدتك على اكتشاف إمكاناتك وتحقيق أهدافك المهنية بثقة.',
+      description: 'أخصائية تطوير مهني معتمدة من NCDA متخصصة في التوجيه النفسي والمهني. هدفي هو مساعدتك على اكتشاف إمكانياتك وتحقيق أهدافك المهنية بثقة.',
       quickLinks: 'روابط سريعة',
       services: 'خدماتنا',
       contact: 'معلومات الاتصال',
@@ -1747,19 +1745,6 @@ export const translations = {
           description: 'بطور نفسي باستمرار علشان أقدملك أحدث الطرق والتقنيات في المجال'
         }
       ]
-    },
-
-    // Common
-    common: {
-      readMore: 'اقرأ المزيد',
-      learnMore: 'اعرف المزيد',
-      getStarted: 'ابدأ الآن',
-      bookNow: 'احجز الآن',
-      contactMe: 'اتصل بي',
-      viewAll: 'عرض الكل',
-      loading: 'جاري التحميل...',
-      error: 'حدث خطأ ما',
-      success: 'نجح!'
     }
   }
 }
