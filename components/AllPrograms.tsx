@@ -23,7 +23,7 @@ export default function AllPrograms() {
   const { language } = useLanguage()
   const isRTL = language === 'ar'
 
-  const programs = translations.allPrograms.items.map((program, index) => {
+  const programs = translations.allPrograms.items.map((program: any, index: number) => {
     // Static configuration mapping based on index or ID
     const icons = [AcademicCapIcon, UserGroupIcon, LightBulbIcon, ChartBarIcon, TrophyIcon, HeartIcon]
     const colors = [
@@ -109,7 +109,7 @@ export default function AllPrograms() {
 
         {/* Programs Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-          {programs.map((program, index) => (
+          {programs.map((program: any, index: number) => (
             <motion.div
               key={program.id}
               initial={{ opacity: 0, y: 30, scale: 0.95 }}
@@ -199,7 +199,7 @@ export default function AllPrograms() {
                 
                 {/* Features - show first 3 */}
                 <ul className="space-y-2 mb-6">
-                  {program.features.slice(0, 3).map((feature, idx) => (
+                  {program.features.slice(0, 3).map((feature: any, idx: number) => (
                     <motion.li 
                       key={idx} 
                       className="flex items-center text-xs text-gray-600"

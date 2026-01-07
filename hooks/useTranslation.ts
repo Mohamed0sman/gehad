@@ -14,6 +14,6 @@ export function useTranslation() {
     t,
     language,
     isRTL,
-    translations: translations[language]
+    translations: translations[language] as any
   }
 }

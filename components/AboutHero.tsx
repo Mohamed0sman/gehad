@@ -145,7 +145,7 @@ export default function AboutHero() {
               transition={{ delay: 1.3 }}
               className="grid grid-cols-2 gap-6 mb-8"
             >
-              {translations.aboutHero.stats.map((stat, index) => (
+              {translations.aboutHero.stats.map((stat: any, index: number) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, scale: 0.8 }}

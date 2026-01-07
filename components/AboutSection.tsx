@@ -108,7 +108,7 @@ export default function AboutSection() {
             </div>
             
             <div className="grid grid-cols-2 gap-4">
-              {hollandTypes.map((type, index) => (
+              {hollandTypes.map((type: any, index: number) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, scale: 0.8 }}
@@ -142,7 +142,7 @@ export default function AboutSection() {
             </div>
             
             <div className="space-y-4">
-              {values.map((value, index) => (
+              {values.map((value: any, index: number) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, x: 20 }}
@@ -198,7 +198,7 @@ export default function AboutSection() {
 
           {/* Certifications Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {translations.education.certifications.map((cert, index) => (
+            {translations.education.certifications.map((cert: any, index: number) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
