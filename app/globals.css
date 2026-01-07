@@ -1,9 +1,18 @@
+/* Import professional fonts from Google Fonts (Inter, Playfair Display, Cairo) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800&family=Cairo:wght@300;400;600;700&display=swap');
+
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Define CSS font variables used by Tailwind config */
+:root {
+  --font-inter: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --font-playfair: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-cairo: 'Cairo', 'Noto Kufi Arabic', 'Noto Sans Arabic', sans-serif;
+  --font-head: var(--font-playfair);
+  --font-body: var(--font-inter);
+}
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -31,6 +40,12 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  font-family: var(--font-body);
+}
+
+/* Headings use the heading font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-head);
 }
 
 /* RTL Support */
@@ -53,12 +68,18 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #0ea5e9;
+  background: linear-gradient(180deg, 
+    rgb(var(--brand-blue-600)) 0%, 
+    rgb(var(--brand-cyan-500, 6,182,212)) 50%,
+    rgb(var(--brand-green-500)) 100%);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #0284c7;
+  background: linear-gradient(180deg, 
+    rgb(var(--brand-blue-500)) 0%, 
+    rgb(var(--brand-cyan-400, 34,211,238)) 50%,
+    rgb(var(--brand-green-400)) 100%);
 }
 
 /* Custom animations */
@@ -360,5 +381,128 @@ html {
 @media (hover: none) {
   .hover-scale:active {
     transform: scale(0.95);
+  }
+}
+
+/* Brand / unified palette utilities */
+:root {
+  --brand-600: 54, 65, 74; /* slate-700-ish rgb */
+  --brand-500: 71, 85, 105; /* slate-600-ish rgb */
+  --brand-bg-start: 249, 250, 251; /* gray-50 */
+  --brand-bg-end: 241, 245, 249; /* gray-100 */
+}
+
+.brand-gradient-text {
+  background: linear-gradient(135deg, 
+    rgb(var(--brand-blue-600, 11,98,165)) 0%, 
+    rgb(var(--brand-cyan-500, 6,182,212)) 50%, 
+    rgb(var(--brand-green-500, 34,197,94)) 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 4s ease infinite;
+}
+
+.brand-bg {
+  background: linear-gradient(135deg, 
+    rgb(var(--brand-blue-600, 11,98,165)) 0%, 
+    rgb(var(--brand-cyan-500, 6,182,212)) 30%,
+    rgb(var(--brand-green-500, 34,197,94)) 60%,
+    rgb(var(--brand-blue-500, 2,132,199)) 100%);
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+.brand-btn {
+  background: linear-gradient(135deg, 
+    rgb(var(--brand-blue-600, 11,98,165)) 0%, 
+    rgb(var(--brand-green-500, 34,197,94)) 100%);
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(var(--brand-blue-600, 11,98,165), 0.3);
+}
+
+.brand-btn:hover {
+  box-shadow: 0 8px 25px rgba(var(--brand-blue-600, 11,98,165), 0.5);
+  transform: translateY(-2px);
+}
+
+:root {
+  /* Primary brand colors - Enhanced modern palette */
+  --brand-blue-700: 6, 50, 115; /* #063273 */
+  --brand-blue-600: 11, 98, 165; /* #0B62A5 */
+  --brand-blue-500: 2, 132, 199; /* #0284C7 */
+  --brand-blue-400: 56, 189, 248; /* #38BDF8 */
+  --brand-green-500: 34, 197, 94; /* #22C55E */
+  --brand-green-400: 72, 187, 120; /* #48BB78 */
+  --brand-green-300: 134, 239, 172; /* #86EFAC */
+  --brand-purple-500: 168, 85, 247; /* #A855F7 */
+  --brand-purple-400: 192, 132, 252; /* #C084FC */
+  --brand-pink-500: 236, 72, 153; /* #EC4899 */
+  --brand-pink-400: 244, 114, 182; /* #F472B6 */
+  --brand-cyan-500: 6, 182, 212; /* #06B6D4 */
+  --brand-cyan-400: 34, 211, 238; /* #22D3EE */
+  --brand-lime-400: 163, 230, 53; /* #A3E635 */
+  --brand-lime-300: 190, 242, 100; /* #BEF264 */
+}
+
+.brand-gradient-soft {
+  background: linear-gradient(135deg, 
+    rgba(var(--brand-blue-600),0.95) 0%, 
+    rgba(var(--brand-cyan-500, 6,182,212),0.95) 50%,
+    rgba(var(--brand-green-500),0.95) 100%);
+}
+
+.brand-accent {
+  color: rgb(var(--brand-blue-600));
+  transition: color 0.3s ease;
+}
+
+.brand-accent:hover {
+  color: rgb(var(--brand-green-500));
+}
+
+.brand-cta {
+  background: linear-gradient(135deg, 
+    rgb(var(--brand-blue-600)) 0%, 
+    rgb(var(--brand-cyan-500, 6,182,212)) 50%,
+    rgb(var(--brand-green-500)) 100%);
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(var(--brand-blue-600), 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.brand-cta:hover::before {
+  left: 100%;
+}
+
+.brand-cta:hover {
+  box-shadow: 0 8px 30px rgba(var(--brand-blue-600), 0.6);
+  transform: translateY(-2px);
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }

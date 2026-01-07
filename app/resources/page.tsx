@@ -5,8 +5,8 @@ import ResourcesGrid from '@/components/ResourcesGrid'
 import ResourcesCategories from '@/components/ResourcesCategories'
 
 export const metadata = {
-  title: 'الموارد التعليمية - جهاد أشرف | ملفات PDF ومواد تدريبية مجانية',
-  description: 'حمل الموارد التعليمية المجانية، ملفات PDF، أوراق عمل، ودلائل شاملة في التوجيه المهني والتطوير الشخصي من جهاد أشرف.',
+  title: 'Resources - Gehad Ashraf | Free Educational Materials & Training Guides',
+  description: 'Download free educational resources, PDF files, worksheets, and comprehensive guides in career development and personal growth from Gehad Ashraf.',
 }
 
 export default function Resources() {

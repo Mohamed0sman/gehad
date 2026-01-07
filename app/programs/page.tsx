@@ -5,8 +5,8 @@ import AllPrograms from '@/components/AllPrograms'
 import ProgramsComparison from '@/components/ProgramsComparison'
 
 export const metadata = {
-  title: 'البرامج التدريبية - جهاد أشرف | برامج التوجيه المهني والنفسي',
-  description: 'اكتشف برامجنا التدريبية المتنوعة في التوجيه المهني والنفسي. برامج مصممة خصيصاً لمساعدتك في تحقيق أهدافك المهنية والشخصية.',
+  title: 'Programs - Gehad Ashraf | Career Development & Professional Training',
+  description: 'Discover our comprehensive training programs in career development, soft skills, and personal growth. Programs designed to help you achieve your professional and personal goals.',
 }
 
 export default function Programs() {

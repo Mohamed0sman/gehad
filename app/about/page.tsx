@@ -6,8 +6,8 @@ import Certifications from '@/components/Certifications'
 import Philosophy from '@/components/Philosophy'
 
 export const metadata = {
-  title: 'من أنا - جهاد أشرف | مدربة التوجيه المهني المعتمدة',
-  description: 'تعرف على جهاد أشرف، مدربة معتمدة NCDA متخصصة في التوجيه النفسي والمهني. خبرة أكثر من 3 سنوات في مساعدة الطلاب على تحقيق أهدافهم.',
+  title: 'About Me - Gehad Ashraf | NCDA Certified Career Development Professional',
+  description: 'Learn about Gehad Ashraf, NCDA Certified Career Development Professional specializing in evidence-based coaching and strategic design. 3+ years of experience helping professionals achieve their career goals.',
 }
 
 export default function About() {

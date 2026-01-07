@@ -5,8 +5,8 @@ import BlogPosts from '@/components/BlogPosts'
 import BlogCategories from '@/components/BlogCategories'
 
 export const metadata = {
-  title: 'المدونة - جهاد أشرف | مقالات التوجيه المهني والتطوير الشخصي',
-  description: 'اقرأ أحدث المقالات والنصائح في التوجيه المهني، التطوير الشخصي، وبناء المسار المهني من جهاد أشرف، مدربة معتمدة NCDA.',
+  title: 'Blog - Gehad Ashraf | Career Development & Personal Growth Articles',
+  description: 'Read the latest articles and insights on career development, personal growth, and building your professional path from Gehad Ashraf, NCDA Certified Professional.',
 }
 
 export default function Blog() {

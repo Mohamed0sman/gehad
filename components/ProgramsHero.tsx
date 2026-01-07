@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useTranslation } from '@/hooks/useTranslation'
 import { 
   SparklesIcon,
   AcademicCapIcon,
@@ -19,13 +20,14 @@ const programIcons = [
 ]
 
 export default function ProgramsHero() {
+  const { translations } = useTranslation()
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-blue-900 via-sky-900 to-cyan-900 overflow-hidden">
+    <section className="relative min-h-screen brand-bg overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-300 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse delay-2000"></div>
+        <div className="absolute top-20 left-10 w-96 h-96 bg-[rgba(var(--brand-cyan-500,6,182,212),0.2)] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[rgba(var(--brand-green-400),0.2)] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[rgba(var(--brand-blue-500),0.1)] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse delay-2000"></div>
       </div>
 
       {/* Floating program icons */}
@@ -72,9 +74,9 @@ export default function ProgramsHero() {
             transition={{ duration: 0.6 }}
             className="flex items-center justify-center gap-2 mb-8"
           >
-            <SparklesIcon className="w-8 h-8 text-yellow-400" />
-            <span className="text-yellow-400 font-semibold text-xl">البرامج التدريبية</span>
-            <SparklesIcon className="w-8 h-8 text-yellow-400" />
+            <SparklesIcon className="w-8 h-8 text-[rgb(var(--brand-green-400))]" />
+            <span className="text-[rgb(var(--brand-green-400))] font-semibold text-xl">{translations.programsPage.badge}</span>
+            <SparklesIcon className="w-8 h-8 text-[rgb(var(--brand-green-400))]" />
           </motion.div>
 
           {/* Main heading */}
@@ -84,11 +86,11 @@ export default function ProgramsHero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-5xl md:text-7xl font-bold text-white mb-8"
           >
-            <span className="bg-gradient-to-r from-lime-300 via-cyan-300 to-blue-300 bg-clip-text text-transparent">
-              برامج مصممة
+            <span className="brand-gradient-text">
+              {translations.programsPage.titleTop}
             </span>
             <br />
-            <span className="text-white">خصيصاً ليك 🎯</span>
+            <span className="text-white">{translations.programsPage.titleBottom}</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -98,7 +100,7 @@ export default function ProgramsHero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl leading-relaxed text-white/90 mb-6"
           >
-            اختار البرنامج اللي يناسب احتياجاتك وابدأ رحلتك نحو النجاح
+            {translations.programsPage.subtitle}
           </motion.p>
 
           <motion.p
@@ -107,9 +109,9 @@ export default function ProgramsHero() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-lg md:text-xl leading-relaxed text-white/80 mb-12"
           >
-            <span className="text-yellow-300">✨ كل برنامج مصمم بعناية</span> لضمان حصولك على أفضل النتائج
+            <span className="text-[rgb(var(--brand-green-400))]">{translations.programsPage.subtitle2Line1}</span>
             <br />
-            مع متابعة شخصية ودعم مستمر طوال الرحلة
+            {translations.programsPage.subtitle2Line2}
           </motion.p>
 
           {/* Stats */}
@@ -120,10 +122,10 @@ export default function ProgramsHero() {
             className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12"
           >
             {[
-              { number: "8+", label: "برامج متنوعة", icon: "📚" },
-              { number: "500+", label: "طالب نجح", icon: "🎓" },
-              { number: "98%", label: "معدل رضا", icon: "⭐" },
-              { number: "24/7", label: "دعم مستمر", icon: "💬" }
+              { number: "5", label: translations.programsPage.stats.designedPrograms, icon: "📚" },
+              { number: "500+", label: translations.programsPage.stats.students, icon: "🎓" },
+              { number: "98%", label: translations.programsPage.stats.satisfaction, icon: "⭐" },
+              { number: "24/7", label: translations.programsPage.stats.support, icon: "💬" }
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -133,7 +135,7 @@ export default function ProgramsHero() {
                 className="text-center bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20"
               >
                 <div className="text-3xl mb-2">{stat.icon}</div>
-                <div className="text-2xl font-bold text-yellow-300 mb-1">{stat.number}</div>
+                <div className="text-2xl font-bold text-[rgb(var(--brand-green-400))] mb-1">{stat.number}</div>
                 <div className="text-white/80 text-sm">{stat.label}</div>
               </motion.div>
             ))}
@@ -149,9 +151,9 @@ export default function ProgramsHero() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="group relative px-8 py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold text-lg rounded-full shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 flex items-center gap-2"
+              className="group relative px-8 py-4 brand-cta font-bold text-lg rounded-full shadow-2xl transition-all duration-300 flex items-center gap-2"
             >
-              <span>🚀 شوف البرامج دلوقتي</span>
+              <span>🚀 {translations.programsPage.ctaView}</span>
               <motion.span
                 animate={{ x: [0, 5, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
@@ -165,7 +167,7 @@ export default function ProgramsHero() {
               whileTap={{ scale: 0.95 }}
               className="group px-8 py-4 border-2 border-white/30 text-white font-semibold text-lg rounded-full backdrop-blur-sm hover:bg-white/10 transition-all duration-300 flex items-center gap-2"
             >
-              <span>💬 استشارة مجانية</span>
+              <span>💬 {translations.programsPage.ctaConsultation}</span>
               <motion.span
                 animate={{ rotate: [0, 10, -10, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
@@ -187,7 +189,7 @@ export default function ProgramsHero() {
               transition={{ duration: 2, repeat: Infinity }}
               className="text-white/60 text-center"
             >
-              <div className="text-sm mb-2">اسكرول لتحت</div>
+              <div className="text-sm mb-2">{translations.programsPage.scrollDown}</div>
               <div className="w-6 h-10 border-2 border-white/30 rounded-full mx-auto flex justify-center">
                 <motion.div
                   animate={{ y: [0, 12, 0] }}

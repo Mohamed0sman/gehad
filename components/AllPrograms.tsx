@@ -5,192 +5,68 @@ import { motion } from 'framer-motion'
 import { 
   AcademicCapIcon, 
   UserGroupIcon, 
-  LightBulbIcon,
+  LightBulbIcon, 
   ChartBarIcon,
-  SparklesIcon,
-  FireIcon,
-  HeartIcon,
   TrophyIcon,
+  HeartIcon,
   ClockIcon,
-  CurrencyDollarIcon,
   CheckCircleIcon,
-  StarIcon
+  StarIcon,
+  FireIcon,
+  SparklesIcon
 } from '@heroicons/react/24/outline'
-
-const allPrograms = [
-  {
-    id: 1,
-    title: 'التوجيه المهني الشخصي',
-    subtitle: 'اكتشف شغفك الحقيقي',
-    description: 'جلسات فردية مخصصة لاكتشاف مواهبك وتحديد مسارك المهني المناسب مع خطة عمل واضحة ومتابعة شخصية',
-    icon: AcademicCapIcon,
-    duration: '4 جلسات',
-    price: '800 جنيه',
-    originalPrice: '1200 جنيه',
-    sessions: 4,
-    level: 'مبتدئ - متقدم',
-    features: [
-      'تقييم شخصي شامل للمهارات والميول',
-      'خطة مهنية مخصصة لمدة 6 أشهر',
-      'متابعة شخصية لمدة شهر كامل',
-      'جلسة مجانية إضافية للمراجعة',
-      'مواد تدريبية وأدوات تقييم',
-      'شهادة إتمام معتمدة'
-    ],
-    color: 'from-purple-500 to-pink-500',
-    bgColor: 'bg-gradient-to-br from-purple-50 to-pink-50',
-    popular: true,
-    emoji: '🎯',
-    category: 'فردي',
-    rating: 4.9,
-    studentsCount: 150
-  },
-  {
-    id: 2,
-    title: 'ورش العمل الجماعية',
-    subtitle: 'تعلم مع أصدقائك',
-    description: 'ورش تفاعلية لتطوير المهارات الشخصية والمهنية في بيئة جماعية محفزة ومليانة طاقة إيجابية وتفاعل',
-    icon: UserGroupIcon,
-    duration: '6 ساعات',
-    price: '300 جنيه',
-    originalPrice: '500 جنيه',
-    sessions: 2,
-    level: 'جميع المستويات',
-    features: [
-      'مجموعات صغيرة (8 أشخاص فقط)',
-      'أنشطة تفاعلية وألعاب تعليمية',
-      'شهادة حضور معتمدة',
-      'مواد تدريبية مجانية',
-      'شبكة تواصل مع المشاركين',
-      'جلسة متابعة جماعية مجانية'
-    ],
-    color: 'from-blue-500 to-cyan-500',
-    bgColor: 'bg-gradient-to-br from-blue-50 to-cyan-50',
-    popular: false,
-    emoji: '👥',
-    category: 'جماعي',
-    rating: 4.8,
-    studentsCount: 200
-  },
-  {
-    id: 3,
-    title: 'برنامج اكتشاف الذات',
-    subtitle: 'رحلة التغيير الحقيقي',
-    description: 'رحلة شاملة لفهم شخصيتك وقدراتك وتحديد أهدافك الحياتية والمهنية مع تطوير خطة عمل متكاملة للنجاح',
-    icon: LightBulbIcon,
-    duration: '8 أسابيع',
-    price: '1200 جنيه',
-    originalPrice: '1800 جنيه',
-    sessions: 8,
-    level: 'متوسط - متقدم',
-    features: [
-      'تقييمات متخصصة متعددة الأبعاد',
-      'خطة عمل شخصية مفصلة',
-      'جلسات متابعة أسبوعية',
-      'مجتمع داعم من المتدربين',
-      'كتاب إلكتروني حصري',
-      'ضمان استرداد المال خلال أسبوع'
-    ],
-    color: 'from-yellow-500 to-orange-500',
-    bgColor: 'bg-gradient-to-br from-yellow-50 to-orange-50',
-    popular: false,
-    emoji: '💡',
-    category: 'شامل',
-    rating: 4.9,
-    studentsCount: 80
-  },
-  {
-    id: 4,
-    title: 'استشارات الأداء الأكاديمي',
-    subtitle: 'تفوق في دراستك',
-    description: 'دعم الطلاب في تحسين أدائهم الأكاديمي وتطوير استراتيجيات الدراسة الفعالة والتغلب على صعوبات التعلم',
-    icon: ChartBarIcon,
-    duration: '3 جلسات',
-    price: '600 جنيه',
-    originalPrice: '900 جنيه',
-    sessions: 3,
-    level: 'طلاب',
-    features: [
-      'تحليل نمط التعلم الشخصي',
-      'خطة دراسية مخصصة ومرنة',
-      'تقنيات إدارة الوقت المتقدمة',
-      'استراتيجيات مواجهة الامتحانات',
-      'تقنيات التركيز والذاكرة',
-      'متابعة الأداء الأكاديمي'
-    ],
-    color: 'from-green-500 to-emerald-500',
-    bgColor: 'bg-gradient-to-br from-green-50 to-emerald-50',
-    popular: false,
-    emoji: '📚',
-    category: 'أكاديمي',
-    rating: 4.7,
-    studentsCount: 120
-  },
-  {
-    id: 5,
-    title: 'برنامج ريادة الأعمال للشباب',
-    subtitle: 'ابدأ مشروعك الخاص',
-    description: 'برنامج شامل لتعليم أساسيات ريادة الأعمال وتطوير الأفكار التجارية وتحويلها إلى مشاريع ناجحة ومربحة',
-    icon: TrophyIcon,
-    duration: '6 أسابيع',
-    price: '1000 جنيه',
-    originalPrice: '1500 جنيه',
-    sessions: 6,
-    level: 'متوسط',
-    features: [
-      'تطوير فكرة المشروع من الصفر',
-      'دراسة جدوى مبسطة',
-      'خطة عمل تفصيلية',
-      'استراتيجيات التسويق الرقمي',
-      'إدارة الأموال والميزانية',
-      'شبكة رواد أعمال للتواصل'
-    ],
-    color: 'from-indigo-500 to-purple-500',
-    bgColor: 'bg-gradient-to-br from-indigo-50 to-purple-50',
-    popular: true,
-    emoji: '🚀',
-    category: 'ريادة',
-    rating: 4.8,
-    studentsCount: 60
-  },
-  {
-    id: 6,
-    title: 'تطوير المهارات الشخصية',
-    subtitle: 'كن النسخة الأفضل من نفسك',
-    description: 'برنامج متكامل لتطوير المهارات الشخصية والاجتماعية مثل التواصل والقيادة وإدارة الوقت والثقة بالنفس',
-    icon: HeartIcon,
-    duration: '4 أسابيع',
-    price: '700 جنيه',
-    originalPrice: '1000 جنيه',
-    sessions: 4,
-    level: 'جميع المستويات',
-    features: [
-      'تطوير مهارات التواصل الفعال',
-      'بناء الثقة بالنفس',
-      'مهارات القيادة والتأثير',
-      'إدارة الوقت والأولويات',
-      'التعامل مع الضغوط',
-      'تقنيات العرض والتقديم'
-    ],
-    color: 'from-pink-500 to-rose-500',
-    bgColor: 'bg-gradient-to-br from-pink-50 to-rose-50',
-    popular: false,
-    emoji: '💪',
-    category: 'مهارات',
-    rating: 4.6,
-    studentsCount: 90
-  }
-]
-
-const categories = ['الكل', 'فردي', 'جماعي', 'شامل', 'أكاديمي', 'ريادة', 'مهارات']
+import { useTranslation } from '@/hooks/useTranslation'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function AllPrograms() {
+  const { translations } = useTranslation()
+  const { language } = useLanguage()
+  const isRTL = language === 'ar'
+
+  const programs = translations.allPrograms.items.map((program, index) => {
+    // Static configuration mapping based on index or ID
+    const icons = [AcademicCapIcon, UserGroupIcon, LightBulbIcon, ChartBarIcon, TrophyIcon, HeartIcon]
+    const colors = [
+      'from-purple-500 to-pink-500',
+      'from-blue-500 to-cyan-500',
+      'from-yellow-500 to-orange-500',
+      'from-green-500 to-emerald-500',
+      'from-indigo-500 to-purple-500',
+      'from-pink-500 to-rose-500'
+    ]
+    const bgColors = [
+      'bg-gradient-to-br from-purple-50 to-pink-50',
+      'bg-gradient-to-br from-blue-50 to-cyan-50',
+      'bg-gradient-to-br from-yellow-50 to-orange-50',
+      'bg-gradient-to-br from-green-50 to-emerald-50',
+      'bg-gradient-to-br from-indigo-50 to-purple-50',
+      'bg-gradient-to-br from-pink-50 to-rose-50'
+    ]
+    const emojis = ['🎯', '👥', '💡', '📚', '🚀', '💪']
+    // Simulated ratings and counts (could be dynamic later)
+    const ratings = [4.9, 4.8, 4.9, 4.7, 4.8, 4.6]
+    const studentsCounts = [150, 200, 80, 120, 60, 90]
+    const popularStatus = [true, false, false, false, true, false]
+
+    return {
+      ...program,
+      icon: icons[index] || AcademicCapIcon,
+      color: colors[index] || 'from-gray-500 to-gray-600',
+      bgColor: bgColors[index] || 'bg-gray-50',
+      emoji: emojis[index] || '✨',
+      rating: ratings[index] || 5.0,
+      studentsCount: studentsCounts[index] || 0,
+      popular: popularStatus[index] || false
+    }
+  })
+
   return (
-    <section className="py-24 sm:py-32 bg-gradient-to-br from-gray-50 via-white to-purple-50 relative overflow-hidden">
+    <section className="py-24 sm:py-32 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse delay-1000"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-[rgba(var(--brand-blue-500),0.1)] rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-[rgba(var(--brand-green-400),0.1)] rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[rgba(var(--brand-cyan-500,6,182,212),0.05)] rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-2000"></div>
       </div>
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
@@ -205,7 +81,7 @@ export default function AllPrograms() {
             className="flex items-center justify-center gap-2 mb-4"
           >
             <SparklesIcon className="w-8 h-8 text-purple-500" />
-            <span className="text-purple-600 font-semibold text-lg">جميع البرامج</span>
+            <span className="text-purple-600 font-semibold text-lg">{translations.allPrograms.title}</span>
             <SparklesIcon className="w-8 h-8 text-purple-500" />
           </motion.div>
           
@@ -216,9 +92,8 @@ export default function AllPrograms() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
           >
-            <span className="gradient-text">اختار البرنامج</span>
+            <span className="brand-gradient-text">{translations.allPrograms.subtitle}</span>
             <br />
-            <span className="text-gray-700">اللي يناسبك 🎯</span>
           </motion.h2>
           
           <motion.p
@@ -228,15 +103,13 @@ export default function AllPrograms() {
             viewport={{ once: true }}
             className="text-xl leading-8 text-gray-600"
           >
-            برامج متنوعة تناسب كل الاحتياجات والمستويات
-            <br />
-            <span className="text-purple-600 font-semibold">✨ كل برنامج مصمم بعناية لضمان نجاحك</span>
+            {translations.allPrograms.description}
           </motion.p>
         </div>
 
         {/* Programs Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-          {allPrograms.map((program, index) => (
+          {programs.map((program, index) => (
             <motion.div
               key={program.id}
               initial={{ opacity: 0, y: 30, scale: 0.95 }}
@@ -248,20 +121,20 @@ export default function AllPrograms() {
             >
               {/* Popular badge */}
               {program.popular && (
-                <div className="absolute top-4 right-4 z-10">
+                <div className={`absolute top-4 ${isRTL ? 'left-4' : 'right-4'} z-10`}>
                   <motion.div
                     animate={{ rotate: [0, 5, -5, 0] }}
                     transition={{ duration: 2, repeat: Infinity }}
                     className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1"
                   >
                     <FireIcon className="w-4 h-4" />
-                    الأكثر طلباً
+                    {translations.allPrograms.popular}
                   </motion.div>
                 </div>
               )}
 
               {/* Category badge */}
-              <div className="absolute top-4 left-4 z-10">
+              <div className={`absolute top-4 ${isRTL ? 'right-4' : 'left-4'} z-10`}>
                 <span className={`bg-gradient-to-r ${program.color} text-white px-3 py-1 rounded-full text-xs font-semibold`}>
                   {program.category}
                 </span>
@@ -287,12 +160,12 @@ export default function AllPrograms() {
                   </div>
                   
                   {/* Rating */}
-                  <div className="text-right">
-                    <div className="flex items-center gap-1 mb-1">
+                  <div className={`text-${isRTL ? 'left' : 'right'}`}>
+                    <div className="flex items-center gap-1 mb-1 justify-end">
                       <StarIcon className="w-4 h-4 text-yellow-400 fill-current" />
                       <span className="text-sm font-semibold text-gray-700">{program.rating}</span>
                     </div>
-                    <div className="text-xs text-gray-500">{program.studentsCount} طالب</div>
+                    <div className="text-xs text-gray-500">{program.studentsCount} {translations.allPrograms.students}</div>
                   </div>
                 </div>
 
@@ -303,13 +176,16 @@ export default function AllPrograms() {
                 
                 {/* Program details */}
                 <div className="grid grid-cols-2 gap-3 mb-4">
-                  <div className="flex items-center gap-2 text-xs text-gray-600">
-                    <ClockIcon className="w-4 h-4 text-purple-500" />
-                    <span>{program.duration}</span>
-                  </div>
+                    <div className="flex items-center gap-2 text-xs text-gray-600">
+                      <ClockIcon className="w-4 h-4 text-purple-500" />
+                      <span>{program.duration}</span>
+                    </div>
                   <div className="flex items-center gap-2 text-xs text-gray-600">
                     <AcademicCapIcon className="w-4 h-4 text-blue-500" />
-                    <span>{program.sessions} جلسات</span>
+                    {/* Assuming sessions count is consistent with array index or hardcoded, 
+                        but it was part of static data. 
+                        Let's extract it from duration string if possible or just use static map */}
+                    <span>{program.duration.includes('جلسات') || program.duration.includes('sessions') ? program.duration : ''}</span>
                   </div>
                   <div className="flex items-center gap-2 text-xs text-gray-600">
                     <TrophyIcon className="w-4 h-4 text-yellow-500" />
@@ -317,7 +193,7 @@ export default function AllPrograms() {
                   </div>
                   <div className="flex items-center gap-2 text-xs text-gray-600">
                     <CheckCircleIcon className="w-4 h-4 text-green-500" />
-                    <span>شهادة معتمدة</span>
+                    <span>{isRTL ? 'شهادة معتمدة' : 'Accredited certificate'}</span>
                   </div>
                 </div>
                 
@@ -327,13 +203,13 @@ export default function AllPrograms() {
                     <motion.li 
                       key={idx} 
                       className="flex items-center text-xs text-gray-600"
-                      initial={{ opacity: 0, x: -20 }}
+                      initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.3 + idx * 0.1 }}
                       viewport={{ once: true }}
                     >
                       <motion.div 
-                        className={`w-1.5 h-1.5 bg-gradient-to-r ${program.color} rounded-full ml-2`}
+                        className={`w-1.5 h-1.5 bg-gradient-to-r ${program.color} rounded-full ${isRTL ? 'ml-2' : 'mr-2'}`}
                         animate={{ scale: [1, 1.2, 1] }}
                         transition={{ duration: 2, repeat: Infinity, delay: idx * 0.2 }}
                       />
@@ -342,20 +218,17 @@ export default function AllPrograms() {
                   ))}
                   {program.features.length > 3 && (
                     <li className="text-xs text-purple-600 font-semibold">
-                      +{program.features.length - 3} مميزات أخرى
+                      +{program.features.length - 3} {isRTL ? 'مميزات أخرى' : 'more features'}
                     </li>
                   )}
                 </ul>
                 
                 {/* Price and CTA */}
                 <div className="flex items-center justify-between">
-                  <div className="text-right">
+                  <div className={`text-${isRTL ? 'right' : 'left'}`}>
                     <div className="flex items-center gap-2">
-                      <span className="text-xl font-bold text-gray-900">{program.price}</span>
+                      <span className="text-xl font-bold text-gray-900">{program.price} {translations.allPrograms.currency}</span>
                       <span className="text-sm text-gray-500 line-through">{program.originalPrice}</span>
-                    </div>
-                    <div className="text-xs text-green-600 font-semibold">
-                      وفر {parseInt(program.originalPrice) - parseInt(program.price)} جنيه
                     </div>
                   </div>
                   
@@ -368,7 +241,7 @@ export default function AllPrograms() {
                         href={`/programs/${program.id}`}
                         className="px-3 py-2 border border-purple-200 text-purple-600 rounded-lg font-semibold hover:bg-purple-50 transition-colors text-xs"
                       >
-                        التفاصيل
+                        {isRTL ? 'التفاصيل' : 'Details'}
                       </Link>
                     </motion.div>
                     
@@ -378,10 +251,9 @@ export default function AllPrograms() {
                     >
                       <Link
                         href="/booking"
-                        className={`px-4 py-2 bg-gradient-to-r ${program.color} text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 text-xs flex items-center gap-1`}
-                      >
+                        className={`px-4 py-2 bg-gradient-to-r ${program.color} text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 text-xs flex items-center gap-1`}>
                         <HeartIcon className="w-3 h-3" />
-                        احجز
+                        {translations.allPrograms.bookNow}
                       </Link>
                     </motion.div>
                   </div>
@@ -401,21 +273,21 @@ export default function AllPrograms() {
         >
           <div className="bg-white rounded-3xl shadow-xl p-8 max-w-4xl mx-auto">
             <h3 className="text-3xl font-bold text-gray-900 mb-4">
-              🤔 محتار تختار إيه؟
+              {isRTL ? '🤔 محتار تختار إيه؟' : '🤔 Unsure which program to choose?'}
             </h3>
             <p className="text-lg text-gray-600 mb-6">
-              احجز استشارة مجانية معايا وهساعدك تختار البرنامج المناسب ليك
+              {isRTL ? 'احجز استشارة مجانية معايا وهساعدك تختار البرنامج المناسب ليك' : "Book a free consultation and I'll help you pick the right program."}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Link
-                  href="/contact"
-                  className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-lg transition-all duration-300"
-                >
-                  استشارة مجانية 💬
+                  <Link
+                    href="/contact"
+                    className="brand-cta px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300"
+                  >
+                  {isRTL ? 'استشارة مجانية 💬' : 'Free Consultation 💬'}
                 </Link>
               </motion.div>
               
@@ -428,7 +300,7 @@ export default function AllPrograms() {
                   target="_blank"
                   className="border-2 border-purple-200 text-purple-600 px-8 py-4 rounded-2xl font-semibold hover:bg-purple-50 transition-colors"
                 >
-                  واتساب مباشر 📱
+                  {isRTL ? 'واتساب مباشر 📱' : 'WhatsApp Chat 📱'}
                 </Link>
               </motion.div>
             </div>

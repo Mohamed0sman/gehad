@@ -5,8 +5,8 @@ import ContactForm from '@/components/ContactForm'
 import ContactInfo from '@/components/ContactInfo'
 
 export const metadata = {
-  title: 'تواصل معي - جهاد أشرف | استشارة مجانية في التوجيه المهني',
-  description: 'تواصل مع جهاد أشرف للحصول على استشارة مجانية في التوجيه المهني والنفسي. متاحة عبر الهاتف، واتساب، والبريد الإلكتروني.',
+  title: 'Contact Me - Gehad Ashraf | Free Career Consultation',
+  description: 'Get in touch with Gehad Ashraf for a free career consultation. Available via phone, WhatsApp, and email for professional guidance and support.',
 }
 
 export default function Contact() {

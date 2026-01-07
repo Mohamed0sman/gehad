@@ -9,15 +9,18 @@ import {
   HeartIcon,
   MapPinIcon
 } from '@heroicons/react/24/outline'
+import { useTranslation } from '@/hooks/useTranslation'
 
 export default function ContactHero() {
+  const { t, isRTL } = useTranslation()
+
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-cyan-900 via-blue-900 to-indigo-900 overflow-hidden">
+    <section className="relative min-h-screen brand-bg overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
       {/* Animated background elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-cyan-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse delay-2000"></div>
+        <div className="absolute top-20 left-10 w-96 h-96 bg-[rgba(var(--brand-cyan-500,6,182,212),0.2)] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[rgba(var(--brand-green-400),0.2)] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[rgba(var(--brand-blue-500),0.1)] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse delay-2000"></div>
       </div>
 
       {/* Floating contact icons */}
@@ -64,9 +67,11 @@ export default function ContactHero() {
             transition={{ duration: 0.6 }}
             className="flex items-center justify-center gap-2 mb-8"
           >
-            <HeartIcon className="w-8 h-8 text-pink-400" />
-            <span className="text-cyan-400 font-semibold text-xl">تواصل معايا</span>
-            <HeartIcon className="w-8 h-8 text-pink-400" />
+            <HeartIcon className="w-8 h-8 text-[rgb(var(--brand-green-400))]" />
+            <span className={`text-[rgb(var(--brand-green-400))] font-semibold text-xl ${isRTL ? 'font-cairo' : ''}`}>
+              {t('contactHero.badge')}
+            </span>
+            <HeartIcon className="w-8 h-8 text-[rgb(var(--brand-green-400))]" />
           </motion.div>
 
           {/* Main heading */}
@@ -74,13 +79,13 @@ export default function ContactHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl font-bold text-white mb-8"
+            className={`text-5xl md:text-7xl font-bold text-white mb-8 ${isRTL ? 'font-cairo' : ''}`}
           >
-            <span className="bg-gradient-to-r from-cyan-300 via-blue-300 to-indigo-300 bg-clip-text text-transparent">
-              خلاص قررت؟
+            <span className="brand-gradient-text">
+              {t('contactHero.title.line1')}
             </span>
             <br />
-            <span className="text-white">يلا نبدأ سوا! 🚀</span>
+            <span className="text-white">{t('contactHero.title.line2')}</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -88,20 +93,20 @@ export default function ContactHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl leading-relaxed text-white/90 mb-6"
+            className={`text-xl md:text-2xl leading-relaxed text-white/90 mb-6 ${isRTL ? 'font-cairo' : ''}`}
           >
-            أنا هنا علشان أساعدك في كل خطوة في رحلتك المهنية
+            {t('contactHero.subtitle1')}
           </motion.p>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg md:text-xl leading-relaxed text-white/80 mb-12"
+            className={`text-lg md:text-xl leading-relaxed text-white/80 mb-12 ${isRTL ? 'font-cairo' : ''}`}
           >
-            <span className="text-cyan-300">💬 كلمني بأي طريقة تريحك</span>
+            <span className="text-[rgb(var(--brand-green-400))]">{t('contactHero.subtitle2.line1')}</span>
             <br />
-            وهنشوف إزاي نقدر نحقق أحلامك مع بعض
+            {t('contactHero.subtitle2.line2')}
           </motion.p>
 
           {/* Quick contact options */}
@@ -114,23 +119,20 @@ export default function ContactHero() {
             {[
               { 
                 icon: PhoneIcon, 
-                title: "اتصل بيا", 
-                desc: "01234567890",
+                key: 'call',
                 color: "from-green-400 to-emerald-400",
                 action: "tel:+201234567890"
               },
               { 
                 icon: ChatBubbleLeftRightIcon, 
-                title: "واتساب", 
-                desc: "رد فوري 24/7",
+                key: 'whatsapp',
                 color: "from-green-500 to-green-600", 
                 action: "https://wa.me/201234567890"
               },
               { 
                 icon: EnvelopeIcon, 
-                title: "إيميل", 
-                desc: "info@gehad-ashraf.com",
-                color: "from-blue-400 to-cyan-400",
+                key: 'email',
+                color: "from-[rgb(var(--brand-green-500))] to-[rgb(var(--brand-green-400))]",
                 action: "mailto:info@gehad-ashraf.com"
               }
             ].map((contact, index) => (
@@ -148,8 +150,12 @@ export default function ContactHero() {
                 <div className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-r ${contact.color} rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow`}>
                   <contact.icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">{contact.title}</h3>
-                <p className="text-white/80">{contact.desc}</p>
+                <h3 className={`text-xl font-bold text-white mb-2 ${isRTL ? 'font-cairo' : ''}`}>
+                  {t(`contactHero.methods.${contact.key}.title`)}
+                </h3>
+                <p className={`text-white/80 ${isRTL ? 'font-cairo' : ''}`}>
+                  {t(`contactHero.methods.${contact.key}.desc`)}
+                </p>
               </motion.a>
             ))}
           </motion.div>
@@ -162,21 +168,31 @@ export default function ContactHero() {
             className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 mb-12"
           >
             <div className="flex items-center justify-center gap-4 mb-4">
-              <MapPinIcon className="w-8 h-8 text-cyan-400" />
-              <h3 className="text-2xl font-bold text-white">مكان الجلسات</h3>
+              <MapPinIcon className="w-8 h-8 text-[rgb(var(--brand-green-400))]" />
+              <h3 className={`text-2xl font-bold text-white ${isRTL ? 'font-cairo' : ''}`}>
+                {t('contactHero.locations.title')}
+              </h3>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="text-center">
                 <div className="text-4xl mb-3">💻</div>
-                <h4 className="text-lg font-semibold text-white mb-2">أونلاين</h4>
-                <p className="text-white/80 text-sm">جلسات عبر Zoom أو Google Meet</p>
+                <h4 className={`text-lg font-semibold text-white mb-2 ${isRTL ? 'font-cairo' : ''}`}>
+                  {t('contactHero.locations.online.title')}
+                </h4>
+                <p className={`text-white/80 text-sm ${isRTL ? 'font-cairo' : ''}`}>
+                  {t('contactHero.locations.online.desc')}
+                </p>
               </div>
               
               <div className="text-center">
                 <div className="text-4xl mb-3">🏢</div>
-                <h4 className="text-lg font-semibold text-white mb-2">حضوري</h4>
-                <p className="text-white/80 text-sm">القاهرة - مصر الجديدة</p>
+                <h4 className={`text-lg font-semibold text-white mb-2 ${isRTL ? 'font-cairo' : ''}`}>
+                  {t('contactHero.locations.inPerson.title')}
+                </h4>
+                <p className={`text-white/80 text-sm ${isRTL ? 'font-cairo' : ''}`}>
+                  {t('contactHero.locations.inPerson.desc')}
+                </p>
               </div>
             </div>
           </motion.div>
@@ -193,14 +209,14 @@ export default function ContactHero() {
               target="_blank"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="group relative px-10 py-5 bg-gradient-to-r from-green-400 to-green-600 text-white font-bold text-xl rounded-full shadow-2xl hover:shadow-green-500/25 transition-all duration-300 flex items-center gap-3"
+              className={`group relative px-10 py-5 brand-cta font-bold text-xl rounded-full shadow-2xl transition-all duration-300 flex items-center gap-3 ${isRTL ? 'font-cairo' : ''}`}
             >
-              <span>💬 كلمني على واتساب</span>
+              <span>{t('contactHero.cta.whatsapp')}</span>
               <motion.span
-                animate={{ x: [0, 5, 0] }}
+                animate={{ x: isRTL ? [0, -5, 0] : [0, 5, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
               >
-                ←
+                {isRTL ? '←' : '→'}
               </motion.span>
             </motion.a>
             
@@ -209,8 +225,8 @@ export default function ContactHero() {
               whileTap={{ scale: 0.95 }}
               className="text-white/80 text-center"
             >
-              <div className="text-sm">أو املأ الفورم تحت</div>
-              <div className="text-lg font-semibold">📝 وهرد عليك في أقرب وقت</div>
+              <div className={`text-sm ${isRTL ? 'font-cairo' : ''}`}>{t('contactHero.cta.form.line1')}</div>
+              <div className={`text-lg font-semibold ${isRTL ? 'font-cairo' : ''}`}>{t('contactHero.cta.form.line2')}</div>
             </motion.div>
           </motion.div>
 
@@ -223,15 +239,15 @@ export default function ContactHero() {
           >
             <div className="flex items-center gap-2">
               <span className="text-green-400">✓</span>
-              <span>رد سريع خلال ساعة</span>
+              <span className={isRTL ? 'font-cairo' : ''}>{t('contactHero.features.response')}</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-green-400">✓</span>
-              <span>متاحة 7 أيام في الأسبوع</span>
+              <span className={isRTL ? 'font-cairo' : ''}>{t('contactHero.features.availability')}</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-green-400">✓</span>
-              <span>استشارة أولية مجانية</span>
+              <span className={isRTL ? 'font-cairo' : ''}>{t('contactHero.features.consultation')}</span>
             </div>
           </motion.div>
         </div>

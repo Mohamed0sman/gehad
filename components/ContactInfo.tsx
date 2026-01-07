@@ -9,78 +9,88 @@ import {
   ChatBubbleLeftRightIcon,
   GlobeAltIcon
 } from '@heroicons/react/24/outline'
-
-const contactMethods = [
-  {
-    icon: PhoneIcon,
-    title: 'اتصل بيا',
-    info: '+20 123 456 7890',
-    description: 'متاحة للمكالمات من 9 صباحاً لـ 9 مساءً',
-    action: 'tel:+201234567890',
-    color: 'from-green-500 to-emerald-500'
-  },
-  {
-    icon: ChatBubbleLeftRightIcon,
-    title: 'واتساب',
-    info: '+20 123 456 7890',
-    description: 'رد فوري 24/7 - الطريقة الأسرع للتواصل',
-    action: 'https://wa.me/201234567890',
-    color: 'from-green-600 to-green-700'
-  },
-  {
-    icon: EnvelopeIcon,
-    title: 'البريد الإلكتروني',
-    info: 'info@gehad-ashraf.com',
-    description: 'للاستفسارات التفصيلية والمراسلات الرسمية',
-    action: 'mailto:info@gehad-ashraf.com',
-    color: 'from-blue-500 to-cyan-500'
-  },
-  {
-    icon: MapPinIcon,
-    title: 'العنوان',
-    info: 'القاهرة - مصر الجديدة',
-    description: 'للجلسات الحضورية (بموعد مسبق)',
-    action: '#',
-    color: 'from-purple-500 to-indigo-500'
-  }
-]
-
-const workingHours = [
-  { day: 'السبت - الخميس', hours: '9:00 ص - 9:00 م', available: true },
-  { day: 'الجمعة', hours: '2:00 م - 8:00 م', available: true },
-  { day: 'واتساب', hours: '24/7 متاح', available: true }
-]
-
-const socialLinks = [
-  {
-    name: 'فيسبوك',
-    url: 'https://facebook.com/gehad.ashraf',
-    icon: '📘',
-    color: 'hover:text-blue-600'
-  },
-  {
-    name: 'إنستجرام',
-    url: 'https://instagram.com/gehad.ashraf',
-    icon: '📷',
-    color: 'hover:text-pink-600'
-  },
-  {
-    name: 'لينكد إن',
-    url: 'https://linkedin.com/in/gehad-ashraf',
-    icon: '💼',
-    color: 'hover:text-blue-700'
-  },
-  {
-    name: 'تيك توك',
-    url: 'https://tiktok.com/@gehad.ashraf',
-    icon: '🎵',
-    color: 'hover:text-black'
-  }
-]
+import { useTranslation } from '@/hooks/useTranslation'
 
 export default function ContactInfo() {
+  const { t, isRTL, language } = useTranslation()
+
+  const contactMethods = [
+    {
+      icon: PhoneIcon,
+      title: t('contactInfo.methods.call.title'),
+      info: '+20 123 456 7890',
+      description: t('contactInfo.methods.call.desc'),
+      action: 'tel:+201234567890',
+      color: 'from-green-500 to-emerald-500'
+    },
+    {
+      icon: ChatBubbleLeftRightIcon,
+      title: t('contactInfo.methods.whatsapp.title'),
+      info: '+20 123 456 7890',
+      description: t('contactInfo.methods.whatsapp.desc'),
+      action: 'https://wa.me/201234567890',
+      color: 'from-green-600 to-green-700'
+    },
+    {
+      icon: EnvelopeIcon,
+      title: t('contactInfo.methods.email.title'),
+      info: 'info@gehad-ashraf.com',
+      description: t('contactInfo.methods.email.desc'),
+      action: 'mailto:info@gehad-ashraf.com',
+      color: 'from-blue-500 to-cyan-500'
+    },
+    {
+      icon: MapPinIcon,
+      title: t('contactInfo.methods.location.title'),
+      info: t('contactInfo.methods.location.info'),
+      description: t('contactInfo.methods.location.desc'),
+      action: '#',
+      color: 'from-purple-500 to-indigo-500'
+    }
+  ]
+
+  const workingHours = [
+    { day: t('contactInfo.workingHours.weekdays.day'), hours: t('contactInfo.workingHours.weekdays.hours'), available: true },
+    { day: t('contactInfo.workingHours.friday.day'), hours: t('contactInfo.workingHours.friday.hours'), available: true },
+    { day: t('contactInfo.workingHours.whatsapp.day'), hours: t('contactInfo.workingHours.whatsapp.hours'), available: true }
+  ]
+
+  const socialLinks = [
+    {
+      name: t('social.facebook'),
+      url: 'https://facebook.com/gehad.ashraf',
+      icon: '📘',
+      color: 'hover:text-blue-600'
+    },
+    {
+      name: t('social.instagram'),
+      url: 'https://instagram.com/gehad.ashraf',
+      icon: '📷',
+      color: 'hover:text-pink-600'
+    },
+    {
+      name: t('social.linkedin'),
+      url: 'https://linkedin.com/in/gehad-ashraf',
+      icon: '💼',
+      color: 'hover:text-blue-700'
+    },
+    {
+      name: t('social.tiktok'),
+      url: 'https://tiktok.com/@gehad.ashraf',
+      icon: '🎵',
+      color: 'hover:text-black'
+    }
+  ]
+
+  const tips = [
+    t('contactInfo.tips.items.0'),
+    t('contactInfo.tips.items.1'),
+    t('contactInfo.tips.items.2'),
+    t('contactInfo.tips.items.3')
+  ]
+
   return (
-    <section className="py-24 bg-gradient-to-br from-indigo-50 via-white to-cyan-50 relative overflow-hidden">
+    <section className="py-24 bg-gradient-to-br from-indigo-50 via-white to-cyan-50 relative overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 left-20 w-72 h-72 bg-indigo-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
@@ -101,7 +111,7 @@ export default function ContactInfo() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
               whileHover={{ y: -10, scale: 1.02 }}
-              className="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 text-center cursor-pointer"
+              className={`group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 text-center cursor-pointer ${isRTL ? 'font-cairo' : ''}`}
             >
               <div className={`w-16 h-16 mx-auto mb-6 bg-gradient-to-r ${method.color} rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow`}>
                 <method.icon className="w-8 h-8 text-white" />
@@ -119,22 +129,22 @@ export default function ContactInfo() {
           
           {/* Working Hours */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: isRTL ? 30 : -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="bg-white rounded-3xl shadow-xl p-8"
+            className={`bg-white rounded-3xl shadow-xl p-8 ${isRTL ? 'font-cairo' : ''}`}
           >
             <div className="flex items-center gap-3 mb-8">
               <ClockIcon className="w-8 h-8 text-blue-500" />
-              <h3 className="text-2xl font-bold text-gray-900">مواعيد العمل</h3>
+              <h3 className="text-2xl font-bold text-gray-900">{t('contactInfo.workingHours.title')}</h3>
             </div>
             
             <div className="space-y-4">
               {workingHours.map((schedule, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2 + index * 0.1 }}
                   viewport={{ once: true }}
@@ -153,14 +163,14 @@ export default function ContactInfo() {
             
             <div className="mt-8 p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border border-green-200">
               <p className="text-sm text-green-800 font-semibold text-center">
-                💚 للحالات العاجلة: واتساب متاح 24/7
+                {t('contactInfo.workingHours.urgent')}
               </p>
             </div>
           </motion.div>
 
           {/* Social Media & Additional Info */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: isRTL ? -30 : 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
@@ -168,10 +178,10 @@ export default function ContactInfo() {
           >
             
             {/* Social Media */}
-            <div className="bg-white rounded-3xl shadow-xl p-8">
+            <div className={`bg-white rounded-3xl shadow-xl p-8 ${isRTL ? 'font-cairo' : ''}`}>
               <div className="flex items-center gap-3 mb-8">
                 <GlobeAltIcon className="w-8 h-8 text-purple-500" />
-                <h3 className="text-2xl font-bold text-gray-900">تابعيني على</h3>
+                <h3 className="text-2xl font-bold text-gray-900">{t('contactInfo.social.title')}</h3>
               </div>
               
               <div className="grid grid-cols-2 gap-4">
@@ -196,19 +206,14 @@ export default function ContactInfo() {
             </div>
 
             {/* Quick Tips */}
-            <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-3xl shadow-xl p-8 text-white">
-              <h3 className="text-2xl font-bold mb-6">💡 نصائح للتواصل الفعال</h3>
+            <div className={`bg-gradient-to-br from-blue-600 to-purple-600 rounded-3xl shadow-xl p-8 text-white ${isRTL ? 'font-cairo' : ''}`}>
+              <h3 className="text-2xl font-bold mb-6">{t('contactInfo.tips.title')}</h3>
               
               <div className="space-y-4">
-                {[
-                  'اكتب اسمك وعمرك في بداية الرسالة',
-                  'وضح إيه اللي محتاج مساعدة فيه بالتفصيل',
-                  'اذكر إيه أهدافك وتطلعاتك المهنية',
-                  'لو عندك مواعيد مفضلة للجلسات، اذكرها'
-                ].map((tip, index) => (
+                {tips.map((tip, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.3 + index * 0.1 }}
                     viewport={{ once: true }}
@@ -233,22 +238,22 @@ export default function ContactInfo() {
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
-          <div className="bg-gradient-to-r from-red-50 to-pink-50 rounded-2xl p-8 border border-red-200 max-w-2xl mx-auto">
+          <div className={`bg-gradient-to-r from-red-50 to-pink-50 rounded-2xl p-8 border border-red-200 max-w-2xl mx-auto ${isRTL ? 'font-cairo' : ''}`}>
             <div className="text-4xl mb-4">🚨</div>
             <h3 className="text-xl font-bold text-gray-900 mb-2">
-              محتاج مساعدة عاجلة؟
+              {t('contactInfo.emergency.title')}
             </h3>
             <p className="text-gray-600 mb-4">
-              لو في حالة طوارئ نفسية أو محتاج دعم فوري، تواصل معايا على واتساب
+              {t('contactInfo.emergency.desc')}
             </p>
             <motion.a
-              href="https://wa.me/201234567890?text=مرحبا، محتاج مساعدة عاجلة"
+              href={`https://wa.me/201234567890?text=${t('contactInfo.emergency.message')}`}
               target="_blank"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500 to-pink-500 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300"
             >
-              <span>🆘 تواصل عاجل</span>
+              <span>{t('contactInfo.emergency.cta')}</span>
             </motion.a>
           </div>
         </motion.div>

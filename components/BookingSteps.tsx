@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useTranslation } from '@/hooks/useTranslation'
 import { 
   ChatBubbleLeftRightIcon,
   CalendarDaysIcon,
@@ -8,42 +9,49 @@ import {
   CheckCircleIcon
 } from '@heroicons/react/24/outline'
 
-const steps = [
-  {
-    id: 1,
-    title: 'تواصل معايا',
-    description: 'كلمني على واتساب أو املأ الفورم وقولي إيه اللي محتاج مساعدة فيه',
-    icon: ChatBubbleLeftRightIcon,
-    color: 'from-blue-500 to-cyan-500',
-    duration: '5 دقائق'
-  },
-  {
-    id: 2,
-    title: 'حدد الموعد',
-    description: 'هنختار سوا الموعد اللي يناسبك سواء أونلاين أو حضوري',
-    icon: CalendarDaysIcon,
-    color: 'from-green-500 to-emerald-500',
-    duration: '2 دقيقة'
-  },
-  {
-    id: 3,
-    title: 'الجلسة المجانية',
-    description: 'جلسة 30 دقيقة نتكلم فيها عن أهدافك وإزاي نقدر نحققها',
-    icon: VideoCameraIcon,
-    color: 'from-blue-500 to-cyan-500',
-    duration: '30 دقيقة'
-  },
-  {
-    id: 4,
-    title: 'خطة العمل',
-    description: 'هتحصل على خطة واضحة للخطوات اللي محتاج تعملها علشان تحقق هدفك',
-    icon: CheckCircleIcon,
-    color: 'from-yellow-500 to-orange-500',
-    duration: 'مدى الحياة'
-  }
-]
+const iconMap = {
+  chat: ChatBubbleLeftRightIcon,
+  calendar: CalendarDaysIcon,
+  video: VideoCameraIcon,
+  check: CheckCircleIcon
+} as const
 
 export default function BookingSteps() {
+  const { translations } = useTranslation()
+  const steps = [
+    {
+      id: 1,
+      title: translations.bookingSteps[0].title,
+      description: translations.bookingSteps[0].description,
+      icon: iconMap.chat,
+      color: 'from-blue-500 to-cyan-500',
+      duration: translations.bookingSteps[0].duration
+    },
+    {
+      id: 2,
+      title: translations.bookingSteps[1].title,
+      description: translations.bookingSteps[1].description,
+      icon: iconMap.calendar,
+      color: 'from-green-500 to-emerald-500',
+      duration: translations.bookingSteps[1].duration
+    },
+    {
+      id: 3,
+      title: translations.bookingSteps[2].title,
+      description: translations.bookingSteps[2].description,
+      icon: iconMap.video,
+      color: 'from-blue-500 to-cyan-500',
+      duration: translations.bookingSteps[2].duration
+    },
+    {
+      id: 4,
+      title: translations.bookingSteps[3].title,
+      description: translations.bookingSteps[3].description,
+      icon: iconMap.check,
+      color: 'from-yellow-500 to-orange-500',
+      duration: translations.bookingSteps[3].duration
+    }
+  ]
   return (
     <section className="py-24 bg-gradient-to-br from-gray-50 via-white to-green-50 relative overflow-hidden">
       {/* Background decorations */}
@@ -63,9 +71,9 @@ export default function BookingSteps() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
           >
-            <span className="gradient-text">إزاي نبدأ سوا؟</span>
+            <span className="gradient-text">{translations.bookingPage.stepsHeader.titlePart1}</span>
             <br />
-            <span className="text-gray-700">4 خطوات بسيطة 🚀</span>
+            <span className="text-gray-700">{translations.bookingPage.stepsHeader.titlePart2}</span>
           </motion.h2>
           
           <motion.p
@@ -75,7 +83,7 @@ export default function BookingSteps() {
             viewport={{ once: true }}
             className="text-xl leading-8 text-gray-600 max-w-3xl mx-auto"
           >
-            العملية بسيطة جداً ومش هتاخد وقت كتير. هدفي إني أساعدك بأسرع وأسهل طريقة ممكنة
+            {translations.bookingPage.stepsHeader.description}
           </motion.p>
         </div>
 
@@ -145,10 +153,10 @@ export default function BookingSteps() {
           <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-3xl p-8 border border-green-200 max-w-4xl mx-auto">
             <div className="text-4xl mb-4">🎯</div>
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              جاهز تبدأ رحلتك نحو النجاح؟
+              {translations.bookingPage.stepsCTA.title}
             </h3>
             <p className="text-lg text-gray-600 mb-6">
-              الخطوة الأولى هي الأهم. كلمني دلوقتي وخلينا نبدأ نحقق أحلامك سوا
+              {translations.bookingPage.stepsCTA.description}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -159,7 +167,7 @@ export default function BookingSteps() {
                 whileTap={{ scale: 0.95 }}
                 className="bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
               >
-                <span>💬 ابدأ على واتساب</span>
+                <span>{translations.bookingPage.stepsCTA.whatsapp}</span>
               </motion.a>
               
               <motion.button
@@ -167,7 +175,7 @@ export default function BookingSteps() {
                 whileTap={{ scale: 0.95 }}
                 className="border-2 border-green-200 text-green-600 px-8 py-4 rounded-2xl font-semibold hover:bg-green-50 transition-colors"
               >
-                📝 أو املأ الفورم تحت
+                {translations.bookingPage.stepsCTA.form}
               </motion.button>
             </div>
           </div>
@@ -181,11 +189,7 @@ export default function BookingSteps() {
           viewport={{ once: true }}
           className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6"
         >
-          {[
-            { name: 'أحمد محمد', result: 'حصل على وظيفة أحلامه', time: 'خلال شهر' },
-            { name: 'فاطمة علي', result: 'اختارت تخصصها بثقة', time: 'بعد جلسة واحدة' },
-            { name: 'محمود حسن', result: 'بدأ مشروعه الخاص', time: 'خلال 3 أشهر' }
-          ].map((story, index) => (
+          {translations.bookingPage.successStories.map((story, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, scale: 0.9 }}

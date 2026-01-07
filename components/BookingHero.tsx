@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from 'framer-motion'
+import { useTranslation } from '@/hooks/useTranslation'
 import { 
   SparklesIcon,
   CalendarDaysIcon,
@@ -10,6 +11,7 @@ import {
 } from '@heroicons/react/24/outline'
 
 export default function BookingHero() {
+  const { translations } = useTranslation()
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-green-900 via-emerald-900 to-teal-900 overflow-hidden">
       {/* Animated background elements */}
@@ -69,7 +71,7 @@ export default function BookingHero() {
             className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-6 py-3 rounded-full font-bold text-lg mb-8 shadow-2xl"
           >
             <GiftIcon className="w-6 h-6" />
-            <span>الجلسة الأولى مجانية 100%</span>
+            <span>{translations.bookingPage.freeBadge}</span>
             <SparklesIcon className="w-6 h-6" />
           </motion.div>
 
@@ -81,10 +83,10 @@ export default function BookingHero() {
             className="text-5xl md:text-7xl font-bold text-white mb-8"
           >
             <span className="bg-gradient-to-r from-yellow-300 via-green-300 to-emerald-300 bg-clip-text text-transparent">
-              احجز جلستك
+              {translations.bookingPage.titleTop}
             </span>
             <br />
-            <span className="text-white">المجانية الآن 🎯</span>
+            <span className="text-white">{translations.bookingPage.titleBottom}</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -94,7 +96,7 @@ export default function BookingHero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl leading-relaxed text-white/90 mb-6"
           >
-            جلسة استشارية مجانية لمدة 30 دقيقة لمساعدتك في تحديد مسارك المهني
+            {translations.bookingPage.subtitle}
           </motion.p>
 
           <motion.p
@@ -103,9 +105,9 @@ export default function BookingHero() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-lg md:text-xl leading-relaxed text-white/80 mb-12"
           >
-            <span className="text-yellow-300">✨ هنتكلم عن أهدافك وأحلامك</span>
+            <span className="text-yellow-300">{translations.bookingPage.subtitle2Line1}</span>
             <br />
-            وهساعدك تحط خطة واضحة للوصول ليها
+            {translations.bookingPage.subtitle2Line2}
           </motion.p>
 
           {/* Benefits */}
@@ -155,7 +157,7 @@ export default function BookingHero() {
           >
             <h3 className="text-2xl font-bold text-white mb-6 flex items-center justify-center gap-2">
               <HeartIcon className="w-8 h-8 text-red-400" />
-              تفاصيل الجلسة المجانية
+              {translations.bookingPage.detailsTitle}
             </h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -164,8 +166,8 @@ export default function BookingHero() {
                   <ClockIcon className="w-6 h-6 text-white" />
                 </div>
                 <div className="text-right">
-                  <div className="text-white font-semibold">المدة</div>
-                  <div className="text-white/80">30 دقيقة كاملة</div>
+                  <div className="text-white font-semibold">{translations.bookingPage.details.durationLabel}</div>
+                  <div className="text-white/80">{translations.bookingPage.details.durationValue}</div>
                 </div>
               </div>
               
@@ -174,8 +176,8 @@ export default function BookingHero() {
                   <CalendarDaysIcon className="w-6 h-6 text-white" />
                 </div>
                 <div className="text-right">
-                  <div className="text-white font-semibold">المواعيد</div>
-                  <div className="text-white/80">مرونة في الاختيار</div>
+                  <div className="text-white font-semibold">{translations.bookingPage.details.appointmentsLabel}</div>
+                  <div className="text-white/80">{translations.bookingPage.details.appointmentsValue}</div>
                 </div>
               </div>
               
@@ -184,8 +186,8 @@ export default function BookingHero() {
                   <span className="text-white font-bold">💻</span>
                 </div>
                 <div className="text-right">
-                  <div className="text-white font-semibold">المكان</div>
-                  <div className="text-white/80">أونلاين أو حضوري</div>
+                  <div className="text-white font-semibold">{translations.bookingPage.details.locationLabel}</div>
+                  <div className="text-white/80">{translations.bookingPage.details.locationValue}</div>
                 </div>
               </div>
               
@@ -194,8 +196,8 @@ export default function BookingHero() {
                   <GiftIcon className="w-6 h-6 text-white" />
                 </div>
                 <div className="text-right">
-                  <div className="text-white font-semibold">السعر</div>
-                  <div className="text-white/80">مجانية تماماً</div>
+                  <div className="text-white font-semibold">{translations.bookingPage.details.priceLabel}</div>
+                  <div className="text-white/80">{translations.bookingPage.details.priceValue}</div>
                 </div>
               </div>
             </div>
@@ -213,7 +215,7 @@ export default function BookingHero() {
               whileTap={{ scale: 0.95 }}
               className="group relative px-10 py-5 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold text-xl rounded-full shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 flex items-center gap-3"
             >
-              <span>🚀 احجز جلستك المجانية</span>
+              <span>🚀 {translations.bookingPage.ctaPrimary}</span>
               <motion.span
                 animate={{ x: [0, 5, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
@@ -227,7 +229,7 @@ export default function BookingHero() {
               whileTap={{ scale: 0.95 }}
               className="text-white/80 text-center"
             >
-              <div className="text-sm">أو تواصل مباشر</div>
+              <div className="text-sm">{translations.bookingPage.altContactLabel}</div>
               <div className="text-lg font-semibold">📱 01234567890</div>
             </motion.div>
           </motion.div>
@@ -241,15 +243,15 @@ export default function BookingHero() {
           >
             <div className="flex items-center gap-2">
               <span className="text-green-400">✓</span>
-              <span>بدون التزام</span>
+              <span>{translations.bookingPage.trust.noCommitment}</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-green-400">✓</span>
-              <span>مجانية 100%</span>
+              <span>{translations.bookingPage.trust.free}</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-green-400">✓</span>
-              <span>سرية تامة</span>
+              <span>{translations.bookingPage.trust.confidential}</span>
             </div>
           </motion.div>
         </div>

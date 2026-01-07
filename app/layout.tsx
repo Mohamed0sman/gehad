@@ -1,16 +1,11 @@
 import type { Metadata } from 'next'
-import { Cairo } from 'next/font/google'
 import './globals.css'
-
-const cairo = Cairo({ 
-  subsets: ['arabic', 'latin'],
-  variable: '--font-cairo'
-})
+import { LanguageProvider } from '@/contexts/LanguageContext'
 
 export const metadata: Metadata = {
-  title: 'جهاد أشرف - التدريب والاستشارات النفسية والمهنية',
-  description: 'مدربة معتمدة NCDA متخصصة في التوجيه النفسي والمهني للطلاب',
-  keywords: 'تدريب, استشارات نفسية, توجيه مهني, NCDA, جهاد أشرف',
+  title: 'Gehad Ashraf - Career Development Professional | NCDA Certified',
+  description: 'NCDA Certified Career Development Professional specializing in evidence-based coaching, strategic design, and human-centered approach. Preparing to become an FCD Instructor.',
+  keywords: 'Career Development, FCD Instructor, GCDF, NCDA, Learning & Development, Coaching, HR, Facilitation, Emotional Intelligence, Personal Branding',
 }
 
 export default function RootLayout({
@@ -19,9 +14,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ar" dir="rtl" className={cairo.variable}>
-      <body className="font-arabic antialiased">
-        {children}
+    <html lang="en" dir="ltr">
+      <body className="antialiased">
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   )

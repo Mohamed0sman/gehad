@@ -1,6 +1,7 @@
-'use client'
+ 'use client'
 
 import { motion } from 'framer-motion'
+import { useLanguage } from '@/contexts/LanguageContext'
 import { 
   DocumentArrowDownIcon,
   EyeIcon,
@@ -13,9 +14,12 @@ import {
 const resources = [
   {
     id: 1,
-    title: 'دليل اختيار التخصص الجامعي الشامل',
-    description: 'دليل مفصل يساعدك في اختيار التخصص الجامعي المناسب لشخصيتك وأهدافك المهنية مع اختبارات تقييم',
-    category: 'التوجيه المهني',
+    titleEn: 'Comprehensive University Major Selection Guide',
+    titleAr: 'دليل اختيار التخصص الجامعي الشامل',
+    descriptionEn: 'A detailed guide to help choose the right university major for your personality and career goals, with assessment tests.',
+    descriptionAr: 'دليل مفصل يساعدك في اختيار التخصص الجامعي المناسب لشخصيتك وأهدافك المهنية مع اختبارات تقييم',
+    categoryEn: 'Career Guidance',
+    categoryAr: 'التوجيه المهني',
     type: 'PDF',
     pages: 45,
     downloads: 2540,
@@ -23,14 +27,17 @@ const resources = [
     size: '2.3 MB',
     featured: true,
     free: true,
-    color: 'from-blue-500 to-cyan-500',
+    color: 'from-slate-700 to-slate-500',
     icon: '🎓'
   },
   {
     id: 2,
-    title: 'قالب السيرة الذاتية الاحترافي',
-    description: 'قالب CV احترافي قابل للتعديل مع دليل كتابة السيرة الذاتية خطوة بخطوة وأمثلة عملية',
-    category: 'قوالب السيرة الذاتية',
+    titleEn: 'Professional CV Template',
+    titleAr: 'قالب السيرة الذاتية الاحترافي',
+    descriptionEn: 'Editable professional CV template with a step-by-step guide and practical examples.',
+    descriptionAr: 'قالب CV احترافي قابل للتعديل مع دليل كتابة السيرة الذاتية خطوة بخطوة وأمثلة عملية',
+    categoryEn: 'CV Templates',
+    categoryAr: 'قوالب السيرة الذاتية',
     type: 'Word + PDF',
     pages: 12,
     downloads: 1890,
@@ -38,14 +45,17 @@ const resources = [
     size: '1.8 MB',
     featured: true,
     free: true,
-    color: 'from-green-500 to-emerald-500',
+    color: 'from-slate-700 to-slate-500',
     icon: '📄'
   },
   {
     id: 3,
-    title: 'ورقة عمل تحديد الأهداف المهنية',
-    description: 'ورقة عمل تفاعلية تساعدك في تحديد أهدافك المهنية قصيرة وطويلة المدى مع خطة عمل واضحة',
-    category: 'التطوير الشخصي',
+    titleEn: 'Career Goal Setting Worksheet',
+    titleAr: 'ورقة عمل تحديد الأهداف المهنية',
+    descriptionEn: 'Interactive worksheet to set short- and long-term career goals with a clear action plan.',
+    descriptionAr: 'ورقة عمل تفاعلية تساعدك في تحديد أهدافك المهنية قصيرة وطويلة المدى مع خطة عمل واضحة',
+    categoryEn: 'Personal Development',
+    categoryAr: 'التطوير الشخصي',
     type: 'PDF',
     pages: 8,
     downloads: 1234,
@@ -53,14 +63,17 @@ const resources = [
     size: '1.2 MB',
     featured: false,
     free: true,
-    color: 'from-blue-500 to-cyan-500',
+    color: 'from-slate-700 to-slate-500',
     icon: '🎯'
   },
   {
     id: 4,
-    title: 'دليل المقابلات الشخصية الناجحة',
-    description: 'دليل شامل للتحضير للمقابلات الشخصية مع أسئلة شائعة وإجابات نموذجية ونصائح عملية',
-    category: 'البحث عن وظيفة',
+    titleEn: 'Successful Job Interview Guide',
+    titleAr: 'دليل المقابلات الشخصية الناجحة',
+    descriptionEn: 'A comprehensive preparation guide with common questions, model answers, and practical tips.',
+    descriptionAr: 'دليل شامل للتحضير للمقابلات الشخصية مع أسئلة شائعة وإجابات نموذجية ونصائح عملية',
+    categoryEn: 'Job Search',
+    categoryAr: 'البحث عن وظيفة',
     type: 'PDF',
     pages: 32,
     downloads: 987,
@@ -68,29 +81,36 @@ const resources = [
     size: '2.1 MB',
     featured: false,
     free: true,
-    color: 'from-yellow-500 to-orange-500',
+    color: 'from-slate-700 to-slate-500',
     icon: '💼'
   },
   {
     id: 5,
-    title: 'اختبار تقييم المهارات الشخصية',
-    description: 'اختبار شامل لتقييم مهاراتك الشخصية والمهنية مع تقرير مفصل ونصائح للتطوير',
-    category: 'تقييم المهارات',
-    type: 'PDF تفاعلي',
+    titleEn: 'Personal Skills Assessment',
+    titleAr: 'اختبار تقييم المهارات الشخصية',
+    descriptionEn: 'Comprehensive test to assess personal and professional skills with detailed report and development tips.',
+    descriptionAr: 'اختبار شامل لتقييم مهاراتك الشخصية والمهنية مع تقرير مفصل ونصائح للتطوير',
+    categoryEn: 'Skills Assessment',
+    categoryAr: 'تقييم المهارات',
+    typeEn: 'Interactive PDF',
+    typeAr: 'PDF تفاعلي',
     pages: 15,
     downloads: 756,
     rating: 4.8,
     size: '1.5 MB',
     featured: true,
     free: true,
-    color: 'from-sky-500 to-blue-500',
+    color: 'from-slate-700 to-slate-500',
     icon: '📊'
   },
   {
     id: 6,
-    title: 'خطة التطوير المهني الشخصية',
-    description: 'قالب خطة تطوير مهني شخصية قابل للتخصيص مع جدول زمني ومؤشرات قياس النجاح',
-    category: 'التطوير الشخصي',
+    titleEn: 'Personal Professional Development Plan',
+    titleAr: 'خطة التطوير المهني الشخصية',
+    descriptionEn: 'Customizable professional development plan template with timeline and success indicators.',
+    descriptionAr: 'قالب خطة تطوير مهني شخصية قابل للتخصيص مع جدول زمني ومؤشرات قياس النجاح',
+    categoryEn: 'Personal Development',
+    categoryAr: 'التطوير الشخصي',
     type: 'Excel + PDF',
     pages: 20,
     downloads: 654,
@@ -98,14 +118,17 @@ const resources = [
     size: '1.9 MB',
     featured: false,
     free: true,
-    color: 'from-teal-500 to-cyan-500',
+    color: 'from-slate-700 to-slate-500',
     icon: '📈'
   },
   {
     id: 7,
-    title: 'دليل مهارات التواصل الفعال',
-    description: 'دليل عملي لتطوير مهارات التواصل والعرض والتقديم مع تمارين تطبيقية',
-    category: 'المهارات الناعمة',
+    titleEn: 'Effective Communication Skills Guide',
+    titleAr: 'دليل مهارات التواصل الفعال',
+    descriptionEn: 'Practical guide to develop communication, presentation, and public speaking skills with exercises.',
+    descriptionAr: 'دليل عملي لتطوير مهارات التواصل والعرض والتقديم مع تمارين تطبيقية',
+    categoryEn: 'Soft Skills',
+    categoryAr: 'المهارات الناعمة',
     type: 'PDF',
     pages: 28,
     downloads: 543,
@@ -113,14 +136,17 @@ const resources = [
     size: '2.0 MB',
     featured: false,
     free: true,
-    color: 'from-cyan-500 to-sky-500',
+    color: 'from-slate-700 to-slate-500',
     icon: '🗣️'
   },
   {
     id: 8,
-    title: 'ورقة عمل إدارة الوقت للطلاب',
-    description: 'ورقة عمل عملية لتعلم إدارة الوقت بفعالية مع جداول وتقنيات مجربة',
-    category: 'التطوير الشخصي',
+    titleEn: 'Time Management Worksheet for Students',
+    titleAr: 'ورقة عمل إدارة الوقت للطلاب',
+    descriptionEn: 'Practical worksheet to learn effective time management with schedules and proven techniques.',
+    descriptionAr: 'ورقة عمل عملية لتعلم إدارة الوقت بفعالية مع جداول وتقنيات مجربة',
+    categoryEn: 'Personal Development',
+    categoryAr: 'التطوير الشخصي',
     type: 'PDF',
     pages: 10,
     downloads: 432,
@@ -128,14 +154,17 @@ const resources = [
     size: '1.1 MB',
     featured: false,
     free: true,
-    color: 'from-green-500 to-lime-500',
+    color: 'from-slate-700 to-slate-500',
     icon: '⏰'
   },
   {
     id: 9,
-    title: 'دليل بناء الشبكة المهنية',
-    description: 'استراتيجيات عملية لبناء شبكة مهنية قوية والاستفادة منها في تطوير المسار المهني',
-    category: 'البحث عن وظيفة',
+    titleEn: 'Professional Networking Guide',
+    titleAr: 'دليل بناء الشبكة المهنية',
+    descriptionEn: 'Practical strategies to build a strong professional network and leverage it for career growth.',
+    descriptionAr: 'استراتيجيات عملية لبناء شبكة مهنية قوية والاستفادة منها في تطوير المسار المهني',
+    categoryEn: 'Job Search',
+    categoryAr: 'البحث عن وظيفة',
     type: 'PDF',
     pages: 18,
     downloads: 321,
@@ -143,12 +172,13 @@ const resources = [
     size: '1.4 MB',
     featured: false,
     free: true,
-    color: 'from-blue-500 to-indigo-500',
+    color: 'from-slate-700 to-slate-500',
     icon: '🤝'
   }
 ]
 
 export default function ResourcesGrid() {
+  const { language } = useLanguage()
   const featuredResources = resources.filter(resource => resource.featured)
   const regularResources = resources.filter(resource => !resource.featured)
 
@@ -173,13 +203,13 @@ export default function ResourcesGrid() {
           >
             <div className="flex items-center justify-center gap-2 mb-4">
               <StarIcon className="w-8 h-8 text-yellow-500" />
-              <span className="text-emerald-600 font-semibold text-lg">الموارد المميزة</span>
+              <span className="text-emerald-600 font-semibold text-lg">Featured Resources</span>
               <StarIcon className="w-8 h-8 text-yellow-500" />
             </div>
-            
+
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              <span className="gradient-text">الأكثر تحميلاً</span>
-              <span className="text-gray-700"> هذا الشهر 🔥</span>
+              <span className="gradient-text">Most Downloaded</span>
+              <span className="text-gray-700"> This Month 🔥</span>
             </h2>
           </motion.div>
 
@@ -196,14 +226,14 @@ export default function ResourcesGrid() {
                 {/* Featured badge */}
                 <div className="absolute top-4 right-4 z-10">
                   <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1">
-                    ⭐ مميز
+                    ⭐ Featured
                   </span>
                 </div>
 
                 {/* Free badge */}
                 <div className="absolute top-4 left-4 z-10">
                   <span className="bg-gradient-to-r from-green-400 to-emerald-500 text-white px-3 py-1 rounded-full text-sm font-bold">
-                    🆓 مجاني
+                    🆓 Free
                   </span>
                 </div>
 
@@ -217,7 +247,7 @@ export default function ResourcesGrid() {
                   {/* Category and meta */}
                   <div className="flex items-center justify-between mb-4">
                     <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm font-semibold">
-                      {resource.category}
+                      {language === 'ar' ? (resource.categoryAr ?? resource.category) : (resource.categoryEn ?? resource.category)}
                     </span>
                     <div className="flex items-center gap-4 text-sm text-gray-500">
                       <div className="flex items-center gap-1">
@@ -233,23 +263,23 @@ export default function ResourcesGrid() {
 
                   {/* Title */}
                   <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-emerald-600 transition-colors">
-                    {resource.title}
+                    {language === 'ar' ? (resource.titleAr ?? resource.titleEn ?? resource.title) : (resource.titleEn ?? resource.title)}
                   </h3>
 
                   {/* Description */}
                   <p className="text-gray-600 mb-6 leading-relaxed">
-                    {resource.description}
+                    {language === 'ar' ? (resource.descriptionAr ?? resource.descriptionEn ?? resource.description) : (resource.descriptionEn ?? resource.description)}
                   </p>
 
                   {/* Resource details */}
                   <div className="grid grid-cols-2 gap-4 mb-6 text-sm text-gray-600">
                     <div className="flex items-center gap-2">
                       <DocumentArrowDownIcon className="w-4 h-4 text-emerald-500" />
-                      <span>{resource.type}</span>
+                      <span>{language === 'ar' ? (resource.typeAr ?? resource.type) : (resource.typeEn ?? resource.type)}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <ClockIcon className="w-4 h-4 text-blue-500" />
-                      <span>{resource.pages} صفحة</span>
+                      <span>{resource.pages} {language === 'ar' ? 'صفحات' : 'pages'}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckCircleIcon className="w-4 h-4 text-green-500" />
@@ -257,7 +287,7 @@ export default function ResourcesGrid() {
                     </div>
                     <div className="flex items-center gap-2">
                       <HeartIcon className="w-4 h-4 text-red-500" />
-                      <span>جودة عالية</span>
+                      <span>{language === 'ar' ? 'جودة عالية' : 'High quality'}</span>
                     </div>
                   </div>
 
@@ -268,7 +298,7 @@ export default function ResourcesGrid() {
                     className={`w-full bg-gradient-to-r ${resource.color} text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2`}
                   >
                     <DocumentArrowDownIcon className="w-5 h-5" />
-                    <span>حمل مجاناً الآن</span>
+                    <span>{language === 'ar' ? 'تحميل مجاني الآن' : 'Download Free Now'}</span>
                   </motion.button>
                 </div>
               </motion.div>
@@ -286,10 +316,10 @@ export default function ResourcesGrid() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              <span className="gradient-text">جميع الموارد</span> 📚
+              <span className="gradient-text">All Resources</span> 📚
             </h2>
             <p className="text-lg text-gray-600">
-              اكتشف المزيد من الموارد المفيدة في مختلف المجالات
+              Explore more useful resources across different topics
             </p>
           </motion.div>
 
@@ -308,7 +338,7 @@ export default function ResourcesGrid() {
                   <div className="text-3xl">{resource.icon}</div>
                   <div className="absolute top-2 right-2">
                     <span className="bg-white/20 text-white px-2 py-1 rounded-lg text-xs font-semibold">
-                      🆓 مجاني
+                      {language === 'ar' ? '🆓 مجاني' : '🆓 Free'}
                     </span>
                   </div>
                 </div>
@@ -321,24 +351,24 @@ export default function ResourcesGrid() {
 
                   {/* Title */}
                   <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors line-clamp-2">
-                    {resource.title}
+                    {language === 'ar' ? (resource.titleAr ?? resource.titleEn ?? resource.title) : (resource.titleEn ?? resource.title)}
                   </h3>
 
                   {/* Description */}
                   <p className="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-3">
-                    {resource.description}
+                    {language === 'ar' ? (resource.descriptionAr ?? resource.descriptionEn ?? resource.description) : (resource.descriptionEn ?? resource.description)}
                   </p>
 
                   {/* Meta info */}
                   <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-1">
                         <DocumentArrowDownIcon className="w-3 h-3" />
-                        <span>{resource.type}</span>
+                        <span>{language === 'ar' ? (resource.typeAr ?? resource.type) : (resource.typeEn ?? resource.type)}</span>
                       </div>
                       <div className="flex items-center gap-1">
                         <EyeIcon className="w-3 h-3" />
-                        <span>{resource.downloads}</span>
+                        <span>{resource.downloads.toLocaleString()}</span>
                       </div>
                     </div>
                     <div className="flex items-center gap-1">
@@ -354,7 +384,7 @@ export default function ResourcesGrid() {
                     className={`w-full bg-gradient-to-r ${resource.color} text-white py-2 rounded-lg font-semibold text-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2`}
                   >
                     <DocumentArrowDownIcon className="w-4 h-4" />
-                    <span>حمل الآن</span>
+                    <span>{language === 'ar' ? 'تحميل الآن' : 'Download Now'}</span>
                   </motion.button>
                 </div>
               </motion.div>
@@ -370,30 +400,30 @@ export default function ResourcesGrid() {
           viewport={{ once: true }}
           className="mt-20"
         >
-          <div className="bg-gradient-to-r from-emerald-600 to-teal-600 rounded-3xl p-8 lg:p-12 text-white text-center">
-            <div className="text-4xl mb-4">📧</div>
-            <h3 className="text-3xl font-bold mb-4">
-              عايز تعرف بالموارد الجديدة؟
-            </h3>
-            <p className="text-xl mb-8 text-white/90">
-              اشترك في القائمة البريدية وهنبعتلك كل مورد جديد أول بأول
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="أدخل إيميلك هنا"
-                className="flex-1 px-4 py-3 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
-              />
-              <button className="bg-white text-emerald-600 px-6 py-3 rounded-xl font-bold hover:bg-gray-100 transition-colors">
-                اشترك الآن 🚀
-              </button>
+            <div className="bg-gradient-to-r from-emerald-600 to-teal-600 rounded-3xl p-8 lg:p-12 text-white text-center">
+              <div className="text-4xl mb-4">📧</div>
+              <h3 className="text-3xl font-bold mb-4">
+                {language === 'ar' ? 'هل تريد تحديثات عن الموارد الجديدة؟' : 'Want updates on new resources?'}
+              </h3>
+              <p className="text-xl mb-8 text-white/90">
+                {language === 'ar' ? 'اشترك في النشرة البريدية ليصلك جديد الموارد' : 'Subscribe to our newsletter and get new resources delivered to your inbox'}
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                <input
+                  type="email"
+                  placeholder={language === 'ar' ? 'أدخل بريدك الإلكتروني' : 'Enter your email'}
+                  className="flex-1 px-4 py-3 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
+                />
+                <button className="bg-white text-emerald-600 px-6 py-3 rounded-xl font-bold hover:bg-gray-100 transition-colors">
+                  {language === 'ar' ? 'اشترك الآن 🚀' : 'Subscribe Now 🚀'}
+                </button>
+              </div>
+
+              <p className="text-sm text-white/80 mt-4">
+                {language === 'ar' ? 'مجاني تماما • بدون رسائل مزعجة • إلغاء الاشتراك في أي وقت' : 'Completely free • No spam • Unsubscribe anytime'}
+              </p>
             </div>
-            
-            <p className="text-sm text-white/80 mt-4">
-              مجاني تماماً • بدون إزعاج • يمكنك إلغاء الاشتراك في أي وقت
-            </p>
-          </div>
         </motion.div>
       </div>
     </section>

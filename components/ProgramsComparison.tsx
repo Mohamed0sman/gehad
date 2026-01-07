@@ -7,114 +7,129 @@ import {
   SparklesIcon,
   TrophyIcon
 } from '@heroicons/react/24/outline'
+import { useTranslation } from '@/hooks/useTranslation'
 
-const comparisonData = [
-  {
-    feature: 'عدد الجلسات',
-    individual: '4 جلسات',
-    group: '2 جلسات',
-    comprehensive: '8 جلسات',
-    academic: '3 جلسات'
-  },
-  {
-    feature: 'المدة الزمنية',
-    individual: '4 أسابيع',
-    group: '6 ساعات',
-    comprehensive: '8 أسابيع',
-    academic: '3 أسابيع'
-  },
-  {
-    feature: 'تقييم شخصي شامل',
-    individual: true,
-    group: false,
-    comprehensive: true,
-    academic: true
-  },
-  {
-    feature: 'خطة عمل مخصصة',
-    individual: true,
-    group: false,
-    comprehensive: true,
-    academic: true
-  },
-  {
-    feature: 'متابعة شخصية',
-    individual: true,
-    group: false,
-    comprehensive: true,
-    academic: true
-  },
-  {
-    feature: 'أنشطة جماعية',
-    individual: false,
-    group: true,
-    comprehensive: false,
-    academic: false
-  },
-  {
-    feature: 'شهادة معتمدة',
-    individual: true,
-    group: true,
-    comprehensive: true,
-    academic: true
-  },
-  {
-    feature: 'مواد تدريبية',
-    individual: true,
-    group: true,
-    comprehensive: true,
-    academic: true
-  },
-  {
-    feature: 'دعم بعد البرنامج',
-    individual: '1 شهر',
-    group: '2 أسابيع',
-    comprehensive: '3 أشهر',
-    academic: '1 شهر'
-  },
-  {
-    feature: 'السعر',
-    individual: '800 جنيه',
-    group: '300 جنيه',
-    comprehensive: '1200 جنيه',
-    academic: '600 جنيه'
-  }
-]
-
-const programs = [
-  {
-    name: 'التوجيه الشخصي',
-    key: 'individual',
-    color: 'from-blue-500 to-cyan-500',
-    popular: true,
-    emoji: '🎯'
-  },
-  {
-    name: 'ورش جماعية',
-    key: 'group',
-    color: 'from-blue-500 to-cyan-500',
-    popular: false,
-    emoji: '👥'
-  },
-  {
-    name: 'اكتشاف الذات',
-    key: 'comprehensive',
-    color: 'from-yellow-500 to-orange-500',
-    popular: false,
-    emoji: '💡'
-  },
-  {
-    name: 'الأداء الأكاديمي',
-    key: 'academic',
-    color: 'from-green-500 to-emerald-500',
-    popular: false,
-    emoji: '📚'
-  }
-]
+type ProgramKey = 'individual' | 'group' | 'comprehensive' | 'academic'
 
 export default function ProgramsComparison() {
+  const { translations, isRTL } = useTranslation()
+
+  const format = (template: string, replacements: Record<string, string | number>) => {
+    return Object.keys(replacements).reduce((acc, key) => {
+      return acc.replace(`{${key}}`, String(replacements[key]))
+    }, template)
+  }
+
+  const programs: { name: string; key: ProgramKey; color: string; popular: boolean; emoji: string }[] = [
+    {
+      name: translations.programsComparison.programs.individual,
+      key: 'individual',
+      color: 'from-blue-500 to-cyan-500',
+      popular: true,
+      emoji: '🎯'
+    },
+    {
+      name: translations.programsComparison.programs.group,
+      key: 'group',
+      color: 'from-blue-500 to-cyan-500',
+      popular: false,
+      emoji: '👥'
+    },
+    {
+      name: translations.programsComparison.programs.comprehensive,
+      key: 'comprehensive',
+      color: 'from-yellow-500 to-orange-500',
+      popular: false,
+      emoji: '💡'
+    },
+    {
+      name: translations.programsComparison.programs.academic,
+      key: 'academic',
+      color: 'from-green-500 to-emerald-500',
+      popular: false,
+      emoji: '📚'
+    }
+  ]
+
+  const comparisonData: Array<
+    { feature: string } & Record<ProgramKey, boolean | string>
+  > = [
+    {
+      feature: translations.programsComparison.features.sessions,
+      individual: format(translations.programsComparison.values.sessions, { count: 4 }),
+      group: format(translations.programsComparison.values.sessions, { count: 2 }),
+      comprehensive: format(translations.programsComparison.values.sessions, { count: 8 }),
+      academic: format(translations.programsComparison.values.sessions, { count: 3 })
+    },
+    {
+      feature: translations.programsComparison.features.duration,
+      individual: format(translations.programsComparison.values.weeks, { count: 4 }),
+      group: format(translations.programsComparison.values.hours, { count: 6 }),
+      comprehensive: format(translations.programsComparison.values.weeks, { count: 8 }),
+      academic: format(translations.programsComparison.values.weeks, { count: 3 })
+    },
+    {
+      feature: translations.programsComparison.features.assessment,
+      individual: true,
+      group: false,
+      comprehensive: true,
+      academic: true
+    },
+    {
+      feature: translations.programsComparison.features.plan,
+      individual: true,
+      group: false,
+      comprehensive: true,
+      academic: true
+    },
+    {
+      feature: translations.programsComparison.features.followup,
+      individual: true,
+      group: false,
+      comprehensive: true,
+      academic: true
+    },
+    {
+      feature: translations.programsComparison.features.activities,
+      individual: false,
+      group: true,
+      comprehensive: false,
+      academic: false
+    },
+    {
+      feature: translations.programsComparison.features.certificate,
+      individual: true,
+      group: true,
+      comprehensive: true,
+      academic: true
+    },
+    {
+      feature: translations.programsComparison.features.materials,
+      individual: true,
+      group: true,
+      comprehensive: true,
+      academic: true
+    },
+    {
+      feature: translations.programsComparison.features.support,
+      individual: format(translations.programsComparison.values.month, { count: 1 }),
+      group: format(translations.programsComparison.values.weeks, { count: 2 }),
+      comprehensive: format(translations.programsComparison.values.months, { count: 3 }),
+      academic: format(translations.programsComparison.values.month, { count: 1 })
+    },
+    {
+      feature: translations.programsComparison.features.price,
+      individual: format(translations.programsComparison.values.price, { amount: 800 }),
+      group: format(translations.programsComparison.values.price, { amount: 300 }),
+      comprehensive: format(translations.programsComparison.values.price, { amount: 1200 }),
+      academic: format(translations.programsComparison.values.price, { amount: 600 })
+    }
+  ]
+
+  const priceFeatureLabel = translations.programsComparison.features.price
+
   return (
-    <section className="py-24 sm:py-32 bg-gradient-to-br from-sky-50 via-white to-blue-50 relative overflow-hidden">
+    <section className="py-24 sm:py-32 bg-gradient-to-br from-sky-50 via-white to-blue-50 relative overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 left-20 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
@@ -133,7 +148,9 @@ export default function ProgramsComparison() {
             className="flex items-center justify-center gap-2 mb-4"
           >
             <TrophyIcon className="w-8 h-8 text-lime-500" />
-            <span className="text-blue-600 font-semibold text-lg">مقارنة البرامج</span>
+            <span className="text-blue-600 font-semibold text-lg">
+              {translations.programsComparison.header.badge}
+            </span>
             <TrophyIcon className="w-8 h-8 text-lime-500" />
           </motion.div>
           
@@ -144,9 +161,13 @@ export default function ProgramsComparison() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
           >
-            <span className="gradient-text">قارن واختار</span>
+            <span className="gradient-text">
+              {translations.programsComparison.header.titleTop}
+            </span>
             <br />
-            <span className="text-gray-700">الأنسب ليك 🤔</span>
+            <span className="text-gray-700">
+              {translations.programsComparison.header.titleBottom}
+            </span>
           </motion.h2>
           
           <motion.p
@@ -156,9 +177,11 @@ export default function ProgramsComparison() {
             viewport={{ once: true }}
             className="text-xl leading-8 text-gray-600"
           >
-            مقارنة سريعة بين البرامج الأساسية علشان تختار اللي يناسبك
+            {translations.programsComparison.header.subtitle}
             <br />
-            <span className="text-blue-600 font-semibold">✨ كل برنامج له مميزاته الخاصة</span>
+            <span className="text-blue-600 font-semibold">
+              {translations.programsComparison.header.highlight}
+            </span>
           </motion.p>
         </div>
 
@@ -173,7 +196,9 @@ export default function ProgramsComparison() {
           {/* Table Header */}
           <div className="bg-gradient-to-r from-blue-600 to-cyan-600 p-6">
             <div className="grid grid-cols-5 gap-4">
-              <div className="text-white font-bold text-lg">المميزات</div>
+              <div className="text-white font-bold text-lg">
+                {translations.programsComparison.table.features}
+              </div>
               {programs.map((program, index) => (
                 <motion.div
                   key={program.key}
@@ -190,7 +215,7 @@ export default function ProgramsComparison() {
                         transition={{ duration: 2, repeat: Infinity }}
                         className="bg-yellow-400 text-yellow-900 px-2 py-1 rounded-full text-xs font-bold"
                       >
-                        الأشهر
+                        {translations.programsComparison.table.popular}
                       </motion.div>
                     </div>
                   )}
@@ -251,10 +276,10 @@ export default function ProgramsComparison() {
           <div className="bg-gradient-to-r from-blue-50 to-cyan-50 p-8">
             <div className="text-center mb-6">
               <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                🎯 جاهز تبدأ رحلتك؟
+                🎯 {translations.programsComparison.cta.title}
               </h3>
               <p className="text-gray-600">
-                اختار البرنامج اللي شايف إنه مناسب ليك واحجز مكانك دلوقتي
+                {translations.programsComparison.cta.description}
               </p>
             </div>
 
@@ -279,14 +304,14 @@ export default function ProgramsComparison() {
                   <div className="text-3xl mb-2">{program.emoji}</div>
                   <div className="font-bold text-sm mb-2">{program.name}</div>
                   <div className="text-xs opacity-90 mb-3">
-                    {comparisonData.find(row => row.feature === 'السعر')?.[program.key as keyof typeof comparisonData[0]]}
+                    {comparisonData.find(row => row.feature === priceFeatureLabel)?.[program.key as keyof typeof comparisonData[0]]}
                   </div>
                   
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     className="w-full bg-white/20 backdrop-blur-sm text-white py-2 rounded-lg text-sm font-semibold hover:bg-white/30 transition-colors"
                   >
-                    احجز الآن
+                    {translations.common.bookNow}
                   </motion.button>
                 </motion.div>
               ))}
@@ -305,17 +330,17 @@ export default function ProgramsComparison() {
           <div className="bg-white rounded-2xl shadow-lg p-8 max-w-2xl mx-auto">
             <div className="text-4xl mb-4">🤝</div>
             <h4 className="text-xl font-bold text-gray-900 mb-4">
-              محتاج مساعدة في الاختيار؟
+              {translations.programsComparison.help.title}
             </h4>
             <p className="text-gray-600 mb-6">
-              لو مش متأكد من البرنامج المناسب ليك، تقدر تتكلم معايا مجاناً وهساعدك تختار
+              {translations.programsComparison.help.description}
             </p>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300"
             >
-              كلمني دلوقتي 📞
+              {translations.programsComparison.help.button}
             </motion.button>
           </div>
         </motion.div>

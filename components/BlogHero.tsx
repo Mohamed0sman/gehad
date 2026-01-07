@@ -11,12 +11,12 @@ import {
 
 export default function BlogHero() {
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-blue-900 via-sky-900 to-cyan-900 overflow-hidden">
+    <section className="relative min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-600 overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-sky-300 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse delay-2000"></div>
+        <div className="absolute top-20 left-10 w-96 h-96 bg-cyan-400/20 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-lime-400/20 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-400/10 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse delay-2000"></div>
       </div>
 
       {/* Floating blog icons */}
@@ -63,9 +63,9 @@ export default function BlogHero() {
             transition={{ duration: 0.6 }}
             className="flex items-center justify-center gap-2 mb-8"
           >
-            <BookOpenIcon className="w-8 h-8 text-fuchsia-400" />
-            <span className="text-violet-400 font-semibold text-xl">المدونة</span>
-            <BookOpenIcon className="w-8 h-8 text-fuchsia-400" />
+            <BookOpenIcon className="w-8 h-8 text-lime-400" />
+            <span className="text-lime-400 font-semibold text-xl">Blog</span>
+            <BookOpenIcon className="w-8 h-8 text-lime-400" />
           </motion.div>
 
           {/* Main heading */}
@@ -76,10 +76,10 @@ export default function BlogHero() {
             className="text-5xl md:text-7xl font-bold text-white mb-8"
           >
             <span className="bg-gradient-to-r from-blue-300 via-cyan-300 to-sky-300 bg-clip-text text-transparent">
-              مقالات ونصائح
+              Articles & Tips
             </span>
             <br />
-            <span className="text-white">لنجاحك المهني 📚</span>
+            <span className="text-white">For Your Career Success 📚</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -89,7 +89,7 @@ export default function BlogHero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl leading-relaxed text-white/90 mb-6"
           >
-            اكتشف أحدث النصائح والاستراتيجيات للتطوير المهني والشخصي
+            Discover the latest tips and strategies for professional and personal development
           </motion.p>
 
           <motion.p
@@ -98,9 +98,9 @@ export default function BlogHero() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-lg md:text-xl leading-relaxed text-white/80 mb-12"
           >
-            <span className="text-fuchsia-300">✨ مقالات جديدة كل أسبوع</span>
+            <span className="text-lime-300">✨ New articles every week</span>
             <br />
-            مكتوبة بحب وخبرة علشان تساعدك تحقق أحلامك
+            written with passion and expertise to help you achieve your dreams
           </motion.p>
 
           {/* Blog stats */}
@@ -111,10 +111,10 @@ export default function BlogHero() {
             className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12"
           >
             {[
-              { number: "50+", label: "مقال مفيد", icon: "📝" },
-              { number: "10K+", label: "قارئ شهرياً", icon: "👥" },
-              { number: "8", label: "فئات متنوعة", icon: "📂" },
-              { number: "5⭐", label: "تقييم القراء", icon: "⭐" }
+              { number: "50+", label: "Helpful Articles", icon: "📝" },
+              { number: "10K+", label: "Monthly Readers", icon: "👥" },
+              { number: "8", label: "Categories", icon: "📂" },
+              { number: "5⭐", label: "Reader Rating", icon: "⭐" }
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -124,7 +124,7 @@ export default function BlogHero() {
                 className="text-center bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20"
               >
                 <div className="text-3xl mb-2">{stat.icon}</div>
-                <div className="text-2xl font-bold text-fuchsia-300 mb-1">{stat.number}</div>
+                <div className="text-2xl font-bold text-lime-300 mb-1">{stat.number}</div>
                 <div className="text-white/80 text-sm">{stat.label}</div>
               </motion.div>
             ))}
@@ -138,20 +138,20 @@ export default function BlogHero() {
             className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 mb-12"
           >
             <h3 className="text-2xl font-bold text-white mb-6 flex items-center justify-center gap-2">
-              <HeartIcon className="w-8 h-8 text-pink-400" />
-              المواضيع الأكثر قراءة
+              <HeartIcon className="w-8 h-8 text-lime-400" />
+              Most Read Topics
             </h3>
             
             <div className="flex flex-wrap justify-center gap-4">
               {[
-                'اختيار التخصص الجامعي',
-                'كتابة السيرة الذاتية',
-                'مهارات المقابلات الشخصية',
-                'التطوير المهني',
-                'إدارة الوقت',
-                'بناء الثقة بالنفس',
-                'ريادة الأعمال',
-                'التوازن بين العمل والحياة'
+                'Choosing Your Major',
+                'Resume Writing',
+                'Interview Skills',
+                'Career Development',
+                'Time Management',
+                'Building Confidence',
+                'Entrepreneurship',
+                'Work-Life Balance'
               ].map((topic, index) => (
                 <motion.span
                   key={index}
@@ -177,9 +177,9 @@ export default function BlogHero() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="group relative px-10 py-5 bg-gradient-to-r from-fuchsia-400 to-purple-500 text-white font-bold text-xl rounded-full shadow-2xl hover:shadow-fuchsia-500/25 transition-all duration-300 flex items-center gap-3"
+              className="group relative px-10 py-5 bg-gradient-to-r from-lime-400 to-green-500 text-black font-bold text-xl rounded-full shadow-2xl hover:shadow-lime-400/25 transition-all duration-300 flex items-center gap-3"
             >
-              <span>📚 اقرأ المقالات</span>
+              <span>📚 Read Articles</span>
               <motion.span
                 animate={{ y: [0, -5, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
@@ -193,8 +193,8 @@ export default function BlogHero() {
               whileTap={{ scale: 0.95 }}
               className="text-white/80 text-center"
             >
-              <div className="text-sm">أو اشترك في النشرة</div>
-              <div className="text-lg font-semibold">📧 لتصلك المقالات الجديدة</div>
+              <div className="text-sm">Or subscribe to our newsletter</div>
+              <div className="text-lg font-semibold">📧 to get new articles</div>
             </motion.div>
           </motion.div>
 
@@ -207,15 +207,15 @@ export default function BlogHero() {
           >
             <div className="flex items-center gap-2">
               <span className="text-green-400">✓</span>
-              <span>مقالات أسبوعية</span>
+              <span>Weekly Articles</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-green-400">✓</span>
-              <span>نصائح حصرية</span>
+              <span>Exclusive Tips</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-green-400">✓</span>
-              <span>بدون إزعاج</span>
+              <span>No Spam</span>
             </div>
           </motion.div>
         </div>
