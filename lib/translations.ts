@@ -839,7 +839,7 @@ export const translations = {
       title: 'جميع البرامج التدريبية',
       subtitle: 'اختار المسار المناسب ليك',
       description: 'مجموعة متنوعة من البرامج المصممة لتلبية احتياجاتك المختلفة ومساعدتك في تحقيق أهدافك',
-      currency: 'جنيه',
+      
       bookNow: 'احجز الآن',
       popular: 'الأكثر طلباً',
       reviews: 'تقييم',
@@ -851,8 +851,8 @@ export const translations = {
           subtitle: 'اكتشف شغفك الحقيقي',
           description: 'جلسات فردية مخصصة لاكتشاف مواهبك وتحديد مسارك المهني المناسب مع خطة عمل واضحة ومتابعة شخصية',
           duration: '4 جلسات',
-          price: '800',
-          originalPrice: '1200',
+        
+          
           level: 'مبتدئ - متقدم',
           features: [
             'تقييم شخصي شامل للمهارات والميول',
@@ -870,8 +870,7 @@ export const translations = {
           subtitle: 'تعلم مع أصدقائك',
           description: 'ورش تفاعلية لتطوير المهارات الشخصية والمهنية في بيئة جماعية محفزة ومليانة طاقة إيجابية وتفاعل',
           duration: '6 ساعات',
-          price: '300',
-          originalPrice: '500',
+         
           level: 'جميع المستويات',
           features: [
             'مجموعات صغيرة (8 أشخاص فقط)',
@@ -889,8 +888,7 @@ export const translations = {
           subtitle: 'رحلة التغيير الحقيقي',
           description: 'رحلة شاملة لفهم شخصيتك وقدراتك وتحديد أهدافك الحياتية والمهنية مع تطوير خطة عمل متكاملة للنجاح',
           duration: '8 أسابيع',
-          price: '1200',
-          originalPrice: '1800',
+          
           level: 'متوسط - متقدم',
           features: [
             'تقييمات متخصصة متعددة الأبعاد',
@@ -908,8 +906,7 @@ export const translations = {
           subtitle: 'تفوق في دراستك',
           description: 'دعم الطلاب في تحسين أدائهم الأكاديمي وتطوير استراتيجيات الدراسة الفعالة والتغلب على صعوبات التعلم',
           duration: '3 جلسات',
-          price: '600',
-          originalPrice: '900',
+        
           level: 'طلاب',
           features: [
             'تحليل نمط التعلم الشخصي',
@@ -927,8 +924,7 @@ export const translations = {
           subtitle: 'ابدأ مشروعك الخاص',
           description: 'برنامج شامل لتعليم أساسيات ريادة الأعمال وتطوير الأفكار التجارية وتحويلها إلى مشاريع ناجحة ومربحة',
           duration: '6 أسابيع',
-          price: '1000',
-          originalPrice: '1500',
+         
           level: 'متوسط',
           features: [
             'تطوير فكرة المشروع من الصفر',
@@ -946,8 +942,7 @@ export const translations = {
           subtitle: 'كن النسخة الأفضل من نفسك',
           description: 'برنامج متكامل لتطوير المهارات الشخصية والاجتماعية مثل التواصل والقيادة وإدارة الوقت والثقة بالنفس',
           duration: '4 أسابيع',
-          price: '700',
-          originalPrice: '1000',
+        
           level: 'جميع المستويات',
           features: [
             'تطوير مهارات التواصل الفعال',
@@ -1473,7 +1468,7 @@ export const translations = {
         hours: '{count} ساعات',
         months: '{count} أشهر',
         month: '{count} شهر',
-        price: '{amount} جنيه'
+       
       },
       programs: {
         individual: 'التوجيه الشخصي',

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Bars3Icon, XMarkIcon, SparklesIcon, GlobeAltIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, XMarkIcon, SparklesIcon } from '@heroicons/react/24/outline'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useTranslation } from '@/hooks/useTranslation'
 
@@ -42,10 +42,7 @@ export default function Header() {
     return () => document.body.classList.remove('overflow-hidden')
   }, [mobileMenuOpen])
 
-  const toggleLanguage = () => {
-    const newLanguage = language === 'en' ? 'ar' : 'en'
-    setLanguage(newLanguage)
-  }
+  // Language locked to English; toggle removed
 
   return (
     <header className={`sticky top-0 z-50 transition-all duration-300 ${
@@ -103,18 +100,6 @@ export default function Header() {
         
         {/* Language Switcher & CTA */}
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4">
-          {/* Language Switcher */}
-          <button
-            onClick={toggleLanguage}
-            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 hover:text-gray-900 transition-all duration-300 group font-inter"
-            aria-label="Switch Language"
-          >
-            <GlobeAltIcon className="w-4 h-4 group-hover:scale-110 transition-transform" />
-            <span className="text-sm font-medium">
-              {language === 'en' ? 'العربية' : 'English'}
-            </span>
-          </button>
-
           {/* CTA Button */}
           <Link
             href="/booking"
@@ -129,17 +114,7 @@ export default function Header() {
 
         {/* Mobile menu button */}
         <div className="flex lg:hidden items-center gap-2">
-          {/* Mobile Language Switcher */}
-          <button
-            onClick={toggleLanguage}
-            className="flex items-center gap-1 px-2 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all duration-300"
-            aria-label="Switch Language"
-          >
-            <GlobeAltIcon className="w-4 h-4" />
-            <span className="text-xs font-medium font-inter">
-              {language === 'en' ? 'AR' : 'EN'}
-            </span>
-          </button>
+          {/* Language locked to English (switcher removed) */}
 
           <button
             type="button"
@@ -229,14 +204,7 @@ export default function Header() {
                 <span>{translations.nav.booking}</span>
               </Link>
               
-              {/* Language Switcher Mobile */}
-              <button
-                onClick={toggleLanguage}
-                className="w-full flex items-center justify-center gap-3 bg-white/80 backdrop-blur-sm border border-blue-200 text-gray-700 font-semibold px-6 py-4 rounded-2xl hover:bg-white transition-all duration-300 font-inter"
-              >
-                <GlobeAltIcon className="w-5 h-5" />
-                <span>{language === 'en' ? 'العربية' : 'English'}</span>
-              </button>
+              {/* Language locked to English (switcher removed) */}
               
               {/* Quick Contact */}
               <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 border border-blue-200">

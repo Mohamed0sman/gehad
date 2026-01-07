@@ -345,22 +345,7 @@ export default function BookingForm() {
               </h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    نوع الجلسة المفضل
-                  </label>
-                  <select
-                    name="sessionType"
-                    value={formData.sessionType}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors"
-                  >
-                    <option value="online">أونلاين (Zoom/Google Meet) 💻</option>
-                    <option value="in-person">حضوري (القاهرة) 🏢</option>
-                    <option value="phone">مكالمة هاتفية 📞</option>
-                    <option value="flexible">أي حاجة تناسبك 🤝</option>
-                  </select>
-                </div>
+             
                 
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">

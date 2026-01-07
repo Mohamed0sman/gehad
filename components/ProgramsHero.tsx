@@ -36,12 +36,7 @@ export default function ProgramsHero() {
           <motion.div
             key={index}
             className={`absolute ${item.color}`}
-            initial={{ 
-              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
-              y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
-              opacity: 0,
-              scale: 0
-            }}
+          
             animate={{ 
               y: [null, -50, 50, -30],
               opacity: [0, 0.3, 0.6, 0.3, 0],

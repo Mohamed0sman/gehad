@@ -226,9 +226,14 @@ export default function AllPrograms() {
                 {/* Price and CTA */}
                 <div className="flex items-center justify-between">
                   <div className={`text-${isRTL ? 'right' : 'left'}`}>
-                    <div className="flex items-center gap-2">
-                      <span className="text-xl font-bold text-gray-900">{program.price} {translations.allPrograms.currency}</span>
-                      <span className="text-sm text-gray-500 line-through">{program.originalPrice}</span>
+                    <div className="flex items-center gap-3">
+                      <span className="text-sm text-gray-500 font-inter">{translations.allPrograms.currency}</span>
+                      <div className="flex items-baseline gap-3">
+                        <span className="text-3xl font-extrabold text-[rgb(var(--brand-emphasis-rgb))]">{program.price}</span>
+                        {program.originalPrice && (
+                          <span className="text-sm text-gray-500 line-through">{program.originalPrice}</span>
+                        )}
+                      </div>
                     </div>
                   </div>
                   

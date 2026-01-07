@@ -117,16 +117,9 @@ export default function ProgramsComparison() {
       comprehensive: format(translations.programsComparison.values.months, { count: 3 }),
       academic: format(translations.programsComparison.values.month, { count: 1 })
     },
-    {
-      feature: translations.programsComparison.features.price,
-      individual: format(translations.programsComparison.values.price, { amount: 800 }),
-      group: format(translations.programsComparison.values.price, { amount: 300 }),
-      comprehensive: format(translations.programsComparison.values.price, { amount: 1200 }),
-      academic: format(translations.programsComparison.values.price, { amount: 600 })
-    }
+    // Price row intentionally removed (site displays no prices)
   ]
 
-  const priceFeatureLabel = translations.programsComparison.features.price
 
   return (
     <section className="py-24 sm:py-32 bg-gradient-to-br from-sky-50 via-white to-blue-50 relative overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
@@ -291,9 +284,9 @@ export default function ProgramsComparison() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`relative bg-gradient-to-br ${program.color} rounded-2xl p-4 text-white text-center cursor-pointer group overflow-hidden`}
+                  whileHover={{ y: -6, scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`relative bg-gradient-to-br ${program.color} rounded-2xl p-6 text-white text-center cursor-pointer group overflow-hidden ring-1 ring-black/5 shadow-lg`}
                 >
                   {program.popular && (
                     <div className="absolute top-2 right-2">
@@ -302,14 +295,11 @@ export default function ProgramsComparison() {
                   )}
                   
                   <div className="text-3xl mb-2">{program.emoji}</div>
-                  <div className="font-bold text-sm mb-2">{program.name}</div>
-                  <div className="text-xs opacity-90 mb-3">
-                    {comparisonData.find(row => row.feature === priceFeatureLabel)?.[program.key as keyof typeof comparisonData[0]]}
-                  </div>
+                  <div className="font-bold text-lg mb-3 tracking-tight">{program.name}</div>
                   
                   <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    className="w-full bg-white/20 backdrop-blur-sm text-white py-2 rounded-lg text-sm font-semibold hover:bg-white/30 transition-colors"
+                    whileHover={{ scale: 1.03 }}
+                    className="w-full bg-white text-blue-700 py-2 rounded-lg text-sm font-semibold hover:shadow-md transition-all"
                   >
                     {translations.common.bookNow}
                   </motion.button>
