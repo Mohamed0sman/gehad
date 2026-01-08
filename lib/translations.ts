@@ -993,7 +993,6 @@ export const translations = {
           description: 'Trained over 500 students to discover their talents and determine their appropriate career path',
           achievements: [
             '98% of trainees successfully identified their career path',
-            'Developed innovative training programs for students',
             'Conducted over 50 group workshops',
             'Received Best Trainer Award 2023'
           ]
