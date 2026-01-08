@@ -403,37 +403,35 @@ html {
 }
 
 .brand-gradient-text {
-  background: linear-gradient(135deg, 
-    rgb(var(--brand-blue-600, 11,98,165)) 0%, 
-    rgb(var(--brand-cyan-500, 6,182,212)) 50%, 
-    rgb(var(--brand-green-500, 34,197,94)) 100%);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradient-shift 4s ease infinite;
+  color: rgb(var(--brand-blue-600, 11,98,165));
+  font-weight: 700;
 }
 
 .brand-bg {
-  background: linear-gradient(135deg, 
-    rgb(var(--brand-blue-600, 11,98,165)) 0%, 
-    rgb(var(--brand-cyan-500, 6,182,212)) 30%,
-    rgb(var(--brand-green-500, 34,197,94)) 60%,
-    rgb(var(--brand-blue-500, 2,132,199)) 100%);
-  background-size: 400% 400%;
-  animation: gradient-shift 15s ease infinite;
+  background: rgb(var(--brand-blue-600, 11,98,165));
+  position: relative;
+}
+
+.brand-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, 
+    rgba(0,0,0,0.1) 0%, 
+    transparent 50%,
+    rgba(0,0,0,0.05) 100%);
+  pointer-events: none;
 }
 
 .brand-btn {
-  background: linear-gradient(135deg, 
-    rgb(var(--brand-blue-600, 11,98,165)) 0%, 
-    rgb(var(--brand-green-500, 34,197,94)) 100%);
+  background: rgb(var(--brand-blue-600, 11,98,165));
   color: white;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(var(--brand-blue-600, 11,98,165), 0.3);
 }
 
 .brand-btn:hover {
+  background: rgb(var(--brand-blue-500, 2,132,199));
   box-shadow: 0 8px 25px rgba(var(--brand-blue-600, 11,98,165), 0.5);
   transform: translateY(-2px);
 }
@@ -474,13 +472,10 @@ html {
 }
 
 .brand-cta {
-  background: linear-gradient(135deg, 
-    rgb(var(--brand-blue-600)) 0%, 
-    rgb(var(--brand-cyan-500, 6,182,212)) 50%,
-    rgb(var(--brand-green-500)) 100%);
+  background: rgb(var(--brand-green-500, 34,197,94));
   color: white;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(var(--brand-blue-600), 0.4);
+  box-shadow: 0 4px 20px rgba(var(--brand-green-500, 34,197,94), 0.4);
   position: relative;
   overflow: hidden;
 }
@@ -492,7 +487,7 @@ html {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  background: rgba(255,255,255,0.2);
   transition: left 0.5s ease;
 }
 
@@ -501,7 +496,8 @@ html {
 }
 
 .brand-cta:hover {
-  box-shadow: 0 8px 30px rgba(var(--brand-blue-600), 0.6);
+  background: rgb(var(--brand-green-400, 72,187,120));
+  box-shadow: 0 8px 30px rgba(var(--brand-green-500, 34,197,94), 0.6);
   transform: translateY(-2px);
 }
 
@@ -514,5 +510,172 @@ html {
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+
+/* Professional enhancements */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Professional card styles */
+.professional-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.professional-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+}
+
+/* Professional section spacing */
+.section-padding {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-top: 9rem;
+    padding-bottom: 9rem;
+  }
+}
+
+/* Professional text shadows */
+.text-shadow-soft {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.text-shadow-medium {
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Professional borders */
+.border-gradient {
+  border: 2px solid;
+  border-image: linear-gradient(135deg, 
+    rgb(var(--brand-blue-600)) 0%, 
+    rgb(var(--brand-cyan-500, 6,182,212)) 50%,
+    rgb(var(--brand-green-500)) 100%) 1;
+}
+
+/* Professional backdrop blur */
+.backdrop-blur-professional {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Professional hover effects */
+.hover-glow {
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 30px rgba(var(--brand-blue-600), 0.3);
+}
+
+/* Professional spacing utilities */
+.space-section {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .space-section {
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+  }
+}
+
+/* Professional container */
+.container-professional {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .container-professional {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-professional {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+/* Professional animations */
+@keyframes professional-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-professional-fade-in {
+  animation: professional-fade-in 0.6s ease-out;
+}
+
+/* Professional focus states */
+*:focus-visible {
+  outline: 2px solid rgb(var(--brand-blue-600));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Professional selection */
+::selection {
+  background-color: rgba(var(--brand-blue-600), 0.2);
+  color: rgb(var(--brand-blue-600));
+}
+
+/* Professional image optimization */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Professional loading states */
+.loading-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer-loading 1.5s infinite;
+}
+
+@keyframes shimmer-loading {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
   }
 }

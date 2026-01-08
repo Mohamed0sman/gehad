@@ -22,15 +22,15 @@ export default function Testimonials() {
   ]
 
   return (
-    <section className="py-24 sm:py-32 bg-gradient-to-br from-white via-blue-50 to-cyan-50 relative overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
-      {/* Background decorations */}
+    <section className="py-24 sm:py-32 section-padding bg-gradient-to-br from-white via-blue-50/50 to-cyan-50/50 relative overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
+      {/* Enhanced background decorations */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 right-20 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-20 left-20 w-64 h-64 bg-[rgba(var(--brand-cyan-500,6,182,212),0.2)] rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-lime-200 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse delay-2000"></div>
+        <div className="absolute top-20 right-20 w-72 h-72 bg-[rgba(var(--brand-blue-500),0.1)] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+        <div className="absolute bottom-20 left-20 w-72 h-72 bg-[rgba(var(--brand-cyan-500,6,182,212),0.1)] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[rgba(var(--brand-green-400),0.08)] rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-pulse delay-2000"></div>
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8 container-professional">
         <div className="mx-auto max-w-3xl text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -39,11 +39,11 @@ export default function Testimonials() {
             viewport={{ once: true }}
             className="flex items-center justify-center gap-2 mb-4"
           >
-            <HeartIcon className="w-8 h-8 text-red-500" />
-            <span className="text-blue-600 font-semibold text-lg font-inter">
+            <HeartIcon className="w-8 h-8 text-[rgb(var(--brand-green-500))]" />
+            <span className="text-[rgb(var(--brand-blue-600))] font-semibold text-lg font-inter">
               {translations.testimonials.headerLabel}
             </span>
-            <HeartIcon className="w-8 h-8 text-red-500" />
+            <HeartIcon className="w-8 h-8 text-[rgb(var(--brand-green-500))]" />
           </motion.div>
         
           <motion.h2
@@ -69,7 +69,7 @@ export default function Testimonials() {
           >
             {translations.testimonials.intro}
             <br />
-            <span className="text-blue-600 font-semibold">🎯 {translations.testimonials.highlight}</span>
+            <span className="text-[rgb(var(--brand-blue-600))] font-semibold">🎯 {translations.testimonials.highlight}</span>
           </motion.p>
         </div>
       
@@ -82,7 +82,7 @@ export default function Testimonials() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
               whileHover={{ y: -10, scale: 1.02 }}
-              className="relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group"
+              className="relative professional-card rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group"
             >
               {/* Gradient border */}
               <div className={`absolute inset-0 bg-gradient-to-br ${colors[index] || colors[0]} opacity-10 group-hover:opacity-20 transition-opacity duration-300`}></div>

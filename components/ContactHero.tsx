@@ -81,7 +81,7 @@ export default function ContactHero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className={`text-5xl md:text-7xl font-bold text-white mb-8 ${isRTL ? 'font-cairo' : ''}`}
           >
-            <span className="brand-gradient-text">
+            <span className="text-white">
               {t('contactHero.title.line1')}
             </span>
             <br />
@@ -93,7 +93,7 @@ export default function ContactHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className={`text-xl md:text-2xl leading-relaxed text-white/90 mb-6 ${isRTL ? 'font-cairo' : ''}`}
+            className={`text-xl md:text-2xl leading-relaxed text-white mb-6 ${isRTL ? 'font-cairo' : ''}`}
           >
             {t('contactHero.subtitle1')}
           </motion.p>
@@ -102,11 +102,11 @@ export default function ContactHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className={`text-lg md:text-xl leading-relaxed text-white/80 mb-12 ${isRTL ? 'font-cairo' : ''}`}
+            className={`text-lg md:text-xl leading-relaxed text-white mb-12 ${isRTL ? 'font-cairo' : ''}`}
           >
-            <span className="text-[rgb(var(--brand-green-400))]">{t('contactHero.subtitle2.line1')}</span>
+            <span className="text-[rgb(var(--brand-green-400))] font-semibold">{t('contactHero.subtitle2.line1')}</span>
             <br />
-            {t('contactHero.subtitle2.line2')}
+            <span className="text-white">{t('contactHero.subtitle2.line2')}</span>
           </motion.p>
 
           {/* Quick contact options */}

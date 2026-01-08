@@ -47,8 +47,8 @@ export default function Header() {
   return (
     <header className={`sticky top-0 z-50 transition-all duration-300 ${
       scrolled 
-        ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-blue-100' 
-        : 'bg-white/90 backdrop-blur-sm shadow-sm'
+        ? 'bg-white/98 backdrop-blur-lg shadow-xl border-b border-gray-200/50' 
+        : 'bg-white/95 backdrop-blur-md shadow-md'
     }`}>
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8" aria-label="Global">
         {/* Logo */}

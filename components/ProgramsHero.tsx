@@ -30,21 +30,28 @@ export default function ProgramsHero() {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[rgba(var(--brand-blue-500),0.1)] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse delay-2000"></div>
       </div>
 
+      {/* Professional grid pattern overlay */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{
+        backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                         linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+        backgroundSize: '50px 50px'
+      }}></div>
+
       {/* Floating program icons */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {programIcons.map((item, index) => (
           <motion.div
             key={index}
-            className={`absolute ${item.color}`}
-          
+            className={`absolute ${item.color} opacity-20`}
+            initial={{ opacity: 0, scale: 0 }}
             animate={{ 
               y: [null, -50, 50, -30],
-              opacity: [0, 0.3, 0.6, 0.3, 0],
+              opacity: [0, 0.2, 0.4, 0.2, 0],
               scale: [0, 1, 1.2, 1, 0],
               rotate: [0, 180, 360]
             }}
             transition={{
-              duration: 8,
+              duration: 10,
               repeat: Infinity,
               delay: item.delay,
               ease: "easeInOut"
@@ -59,8 +66,8 @@ export default function ProgramsHero() {
         ))}
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 flex items-center min-h-screen">
-        <div className="mx-auto max-w-4xl text-center">
+      <div className="relative mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 flex items-center min-h-screen container-professional">
+        <div className="mx-auto max-w-5xl text-center">
           
           {/* Badge */}
           <motion.div
@@ -81,7 +88,7 @@ export default function ProgramsHero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-5xl md:text-7xl font-bold text-white mb-8"
           >
-            <span className="brand-gradient-text">
+            <span className="text-white">
               {translations.programsPage.titleTop}
             </span>
             <br />
@@ -93,7 +100,7 @@ export default function ProgramsHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl leading-relaxed text-white/90 mb-6"
+            className="text-xl md:text-2xl leading-relaxed text-white mb-6"
           >
             {translations.programsPage.subtitle}
           </motion.p>
@@ -102,11 +109,11 @@ export default function ProgramsHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg md:text-xl leading-relaxed text-white/80 mb-12"
+            className="text-lg md:text-xl leading-relaxed text-white mb-12"
           >
-            <span className="text-[rgb(var(--brand-green-400))]">{translations.programsPage.subtitle2Line1}</span>
+            <span className="text-[rgb(var(--brand-green-400))] font-semibold">{translations.programsPage.subtitle2Line1}</span>
             <br />
-            {translations.programsPage.subtitle2Line2}
+            <span className="text-white">{translations.programsPage.subtitle2Line2}</span>
           </motion.p>
 
           {/* Stats */}
@@ -114,7 +121,7 @@ export default function ProgramsHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12"
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
           >
             {[
               { number: "5", label: translations.programsPage.stats.designedPrograms, icon: "📚" },
@@ -127,11 +134,12 @@ export default function ProgramsHero() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1 + index * 0.1 }}
-                className="text-center bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20"
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="text-center bg-white/20 backdrop-blur-md rounded-2xl p-5 border-2 border-white/40 hover:bg-white/30 transition-all duration-300"
               >
-                <div className="text-3xl mb-2">{stat.icon}</div>
-                <div className="text-2xl font-bold text-[rgb(var(--brand-green-400))] mb-1">{stat.number}</div>
-                <div className="text-white/80 text-sm">{stat.label}</div>
+                <div className="text-4xl mb-3">{stat.icon}</div>
+                <div className="text-2xl font-bold text-white mb-2 font-playfair">{stat.number}</div>
+                <div className="text-white text-sm font-semibold font-inter">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>

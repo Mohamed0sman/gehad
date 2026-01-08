@@ -56,8 +56,8 @@ export default function ProgramsSection() {
   ]
 
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 section-padding bg-gradient-to-b from-white to-gray-50/50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 container-professional">
         
         {/* Section Header */}
         <motion.div
@@ -86,9 +86,9 @@ export default function ProgramsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className={`${program.bgColor} ${program.borderColor} border-2 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 hover:scale-105 group`}
+              className={`${program.bgColor} ${program.borderColor} border-2 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group professional-card`}
             >
-              <div className={`w-16 h-16 bg-gradient-to-r ${program.color} rounded-2xl flex items-center justify-center text-3xl text-white mb-6 group-hover:scale-110 transition-transform`}>
+              <div className={`w-16 h-16 brand-btn rounded-2xl flex items-center justify-center text-3xl text-white mb-6 group-hover:scale-110 transition-transform shadow-lg`}>
                 {program.icon}
               </div>
               
