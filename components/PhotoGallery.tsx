@@ -18,36 +18,24 @@ export default function PhotoGallery() {
 
   const images: GalleryImage[] = useMemo(
     () => [
-      {
-        src: '/photos/1672229131168.jpg',
-        alt: { en: 'Workshop moment', ar: 'لحظة من ورشة' },
-        tag: { en: 'Workshop', ar: 'ورشة' }
-      },
-      {
-        src: '/photos/IMG-20220922-WA0028.jpg',
-        alt: { en: 'Group training', ar: 'تدريب جماعي' },
-        tag: { en: 'Training', ar: 'تدريب' }
-      },
-      {
-        src: '/photos/FB_IMG_1648134514274.jpg',
-        alt: { en: 'Team & community', ar: 'فريق وكوميونيتي' },
-        tag: { en: 'Community', ar: 'كوميونيتي' }
-      },
-      {
-        src: '/photos/IMG20220323144836.jpg',
-        alt: { en: 'Session in action', ar: 'سيشن شغال' },
-        tag: { en: 'Session', ar: 'سيشن' }
-      },
-      {
-        src: '/photos/IMG20220323153727.jpg',
-        alt: { en: 'Workshop planning', ar: 'تخطيط ورشة' },
-        tag: { en: 'Planning', ar: 'تخطيط' }
-      },
-      {
-        src: '/photos/IMG20181001150327.jpg',
-        alt: { en: 'Group photo', ar: 'صورة جماعية' },
-        tag: { en: 'Event', ar: 'إيفنت' }
-      }
+      { src: '/photos/1672229131168.jpg', alt: { en: 'Workshop moment', ar: 'لحظة من ورشة' }, tag: { en: 'Workshop', ar: 'ورشة' } },
+      { src: '/photos/IMG-20220922-WA0028.jpg', alt: { en: 'Group training', ar: 'تدريب جماعي' }, tag: { en: 'Training', ar: 'تدريب' } },
+      { src: '/photos/FB_IMG_1648134514274.jpg', alt: { en: 'Team & community', ar: 'فريق وكوميونيتي' }, tag: { en: 'Community', ar: 'كوميونيتي' } },
+      { src: '/photos/IMG20220323144836.jpg', alt: { en: 'Session in action', ar: 'سيشن شغال' }, tag: { en: 'Session', ar: 'سيشن' } },
+      { src: '/photos/IMG20220323153727.jpg', alt: { en: 'Workshop planning', ar: 'تخطيط ورشة' }, tag: { en: 'Planning', ar: 'تخطيط' } },
+      { src: '/photos/IMG20181001150327.jpg', alt: { en: 'Group photo', ar: 'صورة جماعية' }, tag: { en: 'Event', ar: 'إيفنت' } },
+      { src: '/photos/dc52f605-1ca3-420b-95aa-e227dcee9bcd.jfif', alt: { en: 'Event photo', ar: 'صورة من إيفنت' } },
+      { src: '/photos/WhatsApp Image 2024-09-14 at 16.29.59_b675d70b.jpg', alt: { en: 'Workshop photo', ar: 'صورة ورشة' } },
+      { src: '/photos/WhatsApp Image 2025-03-06 at 14.57.37_1cc4a6c7.jpg', alt: { en: 'Workshop photo', ar: 'صورة ورشة' } },
+      { src: '/photos/WhatsApp Image 2025-03-10 at 17.43.27_9d3971c9.jpg', alt: { en: 'Workshop photo', ar: 'صورة ورشة' } },
+      { src: '/photos/WhatsApp Image 2025-06-28 at 05.11.10.jpeg', alt: { en: 'Event photo', ar: 'صورة إيفنت' } },
+      { src: '/photos/WhatsApp Image 2025-09-27 at 3.01.10 PM (1).jpeg', alt: { en: 'Event photo', ar: 'صورة إيفنت' } },
+      { src: '/photos/WhatsApp Image 2025-10-03 at 8.11.16 PM (3).jpeg', alt: { en: 'Event photo', ar: 'صورة إيفنت' } },
+      { src: '/photos/WhatsApp Image 2025-11-30 at 2.49.29 AM.jpeg', alt: { en: 'Event photo', ar: 'صورة إيفنت' } },
+      { src: '/photos/WhatsApp Image 2025-11-30 at 2.49.43 AM (1).jpeg', alt: { en: 'Event photo', ar: 'صورة إيفنت' } },
+      { src: '/photos/WhatsApp Image 2025-11-30 at 2.49.43 AM.jpeg', alt: { en: 'Event photo', ar: 'صورة إيفنت' } },
+      { src: '/photos/WhatsApp Image 2025-11-30 at 2.49.44 AM.jpeg', alt: { en: 'Event photo', ar: 'صورة إيفنت' } },
+      { src: '/photos/WhatsApp Image 2025-12-18 at 12.46.04 AM.jpeg', alt: { en: 'Event photo', ar: 'صورة إيفنت' } }
     ],
     []
   )
