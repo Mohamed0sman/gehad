@@ -8,10 +8,12 @@ import {
   HeartIcon,
   CheckCircleIcon
 } from '@heroicons/react/24/outline'
-import { useTranslation } from '@/hooks/useTranslation'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { getTranslation } from '@/lib/translations'
 
 export default function ContactForm() {
-  const { t, isRTL } = useTranslation()
+  const { language, isRTL } = useLanguage()
+  const t = (key: string) => getTranslation(language, key)
   const [formData, setFormData] = useState({
     name: '',
     email: '',

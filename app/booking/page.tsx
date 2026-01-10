@@ -5,17 +5,19 @@ import BookingForm from '@/components/BookingForm'
 import BookingSteps from '@/components/BookingSteps'
 
 export const metadata = {
-  title: 'احجز جلستك - جهاد أشرف | حجز جلسة توجيه مهني مجانية',
-  description: 'احجز جلستك المجانية مع جهاد أشرف، مدربة التوجيه المهني المعتمدة. استشارة شخصية لمساعدتك في تحديد مسارك المهني.',
+  title: 'Book a Session - Gehad Ashraf | Free Career Consultation',
+  description: 'Book your free session with Gehad Ashraf. Get personalized, evidence-based guidance to clarify your career direction and next steps.',
 }
 
 export default function Booking() {
   return (
     <main>
       <Header />
-      <BookingHero />
-      <BookingSteps />
-      <BookingForm />
+      <div className="pt-16 lg:pt-20">
+        <BookingHero />
+        <BookingSteps />
+        <BookingForm />
+      </div>
       <Footer />
     </main>
   )

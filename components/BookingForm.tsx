@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { useLanguage } from '@/contexts/LanguageContext'
 import { 
   PaperAirplaneIcon,
   SparklesIcon,
@@ -12,6 +13,9 @@ import {
 } from '@heroicons/react/24/outline'
 
 export default function BookingForm() {
+  const { language, isRTL } = useLanguage()
+  const t = (en: string, ar: string) => (language === 'ar' ? ar : en)
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -34,11 +38,29 @@ export default function BookingForm() {
     e.preventDefault()
     setIsSubmitting(true)
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+      
+      if (response.ok) {
+        setIsSubmitting(false)
+        setIsSubmitted(true)
+      } else {
+        const error = await response.json()
+        console.error('Form submission error:', error)
+        alert(t('Error submitting form. Please try again.', 'حصلت مشكلة في إرسال الفورم. جرّب تاني من فضلك.'))
+        setIsSubmitting(false)
+      }
+    } catch (error) {
+      console.error('Form submission error:', error)
+      alert(t('Error submitting form. Please try again.', 'حصلت مشكلة في إرسال الفورم. جرّب تاني من فضلك.'))
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -50,7 +72,10 @@ export default function BookingForm() {
 
   if (isSubmitted) {
     return (
-      <section className="py-24 bg-gradient-to-br from-green-50 to-emerald-50">
+      <section
+        className="py-24 bg-gradient-to-br from-green-50 to-emerald-50"
+        dir={isRTL ? 'rtl' : 'ltr'}
+      >
         <div className="mx-auto max-w-4xl px-6 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
@@ -67,32 +92,36 @@ export default function BookingForm() {
             </motion.div>
             
             <h2 className="text-5xl font-bold text-gray-900 mb-6">
-              🎉 تم الحجز بنجاح!
+              {t('🎉 Booking confirmed!', '🎉 تم الحجز بنجاح!')}
             </h2>
             
             <p className="text-2xl text-gray-600 mb-8">
-              أهلاً وسهلاً بيك! وصلني طلب الحجز بتاعك
+              {t('Thanks! I received your booking request.', 'أهلاً وسهلاً بيك! وصلني طلب الحجز بتاعك')}
               <br />
-              <span className="text-green-600 font-semibold">هتواصل معاك خلال ساعة واحدة بس! 💚</span>
+              <span className="text-green-600 font-semibold">
+                {t('I’ll reach out within one hour. 💚', 'هتواصل معاك خلال ساعة واحدة بس! 💚')}
+              </span>
             </p>
             
             <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8 mb-8 border border-green-200">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">إيه اللي هيحصل دلوقتي؟</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">
+                {t("What's next?", 'إيه اللي هيحصل دلوقتي؟')}
+              </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
                 <div className="text-center">
                   <div className="text-3xl mb-2">📞</div>
-                  <div className="font-semibold text-gray-900">هكلمك</div>
-                  <div className="text-gray-600">خلال ساعة</div>
+                  <div className="font-semibold text-gray-900">{t("I'll contact you", 'هكلمك')}</div>
+                  <div className="text-gray-600">{t('Within an hour', 'خلال ساعة')}</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl mb-2">📅</div>
-                  <div className="font-semibold text-gray-900">نحدد الموعد</div>
-                  <div className="text-gray-600">اللي يناسبك</div>
+                  <div className="font-semibold text-gray-900">{t('We confirm the time', 'نحدد الموعد')}</div>
+                  <div className="text-gray-600">{t('that works for you', 'اللي يناسبك')}</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl mb-2">🎯</div>
-                  <div className="font-semibold text-gray-900">نبدأ الجلسة</div>
-                  <div className="text-gray-600">ونحقق أهدافك</div>
+                  <div className="font-semibold text-gray-900">{t('We start the session', 'نبدأ الجلسة')}</div>
+                  <div className="text-gray-600">{t('and work on your goals', 'ونحقق أهدافك')}</div>
                 </div>
               </div>
             </div>
@@ -105,7 +134,7 @@ export default function BookingForm() {
                 whileTap={{ scale: 0.95 }}
                 className="bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-lg transition-all duration-300"
               >
-                💬 كلمني على واتساب
+                {t('💬 Message me on WhatsApp', '💬 كلمني على واتساب')}
               </motion.a>
               
               <motion.button
@@ -114,7 +143,7 @@ export default function BookingForm() {
                 whileTap={{ scale: 0.95 }}
                 className="border-2 border-green-200 text-green-600 px-8 py-4 rounded-2xl font-semibold hover:bg-green-50 transition-colors"
               >
-                📝 احجز جلسة تانية
+                {t('📝 Book another session', '📝 احجز جلسة تانية')}
               </motion.button>
             </div>
           </motion.div>
@@ -124,7 +153,10 @@ export default function BookingForm() {
   }
 
   return (
-    <section className="py-24 bg-gradient-to-br from-white via-green-50 to-emerald-50 relative overflow-hidden">
+    <section
+      className="py-24 bg-gradient-to-br from-white via-green-50 to-emerald-50 relative overflow-hidden"
+      dir={isRTL ? 'rtl' : 'ltr'}
+    >
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
@@ -143,7 +175,9 @@ export default function BookingForm() {
             className="flex items-center justify-center gap-2 mb-4"
           >
             <CalendarDaysIcon className="w-8 h-8 text-green-500" />
-            <span className="text-green-600 font-semibold text-lg">احجز جلستك المجانية</span>
+            <span className="text-green-600 font-semibold text-lg">
+              {t('Book your free session', 'احجز جلستك المجانية')}
+            </span>
             <CalendarDaysIcon className="w-8 h-8 text-green-500" />
           </motion.div>
           
@@ -154,9 +188,9 @@ export default function BookingForm() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
           >
-            <span className="gradient-text">خلاص قررت؟</span>
+            <span className="gradient-text">{t('Ready to start?', 'خلاص قررت؟')}</span>
             <br />
-            <span className="text-gray-700">يلا نملأ البيانات 📝</span>
+            <span className="text-gray-700">{t("Let's fill in your details 📝", 'يلا نملأ البيانات 📝')}</span>
           </motion.h2>
           
           <motion.p
@@ -166,7 +200,10 @@ export default function BookingForm() {
             viewport={{ once: true }}
             className="text-xl leading-8 text-gray-600"
           >
-            كل ما تديني تفاصيل أكتر، كل ما أقدر أساعدك أحسن في الجلسة
+            {t(
+              'The more details you share, the more tailored and helpful the session will be.',
+              'كل ما تديني تفاصيل أكتر، كل ما أقدر أساعدك أحسن في الجلسة'
+            )}
           </motion.p>
         </div>
 
@@ -184,13 +221,13 @@ export default function BookingForm() {
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
                 <HeartIcon className="w-6 h-6 text-green-500" />
-                معلومات شخصية
+                {t('Personal information', 'معلومات شخصية')}
               </h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    الاسم الكامل *
+                    {t('Full name *', 'الاسم الكامل *')}
                   </label>
                   <input
                     type="text"
@@ -199,13 +236,13 @@ export default function BookingForm() {
                     value={formData.name}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors"
-                    placeholder="اكتب اسمك الكامل"
+                    placeholder={t('Your full name', 'اكتب اسمك الكامل')}
                   />
                 </div>
                 
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    العمر *
+                    {t('Age *', 'العمر *')}
                   </label>
                   <input
                     type="number"
@@ -216,13 +253,13 @@ export default function BookingForm() {
                     value={formData.age}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors"
-                    placeholder="كام سنة؟"
+                    placeholder={t('Your age', 'كام سنة؟')}
                   />
                 </div>
                 
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    رقم الهاتف *
+                    {t('Phone number *', 'رقم الهاتف *')}
                   </label>
                   <input
                     type="tel"
@@ -237,7 +274,7 @@ export default function BookingForm() {
                 
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    البريد الإلكتروني *
+                    {t('Email *', 'البريد الإلكتروني *')}
                   </label>
                   <input
                     type="email"
@@ -256,13 +293,13 @@ export default function BookingForm() {
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
                 <SparklesIcon className="w-6 h-6 text-blue-500" />
-                الخلفية التعليمية والمهنية
+                {t('Education & professional background', 'الخلفية التعليمية والمهنية')}
               </h3>
               
               <div className="space-y-6">
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    المستوى التعليمي الحالي *
+                    {t('Current education level *', 'المستوى التعليمي الحالي *')}
                   </label>
                   <select
                     name="education"
@@ -271,18 +308,18 @@ export default function BookingForm() {
                     onChange={handleChange}
                     className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors"
                   >
-                    <option value="">اختار مستواك التعليمي</option>
-                    <option value="high-school">ثانوية عامة</option>
-                    <option value="university-student">طالب جامعي</option>
-                    <option value="fresh-graduate">خريج حديث</option>
-                    <option value="experienced">خبرة في العمل</option>
-                    <option value="career-change">أريد تغيير مجالي</option>
+                    <option value="">{t('Select your education level', 'اختار مستواك التعليمي')}</option>
+                    <option value="high-school">{t('High school', 'ثانوية عامة')}</option>
+                    <option value="university-student">{t('University student', 'طالب جامعي')}</option>
+                    <option value="fresh-graduate">{t('Fresh graduate', 'خريج حديث')}</option>
+                    <option value="experienced">{t('Work experience', 'خبرة في العمل')}</option>
+                    <option value="career-change">{t('Career change', 'أريد تغيير مجالي')}</option>
                   </select>
                 </div>
                 
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    وضعك الحالي *
+                    {t('Your current situation *', 'وضعك الحالي *')}
                   </label>
                   <textarea
                     name="currentSituation"
@@ -291,7 +328,10 @@ export default function BookingForm() {
                     value={formData.currentSituation}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors resize-none"
-                    placeholder="قولي إيه وضعك دلوقتي... بتدرس إيه؟ شغال فين؟ أو لسه بتدور على شغل؟"
+                    placeholder={t(
+                      'Tell me about your current situation (study/work/searching).',
+                      'قولي إيه وضعك دلوقتي... بتدرس إيه؟ شغال فين؟ أو لسه بتدور على شغل؟'
+                    )}
                   />
                 </div>
               </div>
@@ -301,13 +341,13 @@ export default function BookingForm() {
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
                 <CheckCircleIcon className="w-6 h-6 text-blue-500" />
-                أهدافك والتحديات
+                {t('Your goals & challenges', 'أهدافك والتحديات')}
               </h3>
               
               <div className="space-y-6">
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    إيه أهدافك اللي عايز تحققها؟ *
+                    {t('What goals do you want to achieve? *', 'إيه أهدافك اللي عايز تحققها؟ *')}
                   </label>
                   <textarea
                     name="goals"
@@ -316,13 +356,16 @@ export default function BookingForm() {
                     value={formData.goals}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors resize-none"
-                    placeholder="قولي بالتفصيل إيه أحلامك وأهدافك... عايز تشتغل فين؟ عايز تدرس إيه؟ عايز تطور نفسك إزاي؟"
+                    placeholder={t(
+                      'Share your goals: job/major direction, skills you want to build, etc.',
+                      'قولي بالتفصيل إيه أحلامك وأهدافك... عايز تشتغل فين؟ عايز تدرس إيه؟ عايز تطور نفسك إزاي؟'
+                    )}
                   />
                 </div>
                 
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    إيه أكبر التحديات اللي بتواجهك؟ *
+                    {t('What are your biggest challenges? *', 'إيه أكبر التحديات اللي بتواجهك؟ *')}
                   </label>
                   <textarea
                     name="challenges"
@@ -331,7 +374,10 @@ export default function BookingForm() {
                     value={formData.challenges}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors resize-none"
-                    placeholder="قولي إيه اللي بيصعب عليك الموضوع... مش عارف تختار؟ خايف من المستقبل؟ مش واثق في نفسك؟ مش لاقي فرص؟"
+                    placeholder={t(
+                      'Tell me what feels difficult (uncertainty, confidence, opportunities, etc.).',
+                      'قولي إيه اللي بيصعب عليك الموضوع... مش عارف تختار؟ خايف من المستقبل؟ مش واثق في نفسك؟ مش لاقي فرص؟'
+                    )}
                   />
                 </div>
               </div>
@@ -341,7 +387,7 @@ export default function BookingForm() {
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
                 <ClockIcon className="w-6 h-6 text-orange-500" />
-                تفضيلات الجلسة
+                {t('Session preferences', 'تفضيلات الجلسة')}
               </h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -349,7 +395,7 @@ export default function BookingForm() {
                 
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    الوقت المفضل
+                    {t('Preferred time', 'الوقت المفضل')}
                   </label>
                   <select
                     name="preferredTime"
@@ -357,12 +403,12 @@ export default function BookingForm() {
                     onChange={handleChange}
                     className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors"
                   >
-                    <option value="">اختار الوقت اللي يناسبك</option>
-                    <option value="morning">الصبح (9-12) 🌅</option>
-                    <option value="afternoon">بعد الضهر (12-5) ☀️</option>
-                    <option value="evening">المساء (5-9) 🌆</option>
-                    <option value="weekend">ويك إند 📅</option>
-                    <option value="flexible">أي وقت يناسبك ⏰</option>
+                    <option value="">{t('Select a time', 'اختار الوقت اللي يناسبك')}</option>
+                    <option value="morning">{t('Morning (9-12) 🌅', 'الصبح (9-12) 🌅')}</option>
+                    <option value="afternoon">{t('Afternoon (12-5) ☀️', 'بعد الضهر (12-5) ☀️')}</option>
+                    <option value="evening">{t('Evening (5-9) 🌆', 'المساء (5-9) 🌆')}</option>
+                    <option value="weekend">{t('Weekend 📅', 'ويك إند 📅')}</option>
+                    <option value="flexible">{t('Flexible ⏰', 'أي وقت يناسبك ⏰')}</option>
                   </select>
                 </div>
               </div>
@@ -371,13 +417,13 @@ export default function BookingForm() {
             {/* Additional Information */}
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                معلومات إضافية (اختيارية)
+                {t('Additional information (optional)', 'معلومات إضافية (اختيارية)')}
               </h3>
               
               <div className="space-y-6">
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    إزاي عرفت عني؟
+                    {t('How did you hear about me?', 'إزاي عرفت عني؟')}
                   </label>
                   <select
                     name="hearAboutUs"
@@ -385,18 +431,18 @@ export default function BookingForm() {
                     onChange={handleChange}
                     className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors"
                   >
-                    <option value="">اختار...</option>
-                    <option value="social-media">سوشيال ميديا 📱</option>
-                    <option value="friend">صديق رشحني 👥</option>
-                    <option value="google">جوجل 🔍</option>
-                    <option value="university">من الجامعة 🎓</option>
-                    <option value="other">طريقة تانية</option>
+                    <option value="">{t('Select...', 'اختار...')}</option>
+                    <option value="social-media">{t('Social media 📱', 'سوشيال ميديا 📱')}</option>
+                    <option value="friend">{t('A friend recommended you 👥', 'صديق رشحني 👥')}</option>
+                    <option value="google">{t('Google 🔍', 'جوجل 🔍')}</option>
+                    <option value="university">{t('University 🎓', 'من الجامعة 🎓')}</option>
+                    <option value="other">{t('Other', 'طريقة تانية')}</option>
                   </select>
                 </div>
                 
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    أي حاجة تانية عايز تقوليها؟
+                    {t('Anything else you’d like to share?', 'أي حاجة تانية عايز تقوليها؟')}
                   </label>
                   <textarea
                     name="additionalInfo"
@@ -404,7 +450,7 @@ export default function BookingForm() {
                     value={formData.additionalInfo}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors resize-none"
-                    placeholder="أي معلومات إضافية أو أسئلة عندك..."
+                    placeholder={t('Any extra info or questions...', 'أي معلومات إضافية أو أسئلة عندك...')}
                   />
                 </div>
               </div>
@@ -428,20 +474,20 @@ export default function BookingForm() {
                       transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                       className="w-6 h-6 border-2 border-white border-t-transparent rounded-full"
                     />
-                    <span>بيتم الإرسال...</span>
+                    <span>{t('Submitting...', 'بيتم الإرسال...')}</span>
                   </>
                 ) : (
                   <>
                     <PaperAirplaneIcon className="w-6 h-6" />
-                    <span>احجز جلستي المجانية 🚀</span>
+                    <span>{t('Book my free session 🚀', 'احجز جلستي المجانية 🚀')}</span>
                   </>
                 )}
               </motion.button>
               
               <p className="text-sm text-gray-500 mt-6">
-                🔒 بياناتك آمنة معانا ومش هنشاركها مع حد
+                {t('🔒 Your data is safe and will never be shared.', '🔒 بياناتك آمنة معانا ومش هنشاركها مع حد')}
                 <br />
-                هتواصل معاك خلال ساعة واحدة بس لتأكيد الموعد
+                {t('I’ll reach out within one hour to confirm the appointment.', 'هتواصل معاك خلال ساعة واحدة بس لتأكيد الموعد')}
               </p>
             </div>
           </form>

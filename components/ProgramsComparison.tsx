@@ -7,12 +7,14 @@ import {
   SparklesIcon,
   TrophyIcon
 } from '@heroicons/react/24/outline'
-import { useTranslation } from '@/hooks/useTranslation'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { translations as translationsData } from '@/lib/translations'
 
 type ProgramKey = 'individual' | 'group' | 'comprehensive' | 'academic'
 
 export default function ProgramsComparison() {
-  const { translations, isRTL } = useTranslation()
+  const { language, isRTL } = useLanguage()
+  const translations = translationsData[language] as any
 
   const format = (template: string, replacements: Record<string, string | number>) => {
     return Object.keys(replacements).reduce((acc, key) => {

@@ -3,10 +3,12 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { SparklesIcon } from '@heroicons/react/24/outline'
-import { useTranslation } from '@/hooks/useTranslation'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { translations as translationsData } from '@/lib/translations'
 
 export default function ExpertiseSection() {
-  const { translations } = useTranslation()
+  const { language } = useLanguage()
+  const translations = translationsData[language] as any
   const keywords = translations.keywords.list
 
   return (

@@ -9,10 +9,12 @@ import {
   ChatBubbleLeftRightIcon,
   GlobeAltIcon
 } from '@heroicons/react/24/outline'
-import { useTranslation } from '@/hooks/useTranslation'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { getTranslation } from '@/lib/translations'
 
 export default function ContactInfo() {
-  const { t, isRTL, language } = useTranslation()
+  const { language, isRTL } = useLanguage()
+  const t = (key: string) => getTranslation(language, key)
 
   const contactMethods = [
     {

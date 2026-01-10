@@ -3,7 +3,8 @@
 import React from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { useTranslation } from '@/hooks/useTranslation'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { translations as translationsData } from '@/lib/translations'
 import { 
   UserGroupIcon, 
   BuildingOfficeIcon, 
@@ -13,7 +14,8 @@ import {
 } from '@heroicons/react/24/outline'
 
 export default function AudienceSection() {
-  const { translations, isRTL } = useTranslation()
+  const { language, isRTL } = useLanguage()
+  const translations = translationsData[language] as any
   
   const audienceTypes = [
     {

@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useTranslation } from '@/hooks/useTranslation'
+import { useLanguage } from '@/contexts/LanguageContext'
 import { 
   SparklesIcon,
   AcademicCapIcon,
@@ -20,9 +20,56 @@ const programIcons = [
 ]
 
 export default function ProgramsHero() {
-  const { translations } = useTranslation()
+  const { language, isRTL } = useLanguage()
+  const t = (en: string, ar: string) => (language === 'ar' ? ar : en)
+
+  const copy = {
+    badge: {
+      en: 'Programs & Trainings',
+      ar: 'البرامج والتدريبات'
+    },
+    titleTop: {
+      en: 'Programs designed',
+      ar: 'برامج مصممة'
+    },
+    titleBottom: {
+      en: 'for real career growth',
+      ar: 'لنمو مهني حقيقي'
+    },
+    subtitle: {
+      en: 'Practical, evidence-based programs for individuals and organizations.',
+      ar: 'برامج عملية قائمة على الأدلة للأفراد والمؤسسات.'
+    },
+    subtitle2Line1: {
+      en: 'Clear outcomes. Real tools.',
+      ar: 'نتائج واضحة. أدوات عملية.'
+    },
+    subtitle2Line2: {
+      en: 'Structured journeys that help you move forward with confidence.',
+      ar: 'رحلات منظمة تساعدك تتقدم بثقة.'
+    },
+    stats: {
+      designedPrograms: { en: 'Designed programs', ar: 'برامج مصممة' },
+      students: { en: 'Learners', ar: 'متدربين' },
+      satisfaction: { en: 'Satisfaction', ar: 'رضا العملاء' },
+      support: { en: 'Support', ar: 'دعم' }
+    },
+    ctaView: {
+      en: 'View programs',
+      ar: 'شاهد البرامج'
+    },
+    ctaConsultation: {
+      en: 'Book consultation',
+      ar: 'احجز استشارة'
+    },
+    scrollDown: {
+      en: 'Scroll down',
+      ar: 'مرر للأسفل'
+    }
+  }
+
   return (
-    <section className="relative min-h-screen brand-bg overflow-hidden">
+    <section className="relative min-h-screen brand-bg overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-96 h-96 bg-[rgba(var(--brand-cyan-500,6,182,212),0.2)] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
@@ -77,7 +124,7 @@ export default function ProgramsHero() {
             className="flex items-center justify-center gap-2 mb-8"
           >
             <SparklesIcon className="w-8 h-8 text-[rgb(var(--brand-green-400))]" />
-            <span className="text-[rgb(var(--brand-green-400))] font-semibold text-xl">{translations.programsPage.badge}</span>
+            <span className="text-[rgb(var(--brand-green-400))] font-semibold text-xl">{t(copy.badge.en, copy.badge.ar)}</span>
             <SparklesIcon className="w-8 h-8 text-[rgb(var(--brand-green-400))]" />
           </motion.div>
 
@@ -89,10 +136,10 @@ export default function ProgramsHero() {
             className="text-5xl md:text-7xl font-bold text-white mb-8"
           >
             <span className="text-white">
-              {translations.programsPage.titleTop}
+              {t(copy.titleTop.en, copy.titleTop.ar)}
             </span>
             <br />
-            <span className="text-white">{translations.programsPage.titleBottom}</span>
+            <span className="text-white">{t(copy.titleBottom.en, copy.titleBottom.ar)}</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -102,7 +149,7 @@ export default function ProgramsHero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl leading-relaxed text-white mb-6"
           >
-            {translations.programsPage.subtitle}
+            {t(copy.subtitle.en, copy.subtitle.ar)}
           </motion.p>
 
           <motion.p
@@ -111,9 +158,9 @@ export default function ProgramsHero() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-lg md:text-xl leading-relaxed text-white mb-12"
           >
-            <span className="text-[rgb(var(--brand-green-400))] font-semibold">{translations.programsPage.subtitle2Line1}</span>
+            <span className="text-[rgb(var(--brand-green-400))] font-semibold">{t(copy.subtitle2Line1.en, copy.subtitle2Line1.ar)}</span>
             <br />
-            <span className="text-white">{translations.programsPage.subtitle2Line2}</span>
+            <span className="text-white">{t(copy.subtitle2Line2.en, copy.subtitle2Line2.ar)}</span>
           </motion.p>
 
           {/* Stats */}
@@ -124,10 +171,10 @@ export default function ProgramsHero() {
             className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
           >
             {[
-              { number: "5", label: translations.programsPage.stats.designedPrograms, icon: "📚" },
-              { number: "500+", label: translations.programsPage.stats.students, icon: "🎓" },
-              { number: "98%", label: translations.programsPage.stats.satisfaction, icon: "⭐" },
-              { number: "24/7", label: translations.programsPage.stats.support, icon: "💬" }
+              { number: "5", label: t(copy.stats.designedPrograms.en, copy.stats.designedPrograms.ar), icon: "📚" },
+              { number: "500+", label: t(copy.stats.students.en, copy.stats.students.ar), icon: "🎓" },
+              { number: "98%", label: t(copy.stats.satisfaction.en, copy.stats.satisfaction.ar), icon: "⭐" },
+              { number: "24/7", label: t(copy.stats.support.en, copy.stats.support.ar), icon: "💬" }
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -156,7 +203,7 @@ export default function ProgramsHero() {
               whileTap={{ scale: 0.95 }}
               className="group relative px-8 py-4 brand-cta font-bold text-lg rounded-full shadow-2xl transition-all duration-300 flex items-center gap-2"
             >
-              <span>🚀 {translations.programsPage.ctaView}</span>
+              <span>🚀 {t(copy.ctaView.en, copy.ctaView.ar)}</span>
               <motion.span
                 animate={{ x: [0, 5, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
@@ -170,7 +217,7 @@ export default function ProgramsHero() {
               whileTap={{ scale: 0.95 }}
               className="group px-8 py-4 border-2 border-white/30 text-white font-semibold text-lg rounded-full backdrop-blur-sm hover:bg-white/10 transition-all duration-300 flex items-center gap-2"
             >
-              <span>💬 {translations.programsPage.ctaConsultation}</span>
+              <span>💬 {t(copy.ctaConsultation.en, copy.ctaConsultation.ar)}</span>
               <motion.span
                 animate={{ rotate: [0, 10, -10, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
@@ -192,7 +239,7 @@ export default function ProgramsHero() {
               transition={{ duration: 2, repeat: Infinity }}
               className="text-white/60 text-center"
             >
-              <div className="text-sm mb-2">{translations.programsPage.scrollDown}</div>
+              <div className="text-sm mb-2">{t(copy.scrollDown.en, copy.scrollDown.ar)}</div>
               <div className="w-6 h-10 border-2 border-white/30 rounded-full mx-auto flex justify-center">
                 <motion.div
                   animate={{ y: [0, 12, 0] }}

@@ -2,62 +2,66 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { ArrowRightIcon, ClockIcon, UserGroupIcon, StarIcon } from '@heroicons/react/24/outline'
-import { useTranslation } from '@/hooks/useTranslation'
 
 export default function ProgramsSection() {
-  const { translations } = useTranslation()
   const programs = [
     {
-      key: 'selfLeadership',
-      title: translations.programs.selfLeadership.title,
-      duration: translations.programs.selfLeadership.duration,
-      description: translations.programs.selfLeadership.description,
-      icon: '🎯',
-      color: 'from-blue-600 to-cyan-600',
-      bgColor: 'bg-blue-50',
-      borderColor: 'border-blue-200',
-      features: translations.programs.selfLeadership.features
+      title: "Self-Leadership & Career Ownership Program",
+      duration: "40 Hours",
+      icon: "👤",
+      color: "from-blue-500 to-cyan-500",
+      description: "Master self-leadership skills and take ownership of your career trajectory with confidence and clarity.",
+      topics: [
+        "Self-Awareness & Emotional Intelligence",
+        "Personal Branding & Positioning",
+        "Strategic Career Planning",
+        "Leadership Presence & Influence"
+      ]
     },
     {
-      key: 'bestVersion',
-      title: translations.programs.bestVersion.title,
-      duration: translations.programs.bestVersion.duration,
-      description: translations.programs.bestVersion.description,
-      icon: '⭐',
-      color: 'from-purple-600 to-pink-600',
-      bgColor: 'bg-purple-50',
-      borderColor: 'border-purple-200',
-      features: translations.programs.bestVersion.features
+      title: "Professional Effectiveness & Core Skills Program",
+      duration: "60 Hours",
+      icon: "💼",
+      color: "from-purple-500 to-pink-500",
+      description: "Develop essential professional skills that drive effectiveness and career advancement in today's competitive landscape.",
+      topics: [
+        "Communication & Interpersonal Skills",
+        "Time Management & Productivity",
+        "Problem-Solving & Decision Making",
+        "Professional Ethics & Workplace Etiquette"
+      ]
     },
     {
-      key: 'freelancingSkills',
-      title: translations.programs.freelancingSkills.title,
-      duration: translations.programs.freelancingSkills.duration,
-      description: translations.programs.freelancingSkills.description,
-      icon: '💼',
-      color: 'from-green-600 to-emerald-600',
-      bgColor: 'bg-green-50',
-      borderColor: 'border-green-200',
-      features: translations.programs.freelancingSkills.features
+      title: "Freelancing & Independent Career Development Program",
+      duration: "40 Hours",
+      icon: "🚀",
+      color: "from-green-500 to-emerald-500",
+      description: "Build a successful independent career with comprehensive freelancing strategies and business development skills.",
+      topics: [
+        "Freelance Business Setup",
+        "Client Acquisition & Retention",
+        "Financial Management for Freelancers",
+        "Personal Marketing & Branding"
+      ]
     },
     {
-      key: 'strategies36',
-      title: translations.programs.strategies36.title,
-      duration: translations.programs.strategies36.duration,
-      description: translations.programs.strategies36.description,
-      icon: '🧠',
-      color: 'from-orange-600 to-red-600',
-      bgColor: 'bg-orange-50',
-      borderColor: 'border-orange-200',
-      features: translations.programs.strategies36.features
+      title: "Career Development & Job Readiness Program",
+      duration: "35 Hours",
+      icon: "🎯",
+      color: "from-orange-500 to-red-500",
+      description: "Prepare for career success with comprehensive job readiness skills and strategic career development planning.",
+      topics: [
+        "Resume Writing & Portfolio Development",
+        "Interview Skills & Preparation",
+        "Job Search Strategies",
+        "Career Transition Management"
+      ]
     }
   ]
 
   return (
-    <section className="py-20 section-padding bg-gradient-to-b from-white to-gray-50/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 container-professional">
+    <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <motion.div
@@ -68,131 +72,108 @@ export default function ProgramsSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 font-playfair">
-            <span className="brand-gradient-text">
-              {translations.programs.title}
+            <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+              Programs
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto font-inter">
-            {translations.programs.subtitle}
+            Comprehensive training programs designed for career excellence and professional growth
           </p>
         </motion.div>
 
         {/* Programs Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           {programs.map((program, index) => (
             <motion.div
-              key={program.key}
+              key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className={`${program.bgColor} ${program.borderColor} border-2 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group professional-card`}
+              whileHover={{ y: -10 }}
+              className="group h-full"
             >
-              <div className={`w-16 h-16 brand-btn rounded-2xl flex items-center justify-center text-3xl text-white mb-6 group-hover:scale-110 transition-transform shadow-lg`}>
-                {program.icon}
-              </div>
-              
-              <h3 className="text-2xl font-bold text-gray-800 mb-3 font-playfair">
-                {program.title}
-              </h3>
-              
-              <div className="flex items-center gap-2 mb-4">
-                <ClockIcon className="w-5 h-5 text-gray-500" />
-                <span className="text-sm text-gray-600 font-medium font-inter">
-                  {program.duration}
-                </span>
-              </div>
-              
-              <p className="text-gray-600 mb-6 leading-relaxed font-inter">
-                {program.description}
-              </p>
+              <div className={`absolute inset-0 bg-gradient-to-r ${program.color} rounded-3xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity`}></div>
+              <div className="relative bg-white rounded-3xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-shadow h-full">
+                
+                {/* Header */}
+                <div className="flex items-start justify-between mb-6">
+                  <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r ${program.color} rounded-full`}>
+                    <span className="text-2xl">{program.icon}</span>
+                  </div>
+                  <div className={`px-4 py-2 bg-gradient-to-r ${program.color} text-white rounded-full text-sm font-semibold font-inter`}>
+                    {program.duration}
+                  </div>
+                </div>
 
-              {/* Features List */}
-              <ul className="space-y-2 mb-6">
-                {program.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center gap-3 text-sm text-gray-600 font-inter">
-                    <div className={`w-2 h-2 bg-gradient-to-r ${program.color} rounded-full`}></div>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              
-              <Link
-                href={`/programs#${program.key}`}
-                className={`inline-flex items-center gap-2 text-sm font-semibold bg-gradient-to-r ${program.color} bg-clip-text text-transparent hover:scale-105 transition-transform font-inter`}
-              >
-                {translations.common.learnMore}
-                <ArrowRightIcon className="w-4 h-4" />
-              </Link>
+                {/* Title */}
+                <h3 className="text-xl font-bold text-gray-800 mb-4 font-playfair">
+                  {program.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-gray-600 mb-6 font-inter leading-relaxed">
+                  {program.description}
+                </p>
+
+                {/* Topics */}
+                <div className="border-t border-gray-200 pt-6">
+                  <h4 className="text-sm font-semibold text-gray-500 mb-4 font-inter uppercase tracking-wide">
+                    Key Topics
+                  </h4>
+                  <ul className="space-y-2">
+                    {program.topics.map((topic, topicIndex) => (
+                      <li key={topicIndex} className="flex items-center gap-3">
+                        <div className={`w-2 h-2 bg-gradient-to-r ${program.color} rounded-full flex-shrink-0`}></div>
+                        <span className="text-sm text-gray-700 font-inter">{topic}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* CTA */}
+                <div className="mt-6 pt-6 border-t border-gray-200">
+                  <a 
+                    href="/programs" 
+                    className={`inline-flex items-center gap-2 bg-gradient-to-r ${program.color} text-white font-semibold px-6 py-3 rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105 font-inter`}
+                  >
+                    <span>Learn More</span>
+                    <span>→</span>
+                  </a>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Career Sessions Special Card */}
+        {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-r from-gray-800 to-gray-900 rounded-3xl p-8 md:p-12 text-white"
+          className="text-center"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div>
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-16 h-16 brand-btn rounded-2xl flex items-center justify-center text-3xl">
-                  🎯
-                </div>
-                <div>
-                  <h3 className="text-2xl md:text-3xl font-bold mb-2 font-playfair">
-                    {translations.programs.careerSessions.title}
-                  </h3>
-                  <div className="flex items-center gap-2">
-                    <UserGroupIcon className="w-5 h-5 text-[rgb(var(--brand-green-400))]" />
-                    <span className="text-[rgb(var(--brand-green-400))] font-inter">
-                      {translations.programs.careerSessions.subtitle}
-                    </span>
-                  </div>
-                </div>
-              </div>
-              
-              <p className="text-lg text-gray-300 mb-6 leading-relaxed font-inter">
-                {translations.programs.careerSessions.description}
-              </p>
-
-              <div className="space-y-3 mb-6">
-                {(translations.programs.careerSessions.features || []).map((feature, idx) => (
-                  <div key={idx} className="flex items-center gap-3 text-gray-300 font-inter">
-                    <StarIcon className="w-4 h-4 text-yellow-400 flex-shrink-0" />
-                    {feature}
-                  </div>
-                ))}
-              </div>
-              
-              <div className="flex items-center gap-4 mb-6">
-                <div className="flex items-center gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <StarIcon key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <span className="text-gray-300 font-inter">
-                  {translations.programs.careerSessions.ratingText}
-                </span>
-              </div>
-            </div>
-            
-            <div className="text-center lg:text-left">
-              <Link
-                href="/booking"
-                className="inline-flex items-center gap-3 brand-cta font-bold px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 font-inter"
+          <div className="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-3xl p-8 md:p-12 text-white">
+            <h3 className="text-2xl md:text-3xl font-bold mb-6 font-playfair">
+              Transform Your Career Today
+            </h3>
+            <p className="text-lg mb-8 font-inter max-w-3xl mx-auto">
+              Choose the program that aligns with your goals and start your journey toward career excellence and professional fulfillment.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <a 
+                href="/booking" 
+                className="bg-white text-blue-600 font-bold px-8 py-4 rounded-2xl hover:bg-gray-100 transition-colors font-inter"
               >
-                <span className="text-xl">🚀</span>
-                {translations.hero.cta}
-                <ArrowRightIcon className="w-5 h-5" />
-              </Link>
-              
-              <p className="text-gray-400 text-sm mt-4 font-inter">
-                {translations.programs.careerSessions.freeNote}
-              </p>
+                Get Program Guidance
+              </a>
+              <a 
+                href="/programs" 
+                className="border-2 border-white text-white font-semibold px-8 py-4 rounded-2xl hover:bg-white/10 transition-colors font-inter"
+              >
+                View All Programs
+              </a>
             </div>
           </div>
         </motion.div>

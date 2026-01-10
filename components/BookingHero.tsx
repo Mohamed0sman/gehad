@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { useTranslation } from '@/hooks/useTranslation'
+import { useLanguage } from '@/contexts/LanguageContext'
 import { 
   SparklesIcon,
   CalendarDaysIcon,
@@ -11,9 +11,14 @@ import {
 } from '@heroicons/react/24/outline'
 
 export default function BookingHero() {
-  const { translations } = useTranslation()
+  const { language, isRTL } = useLanguage()
+  const t = (en: string, ar: string) => (language === 'ar' ? ar : en)
+
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-green-900 via-emerald-900 to-teal-900 overflow-hidden">
+    <section
+      className="relative min-h-screen bg-gradient-to-br from-green-900 via-emerald-900 to-teal-900 overflow-hidden"
+      dir={isRTL ? 'rtl' : 'ltr'}
+    >
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-96 h-96 bg-green-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
@@ -71,7 +76,7 @@ export default function BookingHero() {
             className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-6 py-3 rounded-full font-bold text-lg mb-8 shadow-2xl"
           >
             <GiftIcon className="w-6 h-6" />
-            <span>{translations.bookingPage.freeBadge}</span>
+            <span>{t('FREE session', 'جلسة مجانية')}</span>
             <SparklesIcon className="w-6 h-6" />
           </motion.div>
 
@@ -83,10 +88,10 @@ export default function BookingHero() {
             className="text-5xl md:text-7xl font-bold text-white mb-8"
           >
             <span className="bg-gradient-to-r from-yellow-300 via-green-300 to-emerald-300 bg-clip-text text-transparent">
-              {translations.bookingPage.titleTop}
+              {t('Book your', 'احجز')}
             </span>
             <br />
-            <span className="text-white">{translations.bookingPage.titleBottom}</span>
+            <span className="text-white">{t('free session', 'جلستك المجانية')}</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -96,7 +101,10 @@ export default function BookingHero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl leading-relaxed text-white/90 mb-6"
           >
-            {translations.bookingPage.subtitle}
+            {t(
+              'A 1:1 session to clarify your direction, set priorities, and build a realistic next-step plan.',
+              'جلسة فردية تساعدك تحدد اتجاهك، ترتّب أولوياتك، وتطلع بخطة واضحة للخطوة اللي جاية.'
+            )}
           </motion.p>
 
           <motion.p
@@ -105,9 +113,9 @@ export default function BookingHero() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-lg md:text-xl leading-relaxed text-white/80 mb-12"
           >
-            <span className="text-yellow-300">{translations.bookingPage.subtitle2Line1}</span>
+            <span className="text-yellow-300">{t('No commitment.', 'بدون أي التزام.')}</span>
             <br />
-            {translations.bookingPage.subtitle2Line2}
+            {t('Fast follow-up and a clear structure from day one.', 'متابعة سريعة وتنظيم واضح من أول يوم.')}
           </motion.p>
 
           {/* Benefits */}
@@ -120,18 +128,24 @@ export default function BookingHero() {
             {[
               { 
                 icon: "🎯", 
-                title: "تحديد الأهداف", 
-                desc: "هنحدد أهدافك المهنية بوضوح" 
+                titleEn: 'Goal clarity',
+                titleAr: 'تحديد الأهداف',
+                descEn: 'We’ll clarify your goals and priorities.',
+                descAr: 'هنحدد أهدافك المهنية بوضوح'
               },
               { 
                 icon: "💡", 
-                title: "اكتشاف المواهب", 
-                desc: "هنكتشف مواهبك وقدراتك الخفية" 
+                titleEn: 'Strengths discovery',
+                titleAr: 'اكتشاف المواهب',
+                descEn: 'We’ll uncover strengths you can build on.',
+                descAr: 'هنكتشف مواهبك وقدراتك الخفية'
               },
               { 
                 icon: "📋", 
-                title: "خطة عمل", 
-                desc: "هتحصل على خطة واضحة للبداية" 
+                titleEn: 'Action plan',
+                titleAr: 'خطة عمل',
+                descEn: 'You’ll leave with a clear next-step plan.',
+                descAr: 'هتحصل على خطة واضحة للبداية'
               }
             ].map((benefit, index) => (
               <motion.div
@@ -142,8 +156,12 @@ export default function BookingHero() {
                 className="text-center bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20"
               >
                 <div className="text-4xl mb-3">{benefit.icon}</div>
-                <h3 className="text-lg font-bold text-white mb-2">{benefit.title}</h3>
-                <p className="text-white/80 text-sm">{benefit.desc}</p>
+                <h3 className="text-lg font-bold text-white mb-2">
+                  {language === 'ar' ? benefit.titleAr : benefit.titleEn}
+                </h3>
+                <p className="text-white/80 text-sm">
+                  {language === 'ar' ? benefit.descAr : benefit.descEn}
+                </p>
               </motion.div>
             ))}
           </motion.div>
@@ -157,7 +175,7 @@ export default function BookingHero() {
           >
             <h3 className="text-2xl font-bold text-white mb-6 flex items-center justify-center gap-2">
               <HeartIcon className="w-8 h-8 text-red-400" />
-              {translations.bookingPage.detailsTitle}
+              {t('Session details', 'تفاصيل الجلسة')}
             </h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -165,9 +183,9 @@ export default function BookingHero() {
                 <div className="w-12 h-12 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full flex items-center justify-center">
                   <ClockIcon className="w-6 h-6 text-white" />
                 </div>
-                <div className="text-right">
-                  <div className="text-white font-semibold">{translations.bookingPage.details.durationLabel}</div>
-                  <div className="text-white/80">{translations.bookingPage.details.durationValue}</div>
+                <div className={isRTL ? 'text-right' : 'text-left'}>
+                  <div className="text-white font-semibold">{t('Duration', 'المدة')}</div>
+                  <div className="text-white/80">{t('45–60 minutes', '45–60 دقيقة')}</div>
                 </div>
               </div>
               
@@ -175,9 +193,9 @@ export default function BookingHero() {
                 <div className="w-12 h-12 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full flex items-center justify-center">
                   <CalendarDaysIcon className="w-6 h-6 text-white" />
                 </div>
-                <div className="text-right">
-                  <div className="text-white font-semibold">{translations.bookingPage.details.appointmentsLabel}</div>
-                  <div className="text-white/80">{translations.bookingPage.details.appointmentsValue}</div>
+                <div className={isRTL ? 'text-right' : 'text-left'}>
+                  <div className="text-white font-semibold">{t('Availability', 'المواعيد')}</div>
+                  <div className="text-white/80">{t('Flexible scheduling', 'مواعيد مرنة')}</div>
                 </div>
               </div>
               
@@ -185,9 +203,9 @@ export default function BookingHero() {
                 <div className="w-12 h-12 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center">
                   <span className="text-white font-bold">💻</span>
                 </div>
-                <div className="text-right">
-                  <div className="text-white font-semibold">{translations.bookingPage.details.locationLabel}</div>
-                  <div className="text-white/80">{translations.bookingPage.details.locationValue}</div>
+                <div className={isRTL ? 'text-right' : 'text-left'}>
+                  <div className="text-white font-semibold">{t('Location', 'المكان')}</div>
+                  <div className="text-white/80">{t('Online (video call)', 'أونلاين (مكالمة فيديو)')}</div>
                 </div>
               </div>
               
@@ -195,9 +213,9 @@ export default function BookingHero() {
                 <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full flex items-center justify-center">
                   <GiftIcon className="w-6 h-6 text-white" />
                 </div>
-                <div className="text-right">
-                  <div className="text-white font-semibold">{translations.bookingPage.details.priceLabel}</div>
-                  <div className="text-white/80">{translations.bookingPage.details.priceValue}</div>
+                <div className={isRTL ? 'text-right' : 'text-left'}>
+                  <div className="text-white font-semibold">{t('Price', 'السعر')}</div>
+                  <div className="text-white/80">{t('Free', 'مجاني')}</div>
                 </div>
               </div>
             </div>
@@ -215,7 +233,7 @@ export default function BookingHero() {
               whileTap={{ scale: 0.95 }}
               className="group relative px-10 py-5 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold text-xl rounded-full shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 flex items-center gap-3"
             >
-              <span>🚀 {translations.bookingPage.ctaPrimary}</span>
+              <span>🚀 {t('Book now', 'احجز دلوقتي')}</span>
               <motion.span
                 animate={{ x: [0, 5, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
@@ -229,7 +247,7 @@ export default function BookingHero() {
               whileTap={{ scale: 0.95 }}
               className="text-white/80 text-center"
             >
-              <div className="text-sm">{translations.bookingPage.altContactLabel}</div>
+              <div className="text-sm">{t('Or contact:', 'أو تواصل على:')}</div>
               <div className="text-lg font-semibold">📱 01234567890</div>
             </motion.div>
           </motion.div>
@@ -243,15 +261,15 @@ export default function BookingHero() {
           >
             <div className="flex items-center gap-2">
               <span className="text-green-400">✓</span>
-              <span>{translations.bookingPage.trust.noCommitment}</span>
+              <span>{t('No commitment', 'بدون التزام')}</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-green-400">✓</span>
-              <span>{translations.bookingPage.trust.free}</span>
+              <span>{t('Free session', 'جلسة مجانية')}</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-green-400">✓</span>
-              <span>{translations.bookingPage.trust.confidential}</span>
+              <span>{t('Confidential', 'سرية تامة')}</span>
             </div>
           </motion.div>
         </div>

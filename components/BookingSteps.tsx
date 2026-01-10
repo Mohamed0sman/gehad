@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useTranslation } from '@/hooks/useTranslation'
+import { useLanguage } from '@/contexts/LanguageContext'
 import { 
   ChatBubbleLeftRightIcon,
   CalendarDaysIcon,
@@ -17,43 +17,82 @@ const iconMap = {
 } as const
 
 export default function BookingSteps() {
-  const { translations } = useTranslation()
+  const { language, isRTL } = useLanguage()
+  const t = (en: string, ar: string) => (language === 'ar' ? ar : en)
+
   const steps = [
     {
       id: 1,
-      title: translations.bookingSteps[0].title,
-      description: translations.bookingSteps[0].description,
+      titleEn: 'Send your details',
+      titleAr: 'ابعت بياناتك',
+      descriptionEn: 'Fill the form or send a WhatsApp message—whatever is easier for you.',
+      descriptionAr: 'املأ الفورم أو ابعت رسالة واتساب—اللي أسهل ليك.',
       icon: iconMap.chat,
       color: 'from-blue-500 to-cyan-500',
-      duration: translations.bookingSteps[0].duration
+      durationEn: '2–3 min',
+      durationAr: '2–3 دقايق'
     },
     {
       id: 2,
-      title: translations.bookingSteps[1].title,
-      description: translations.bookingSteps[1].description,
+      titleEn: 'Confirm the time',
+      titleAr: 'نحدد الموعد',
+      descriptionEn: 'We agree on the best day and time for your schedule.',
+      descriptionAr: 'نتفق على أنسب يوم ووقت حسب ظروفك.',
       icon: iconMap.calendar,
       color: 'from-green-500 to-emerald-500',
-      duration: translations.bookingSteps[1].duration
+      durationEn: 'Same day',
+      durationAr: 'نفس اليوم'
     },
     {
       id: 3,
-      title: translations.bookingSteps[2].title,
-      description: translations.bookingSteps[2].description,
+      titleEn: 'Meet online',
+      titleAr: 'نعمل سيشن أونلاين',
+      descriptionEn: 'A focused video session with clear structure and next steps.',
+      descriptionAr: 'سيشن فيديو منظمة ومركزة بخطوات واضحة.',
       icon: iconMap.video,
       color: 'from-blue-500 to-cyan-500',
-      duration: translations.bookingSteps[2].duration
+      durationEn: '45–60 min',
+      durationAr: '45–60 دقيقة'
     },
     {
       id: 4,
-      title: translations.bookingSteps[3].title,
-      description: translations.bookingSteps[3].description,
+      titleEn: 'Get your plan',
+      titleAr: 'تاخد خطتك',
+      descriptionEn: 'You leave with a clear plan and actionable next steps.',
+      descriptionAr: 'تطلع بخطة واضحة وخطوات تنفيذ.',
       icon: iconMap.check,
       color: 'from-yellow-500 to-orange-500',
-      duration: translations.bookingSteps[3].duration
+      durationEn: 'Immediately',
+      durationAr: 'فورًا'
     }
   ]
+
+  const stories = [
+    {
+      name: t('Sara', 'سارة'),
+      result: t('Changed her major with confidence', 'غيرت تخصصها بثقة'),
+      time: t('In 2 weeks', 'في أسبوعين')
+    },
+    {
+      name: t('Omar', 'عمر'),
+      result: t('Got his first interview', 'جاب أول انترفيو'),
+      time: t('In 10 days', 'في 10 أيام')
+    },
+    {
+      name: t('Mona', 'منى'),
+      result: t('Built a clear job search plan', 'عملت خطة بحث عن شغل'),
+      time: t('In 1 week', 'في أسبوع')
+    }
+  ]
+
+  const whatsappText = encodeURIComponent(t('Hi, I would like to book the free session.', 'مرحبا، عايز أحجز الجلسة المجانية'))
+  const whatsappHref = `https://wa.me/201234567890?text=${whatsappText}`
+
   return (
-    <section className="py-24 bg-gradient-to-br from-gray-50 via-white to-green-50 relative overflow-hidden">
+    <section
+      className="py-24 bg-gradient-to-br from-gray-50 via-white to-green-50 relative overflow-hidden"
+      dir={isRTL ? 'rtl' : 'ltr'}
+    >
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 left-20 w-72 h-72 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
@@ -71,9 +110,9 @@ export default function BookingSteps() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
           >
-            <span className="gradient-text">{translations.bookingPage.stepsHeader.titlePart1}</span>
+            <span className="gradient-text">{t('How it works', 'إزاي الموضوع ماشي')}</span>
             <br />
-            <span className="text-gray-700">{translations.bookingPage.stepsHeader.titlePart2}</span>
+            <span className="text-gray-700">{t('in 4 simple steps', 'في 4 خطوات بسيطة')}</span>
           </motion.h2>
           
           <motion.p
@@ -83,7 +122,10 @@ export default function BookingSteps() {
             viewport={{ once: true }}
             className="text-xl leading-8 text-gray-600 max-w-3xl mx-auto"
           >
-            {translations.bookingPage.stepsHeader.description}
+            {t(
+              'A simple, structured process to help you get clarity and take confident next steps.',
+              'خطوات بسيطة ومنظمة تساعدك توصل للوضوح وتتحرك بخطوات ثابتة.'
+            )}
           </motion.p>
         </div>
 
@@ -121,17 +163,17 @@ export default function BookingSteps() {
 
                 {/* Content */}
                 <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
-                  {step.title}
+                  {language === 'ar' ? step.titleAr : step.titleEn}
                 </h3>
                 
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  {step.description}
+                  {language === 'ar' ? step.descriptionAr : step.descriptionEn}
                 </p>
 
                 {/* Duration */}
                 <div className={`inline-flex items-center px-3 py-1 bg-gradient-to-r ${step.color} bg-opacity-10 rounded-full`}>
                   <span className="text-sm font-semibold text-gray-700">
-                    ⏱️ {step.duration}
+                    ⏱️ {language === 'ar' ? step.durationAr : step.durationEn}
                   </span>
                 </div>
 
@@ -153,21 +195,24 @@ export default function BookingSteps() {
           <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-3xl p-8 border border-green-200 max-w-4xl mx-auto">
             <div className="text-4xl mb-4">🎯</div>
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              {translations.bookingPage.stepsCTA.title}
+              {t('Ready to book your free session?', 'جاهز/ة تحجز جلستك المجانية؟')}
             </h3>
             <p className="text-lg text-gray-600 mb-6">
-              {translations.bookingPage.stepsCTA.description}
+              {t(
+                'Send a WhatsApp message or complete the form—either way, I’ll follow up quickly.',
+                'ابعت رسالة واتساب أو املا الفورم—وفي الحالتين هرد عليك بسرعة.'
+              )}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
-                href="https://wa.me/201234567890?text=مرحبا، عايز أحجز الجلسة المجانية"
+                href={whatsappHref}
                 target="_blank"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
               >
-                <span>{translations.bookingPage.stepsCTA.whatsapp}</span>
+                <span>{t('💬 WhatsApp me', '💬 ابعتلي واتساب')}</span>
               </motion.a>
               
               <motion.button
@@ -175,7 +220,7 @@ export default function BookingSteps() {
                 whileTap={{ scale: 0.95 }}
                 className="border-2 border-green-200 text-green-600 px-8 py-4 rounded-2xl font-semibold hover:bg-green-50 transition-colors"
               >
-                {translations.bookingPage.stepsCTA.form}
+                {t('📝 Fill the form below', '📝 املا الفورم تحت')}
               </motion.button>
             </div>
           </div>
@@ -189,7 +234,7 @@ export default function BookingSteps() {
           viewport={{ once: true }}
           className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6"
         >
-          {translations.bookingPage.successStories.map((story, index) => (
+          {stories.map((story, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, scale: 0.9 }}

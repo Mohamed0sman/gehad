@@ -13,9 +13,11 @@ export default function Programs() {
   return (
     <main>
       <Header />
-      <ProgramsHero />
-      <AllPrograms />
-      <ProgramsComparison />
+      <div className="pt-16 lg:pt-20">
+        <ProgramsHero />
+        <AllPrograms />
+        <ProgramsComparison />
+      </div>
       <Footer />
     </main>
   )

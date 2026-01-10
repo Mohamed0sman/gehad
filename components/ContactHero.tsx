@@ -9,10 +9,12 @@ import {
   HeartIcon,
   MapPinIcon
 } from '@heroicons/react/24/outline'
-import { useTranslation } from '@/hooks/useTranslation'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { getTranslation } from '@/lib/translations'
 
 export default function ContactHero() {
-  const { t, isRTL } = useTranslation()
+  const { language, isRTL } = useLanguage()
+  const t = (key: string) => getTranslation(language, key)
 
   return (
     <section className="relative min-h-screen brand-bg overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>

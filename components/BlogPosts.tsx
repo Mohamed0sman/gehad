@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useLanguage } from '@/contexts/LanguageContext'
 import { 
   CalendarDaysIcon,
   ClockIcon,
@@ -14,96 +15,144 @@ import {
 const blogPosts = [
   {
     id: 1,
-    title: 'إزاي تختار التخصص الجامعي المناسب ليك؟',
-    excerpt: 'دليل شامل لمساعدتك في اختيار التخصص الجامعي اللي يناسب شخصيتك وأهدافك المهنية مع نصائح عملية من خبرتي في التدريب',
-    category: 'التوجيه المهني',
-    readTime: '8 دقائق',
-    publishDate: '15 نوفمبر 2024',
+    titleEn: 'How to Choose the Right University Major for You',
+    titleAr: 'إزاي تختار التخصص الجامعي المناسب ليك؟',
+    excerptEn: 'A practical guide to help you choose a major that fits your personality and career goals, with real-world tips from coaching and training experience.',
+    excerptAr: 'دليل شامل لمساعدتك في اختيار التخصص الجامعي اللي يناسب شخصيتك وأهدافك المهنية مع نصائح عملية من خبرتي في التدريب',
+    categoryEn: 'Career Guidance',
+    categoryAr: 'التوجيه المهني',
+    readTimeEn: '8 min read',
+    readTimeAr: '8 دقائق',
+    publishDateEn: 'Nov 15, 2024',
+    publishDateAr: '15 نوفمبر 2024',
     views: 2340,
     likes: 156,
     image: '/blog/university-choice.jpg',
     featured: true,
-    tags: ['جامعة', 'تخصص', 'مستقبل'],
-    author: 'جهاد أشرف'
+    tagsEn: ['University', 'Major', 'Future'],
+    tagsAr: ['جامعة', 'تخصص', 'مستقبل'],
+    authorEn: 'Gehad Ashraf',
+    authorAr: 'جهاد أشرف'
   },
   {
     id: 2,
-    title: 'أسرار كتابة السيرة الذاتية اللي تخليك تتقبل فوراً',
-    excerpt: 'تعلم إزاي تكتب CV احترافي يلفت انتباه أصحاب العمل ويزود فرصك في الحصول على الوظيفة اللي بتحلم بيها',
-    category: 'البحث عن وظيفة',
-    readTime: '12 دقيقة',
-    publishDate: '10 نوفمبر 2024',
+    titleEn: 'CV Writing Secrets That Get You Noticed',
+    titleAr: 'أسرار كتابة السيرة الذاتية اللي تخليك تتقبل فوراً',
+    excerptEn: 'Learn how to write a modern, high-impact CV that stands out and increases your chances of landing interviews.',
+    excerptAr: 'تعلم إزاي تكتب CV احترافي يلفت انتباه أصحاب العمل ويزود فرصك في الحصول على الوظيفة اللي بتحلم بيها',
+    categoryEn: 'Job Search',
+    categoryAr: 'البحث عن وظيفة',
+    readTimeEn: '12 min read',
+    readTimeAr: '12 دقيقة',
+    publishDateEn: 'Nov 10, 2024',
+    publishDateAr: '10 نوفمبر 2024',
     views: 1890,
     likes: 203,
     image: '/blog/cv-writing.jpg',
     featured: true,
-    tags: ['سيرة ذاتية', 'وظيفة', 'مهارات'],
-    author: 'جهاد أشرف'
+    tagsEn: ['CV', 'Job', 'Skills'],
+    tagsAr: ['سيرة ذاتية', 'وظيفة', 'مهارات'],
+    authorEn: 'Gehad Ashraf',
+    authorAr: 'جهاد أشرف'
   },
   {
     id: 3,
-    title: '10 طرق لبناء الثقة بالنفس وتطوير شخصيتك',
-    excerpt: 'اكتشف الطرق العملية والمجربة لبناء ثقتك بنفسك وتطوير شخصيتك علشان تقدر تحقق أهدافك بسهولة أكبر',
-    category: 'التطوير الشخصي',
-    readTime: '6 دقائق',
-    publishDate: '5 نوفمبر 2024',
+    titleEn: '10 Practical Ways to Build Self-Confidence',
+    titleAr: '10 طرق لبناء الثقة بالنفس وتطوير شخصيتك',
+    excerptEn: 'Proven, actionable steps to strengthen confidence and grow personally so you can achieve goals with more clarity and calm.',
+    excerptAr: 'اكتشف الطرق العملية والمجربة لبناء ثقتك بنفسك وتطوير شخصيتك علشان تقدر تحقق أهدافك بسهولة أكبر',
+    categoryEn: 'Personal Development',
+    categoryAr: 'التطوير الشخصي',
+    readTimeEn: '6 min read',
+    readTimeAr: '6 دقائق',
+    publishDateEn: 'Nov 5, 2024',
+    publishDateAr: '5 نوفمبر 2024',
     views: 3120,
     likes: 287,
     image: '/blog/self-confidence.jpg',
     featured: false,
-    tags: ['ثقة', 'تطوير', 'شخصية'],
-    author: 'جهاد أشرف'
+    tagsEn: ['Confidence', 'Growth', 'Mindset'],
+    tagsAr: ['ثقة', 'تطوير', 'شخصية'],
+    authorEn: 'Gehad Ashraf',
+    authorAr: 'جهاد أشرف'
   },
   {
     id: 4,
-    title: 'إدارة الوقت للطلاب: إزاي تنظم وقتك وتتفوق في دراستك',
-    excerpt: 'نصائح عملية ومجربة لإدارة الوقت بفعالية، تنظيم الجدول الدراسي، والموازنة بين الدراسة والأنشطة الأخرى',
-    category: 'إدارة الوقت',
-    readTime: '10 دقائق',
-    publishDate: '1 نوفمبر 2024',
+    titleEn: 'Time Management for Students: Organize Your Schedule & Excel',
+    titleAr: 'إدارة الوقت للطلاب: إزاي تنظم وقتك وتتفوق في دراستك',
+    excerptEn: 'Practical techniques to plan your week, focus better, and balance studying with life without burning out.',
+    excerptAr: 'نصائح عملية ومجربة لإدارة الوقت بفعالية، تنظيم الجدول الدراسي، والموازنة بين الدراسة والأنشطة الأخرى',
+    categoryEn: 'Time Management',
+    categoryAr: 'إدارة الوقت',
+    readTimeEn: '10 min read',
+    readTimeAr: '10 دقائق',
+    publishDateEn: 'Nov 1, 2024',
+    publishDateAr: '1 نوفمبر 2024',
     views: 1567,
     likes: 134,
     image: '/blog/time-management.jpg',
     featured: false,
-    tags: ['وقت', 'دراسة', 'تنظيم'],
-    author: 'جهاد أشرف'
+    tagsEn: ['Time', 'Study', 'Productivity'],
+    tagsAr: ['وقت', 'دراسة', 'تنظيم'],
+    authorEn: 'Gehad Ashraf',
+    authorAr: 'جهاد أشرف'
   },
   {
     id: 5,
-    title: 'التعامل مع ضغط الامتحانات والقلق الدراسي',
-    excerpt: 'تقنيات فعالة للتعامل مع التوتر والقلق قبل الامتحانات، وإزاي تحافظ على هدوئك وتركيزك في أصعب الأوقات',
-    category: 'الصحة النفسية',
-    readTime: '7 دقائق',
-    publishDate: '28 أكتوبر 2024',
+    titleEn: 'Dealing with Exam Stress & Study Anxiety',
+    titleAr: 'التعامل مع ضغط الامتحانات والقلق الدراسي',
+    excerptEn: 'Evidence-based tools to manage anxiety before exams and keep your focus when pressure is high.',
+    excerptAr: 'تقنيات فعالة للتعامل مع التوتر والقلق قبل الامتحانات، وإزاي تحافظ على هدوئك وتركيزك في أصعب الأوقات',
+    categoryEn: 'Mental Wellbeing',
+    categoryAr: 'الصحة النفسية',
+    readTimeEn: '7 min read',
+    readTimeAr: '7 دقائق',
+    publishDateEn: 'Oct 28, 2024',
+    publishDateAr: '28 أكتوبر 2024',
     views: 2890,
     likes: 245,
     image: '/blog/exam-stress.jpg',
     featured: false,
-    tags: ['امتحانات', 'قلق', 'صحة نفسية'],
-    author: 'جهاد أشرف'
+    tagsEn: ['Exams', 'Anxiety', 'Wellbeing'],
+    tagsAr: ['امتحانات', 'قلق', 'صحة نفسية'],
+    authorEn: 'Gehad Ashraf',
+    authorAr: 'جهاد أشرف'
   },
   {
     id: 6,
-    title: 'بداية مشروعك الخاص: من الفكرة للتنفيذ',
-    excerpt: 'دليل شامل لبداية مشروعك الخاص، من تطوير الفكرة وعمل دراسة الجدوى لحد التنفيذ والتسويق بنجاح',
-    category: 'ريادة الأعمال',
-    readTime: '15 دقيقة',
-    publishDate: '25 أكتوبر 2024',
+    titleEn: 'Starting Your Own Project: From Idea to Execution',
+    titleAr: 'بداية مشروعك الخاص: من الفكرة للتنفيذ',
+    excerptEn: 'A structured overview of turning an idea into a plan, validating it, and taking the first steps toward launching.',
+    excerptAr: 'دليل شامل لبداية مشروعك الخاص، من تطوير الفكرة وعمل دراسة الجدوى لحد التنفيذ والتسويق بنجاح',
+    categoryEn: 'Entrepreneurship',
+    categoryAr: 'ريادة الأعمال',
+    readTimeEn: '15 min read',
+    readTimeAr: '15 دقيقة',
+    publishDateEn: 'Oct 25, 2024',
+    publishDateAr: '25 أكتوبر 2024',
     views: 1234,
     likes: 98,
     image: '/blog/entrepreneurship.jpg',
     featured: true,
-    tags: ['مشروع', 'ريادة', 'أعمال'],
-    author: 'جهاد أشرف'
+    tagsEn: ['Project', 'Business', 'Startup'],
+    tagsAr: ['مشروع', 'ريادة', 'أعمال'],
+    authorEn: 'Gehad Ashraf',
+    authorAr: 'جهاد أشرف'
   }
 ]
 
 export default function BlogPosts() {
+  const { language, isRTL } = useLanguage()
+  const t = (en: string, ar: string) => (language === 'ar' ? ar : en)
+
   const featuredPosts = blogPosts.filter(post => post.featured)
   const regularPosts = blogPosts.filter(post => !post.featured)
 
   return (
-    <section className="py-24 bg-gradient-to-br from-white via-blue-50 to-cyan-50 relative overflow-hidden">
+    <section
+      className="py-24 bg-gradient-to-br from-white via-blue-50 to-cyan-50 relative overflow-hidden"
+      dir={isRTL ? 'rtl' : 'ltr'}
+    >
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 right-20 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
@@ -123,13 +172,13 @@ export default function BlogPosts() {
           >
             <div className="flex items-center justify-center gap-2 mb-4">
               <SparklesIcon className="w-8 h-8 text-lime-500" />
-              <span className="text-blue-600 font-semibold text-lg">المقالات المميزة</span>
+              <span className="text-blue-600 font-semibold text-lg">{t('Featured articles', 'المقالات المميزة')}</span>
               <SparklesIcon className="w-8 h-8 text-lime-500" />
             </div>
             
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              <span className="gradient-text">الأكثر قراءة</span>
-              <span className="text-gray-700"> هذا الشهر 🔥</span>
+              <span className="gradient-text">{t('Most read', 'الأكثر قراءة')}</span>
+              <span className="text-gray-700">{t(' this month 🔥', ' هذا الشهر 🔥')}</span>
             </h2>
           </motion.div>
 
@@ -144,9 +193,9 @@ export default function BlogPosts() {
                 className="group bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden hover-lift"
               >
                 {/* Featured badge */}
-                <div className="absolute top-4 right-4 z-10">
+                <div className={`absolute top-4 ${isRTL ? 'left-4' : 'right-4'} z-10`}>
                   <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1">
-                    ⭐ مميز
+                    {t('⭐ Featured', '⭐ مميز')}
                   </span>
                 </div>
 
@@ -160,7 +209,7 @@ export default function BlogPosts() {
                   {/* Category and meta */}
                   <div className="flex items-center justify-between mb-4">
                     <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-semibold">
-                      {post.category}
+                      {language === 'ar' ? post.categoryAr : post.categoryEn}
                     </span>
                     <div className="flex items-center gap-4 text-sm text-gray-500">
                       <div className="flex items-center gap-1">
@@ -176,17 +225,17 @@ export default function BlogPosts() {
 
                   {/* Title */}
                   <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
-                    {post.title}
+                    {language === 'ar' ? post.titleAr : post.titleEn}
                   </h3>
 
                   {/* Excerpt */}
                   <p className="text-gray-600 mb-4 leading-relaxed line-clamp-3">
-                    {post.excerpt}
+                    {language === 'ar' ? post.excerptAr : post.excerptEn}
                   </p>
 
                   {/* Tags */}
                   <div className="flex flex-wrap gap-2 mb-4">
-                    {post.tags.map((tag, tagIndex) => (
+                    {(language === 'ar' ? post.tagsAr : post.tagsEn).map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
                         className="bg-gray-100 text-gray-600 px-2 py-1 rounded-lg text-xs"
@@ -201,11 +250,11 @@ export default function BlogPosts() {
                     <div className="flex items-center gap-4">
                       <div className="flex items-center gap-1">
                         <CalendarDaysIcon className="w-4 h-4" />
-                        <span>{post.publishDate}</span>
+                        <span>{language === 'ar' ? post.publishDateAr : post.publishDateEn}</span>
                       </div>
                       <div className="flex items-center gap-1">
                         <ClockIcon className="w-4 h-4" />
-                        <span>{post.readTime}</span>
+                        <span>{language === 'ar' ? post.readTimeAr : post.readTimeEn}</span>
                       </div>
                     </div>
                   </div>
@@ -215,8 +264,8 @@ export default function BlogPosts() {
                     href={`/blog/${post.id}`}
                     className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-700 transition-colors group"
                   >
-                    <span>اقرأ المقال كاملاً</span>
-                    <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <span>{t('Read full article', 'اقرأ المقال كاملاً')}</span>
+                    <ArrowRightIcon className={`w-4 h-4 transition-transform ${isRTL ? 'group-hover:-translate-x-1 rotate-180' : 'group-hover:translate-x-1'}`} />
                   </Link>
                 </div>
               </motion.article>
@@ -234,10 +283,10 @@ export default function BlogPosts() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              <span className="gradient-text">جميع المقالات</span> 📖
+              <span className="gradient-text">{t('All articles', 'جميع المقالات')}</span> 📖
             </h2>
             <p className="text-lg text-gray-600">
-              اكتشف المزيد من المقالات المفيدة في مختلف المجالات
+              {t('Explore more helpful articles across different topics.', 'اكتشف المزيد من المقالات المفيدة في مختلف المجالات')}
             </p>
           </motion.div>
 
@@ -259,17 +308,17 @@ export default function BlogPosts() {
                 <div className="p-6">
                   {/* Category */}
                   <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded-lg text-xs font-semibold mb-3 inline-block">
-                    {post.category}
+                    {language === 'ar' ? post.categoryAr : post.categoryEn}
                   </span>
 
                   {/* Title */}
                   <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
-                    {post.title}
+                    {language === 'ar' ? post.titleAr : post.titleEn}
                   </h3>
 
                   {/* Excerpt */}
                   <p className="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-3">
-                    {post.excerpt}
+                    {language === 'ar' ? post.excerptAr : post.excerptEn}
                   </p>
 
                   {/* Meta info */}
@@ -277,14 +326,14 @@ export default function BlogPosts() {
                     <div className="flex items-center gap-3">
                       <div className="flex items-center gap-1">
                         <ClockIcon className="w-3 h-3" />
-                        <span>{post.readTime}</span>
+                        <span>{language === 'ar' ? post.readTimeAr : post.readTimeEn}</span>
                       </div>
                       <div className="flex items-center gap-1">
                         <EyeIcon className="w-3 h-3" />
                         <span>{post.views}</span>
                       </div>
                     </div>
-                    <span>{post.publishDate}</span>
+                    <span>{language === 'ar' ? post.publishDateAr : post.publishDateEn}</span>
                   </div>
 
                   {/* Read more */}
@@ -292,8 +341,8 @@ export default function BlogPosts() {
                     href={`/blog/${post.id}`}
                     className="text-blue-600 font-semibold text-sm hover:text-blue-700 transition-colors flex items-center gap-1 group"
                   >
-                    <span>اقرأ أكثر</span>
-                    <ArrowRightIcon className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                    <span>{t('Read more', 'اقرأ أكثر')}</span>
+                    <ArrowRightIcon className={`w-3 h-3 transition-transform ${isRTL ? 'group-hover:-translate-x-1 rotate-180' : 'group-hover:translate-x-1'}`} />
                   </Link>
                 </div>
               </motion.article>
@@ -310,7 +359,7 @@ export default function BlogPosts() {
           className="text-center mt-12"
         >
           <button className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-lg transition-all duration-300 hover:scale-105">
-            📚 شوف مقالات أكتر
+            {t('📚 View more articles', '📚 شوف مقالات أكتر')}
           </button>
         </motion.div>
 
@@ -325,25 +374,25 @@ export default function BlogPosts() {
           <div className="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-3xl p-8 lg:p-12 text-white text-center">
             <div className="text-4xl mb-4">📧</div>
             <h3 className="text-3xl font-bold mb-4">
-              اشترك في النشرة الإخبارية
+              {t('Subscribe to the newsletter', 'اشترك في النشرة الإخبارية')}
             </h3>
             <p className="text-xl mb-8 text-white/90">
-              وصلك أحدث المقالات والنصائح المهنية مباشرة على إيميلك
+              {t('Get the latest articles and career tips straight to your email.', 'وصلك أحدث المقالات والنصائح المهنية مباشرة على إيميلك')}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input
                 type="email"
-                placeholder="أدخل إيميلك هنا"
+                placeholder={t('Enter your email', 'أدخل إيميلك هنا')}
                 className="flex-1 px-4 py-3 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
               />
               <button className="bg-white text-blue-600 px-6 py-3 rounded-xl font-bold hover:bg-gray-100 transition-colors">
-                اشترك الآن 🚀
+                {t('Subscribe now 🚀', 'اشترك الآن 🚀')}
               </button>
             </div>
             
             <p className="text-sm text-white/80 mt-4">
-              مجاني تماماً • بدون إزعاج • يمكنك إلغاء الاشتراك في أي وقت
+              {t('Free • No spam • Unsubscribe anytime', 'مجاني تماماً • بدون إزعاج • يمكنك إلغاء الاشتراك في أي وقت')}
             </p>
           </div>
         </motion.div>

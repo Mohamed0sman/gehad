@@ -15,15 +15,113 @@ import {
   FireIcon,
   SparklesIcon
 } from '@heroicons/react/24/outline'
-import { useTranslation } from '@/hooks/useTranslation'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { translations as translationsData } from '@/lib/translations'
 
 export default function AllPrograms() {
-  const { translations } = useTranslation()
   const { language } = useLanguage()
   const isRTL = language === 'ar'
 
-  const programs = translations.allPrograms.items.map((program: any, index: number) => {
+  const translations = translationsData[language] as any
+
+  const programs = [
+    {
+      id: 'career-counseling',
+      title: language === 'ar' ? 'استشارات مهنية' : 'Career Counseling',
+      subtitle: language === 'ar' ? 'توجيه مهني فردي' : 'Individual Career Guidance',
+      description: language === 'ar' ? 'جلسات فردية شاملة لتوضيح مسارك المهني وتحديد أهدافك.' : 'Comprehensive one-on-one sessions to clarify your career path and set goals.',
+      duration: language === 'ar' ? '4 جلسات' : '4 sessions',
+      level: language === 'ar' ? 'مبتدئ' : 'Beginner',
+      category: language === 'ar' ? 'تطوير شخصي' : 'Personal Development',
+      features: [
+        language === 'ar' ? 'تقييم شخصي متكامل' : 'Comprehensive personality assessment',
+        language === 'ar' ? 'خطة عمل مهنية' : 'Career action plan',
+        language === 'ar' ? 'متابعة شهرية' : 'Monthly follow-up',
+        language === 'ar' ? 'دعم مستمر' : 'Ongoing support'
+      ],
+     
+    },
+    {
+      id: 'skill-development',
+      title: language === 'ar' ? 'تطوير المهارات' : 'Skill Development',
+      subtitle: language === 'ar' ? 'مهارات القرن 21' : '21st Century Skills',
+      description: language === 'ar' ? 'ورش عمل لتطوير المهارات الناعمة والأساسية المطلوبة في سوق العمل.' : 'Workshops to develop soft and essential skills required in the job market.',
+      duration: language === 'ar' ? '6 أسابيع' : '6 weeks',
+      level: language === 'ar' ? 'متوسط' : 'Intermediate',
+      category: language === 'ar' ? 'تدريب' : 'Training',
+      features: [
+        language === 'ar' ? 'تواصل فعال' : 'Effective communication',
+        language === 'ar' ? 'قيادة فرق' : 'Team leadership',
+        language === 'ar' ? 'حل المشكلات' : 'Problem solving',
+        language === 'ar' ? 'شهادة معتمدة' : 'Certified certificate'
+      ],
+     
+    },
+    {
+      id: 'academic-guidance',
+      title: language === 'ar' ? 'التوجيه الأكاديمي' : 'Academic Guidance',
+      subtitle: language === 'ar' ? 'اختيار التخصص المناسب' : 'Choosing the Right Major',
+      description: language === 'ar' ? 'مساعدة الطلاب في اختيار التخصص الجامعي والمسار المهني المناسب.' : 'Helping students choose the right university major and career path.',
+      duration: language === 'ar' ? '3 جلسات' : '3 sessions',
+      level: language === 'ar' ? 'مبتدئ' : 'Beginner',
+      category: language === 'ar' ? 'تعليم' : 'Education',
+      features: [
+        language === 'ar' ? 'اختبار اهتمامات هولاند' : 'Holland Interest Test',
+        language === 'ar' ? 'تحليل شخصي' : 'Personality analysis',
+        language === 'ar' ? 'خطة دراسية' : 'Study plan',
+        language === 'ar' ? 'مقابلة توجيه' : 'Guidance interview'
+      ],
+      
+    },
+    {
+      id: 'corporate-programs',
+      title: language === 'ar' ? 'برامج الشركات' : 'Corporate Programs',
+      subtitle: language === 'ar' ? 'تدريب للمؤسسات' : 'Training for Organizations',
+      description: language === 'ar' ? 'برامج تدريبية مصممة خصيصًا للشركات والمؤسسات لتطوير فرق العمل.' : 'Custom-designed training programs for companies and organizations to develop teams.',
+      duration: language === 'ar' ? 'حسب الطلب' : 'Custom',
+      level: language === 'ar' ? 'جميع المستويات' : 'All Levels',
+      category: language === 'ar' ? 'تدريب مؤسسي' : 'Corporate Training',
+      features: [
+        language === 'ar' ? 'تقييم احتياجات' : 'Needs assessment',
+        language === 'ar' ? 'برنامج مخصص' : 'Custom program',
+        language === 'ar' ? 'تدريب عملي' : 'Hands-on training',
+        language === 'ar' ? 'تقرير نتائج' : 'Results report'
+      ],
+     
+    },
+    {
+      id: 'leadership-program',
+      title: language === 'ar' ? 'برنامج القيادة' : 'Leadership Program',
+      subtitle: language === 'ar' ? 'صناعة القادة' : 'Building Leaders',
+      description: language === 'ar' ? 'برنامج متكامل لتطوير مهارات القيادة والإدارة للمديرين والمشرفين.' : 'Comprehensive program to develop leadership and management skills for managers and supervisors.',
+      duration: language === 'ar' ? '8 أسابيع' : '8 weeks',
+      level: language === 'ar' ? 'متقدم' : 'Advanced',
+      category: language === 'ar' ? 'قيادة' : 'Leadership',
+      features: [
+        language === 'ar' ? 'أسس القيادة' : 'Leadership fundamentals',
+        language === 'ar' ? 'اتخاذ القرار' : 'Decision making',
+        language === 'ar' ? 'إدارة التغيير' : 'Change management',
+        language === 'ar' ? 'مشروع تخرج' : 'Graduation project'
+      ],
+    
+    },
+    {
+      id: 'freelancing-career',
+      title: language === 'ar' ? 'مسيرة الحرية' : 'Freelancing Career',
+      subtitle: language === 'ar' ? 'احتراف العمل الحر' : 'Professional Freelancing',
+      description: language === 'ar' ? 'دليل شامل للنجاح في عالم العمل الحر من البداية للاحتراف.' : 'Complete guide to succeed in the freelancing world from beginner to pro.',
+      duration: language === 'ar' ? '5 أسابيع' : '5 weeks',
+      level: language === 'ar' ? 'مبتدئ' : 'Beginner',
+      category: language === 'ar' ? 'عمل حر' : 'Freelancing',
+      features: [
+        language === 'ar' ? 'بناء معرض أعمال' : 'Portfolio building',
+        language === 'ar' ? 'جذب العملاء' : 'Client acquisition',
+        language === 'ar' ? 'تسعير الخدمات' : 'Service pricing',
+        language === 'ar' ? 'إدارة المشاريع' : 'Project management'
+      ],
+     
+    }
+  ].map((program, index) => {
     // Static configuration mapping based on index or ID
     const icons = [AcademicCapIcon, UserGroupIcon, LightBulbIcon, ChartBarIcon, TrophyIcon, HeartIcon]
     const colors = [

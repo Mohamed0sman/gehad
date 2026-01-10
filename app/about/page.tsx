@@ -1,9 +1,10 @@
 import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 import AboutHero from '@/components/AboutHero'
-import Experience from '@/components/Experience'
+import MyStory from '@/components/MyStory'
 import Certifications from '@/components/Certifications'
 import Philosophy from '@/components/Philosophy'
+import PhotoGallery from '@/components/PhotoGallery'
+import Footer from '@/components/Footer'
 
 export const metadata = {
   title: 'About Me - Gehad Ashraf | NCDA Certified Career Development Professional',
@@ -14,10 +15,13 @@ export default function About() {
   return (
     <main>
       <Header />
-      <AboutHero />
-      <Experience />
-      <Certifications />
-      <Philosophy />
+      <div className="pt-16 lg:pt-20">
+        <AboutHero />
+        <MyStory />
+        <Certifications />
+        <Philosophy />
+        <PhotoGallery />
+      </div>
       <Footer />
     </main>
   )

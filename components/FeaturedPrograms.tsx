@@ -3,10 +3,12 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowRightIcon, ClockIcon, UserGroupIcon, StarIcon } from '@heroicons/react/24/outline'
-import { useTranslation } from '@/hooks/useTranslation'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { getTranslation } from '@/lib/translations'
 
 export default function FeaturedPrograms() {
-  const { t, isRTL } = useTranslation()
+  const { language, isRTL } = useLanguage()
+  const t = (key: string) => getTranslation(language, key)
 
   const programs = [
     {

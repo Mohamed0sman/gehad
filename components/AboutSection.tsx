@@ -2,7 +2,8 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { useTranslation } from '@/hooks/useTranslation'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { translations as translationsData } from '@/lib/translations'
 import { 
   AcademicCapIcon, 
   TrophyIcon, 
@@ -14,7 +15,8 @@ import {
 } from '@heroicons/react/24/outline'
 
 export default function AboutSection() {
-  const { translations } = useTranslation()
+  const { language, isRTL } = useLanguage()
+  const translations = translationsData[language] as any
 
   const hollandTypes = [
     { key: translations.about.assessment.investigative, icon: '🔬', color: 'from-blue-500 to-cyan-500' },
@@ -32,7 +34,7 @@ export default function AboutSection() {
   ]
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+    <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50" dir={isRTL ? 'rtl' : 'ltr'}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

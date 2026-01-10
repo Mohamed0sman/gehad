@@ -13,9 +13,11 @@ export default function Contact() {
   return (
     <main>
       <Header />
-      <ContactHero />
-      <ContactForm />
-      <ContactInfo />
+      <div className="pt-16 lg:pt-20">
+        <ContactHero />
+        <ContactForm />
+        <ContactInfo />
+      </div>
       <Footer />
     </main>
   )

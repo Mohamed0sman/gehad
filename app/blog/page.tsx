@@ -13,9 +13,11 @@ export default function Blog() {
   return (
     <main>
       <Header />
-      <BlogHero />
-      <BlogCategories />
-      <BlogPosts />
+      <div className="pt-16 lg:pt-20">
+        <BlogHero />
+        <BlogCategories />
+        <BlogPosts />
+      </div>
       <Footer />
     </main>
   )

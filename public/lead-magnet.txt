@@ -1,0 +1,3 @@
+Career Clarity Framework
+
+This is a placeholder for the Career Clarity Framework lead magnet. Replace this file with the final PDF at public/lead-magnet.pdf to enable the downloadable lead magnet on the site.

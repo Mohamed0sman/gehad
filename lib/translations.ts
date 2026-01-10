@@ -48,13 +48,20 @@ export const translations = {
     // Hero Section
     hero: {
       title: 'Empowering Careers Through Science & Empathy',
-      titlePart1: 'Empowering Careers Through',
-      titlePart2: 'Science & Empathy',
-      subtitle: 'NCDA Certified Career Development Professional',
-      description: 'Transforming career journeys with evidence-based coaching, strategic design, and human-centered approach. Preparing to become an FCD Instructor to expand career education across the MENA region.',
-      cta: 'Book Free Consultation',
-      secondaryCta: 'Learn More',
+      titlePart1: 'I help professionals, organizations, and educators',
+      titlePart2: 'make informed career decisions using evidence-based coaching',
+      subtitle: 'Empowering people to design sustainable careers through self-awareness, science, and strategic action.',
+      description: 'I help professionals, organizations, and educators make informed career decisions using evidence-based coaching and learning design. My work combines data, psychology, and practical facilitation to help people and institutions design careers intentionally.',
+      cta: 'Book a Career Session',
+      secondaryCta: 'Explore Programs',
       vision2026: 'Vision 2026: Becoming an FCD Instructor',
+      signatureTitle: 'Where data meets human potential',
+      signatureSubtitle: 'Supporting career decisions with structured frameworks that combine analytics and psychology.',
+      metrics: {
+        years: '10+ years',
+        hours: '10,400+ hours',
+        sessions: '1,000+ sessions'
+      },
       stats: {
         ncda: 'NCDA',
         certified: 'Certified Professional',
@@ -92,6 +99,34 @@ export const translations = {
         love: 'Love',
         trust: 'Trust'
       }
+    },
+
+    // About Story (long form)
+    aboutStory: {
+      title: 'My Story',
+      long: `My journey did not begin with a career plan. It began with a decision. At a very early stage, I was surrounded by expectations — expectations about what success should look like, which paths were “prestigious,” and which choices were considered safe. I followed one of those paths briefly, not because it aligned with who I was, but because it was expected of me.
+
+Within weeks, I made my first defining decision: to step away and choose consciously. That moment shaped everything that followed.
+
+I moved into the Faculty of Economics and Political Science, where I encountered a new world — one that valued critical thinking, responsibility, and awareness. There, a deeper question emerged and never left me: Why are some people trusted to make decisions that shape societies, while others spend their lives executing decisions they do not fully understand?
+
+This question led me to statistics — not as numbers, but as a language of truth, evidence, and informed choice. I came to understand something fundamental: decisions are born in the heart, but their success depends on the mind.
+
+Yet data alone was not enough. As my academic journey progressed into optimization and quality systems, I realized that even the most rational decisions fail when human emotions, identity, and fear are ignored. This realization pulled me toward psychology, emotional intelligence, and the science of behavior.
+
+Teaching at the American University in Cairo marked a turning point. I loved learning. I loved structure. But something was missing. I did not want to teach information. I wanted to change how people see themselves.
+
+A single sentence from a mentor shifted my direction completely: “You don’t just explain concepts — you transform understanding.” That was the moment I stepped into facilitation and training.
+
+From my first workshop — delivered to senior engineers — to advanced international programs with organizations such as UNESCO and United Nations–affiliated initiatives, I learned one essential lesson: quality is not accidental; it is designed.
+
+My path was not linear. At one stage, a life-altering accident forced me into stillness — a year in a wheelchair. What appeared to be a pause became a profound expansion. During that period, I entered the world of freelancing, regional markets, and digital learning, eventually training thousands of professionals across the MENA region.
+
+Parallel to this, I served as an HR leader in a multinational engineering firm, worked with government initiatives, universities, and women’s empowerment programs — and continued to ask the same core question: Why do capable people feel lost, exhausted, or misaligned in their careers?
+
+Since 2018, my work expanded beyond students and early professionals to include mid-career leaders, managers, entrepreneurs, and organizations. The questions changed slightly, but the core remained the same: “Am I in the right place?” “What comes next?” “Why does success feel so heavy?”
+
+Today, I know the answer. We were never taught how to design careers. We were taught how to follow paths. My work exists to change that.`,
     },
 
     // Education Section
@@ -168,8 +203,8 @@ export const translations = {
         missionDesc: 'Every person has unique talents and potential. I\'m here to help you discover them and use them to build a bright future.'
       },
       stats: [
-        { number: '500+', label: 'Successful Students', icon: '🎓' },
-        { number: '3+', label: 'Years Experience', icon: '💼' },
+        { number: '12500+', label: 'Successful Students', icon: '🎓' },
+        { number: '10+', label: 'Years Experience', icon: '💼' },
         { number: 'NCDA', label: 'Certified', icon: '🏆' },
         { number: '98%', label: 'Satisfaction Rate', icon: '⭐' }
       ],
@@ -1116,13 +1151,20 @@ export const translations = {
     // Hero Section
     hero: {
       title: 'تمكين المهن من خلال العلم والتعاطف',
-      titlePart1: 'تمكين المهن من خلال',
-      titlePart2: 'العلم والتعاطف',
-      subtitle: 'أخصائية تطوير مهني معتمدة من NCDA',
-      description: 'تحويل الرحلات المهنية من خلال التدريب القائم على الأدلة والتصميم الاستراتيجي والنهج المتمحور حول الإنسان. أستعد لأصبح مدربة FCD لتوسيع التعليم المهني في منطقة الشرق الأوسط وشمال أفريقيا.',
-      cta: 'احجز استشارة مجانية',
-      secondaryCta: 'اعرف المزيد',
+      titlePart1: 'أساعد المحترفين والمؤسسات والمعلمين',
+      titlePart2: 'على اتخاذ قرارات مهنية مستنيرة من خلال التدريب القائم على الأدلة',
+      subtitle: 'تمكين الناس لتصميم مهن مستدامة من خلال الوعي الذاتي والعلم والعمل الاستراتيجي.',
+      description: 'أساعد المحترفين والمؤسسات والمعلمين على اتخاذ قرارات مهنية مستنيرة من خلال التدريب والتصميم القائم على الأدلة. يجمع عملي بين البيانات والعلم النفسي والتسهيل العملي لمساعدة الناس والمؤسسات على تصميم المهن بشكل مقصود.',
+      cta: 'احجز جلسة توجيه مهني',
+      secondaryCta: 'استكشف البرامج',
       vision2026: 'رؤية 2026: أن أصبح مدربة FCD',
+      signatureTitle: 'حيث تلتقي البيانات بالإمكانات البشرية',
+      signatureSubtitle: 'دعم القرارات المهنية من خلال أطر عمل منظمة تجمع بين التحليلات وعلم النفس.',
+      metrics: {
+        years: '+10 سنوات',
+        hours: '+10,400 ساعة',
+        sessions: '+1,000 جلسة'
+      },
       stats: {
         ncda: 'NCDA',
         certified: 'محترف معتمد',
@@ -1159,6 +1201,34 @@ export const translations = {
         love: 'الحب',
         trust: 'الثقة'
       }
+    },
+
+    // About Story (Arabic)
+    aboutStory: {
+      title: 'قصتي',
+      long: `رحلتي لم تبدأ بخطة مهنية. بدأت بقرار. في مرحلة مبكرة جداً، كنت محاطة بتوقعات — توقعات حول كيف يجب أن يبدو النجاح، والمسارات التي كانت "مرموقة"، والخيارات التي كانت تعتبر آمنة. اتبعت أحد تلك المسارات لفترة قصيرة، ليس لأنه تماشى مع من أنا، بل لأنه كان متوقعاً مني.
+
+خلال أسابيع قليلة، اتخذت أول قرار يحدد المسار: أن أتراجع وأختار بوعي. لحظتك تلك شكلت كل ما يلي.
+
+انتقلت إلى كلية الاقتصاد والعلوم السياسية، حيث واجهت عالماً جديداً — عالماً يقدر التفكير النقدي والمسؤولية والوعي. هناك، ظهر سؤال أعمق ولم يتركني أبداً: لماذا يثق بعض الناس باتخاذ قرارات تشكل المجتمعات، بينما يقضي الآخرون حياتهم بتنفيذ قرارات لا يفهمونها تماماً؟
+
+هذا السؤال قادني إلى الإحصاء — ليس كأرقام، بل كلغة للحقيقة والأدلة والاختيار المستنير. جاء الفهم لشيء أساسي: القرارات تُولد في القلب، لكن نجاحها يعتمد على العقل.
+
+لكن البيانات وحدها لم تكن كافية. مع تقدم رحلتي الأكاديمية في التحسين وأنظمة الجودة، أدركت أن القرارات الأكثر عقلانية تفشل عندما يتم تجاهل المشاعر والهوية والخوف. هذا الإدراك جذبني نحو علم النفس والذكاء العاطفي وعلم السلوك.
+
+كان التدريس في الجامعة الأمريكية بالقاهرة نقطة تحول. أنا أحب التعلم. أنا أحب الهيكل. لكن كان ناقصاً شيء ما. لم أكن أريد أن أعلم المعلومات. كنت أريد أن أغير طريقة رؤية الناس لأنفسهم.
+
+جملة واحدة من أستاذة غيرت اتجاهي تماماً: "أنت لا تشرح المفاهيم فقط — أنت تحول الفهم." كانت تلك اللحظة التي دخلت فيها عالم التيسير والتدريب.
+
+من ورشتي الأولى — المقدمة لمهندسين كبار — إلى برامج دولية متقدمة مع منظمات مثل اليونسكو والمبادرات المرتبطة بالأمم المتحدة، تعلمت درساً أساسياً واحداً: الجودة ليست عرضية؛ إنها مصممة.
+
+مساري لم يكن خطياً. في مرحلة ما، أجبرني حادث غير حياتي على السكون — سنة كاملة في كرسي متحرك. ما بدا وكأنه توقف أصبح توسعاً عميقاً. خلال تلك الفترة، دخلت عالم العمل الحر والأسواق الإقليمية والتعلم الرقمي، وفي النهاية قمت بتدريب آلاف المهنيين عبر منطقة الشرق الأوسط وشمال أفريقيا.
+
+بالتوازي مع هذا، عملت كقائدة في إدارة الموارد البشرية في شركة هندسية متعددة الجنسيات، وعملت مع المبادرات الحكومية والجامعات وبرامج تمكين المرأة — واستمررت في طرح نفس السؤال الأساسي: لماذا يشعر الناس القادرون بالضياع أو الإرهاق أو عدم المحاذاة في مهنهم؟
+
+منذ عام 2018، توسع عملي ليتجاوز الطلاب والمهنيين الناشئين ليشمل القادة في منتصف مسيرتهم الوظيفية والمديرين وأصحاب المشاريع والمنظمات. تغيرت الأسئلة قليلاً، لكن الجوهر ظل كما هو: "هل أنا في المكان الصحيح؟" "ما الذي يأتي بعد ذلك؟" "لماذا يبدو النجاح ثقيلاً جداً؟"
+
+اليوم، أنا أعرف الإجابة. لم يتم تعليمنا كيفية تصميم المهن. تم تعليمنا كيفية اتباع المسارات. عملي موجود لتغيير ذلك.`,
     },
 
     // Education Section

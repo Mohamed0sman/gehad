@@ -4,154 +4,145 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { StarIcon, HeartIcon, SparklesIcon } from '@heroicons/react/20/solid'
 import { ChatBubbleLeftRightIcon } from '@heroicons/react/24/outline'
-import { useTranslation } from '@/hooks/useTranslation'
-import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Testimonials() {
-  const { translations } = useTranslation()
-  const { language } = useLanguage()
-  const isRTL = language === 'ar'
-
-  const colors = [
-    'from-cyan-400 to-sky-400',
-    'from-blue-400 to-cyan-400',
-    'from-blue-400 to-cyan-400',
-    'from-green-400 to-emerald-400',
-    'from-yellow-400 to-orange-400',
-    'from-green-400 to-lime-400'
+  const testimonials = [
+    {
+      name: 'Sarah Ahmed',
+      role: 'Marketing Manager',
+      company: 'Tech Startup',
+      content: 'Gehad helped me transition from a dead-end job to a career I\'m passionate about. Her evidence-based approach and strategic guidance were invaluable.',
+      rating: 5,
+      avatar: '👩‍💼'
+    },
+    {
+      name: 'Mohamed Hassan',
+      role: 'Software Developer',
+      company: 'Multinational Company',
+      content: 'The career clarity framework provided by Gehad transformed how I approach my professional development. I now have a clear path forward.',
+      rating: 5,
+      avatar: '👨‍💻'
+    },
+    {
+      name: 'Nadia El-Sayed',
+      role: 'HR Director',
+      company: 'Engineering Firm',
+      content: 'As an HR professional, I was impressed by Gehad\'s systematic approach to career development. She brought real value to our team.',
+      rating: 5,
+      avatar: '👩‍💼'
+    },
+    {
+      name: 'Khalid Omar',
+      role: 'Recent Graduate',
+      company: 'University Graduate',
+      content: 'Gehad\'s guidance helped me navigate the challenging job market with confidence. I landed my dream job within 3 months!',
+      rating: 5,
+      avatar: '🎓'
+    },
+    {
+      name: 'Mariam Ali',
+      role: 'Freelance Designer',
+      company: 'Independent',
+      content: 'The freelancing program gave me the tools and confidence to build a successful independent career. Highly recommended!',
+      rating: 5,
+      avatar: '👩‍🎨'
+    },
+    {
+      name: 'Ahmed Kamel',
+      role: 'Team Lead',
+      company: 'Tech Company',
+      content: 'Gehad\'s leadership coaching helped me transition from individual contributor to effective team leader. The results speak for themselves.',
+      rating: 5,
+      avatar: '👨‍💼'
+    }
   ]
 
   return (
-    <section className="py-24 sm:py-32 section-padding bg-gradient-to-br from-white via-blue-50/50 to-cyan-50/50 relative overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
-      {/* Enhanced background decorations */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 right-20 w-72 h-72 bg-[rgba(var(--brand-blue-500),0.1)] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-20 left-20 w-72 h-72 bg-[rgba(var(--brand-cyan-500,6,182,212),0.1)] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[rgba(var(--brand-green-400),0.08)] rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-pulse delay-2000"></div>
-      </div>
+    <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <HeartIcon className="w-8 h-8 text-red-500" />
+            <h2 className="text-4xl md:text-5xl font-bold font-playfair">
+              <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                Client Success Stories
+              </span>
+            </h2>
+            <HeartIcon className="w-8 h-8 text-red-500" />
+          </div>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-inter">
+            Real transformations from real people who took control of their careers
+          </p>
+        </motion.div>
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8 container-professional">
-        <div className="mx-auto max-w-3xl text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="flex items-center justify-center gap-2 mb-4"
-          >
-            <HeartIcon className="w-8 h-8 text-[rgb(var(--brand-green-500))]" />
-            <span className="text-[rgb(var(--brand-blue-600))] font-semibold text-lg font-inter">
-              {translations.testimonials.headerLabel}
-            </span>
-            <HeartIcon className="w-8 h-8 text-[rgb(var(--brand-green-500))]" />
-          </motion.div>
-        
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-playfair"
-          >
-            <span className="brand-gradient-text">
-              {translations.testimonials.title}
-            </span>
-            <br />
-            <span className="text-gray-700">{translations.testimonials.subtitle}</span>
-          </motion.h2>
-        
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="text-xl leading-8 text-gray-600 font-inter"
-          >
-            {translations.testimonials.intro}
-            <br />
-            <span className="text-[rgb(var(--brand-blue-600))] font-semibold">🎯 {translations.testimonials.highlight}</span>
-          </motion.p>
-        </div>
-      
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {translations.testimonials.items.map((testimonial, index) => (
+        {/* Testimonials Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {testimonials.map((testimonial, index) => (
             <motion.div
-              key={testimonial.id}
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="relative professional-card rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group"
+              whileHover={{ y: -10 }}
+              className="group"
             >
-              {/* Gradient border */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${colors[index] || colors[0]} opacity-10 group-hover:opacity-20 transition-opacity duration-300`}></div>
-              
-              {/* Quote icon */}
-              <div className={`absolute top-4 ${isRTL ? 'right-4' : 'left-4'}`}>
-                <motion.div
-                  animate={{ rotate: [0, 10, -10, 0] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                  className={`w-12 h-12 bg-gradient-to-br ${colors[index] || colors[0]} rounded-full flex items-center justify-center shadow-lg`}
-                >
-                  <ChatBubbleLeftRightIcon className="w-6 h-6 text-white" />
-                </motion.div>
-              </div>
-
-              {/* Achievement badge */}
-              <div className={`absolute top-4 ${isRTL ? 'left-4' : 'right-4'}`}>
-                <motion.div
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className="bg-yellow-400 text-yellow-900 px-3 py-1 rounded-full text-xs font-bold font-inter"
-                >
-                  {testimonial.emoji} {translations.testimonials.achievementBadge}
-                </motion.div>
-              </div>
-            
-              <div className="relative p-8 pt-16">
-                {/* Stars */}
-                <div className={`flex items-center mb-4 ${isRTL ? 'justify-end' : ''}`}>
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, scale: 0 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.5 + i * 0.1 }}
-                      viewport={{ once: true }}
-                    >
-                      <StarIcon className="h-5 w-5 text-yellow-400" />
-                    </motion.div>
-                  ))}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-3xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
+              <div className="relative bg-white rounded-3xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-shadow h-full">
+                
+                {/* Avatar and Rating */}
+                <div className="flex items-start justify-between mb-6">
+                  <div className="flex items-center gap-4">
+                    <div className="text-4xl">{testimonial.avatar}</div>
+                    <div>
+                      <h3 className="text-lg font-bold text-gray-800 font-playfair">
+                        {testimonial.name}
+                      </h3>
+                      <p className="text-sm text-gray-600 font-inter">
+                        {testimonial.role}
+                      </p>
+                      <p className="text-xs text-gray-500 font-inter">
+                        {testimonial.company}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  {/* Rating */}
+                  <div className="flex items-center gap-1">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <StarIcon key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                    ))}
+                  </div>
                 </div>
-                
+
                 {/* Content */}
-                <blockquote className="text-gray-700 mb-6 leading-relaxed font-inter">
-                  &ldquo;{testimonial.content}&rdquo;
-                </blockquote>
-                
-                {/* Achievement */}
-                <div className={`bg-gradient-to-r ${colors[index] || colors[0]} bg-opacity-10 rounded-xl p-3 mb-6`}>
-                  <p className="text-sm font-semibold text-gray-800 flex items-center gap-2 font-inter">
-                    <SparklesIcon className="w-4 h-4 text-blue-500" />
-                    {testimonial.achievement}
+                <div className="relative mb-6">
+                  <ChatBubbleLeftRightIcon className="w-8 h-8 text-blue-200 absolute -top-2 -left-2" />
+                  <p className="text-gray-700 leading-relaxed font-inter pl-6">
+                    "{testimonial.content}"
                   </p>
                 </div>
-                
-                {/* Profile */}
-                <div className="flex items-center gap-4">
-                  <motion.div 
-                    className={`w-14 h-14 bg-gradient-to-br ${colors[index] || colors[0]} rounded-full flex items-center justify-center shadow-lg text-2xl text-white font-bold`}
-                    whileHover={{ scale: 1.1, rotate: 360 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    {testimonial.name.charAt(0)}
-                  </motion.div>
-                  
-                  <div>
-                    <div className="font-bold text-gray-900 font-playfair">{testimonial.name}</div>
-                    <div className="text-sm text-gray-500 font-inter">{testimonial.role}</div>
-                    <div className="text-xs text-gray-400 font-inter">{testimonial.age}</div>
+
+                {/* Bottom accent */}
+                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                  <div className="flex items-center gap-2">
+                    <SparklesIcon className="w-4 h-4 text-blue-500" />
+                    <span className="text-xs text-gray-500 font-inter">
+                      Verified Client
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <StarIcon key={i} className="w-3 h-3 text-yellow-400 fill-current" />
+                    ))}
                   </div>
                 </div>
               </div>
@@ -159,60 +150,36 @@ export default function Testimonials() {
           ))}
         </div>
 
-        {/* Bottom stats */}
+        {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
           viewport={{ once: true }}
-          className="mt-16 text-center"
+          className="text-center"
         >
-          <div className="bg-white rounded-3xl shadow-xl p-8 max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              {[
-                { number: "500+", label: translations.testimonials.stats.students, icon: "🎓" },
-                { number: "98%", label: translations.testimonials.stats.satisfaction, icon: "⭐" },
-                { number: "24/7", label: translations.testimonials.stats.support, icon: "💬" },
-                { number: "100%", label: translations.testimonials.stats.guarantee, icon: "🎯" }
-              ].map((stat, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.6 + index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="text-center"
-                >
-                  <div className="text-4xl mb-2">{stat.icon}</div>
-                  <div className="text-3xl font-bold text-blue-600 mb-1 font-playfair">
-                    {stat.number}
-                  </div>
-                  <div className="text-gray-600 text-sm font-inter">
-                    {stat.label}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-            
-            <motion.div 
-              className="mt-8 pt-8 border-t border-gray-200"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 1 }}
-              viewport={{ once: true }}
-            >
-              <p className="text-lg text-gray-700 mb-4 font-inter">
-                <strong>{translations.testimonials.offer.prefix}</strong> {translations.testimonials.offer.description}
-              </p>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+          <div className="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-3xl p-8 md:p-12 text-white">
+            <h3 className="text-2xl md:text-3xl font-bold mb-6 font-playfair">
+              Ready to Write Your Success Story?
+            </h3>
+            <p className="text-lg mb-8 font-inter max-w-2xl mx-auto">
+              Join hundreds of professionals who have transformed their careers with evidence-based guidance and strategic planning.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a 
+                href="/booking" 
+                className="inline-flex items-center gap-3 bg-white text-blue-600 font-bold px-8 py-4 rounded-2xl hover:bg-gray-100 transition-colors font-inter"
               >
-                <button className="brand-cta px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 font-inter">
-                  {translations.testimonials.offer.button}
-                </button>
-              </motion.div>
-            </motion.div>
+                <StarIcon className="w-5 h-5" />
+                <span>Start Your Journey</span>
+              </a>
+              <a 
+                href="/testimonials" 
+                className="inline-flex items-center gap-3 border-2 border-white text-white font-semibold px-8 py-4 rounded-2xl hover:bg-white/10 transition-colors font-inter"
+              >
+                <span>Read More Stories</span>
+              </a>
+            </div>
           </div>
         </motion.div>
       </div>

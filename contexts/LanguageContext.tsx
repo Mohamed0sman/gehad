@@ -13,15 +13,14 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>('en') // Default to English
-
-  useEffect(() => {
-    // Always default to English; ignore saved Arabic preference
-    const saved = (typeof window !== 'undefined') ? (localStorage.getItem('language') as Language | null) : null
-    if (saved === 'en') {
-      setLanguageState('en')
+  const [language, setLanguageState] = useState<Language>(() => {
+    try {
+      const saved = (typeof window !== 'undefined') ? (localStorage.getItem('language') as Language | null) : null
+      return saved || 'en'
+    } catch (e) {
+      return 'en'
     }
-  }, [])
+  })
 
   useEffect(() => {
     if (typeof document !== 'undefined') {
@@ -29,23 +28,19 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr'
     }
     try {
-      // persist English preference only
-      localStorage.setItem('language', 'en')
+      localStorage.setItem('language', language)
     } catch (e) {}
   }, [language])
 
-  // Expose a no-op/guarded setter to prevent switching away from English
   const setLanguage = (lang: Language) => {
-    // enforce English only
-    if (lang === 'en') setLanguageState('en')
-    else setLanguageState('en')
+    setLanguageState(lang)
   }
 
-  const isRTL = false
+  const isRTL = language === 'ar'
 
   return (
-    <LanguageContext.Provider value={{ language: 'en', setLanguage, isRTL }}>
-      <div className="ltr" dir="ltr">
+    <LanguageContext.Provider value={{ language, setLanguage, isRTL }}>
+      <div dir={isRTL ? 'rtl' : 'ltr'}>
         {children}
       </div>
     </LanguageContext.Provider>
