@@ -113,6 +113,4 @@ This is an automated message from the booking/contact form at gehad-ashraf.com
 }
 
 // Allow CORS for POST requests
-export const config = {
-  runtime: 'nodejs',
-}
+export const runtime = 'nodejs'
