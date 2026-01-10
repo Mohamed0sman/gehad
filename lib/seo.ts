@@ -10,7 +10,7 @@ export const siteConfig = {
   author: 'Gehad Ashraf',
   email: 'gehad@example.com',
   phone: '+20 1234567890',
-  whatsapp: '+201234567890',
+  whatsapp: '+201015362414',
   social: {
     facebook: 'https://facebook.com/gehad.ashraf',
     instagram: 'https://instagram.com/gehad.ashraf',

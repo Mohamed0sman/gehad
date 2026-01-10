@@ -86,7 +86,7 @@ export default function BookingSteps() {
   ]
 
   const whatsappText = encodeURIComponent(t('Hi, I would like to book the free session.', 'مرحبا، عايز أحجز الجلسة المجانية'))
-  const whatsappHref = `https://wa.me/201234567890?text=${whatsappText}`
+  const whatsappHref = `https://wa.me/201015362414?text=${whatsappText}`
 
   return (
     <section

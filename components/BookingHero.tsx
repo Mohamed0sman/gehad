@@ -248,7 +248,7 @@ export default function BookingHero() {
               className="text-white/80 text-center"
             >
               <div className="text-sm">{t('Or contact:', 'أو تواصل على:')}</div>
-              <div className="text-lg font-semibold">📱 01234567890</div>
+              <div className="text-lg font-semibold">📱 01015362414</div>
             </motion.div>
           </motion.div>
 

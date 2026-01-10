@@ -34,7 +34,7 @@ export default function Footer() {
     social: [
       {
         name: 'WhatsApp',
-        href: 'https://wa.me/201234567890',
+        href: 'https://wa.me/201015362414',
         icon: '💬',
         color: 'hover:text-green-400'
       },
@@ -167,8 +167,8 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-3 text-gray-300 font-inter">
                 <PhoneIcon className="w-5 h-5 text-cyan-400" />
-                <a href="tel:+201234567890" className="hover:text-cyan-400 transition-colors">
-                  +20 123 456 7890
+                <a href="tel:+201015362414" className="hover:text-cyan-400 transition-colors">
+                  +20 10 15362414
                 </a>
               </div>
               <div className="flex items-center gap-3 text-gray-300 font-inter">

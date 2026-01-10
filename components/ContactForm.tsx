@@ -75,7 +75,7 @@ export default function ContactForm() {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
-                href="https://wa.me/201234567890"
+                href="https://wa.me/201015362414"
                 target="_blank"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -325,7 +325,7 @@ export default function ContactForm() {
               {t('contactForm.quickContact.desc')}
             </p>
             <motion.a
-              href="https://wa.me/201234567890"
+              href="https://wa.me/201015362414"
               target="_blank"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

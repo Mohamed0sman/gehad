@@ -170,7 +170,7 @@ Today, I know the answer. We were never taught how to design careers. We were ta
         line2: 'and let\'s see how we can achieve your goals together'
       },
       methods: {
-        call: { title: 'Call Me', desc: '+20 123 456 7890' },
+        call: { title: 'Call Me', desc: '+20 10 15362414' },
         whatsapp: { title: 'WhatsApp', desc: 'Instant Reply 24/7' },
         email: { title: 'Email', desc: 'info@gehad-ashraf.com' }
       },
@@ -231,7 +231,7 @@ Today, I know the answer. We were never taught how to design careers. We were ta
       },
       form: {
         name: { label: 'Full name *', placeholder: 'Type your full name' },
-        phone: { label: 'Phone number *', placeholder: '01234567890' },
+        phone: { label: 'Phone number *', placeholder: '01015362414' },
         email: { label: 'Email address *', placeholder: 'example@mail.com' },
         subject: { 
           label: 'Topic *', 
@@ -1272,14 +1272,13 @@ Today, I know the answer. We were never taught how to design careers. We were ta
         line2: 'ولنرى كيف يمكننا تحقيق أهدافك معًا'
       },
       methods: {
-        call: { title: 'اتصل بي', desc: '+20 123 456 7890' },
+        call: { title: 'اتصل بي', desc: '+20 10 15362414' },
         whatsapp: { title: 'واتساب', desc: 'رد فوري 24/7' },
-        email: { title: 'البريد الإلكتروني', desc: 'info@gehad-ashraf.com' }
+        email: { title: 'البريد الإلكتروني', desc: 'gfeps@yahoo.com' }
       },
       locations: {
         title: 'أماكن الجلسات',
         online: { title: 'أونلاين', desc: 'جلسات عبر Zoom أو Google Meet' },
-        inPerson: { title: 'حضوري', desc: 'القاهرة - القاهرة الجديدة' }
       },
       cta: {
         whatsapp: '💬 راسلني على واتساب',
@@ -1333,8 +1332,8 @@ Today, I know the answer. We were never taught how to design careers. We were ta
       },
       form: {
         name: { label: 'الاسم الكامل *', placeholder: 'اكتب اسمك هنا' },
-        phone: { label: 'رقم الهاتف *', placeholder: '01234567890' },
-        email: { label: 'البريد الإلكتروني *', placeholder: 'example@mail.com' },
+        phone: { label: 'رقم الهاتف *', placeholder: '01015362414' },
+        email: { label: 'البريد الإلكتروني *', placeholder: 'gfeps@yahoo.com' },
         subject: { 
           label: 'الموضوع *', 
           placeholder: 'اختر الموضوع',

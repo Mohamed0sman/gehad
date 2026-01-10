@@ -20,17 +20,17 @@ export default function ContactInfo() {
     {
       icon: PhoneIcon,
       title: t('contactInfo.methods.call.title'),
-      info: '+20 123 456 7890',
+      info: '+20 10 15362414',
       description: t('contactInfo.methods.call.desc'),
-      action: 'tel:+201234567890',
+      action: 'tel:+201015362414',
       color: 'from-green-500 to-emerald-500'
     },
     {
       icon: ChatBubbleLeftRightIcon,
       title: t('contactInfo.methods.whatsapp.title'),
-      info: '+20 123 456 7890',
+      info: '+20 10 15362414',
       description: t('contactInfo.methods.whatsapp.desc'),
-      action: 'https://wa.me/201234567890',
+      action: 'https://wa.me/201015362414',
       color: 'from-green-600 to-green-700'
     },
     {
@@ -249,7 +249,7 @@ export default function ContactInfo() {
               {t('contactInfo.emergency.desc')}
             </p>
             <motion.a
-              href={`https://wa.me/201234567890?text=${t('contactInfo.emergency.message')}`}
+              href={`https://wa.me/201015362414?text=${t('contactInfo.emergency.message')}`}
               target="_blank"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

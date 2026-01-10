@@ -128,7 +128,7 @@ export default function BookingForm() {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
-                href="https://wa.me/201234567890"
+                href="https://wa.me/201015362414"
                 target="_blank"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -268,7 +268,7 @@ export default function BookingForm() {
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors"
-                    placeholder="01234567890"
+                    placeholder="01015362414"
                   />
                 </div>
                 

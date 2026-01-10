@@ -123,13 +123,13 @@ export default function ContactHero() {
                 icon: PhoneIcon, 
                 key: 'call',
                 color: "from-green-400 to-emerald-400",
-                action: "tel:+201234567890"
+                action: "tel:+201015362414"
               },
               { 
                 icon: ChatBubbleLeftRightIcon, 
                 key: 'whatsapp',
                 color: "from-green-500 to-green-600", 
-                action: "https://wa.me/201234567890"
+                action: "https://wa.me/201015362414"
               },
               { 
                 icon: EnvelopeIcon, 
@@ -207,7 +207,7 @@ export default function ContactHero() {
             className="flex flex-col sm:flex-row items-center justify-center gap-6"
           >
             <motion.a
-              href="https://wa.me/201234567890"
+              href="https://wa.me/201015362414"
               target="_blank"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
