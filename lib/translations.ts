@@ -172,7 +172,7 @@ Today, I know the answer. We were never taught how to design careers. We were ta
       methods: {
         call: { title: 'Call Me', desc: '+20 10 15362414' },
         whatsapp: { title: 'WhatsApp', desc: 'Instant Reply 24/7' },
-        email: { title: 'Email', desc: 'info@gehad-ashraf.com' }
+        email: { title: 'Email', desc: 'gfeps@yahoo.com' }
       },
       locations: {
         title: 'Session Locations',

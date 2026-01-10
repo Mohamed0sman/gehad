@@ -8,7 +8,7 @@ export const siteConfig = {
   description: 'NCDA Certified Career Development Professional | Evidence-based coaching for professionals, organizations, and educators',
   url: 'https://gehad-ashraf.com',
   author: 'Gehad Ashraf',
-  email: 'gehad@example.com',
+  email: 'gfeps@yahoo.com',
   phone: '+20 1234567890',
   whatsapp: '+201015362414',
   social: {

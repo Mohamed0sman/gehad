@@ -161,8 +161,8 @@ export default function Footer() {
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-gray-300 font-inter">
                 <EnvelopeIcon className="w-5 h-5 text-cyan-400" />
-                <a href="mailto:gehad@example.com" className="hover:text-cyan-400 transition-colors">
-                  gehad@example.com
+                <a href="mailto:gfeps@yahoo.com" className="hover:text-cyan-400 transition-colors">
+                  gfeps@yahoo.com
                 </a>
               </div>
               <div className="flex items-center gap-3 text-gray-300 font-inter">

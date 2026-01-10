@@ -12,7 +12,7 @@
 
 ```typescript
 // البحث عن هذا القسم وتحديث المعلومات
-<a href="mailto:info@gehad-ashraf.com">info@gehad-ashraf.com</a>
+<a href="mailto:gfeps@yahoo.com">gfeps@yahoo.com</a>
 <a href="tel:+966500000000">+966 50 000 0000</a>
 ```
 

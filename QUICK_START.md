@@ -42,7 +42,7 @@ npm run dev
 **الملف**: `components/Footer.tsx`
 ```typescript
 // البحث عن:
-href="mailto:info@gehad-ashraf.com"
+href="mailto:gfeps@yahoo.com"
 href="tel:+966500000000"
 ```
 

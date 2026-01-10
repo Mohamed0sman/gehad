@@ -36,9 +36,9 @@ export default function ContactInfo() {
     {
       icon: EnvelopeIcon,
       title: t('contactInfo.methods.email.title'),
-      info: 'info@gehad-ashraf.com',
+      info: 'gfeps@yahoo.com',
       description: t('contactInfo.methods.email.desc'),
-      action: 'mailto:info@gehad-ashraf.com',
+      action: 'mailto:gfeps@yahoo.com',
       color: 'from-blue-500 to-cyan-500'
     },
     {

@@ -135,7 +135,7 @@ export default function ContactHero() {
                 icon: EnvelopeIcon, 
                 key: 'email',
                 color: "from-[rgb(var(--brand-green-500))] to-[rgb(var(--brand-green-400))]",
-                action: "mailto:info@gehad-ashraf.com"
+                action: "mailto:gfeps@yahoo.com"
               }
             ].map((contact, index) => (
               <motion.a

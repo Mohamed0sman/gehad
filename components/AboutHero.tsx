@@ -132,7 +132,7 @@ export default function AboutHero() {
             </div>
             <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20">
               <TrophyIcon className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
-              <div className="text-3xl font-bold text-white mb-2">500+</div>
+              <div className="text-3xl font-bold text-white mb-2">12500+</div>
               <div className="text-cyan-100 font-inter">{t('People supported', 'عميل تم مساعدته')}</div>
             </div>
             <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20">

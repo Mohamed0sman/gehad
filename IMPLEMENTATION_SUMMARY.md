@@ -176,7 +176,7 @@ Your personal & business website is **100% complete and production-ready**. Here
 **Contact Methods** (`components/ContactInfo.tsx`)
 - 📞 Call: +20 1234567890
 - 💬 WhatsApp: Instant reply 24/7
-- 📧 Email: info@gehad-ashraf.com
+- 📧 Email: gfeps@yahoo.com
 - 📍 Location: Cairo - New Cairo
 
 **Session Locations**

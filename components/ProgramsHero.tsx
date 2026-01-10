@@ -172,7 +172,7 @@ export default function ProgramsHero() {
           >
             {[
               { number: "5", label: t(copy.stats.designedPrograms.en, copy.stats.designedPrograms.ar), icon: "📚" },
-              { number: "500+", label: t(copy.stats.students.en, copy.stats.students.ar), icon: "🎓" },
+              { number: "12500+", label: t(copy.stats.students.en, copy.stats.students.ar), icon: "🎓" },
               { number: "98%", label: t(copy.stats.satisfaction.en, copy.stats.satisfaction.ar), icon: "⭐" },
               { number: "24/7", label: t(copy.stats.support.en, copy.stats.support.ar), icon: "💬" }
             ].map((stat, index) => (

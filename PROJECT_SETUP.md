@@ -367,6 +367,6 @@ npm run dev -- -p 3001
 ## 📞 Contact
 
 For issues or questions:
-- Email: gehad@example.com
+- Email: gfeps@yahoo.com
 - WhatsApp: +20 1234567890
 - Website: https://gehad-ashraf.com
