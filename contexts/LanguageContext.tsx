@@ -1,56 +1,89 @@
-'use client'
+"use client";
 
-import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react'
+import React, {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useEffect,
+} from "react";
 
-type Language = 'en' | 'ar'
+type Language = "en" | "ar";
 
 interface LanguageContextType {
-  language: Language
-  setLanguage: (lang: Language) => void
-  isRTL: boolean
+  language: Language;
+  setLanguage: (lang: Language) => void;
+  isRTL: boolean;
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
+const LanguageContext = createContext<LanguageContextType | undefined>(
+  undefined,
+);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>(() => {
-    try {
-      const saved = (typeof window !== 'undefined') ? (localStorage.getItem('language') as Language | null) : null
-      return saved || 'en'
-    } catch (e) {
-      return 'en'
-    }
-  })
+  // Default to English for the new website
+  const [language, setLanguageState] = useState<Language>("en");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    if (typeof document !== 'undefined') {
-      document.documentElement.lang = language
-      document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr'
+    setMounted(true);
+
+    // Only try to read from localStorage after component mounts (client-side)
+    if (typeof window !== "undefined") {
+      try {
+        const saved = localStorage.getItem("language") as Language | null;
+        if (saved && (saved === "en" || saved === "ar")) {
+          setLanguageState(saved);
+        }
+      } catch (e) {
+        // Fallback to English if localStorage fails
+        setLanguageState("en");
+      }
     }
-    try {
-      localStorage.setItem('language', language)
-    } catch (e) {}
-  }, [language])
+  }, []);
+
+  useEffect(() => {
+    if (mounted && typeof document !== "undefined") {
+      document.documentElement.lang = language;
+      document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+
+      try {
+        localStorage.setItem("language", language);
+      } catch (e) {
+        // Ignore localStorage errors
+      }
+    }
+  }, [language, mounted]);
 
   const setLanguage = (lang: Language) => {
-    setLanguageState(lang)
-  }
+    setLanguageState(lang);
+  };
 
-  const isRTL = language === 'ar'
+  const isRTL = language === "ar";
+
+  // Provide default English context during SSR
+  const contextValue = {
+    language,
+    setLanguage,
+    isRTL,
+  };
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, isRTL }}>
-      <div dir={isRTL ? 'rtl' : 'ltr'}>
-        {children}
-      </div>
+    <LanguageContext.Provider value={contextValue}>
+      <div dir={isRTL ? "rtl" : "ltr"}>{children}</div>
     </LanguageContext.Provider>
-  )
+  );
 }
 
 export function useLanguage() {
-  const context = useContext(LanguageContext)
+  const context = useContext(LanguageContext);
   if (context === undefined) {
-    throw new Error('useLanguage must be used within a LanguageProvider')
+    // For SSR or build time, return default English context
+    return {
+      language: "en" as Language,
+      setLanguage: () => {},
+      isRTL: false,
+    };
   }
-  return context
+  return context;
 }
