@@ -41,7 +41,7 @@ export default function ProfessionalStats() {
   ]
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-white" dir={isRTL ? 'rtl' : 'ltr'}>
+    <section className="py-20 bg-gradient-to-br from-gray-50 to-white section-standard" dir={isRTL ? 'rtl' : 'ltr'}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <motion.h2
@@ -79,7 +79,7 @@ export default function ProfessionalStats() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="text-center"
             >
-              <div className={`w-20 h-20 mx-auto mb-6 bg-gradient-to-r ${stat.color} rounded-2xl flex items-center justify-center shadow-xl`}>
+              <div className={`w-20 h-20 mx-auto mb-6 bg-gradient-to-r ${stat.color} rounded-2xl flex items-center justify-center shadow-xl hover-lift`}>
                 <stat.icon className="w-10 h-10 text-white" />
               </div>
               <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-3 font-playfair">

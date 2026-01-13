@@ -8,7 +8,7 @@ import Footer from '@/components/Footer'
 
 export const metadata = {
   title: 'About Me - Gehad Ashraf | NCDA Certified Career Development Professional',
-  description: 'Learn about Gehad Ashraf, NCDA Certified Career Development Professional specializing in evidence-based coaching and strategic design. 3+ years of experience helping professionals achieve their career goals.',
+  description: 'Learn about Gehad Ashraf, NCDA Certified Career Development Professional specializing in evidence-based coaching and strategic design. 10+ years of experience helping professionals achieve their career goals.',
 }
 
 export default function About() {

@@ -62,7 +62,7 @@ Your personal & business website is **100% complete and production-ready**. Here
 - Badge: "About Me"
 - Title: "Gehad Ashraf"
 - Subtitle: "🎯 NCDA Certified Career Development Professional"
-- Quick stats: 500+ students, 3+ years experience, NCDA certified, 98% satisfaction
+- Quick stats: 12500+ students, 10+ years experience, NCDA certified, 98% satisfaction
 
 **My Story Section** (`components/MyStory.tsx`)
 - Complete narrative (~1,500 words)
@@ -403,7 +403,7 @@ Vercel configuration for automatic deployment
 - 10,400+ training hours delivered
 - 1,000+ career coaching sessions
 - 15+ professional certifications
-- 500+ successful students/clients
+- 12500+ successful students/clients
 - 98% client satisfaction
 
 ### Trust Building

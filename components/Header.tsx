@@ -3,9 +3,9 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { Bars3Icon, XMarkIcon, SparklesIcon } from '@heroicons/react/24/outline'
 import { useLanguage } from '@/contexts/LanguageContext'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
+import Button from '@/components/Button'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -38,12 +38,16 @@ export default function Header() {
       ar: 'جهاد أشرف'
     },
     role: {
-      en: 'Career Development Professional',
-      ar: 'خبير تطوير المسارات المهنية'
+      en: 'Career Development',
+      ar: 'تطوير المسارات المهنية'
     },
     cta: {
       en: 'Book Session',
       ar: 'احجز جلسة'
+    },
+    menu: {
+      open: { en: 'Menu', ar: 'قائمة' },
+      close: { en: 'Close', ar: 'إغلاق' }
     }
   }
 
@@ -55,103 +59,90 @@ export default function Header() {
   }
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      isScrolled 
-        ? 'bg-white/95 backdrop-blur-xl shadow-2xl border-b border-gray-100' 
-        : 'bg-white/90 backdrop-blur-lg shadow-lg border-b border-gray-200/50'
-    }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          
-          {/* Logo */}
-          <Link 
-            href="/" 
-            className="flex items-center space-x-3 group transform transition-all duration-300 hover:scale-105"
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? 'bg-white/98 backdrop-blur-xl shadow-sm border-b border-neutral-200'
+        : 'bg-white/95 backdrop-blur-lg border-b border-transparent'
+      }`}>
+      <div className="container mx-auto">
+        <div className="flex items-center justify-between h-20">
+
+          {/* Typographic Logo */}
+          <Link
+            href="/"
+            className="group flex flex-col justify-center"
           >
-            <div className={`w-12 h-12 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-2xl flex items-center justify-center shadow-xl transition-all duration-300 group-hover:shadow-2xl group-hover:rotate-3`}>
-              <span className="text-white font-bold text-xl">GA</span>
-            </div>
-            <div className="hidden sm:block">
-              <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent transition-all duration-300 font-playfair">
-                {t(copy.name.en, copy.name.ar)}
-              </h1>
-              <p className="text-sm text-gray-600 font-inter">
-                {t(copy.role.en, copy.role.ar)}
-              </p>
-            </div>
+            <h1 className="text-2xl font-bold font-heading text-neutral-900 group-hover:text-primary-600 transition-colors">
+              {t(copy.name.en, copy.name.ar)}
+            </h1>
+            <p className="text-xs tracking-wider uppercase text-neutral-500 font-medium">
+              {t(copy.role.en, copy.role.ar)}
+            </p>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-1">
+          <nav className="hidden lg:flex items-center gap-1">
             {navigation.map((item) => (
-              <button
+              <Link
                 key={item.href}
-                type="button"
-                onClick={() => navigateTo(item.href)}
-                className={`relative px-4 py-3 text-sm font-medium transition-all duration-300 font-inter rounded-xl ${
-                  isActive(item.href)
-                    ? 'text-blue-600 bg-blue-50 shadow-md'
-                    : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50/50'
-                }`}
+                href={item.href}
+                className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${isActive(item.href)
+                    ? 'text-primary-700 bg-primary-50'
+                    : 'text-neutral-600 hover:text-primary-600 hover:bg-neutral-50'
+                  }`}
               >
                 {t(item.en, item.ar)}
-                {isActive(item.href) && (
-                  <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-blue-600 rounded-full"></span>
-                )}
-              </button>
+              </Link>
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden lg:flex items-center gap-3">
+          {/* Actions */}
+          <div className="hidden lg:flex items-center gap-4">
             <LanguageSwitcher variant="light" />
-            <Link
-              href="/booking"
-              className="group relative bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold px-6 py-3 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 font-inter overflow-hidden"
-            >
-              <span className="relative z-10 flex items-center gap-2">
-                <SparklesIcon className="w-5 h-5" />
-                {t(copy.cta.en, copy.cta.ar)}
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-emerald-700 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-            </Link>
+            <Button href="/booking" variant="primary" size="md">
+              {t(copy.cta.en, copy.cta.ar)}
+            </Button>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu toggle */}
           <button
-            className="lg:hidden p-3 rounded-2xl text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300"
+            className="lg:hidden px-4 py-2 text-sm font-medium text-neutral-900 bg-neutral-100 rounded-lg hover:bg-neutral-200 transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? (
-              <XMarkIcon className="w-6 h-6" />
-            ) : (
-              <Bars3Icon className="w-6 h-6" />
-            )}
+            {isMenuOpen
+              ? t(copy.menu.close.en, copy.menu.close.ar)
+              : t(copy.menu.open.en, copy.menu.open.ar)
+            }
           </button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation Dropdown */}
         {isMenuOpen && (
-          <div className="lg:hidden bg-white/95 backdrop-blur-xl border-t border-gray-200 shadow-2xl rounded-b-3xl mx-4 mb-4 overflow-hidden">
-            <div className="px-6 py-6 space-y-2">
+          <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-neutral-200 shadow-xl p-4 animate-fade-in">
+            <div className="flex flex-col space-y-2">
               {navigation.map((item) => (
                 <button
                   key={item.href}
-                  type="button"
                   onClick={() => navigateTo(item.href)}
-                  className={`block w-full px-4 py-3 text-base font-medium rounded-xl transition-all duration-300 font-inter ${
-                    isActive(item.href)
-                      ? 'text-blue-600 bg-blue-50 shadow-md'
-                      : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50/50'
-                  }`}
+                  className={`block w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${isActive(item.href)
+                      ? 'text-primary-700 bg-primary-50'
+                      : 'text-neutral-700 hover:bg-neutral-50'
+                    }`}
                 >
                   {t(item.en, item.ar)}
                 </button>
               ))}
+              <div className="pt-4 border-t border-neutral-100 flex flex-col gap-4">
+                <Button href="/booking" variant="primary" className="w-full">
+                  {t(copy.cta.en, copy.cta.ar)}
+                </Button>
+                <div className="flex justify-center">
+                  <LanguageSwitcher variant="light" />
+                </div>
+              </div>
             </div>
           </div>
         )}
       </div>
     </header>
   )
- }
+}
