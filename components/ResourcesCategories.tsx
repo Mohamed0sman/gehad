@@ -1,25 +1,15 @@
- 'use client'
+'use client'
 
 import { useState } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { motion } from 'framer-motion'
-import { 
-  AcademicCapIcon,
-  BriefcaseIcon,
-  DocumentTextIcon,
-  LightBulbIcon,
-  ChartBarIcon,
-  UserGroupIcon,
-  ClockIcon,
-  SparklesIcon
-} from '@heroicons/react/24/outline'
 
 const categories = [
   {
     id: 'all',
     nameEn: 'All Resources',
     nameAr: 'جميع الموارد',
-    icon: SparklesIcon,
+    iconChar: '✨',
     count: 55,
     color: 'from-slate-700 to-slate-500',
     descriptionEn: 'All available materials',
@@ -29,7 +19,7 @@ const categories = [
     id: 'career-guidance',
     nameEn: 'Career Guidance',
     nameAr: 'التوجيه المهني',
-    icon: AcademicCapIcon,
+    iconChar: '🎓',
     count: 15,
     color: 'from-slate-700 to-slate-500',
     descriptionEn: 'Guides for choosing career paths',
@@ -39,7 +29,7 @@ const categories = [
     id: 'cv-templates',
     nameEn: 'CV Templates',
     nameAr: 'قوالب السيرة الذاتية',
-    icon: DocumentTextIcon,
+    iconChar: '📄',
     count: 8,
     color: 'from-slate-700 to-slate-500',
     descriptionEn: 'Professional editable CV templates',
@@ -49,7 +39,7 @@ const categories = [
     id: 'job-search',
     nameEn: 'Job Search',
     nameAr: 'البحث عن وظيفة',
-    icon: BriefcaseIcon,
+    iconChar: '💼',
     count: 12,
     color: 'from-slate-700 to-slate-500',
     descriptionEn: 'Job search strategies',
@@ -59,7 +49,7 @@ const categories = [
     id: 'personal-development',
     nameEn: 'Personal Development',
     nameAr: 'التطوير الشخصي',
-    icon: LightBulbIcon,
+    iconChar: '💡',
     count: 10,
     color: 'from-slate-700 to-slate-500',
     descriptionEn: 'Self-development worksheets',
@@ -69,7 +59,7 @@ const categories = [
     id: 'skills-assessment',
     nameEn: 'Skills Assessment',
     nameAr: 'تقييم المهارات',
-    icon: ChartBarIcon,
+    iconChar: '📊',
     count: 6,
     color: 'from-slate-700 to-slate-500',
     descriptionEn: 'Ability and skills tests',
@@ -79,7 +69,7 @@ const categories = [
     id: 'soft-skills',
     nameEn: 'Soft Skills',
     nameAr: 'المهارات الناعمة',
-    icon: UserGroupIcon,
+    iconChar: '👥',
     count: 4,
     color: 'from-slate-700 to-slate-500',
     descriptionEn: 'Communication skills development',
@@ -92,7 +82,7 @@ export default function ResourcesCategories() {
   const { language } = useLanguage()
 
   return (
-    <section className="py-16 bg-gradient-to-br from-gray-50 via-white to-emerald-50 relative overflow-hidden">
+    <section className="py-16 bg-gradient-to-br from-neutral-50 via-white to-emerald-50 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-20 -right-20 w-40 h-40 bg-emerald-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
@@ -100,26 +90,26 @@ export default function ResourcesCategories() {
       </div>
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        
+
         {/* Header */}
         <div className="text-center mb-12">
-            <motion.h2
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4 font-heading"
           >
             <span className="gradient-text">{language === 'ar' ? 'اختار نوع المورد' : 'Choose a resource type'}</span>
-            <span className="text-gray-700"> {language === 'ar' ? 'اللي محتاجه 📂' : "you're looking for 📂"}</span>
+            <span className="text-neutral-700"> {language === 'ar' ? 'اللي محتاجه 📂' : "you're looking for 📂"}</span>
           </motion.h2>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="text-lg text-gray-600"
+            className="text-lg text-neutral-600 font-primary"
           >
             {language === 'ar' ? 'موارد متنوعة في كل المجالات اللي تهمك في رحلتك المهنية' : 'A variety of resources across topics that matter for your career journey'}
           </motion.p>
@@ -136,41 +126,40 @@ export default function ResourcesCategories() {
               viewport={{ once: true }}
               whileHover={{ y: -5, scale: 1.02 }}
               onClick={() => setSelectedCategory(category.id)}
-              className={`group cursor-pointer bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-4 border-2 ${
-                selectedCategory === category.id 
-                  ? 'border-emerald-300 bg-emerald-50' 
+              className={`group cursor-pointer bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-4 border-2 ${selectedCategory === category.id
+                  ? 'border-emerald-300 bg-emerald-50'
                   : 'border-transparent hover:border-emerald-200'
-              }`}
+                }`}
             >
               {/* Icon and count */}
               <div className="text-center mb-3">
-                <div className={`w-12 h-12 mx-auto mb-3 bg-gradient-to-r ${category.color} rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow`}>
-                  <category.icon className="w-6 h-6 text-white" />
+                <div className={`w-12 h-12 mx-auto mb-3 bg-gradient-to-r ${category.color} rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow text-2xl`}>
+                  {category.iconChar}
                 </div>
-                
-                <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${category.color} text-white`}>
+
+                <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${category.color} text-white font-primary`}>
                   {category.count} {language === 'ar' ? 'مورد' : 'items'}
                 </span>
               </div>
-              
+
               {/* Category info */}
-              <h3 className="text-sm font-bold text-gray-900 mb-1 group-hover:text-emerald-600 transition-colors text-center">
+              <h3 className="text-sm font-bold text-neutral-900 mb-1 group-hover:text-emerald-600 transition-colors text-center font-heading">
                 {language === 'ar' ? (category as any).nameAr : (category as any).nameEn}
               </h3>
-              
-              <p className="text-xs text-gray-600 leading-relaxed text-center">
+
+              <p className="text-xs text-neutral-600 leading-relaxed text-center font-primary">
                 {language === 'ar' ? (category as any).descriptionAr : (category as any).descriptionEn}
               </p>
-              
+
               {/* Selection indicator */}
-                  {selectedCategory === category.id && (
+              {selectedCategory === category.id && (
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   className="mt-3 flex items-center justify-center gap-1 text-emerald-600"
                 >
                   <div className="w-2 h-2 bg-emerald-600 rounded-full"></div>
-                  <span className="text-xs font-semibold">{language === 'ar' ? 'محدد' : 'Selected'}</span>
+                  <span className="text-xs font-semibold font-primary">{language === 'ar' ? 'محدد' : 'Selected'}</span>
                 </motion.div>
               )}
             </motion.div>
@@ -190,19 +179,19 @@ export default function ResourcesCategories() {
               const selected = categories.find(cat => cat.id === selectedCategory)
               return (
                 <>
-                  <div className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-r ${selected?.color} rounded-full flex items-center justify-center shadow-lg`}>
-                    {selected?.icon && <selected.icon className="w-8 h-8 text-white" />}
+                  <div className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-r ${selected?.color} rounded-full flex items-center justify-center shadow-lg text-3xl`}>
+                    {selected?.iconChar}
                   </div>
-                  
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+
+                  <h3 className="text-2xl font-bold text-neutral-900 mb-2 font-heading">
                     {language === 'ar' ? (selected as any)?.nameAr : (selected as any)?.nameEn}
                   </h3>
 
-                  <p className="text-gray-600 mb-4">
+                  <p className="text-neutral-600 mb-4 font-primary">
                     {language === 'ar' ? (selected as any)?.descriptionAr : (selected as any)?.descriptionEn}
                   </p>
 
-                  <div className="flex items-center justify-center gap-4 text-sm text-gray-500">
+                  <div className="flex items-center justify-center gap-4 text-sm text-neutral-500 font-primary">
                     <span>📄 {selected?.count} {language === 'ar' ? 'مورد متاح' : 'items available'}</span>
                     <span>•</span>
                     <span>🆓 {language === 'ar' ? 'مجاني تماماً' : 'Completely free'}</span>
@@ -223,7 +212,7 @@ export default function ResourcesCategories() {
           viewport={{ once: true }}
           className="mt-12 flex flex-wrap justify-center gap-3"
         >
-          <span className="text-gray-600 font-semibold">{language === 'ar' ? 'إجراءات سريعة:' : 'Quick actions:'}</span>
+          <span className="text-neutral-600 font-semibold font-primary">{language === 'ar' ? 'إجراءات سريعة:' : 'Quick actions:'}</span>
           {(language === 'ar'
             ? ['الأحدث', 'الأكثر تحميلاً', 'المواد المميزة', 'للمبتدئين']
             : ['Newest', 'Most Downloaded', 'Featured', 'For Beginners']
@@ -232,7 +221,7 @@ export default function ResourcesCategories() {
               key={action}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-4 py-2 bg-gray-100 hover:bg-emerald-100 text-gray-700 hover:text-emerald-700 rounded-full text-sm font-medium transition-colors"
+              className="px-4 py-2 bg-neutral-100 hover:bg-emerald-100 text-neutral-700 hover:text-emerald-700 rounded-full text-sm font-medium transition-colors font-primary"
             >
               {action}
             </motion.button>

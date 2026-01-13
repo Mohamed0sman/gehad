@@ -5,23 +5,15 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { translations as translationsData } from '@/lib/translations'
-import { 
-  UserGroupIcon, 
-  BuildingOfficeIcon, 
-  GlobeAltIcon, 
-  AcademicCapIcon,
-  ArrowRightIcon
-} from '@heroicons/react/24/outline'
 
 export default function AudienceSection() {
   const { language, isRTL } = useLanguage()
   const translations = translationsData[language] as any
-  
+
   const audienceTypes = [
     {
       key: 'type1',
       title: translations.audience.type1.title,
-      icon: UserGroupIcon,
       emoji: '👥',
       color: 'from-blue-600 to-cyan-600',
       bgColor: 'bg-blue-50',
@@ -33,7 +25,6 @@ export default function AudienceSection() {
     {
       key: 'type2',
       title: translations.audience.type2.title,
-      icon: BuildingOfficeIcon,
       emoji: '🏢',
       color: 'from-green-600 to-emerald-600',
       bgColor: 'bg-green-50',
@@ -46,7 +37,6 @@ export default function AudienceSection() {
     {
       key: 'type3',
       title: translations.audience.type3.title,
-      icon: GlobeAltIcon,
       emoji: '🌍',
       color: 'from-purple-600 to-pink-600',
       bgColor: 'bg-purple-50',
@@ -59,7 +49,6 @@ export default function AudienceSection() {
     {
       key: 'type4',
       title: translations.audience.type4.title,
-      icon: AcademicCapIcon,
       emoji: '🎓',
       color: 'from-orange-600 to-red-600',
       bgColor: 'bg-orange-50',
@@ -71,9 +60,9 @@ export default function AudienceSection() {
   ]
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50" dir={isRTL ? 'rtl' : 'ltr'}>
+    <section className="py-20 bg-gradient-to-br from-neutral-50 to-blue-50" dir={isRTL ? 'rtl' : 'ltr'}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -82,12 +71,12 @@ export default function AudienceSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-playfair">
-            <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+          <h2 className="text-h2 font-bold mb-6 font-heading">
+            <span className="bg-gradient-to-r from-primary-600 to-primary-500 bg-clip-text text-transparent">
               {translations.audience.title}
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-inter">
+          <p className="text-xl text-neutral-600 max-w-3xl mx-auto font-primary">
             {translations.audience.subtitle}
           </p>
         </motion.div>
@@ -105,11 +94,11 @@ export default function AudienceSection() {
             >
               {/* Header */}
               <div className="flex items-center gap-4 mb-6">
-                <div className={`w-16 h-16 bg-gradient-to-r ${audience.color} rounded-2xl flex items-center justify-center text-3xl text-white group-hover:scale-110 transition-transform`}>
+                <div className={`w-16 h-16 bg-gradient-to-r ${audience.color} rounded-2xl flex items-center justify-center text-3xl text-white group-hover:scale-110 transition-transform shadow-lg`}>
                   {audience.emoji}
                 </div>
                 <div>
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-800 font-playfair">
+                  <h3 className="text-xl md:text-2xl font-bold text-neutral-800 font-heading">
                     {audience.title}
                   </h3>
                 </div>
@@ -117,20 +106,20 @@ export default function AudienceSection() {
 
               {/* Profile */}
               <div className="mb-6">
-                <h4 className="text-lg font-semibold text-gray-700 mb-3 font-inter">
+                <h4 className="text-lg font-semibold text-neutral-700 mb-3 font-heading">
                   {translations.audience.labels.profile}
                 </h4>
-                <p className="text-gray-600 leading-relaxed font-inter">
+                <p className="text-neutral-600 leading-relaxed font-primary">
                   {audience.profile}
                 </p>
               </div>
 
               {/* Needs */}
               <div className="mb-6">
-                <h4 className="text-lg font-semibold text-gray-700 mb-3 font-inter">
+                <h4 className="text-lg font-semibold text-neutral-700 mb-3 font-heading">
                   {translations.audience.labels.needs}
                 </h4>
-                <p className="text-gray-600 leading-relaxed font-inter">
+                <p className="text-neutral-600 leading-relaxed font-primary">
                   {audience.needs}
                 </p>
               </div>
@@ -138,10 +127,10 @@ export default function AudienceSection() {
               {/* Service */}
               {audience.service && (
                 <div className="mb-6">
-                  <h4 className="text-lg font-semibold text-gray-700 mb-3 font-inter">
+                  <h4 className="text-lg font-semibold text-neutral-700 mb-3 font-heading">
                     {translations.audience.labels.service}
                   </h4>
-                  <p className="text-gray-600 leading-relaxed font-inter">
+                  <p className="text-neutral-600 leading-relaxed font-primary">
                     {audience.service}
                   </p>
                 </div>
@@ -149,8 +138,8 @@ export default function AudienceSection() {
 
               {/* Core Message (if exists) */}
               {audience.message && (
-                <div className={`bg-gradient-to-r ${audience.color} rounded-2xl p-4 text-white`}>
-                  <p className="font-semibold italic font-inter">
+                <div className={`bg-gradient-to-r ${audience.color} rounded-2xl p-4 text-white shadow-md`}>
+                  <p className="font-semibold italic font-primary text-center">
                     "{audience.message}"
                   </p>
                 </div>
@@ -167,17 +156,17 @@ export default function AudienceSection() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <div className="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-3xl p-8 md:p-12 text-white">
-            <h3 className="text-3xl font-bold mb-4 font-playfair">
+          <div className="bg-gradient-to-r from-primary-600 to-primary-500 rounded-3xl p-8 md:p-12 text-white shadow-xl">
+            <h3 className="text-3xl font-bold mb-4 font-heading">
               {translations.cta.title}
             </h3>
-            <p className="text-xl text-blue-100 mb-6 max-w-3xl mx-auto font-inter">
+            <p className="text-xl text-blue-100 mb-6 max-w-3xl mx-auto font-primary">
               {translations.cta.subtitle}
             </p>
-            <p className="text-lg text-cyan-100 mb-8 max-w-4xl mx-auto leading-relaxed font-inter">
+            <p className="text-lg text-cyan-100 mb-8 max-w-4xl mx-auto leading-relaxed font-primary">
               {translations.cta.description}
             </p>
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-8 max-w-4xl mx-auto font-inter">
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-8 max-w-4xl mx-auto font-primary border border-white/20">
               <p className="text-xl font-semibold text-lime-300 italic">
                 🌟 {translations.cta.quote}
               </p>
@@ -188,11 +177,11 @@ export default function AudienceSection() {
             >
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-3 bg-gradient-to-r from-lime-400 to-green-500 hover:from-lime-500 hover:to-green-600 text-black font-bold px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 font-inter"
+                className="inline-flex items-center gap-3 bg-gradient-to-r from-lime-400 to-green-500 hover:from-lime-500 hover:to-green-600 text-black font-bold px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 font-primary"
               >
                 <span className="text-xl">💬</span>
                 {translations.cta.button}
-                <ArrowRightIcon className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} />
+                <span className={`text-xl ${isRTL ? 'rotate-180' : ''}`}>→</span>
               </Link>
             </motion.div>
           </div>

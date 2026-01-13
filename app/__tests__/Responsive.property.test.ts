@@ -7,7 +7,7 @@ import path from 'path';
 describe('Property 7: Responsive Adaptation', () => {
 
     it('should verify global CSS contains mobile optimizations', () => {
-        const globalsPath = path.join(process.cwd(), 'app/globals.css');
+        const globalsPath = path.join(process.cwd(), 'app/design-system.css');
         const content = fs.readFileSync(globalsPath, 'utf8');
 
         // Check for mobile media query

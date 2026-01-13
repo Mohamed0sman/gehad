@@ -1,15 +1,7 @@
- 'use client'
+'use client'
 
 import { motion } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { 
-  DocumentArrowDownIcon,
-  EyeIcon,
-  HeartIcon,
-  StarIcon,
-  ClockIcon,
-  CheckCircleIcon
-} from '@heroicons/react/24/outline'
 
 const resources = [
   {
@@ -28,7 +20,7 @@ const resources = [
     featured: true,
     free: true,
     color: 'from-slate-700 to-slate-500',
-    icon: '🎓'
+    iconChar: '🎓'
   },
   {
     id: 2,
@@ -46,7 +38,7 @@ const resources = [
     featured: true,
     free: true,
     color: 'from-slate-700 to-slate-500',
-    icon: '📄'
+    iconChar: '📄'
   },
   {
     id: 3,
@@ -64,7 +56,7 @@ const resources = [
     featured: false,
     free: true,
     color: 'from-slate-700 to-slate-500',
-    icon: '🎯'
+    iconChar: '🎯'
   },
   {
     id: 4,
@@ -82,7 +74,7 @@ const resources = [
     featured: false,
     free: true,
     color: 'from-slate-700 to-slate-500',
-    icon: '💼'
+    iconChar: '💼'
   },
   {
     id: 5,
@@ -101,7 +93,7 @@ const resources = [
     featured: true,
     free: true,
     color: 'from-slate-700 to-slate-500',
-    icon: '📊'
+    iconChar: '📊'
   },
   {
     id: 6,
@@ -119,7 +111,7 @@ const resources = [
     featured: false,
     free: true,
     color: 'from-slate-700 to-slate-500',
-    icon: '📈'
+    iconChar: '📈'
   },
   {
     id: 7,
@@ -137,7 +129,7 @@ const resources = [
     featured: false,
     free: true,
     color: 'from-slate-700 to-slate-500',
-    icon: '🗣️'
+    iconChar: '🗣️'
   },
   {
     id: 8,
@@ -155,7 +147,7 @@ const resources = [
     featured: false,
     free: true,
     color: 'from-slate-700 to-slate-500',
-    icon: '⏰'
+    iconChar: '⏰'
   },
   {
     id: 9,
@@ -173,7 +165,7 @@ const resources = [
     featured: false,
     free: true,
     color: 'from-slate-700 to-slate-500',
-    icon: '🤝'
+    iconChar: '🤝'
   }
 ]
 
@@ -183,7 +175,7 @@ export default function ResourcesGrid() {
   const regularResources = resources.filter(resource => !resource.featured)
 
   return (
-    <section className="py-24 bg-gradient-to-br from-white via-emerald-50 to-teal-50 relative overflow-hidden">
+    <section className="py-24 bg-gradient-to-br from-neutral-50 via-emerald-50 to-teal-50 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 right-20 w-64 h-64 bg-emerald-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
@@ -191,7 +183,7 @@ export default function ResourcesGrid() {
       </div>
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        
+
         {/* Featured Resources */}
         <div className="mb-20">
           <motion.div
@@ -202,14 +194,14 @@ export default function ResourcesGrid() {
             className="text-center mb-12"
           >
             <div className="flex items-center justify-center gap-2 mb-4">
-              <StarIcon className="w-8 h-8 text-yellow-500" />
-              <span className="text-emerald-600 font-semibold text-lg">Featured Resources</span>
-              <StarIcon className="w-8 h-8 text-yellow-500" />
+              <span className="text-3xl text-yellow-500">⭐</span>
+              <span className="text-emerald-600 font-semibold text-lg font-heading">Featured Resources</span>
+              <span className="text-3xl text-yellow-500">⭐</span>
             </div>
 
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              <span className="gradient-text">Most Downloaded</span>
-              <span className="text-gray-700"> This Month 🔥</span>
+            <h2 className="text-h2 font-bold text-neutral-900 mb-4 font-heading">
+              <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">Most Downloaded</span>
+              <span className="text-neutral-700"> This Month 🔥</span>
             </h2>
           </motion.div>
 
@@ -225,68 +217,68 @@ export default function ResourcesGrid() {
               >
                 {/* Featured badge */}
                 <div className="absolute top-4 right-4 z-10">
-                  <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1">
+                  <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1 font-primary">
                     ⭐ Featured
                   </span>
                 </div>
 
                 {/* Free badge */}
                 <div className="absolute top-4 left-4 z-10">
-                  <span className="bg-gradient-to-r from-green-400 to-emerald-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                  <span className="bg-gradient-to-r from-green-400 to-emerald-500 text-white px-3 py-1 rounded-full text-sm font-bold font-primary">
                     🆓 Free
                   </span>
                 </div>
 
                 {/* Header with icon */}
                 <div className={`relative h-32 bg-gradient-to-br ${resource.color} flex items-center justify-center`}>
-                  <div className="text-6xl">{resource.icon}</div>
+                  <div className="text-6xl">{resource.iconChar}</div>
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors"></div>
                 </div>
 
                 <div className="p-8">
                   {/* Category and meta */}
                   <div className="flex items-center justify-between mb-4">
-                    <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm font-semibold">
+                    <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm font-semibold font-primary">
                       {language === 'ar' ? (resource.categoryAr ?? resource.category) : (resource.categoryEn ?? resource.category)}
                     </span>
-                    <div className="flex items-center gap-4 text-sm text-gray-500">
+                    <div className="flex items-center gap-4 text-sm text-neutral-500 font-primary">
                       <div className="flex items-center gap-1">
-                        <EyeIcon className="w-4 h-4" />
+                        <span className="text-lg">👁️</span>
                         <span>{resource.downloads.toLocaleString()}</span>
                       </div>
                       <div className="flex items-center gap-1">
-                        <StarIcon className="w-4 h-4 text-yellow-400 fill-current" />
+                        <span className="text-lg text-yellow-400">⭐</span>
                         <span>{resource.rating}</span>
                       </div>
                     </div>
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-emerald-600 transition-colors">
+                  <h3 className="text-xl font-bold text-neutral-900 mb-3 group-hover:text-emerald-600 transition-colors font-heading">
                     {language === 'ar' ? (resource.titleAr ?? resource.titleEn ?? resource.title) : (resource.titleEn ?? resource.title)}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-gray-600 mb-6 leading-relaxed">
+                  <p className="text-neutral-600 mb-6 leading-relaxed font-primary">
                     {language === 'ar' ? (resource.descriptionAr ?? resource.descriptionEn ?? resource.description) : (resource.descriptionEn ?? resource.description)}
                   </p>
 
                   {/* Resource details */}
-                  <div className="grid grid-cols-2 gap-4 mb-6 text-sm text-gray-600">
+                  <div className="grid grid-cols-2 gap-4 mb-6 text-sm text-neutral-600 font-primary">
                     <div className="flex items-center gap-2">
-                      <DocumentArrowDownIcon className="w-4 h-4 text-emerald-500" />
+                      <span className="text-emerald-500">⬇️</span>
                       <span>{language === 'ar' ? (resource.typeAr ?? resource.type) : (resource.typeEn ?? resource.type)}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <ClockIcon className="w-4 h-4 text-blue-500" />
+                      <span className="text-blue-500">⏱️</span>
                       <span>{resource.pages} {language === 'ar' ? 'صفحات' : 'pages'}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <CheckCircleIcon className="w-4 h-4 text-green-500" />
+                      <span className="text-green-500">✅</span>
                       <span>{resource.size}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <HeartIcon className="w-4 h-4 text-red-500" />
+                      <span className="text-red-500">❤️</span>
                       <span>{language === 'ar' ? 'جودة عالية' : 'High quality'}</span>
                     </div>
                   </div>
@@ -295,9 +287,9 @@ export default function ResourcesGrid() {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`w-full bg-gradient-to-r ${resource.color} text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2`}
+                    className={`w-full bg-gradient-to-r ${resource.color} text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 font-heading`}
                   >
-                    <DocumentArrowDownIcon className="w-5 h-5" />
+                    <span className="text-xl">📥</span>
                     <span>{language === 'ar' ? 'تحميل مجاني الآن' : 'Download Free Now'}</span>
                   </motion.button>
                 </div>
@@ -315,10 +307,10 @@ export default function ResourcesGrid() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-h2 font-bold text-neutral-900 mb-4 font-heading">
               <span className="gradient-text">All Resources</span> 📚
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-neutral-600 font-primary">
               Explore more useful resources across different topics
             </p>
           </motion.div>
@@ -335,9 +327,9 @@ export default function ResourcesGrid() {
               >
                 {/* Header */}
                 <div className={`relative h-24 bg-gradient-to-br ${resource.color} flex items-center justify-center`}>
-                  <div className="text-3xl">{resource.icon}</div>
+                  <div className="text-3xl">{resource.iconChar}</div>
                   <div className="absolute top-2 right-2">
-                    <span className="bg-white/20 text-white px-2 py-1 rounded-lg text-xs font-semibold">
+                    <span className="bg-white/20 text-white px-2 py-1 rounded-lg text-xs font-semibold font-primary">
                       {language === 'ar' ? '🆓 مجاني' : '🆓 Free'}
                     </span>
                   </div>
@@ -345,34 +337,34 @@ export default function ResourcesGrid() {
 
                 <div className="p-6">
                   {/* Category */}
-                  <span className="bg-gray-100 text-gray-700 px-2 py-1 rounded-lg text-xs font-semibold mb-3 inline-block">
+                  <span className="bg-neutral-100 text-neutral-700 px-2 py-1 rounded-lg text-xs font-semibold mb-3 inline-block font-primary">
                     {resource.category}
                   </span>
 
                   {/* Title */}
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors line-clamp-2">
+                  <h3 className="text-lg font-bold text-neutral-900 mb-2 group-hover:text-emerald-600 transition-colors line-clamp-2 font-heading">
                     {language === 'ar' ? (resource.titleAr ?? resource.titleEn ?? resource.title) : (resource.titleEn ?? resource.title)}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-3">
+                  <p className="text-neutral-600 mb-4 text-sm leading-relaxed line-clamp-3 font-primary">
                     {language === 'ar' ? (resource.descriptionAr ?? resource.descriptionEn ?? resource.description) : (resource.descriptionEn ?? resource.description)}
                   </p>
 
                   {/* Meta info */}
-                  <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
+                  <div className="flex items-center justify-between text-xs text-neutral-500 mb-4 font-primary">
                     <div className="flex items-center gap-3">
-                    <div className="flex items-center gap-1">
-                        <DocumentArrowDownIcon className="w-3 h-3" />
+                      <div className="flex items-center gap-1">
+                        <span className="text-xs">⬇️</span>
                         <span>{language === 'ar' ? (resource.typeAr ?? resource.type) : (resource.typeEn ?? resource.type)}</span>
                       </div>
                       <div className="flex items-center gap-1">
-                        <EyeIcon className="w-3 h-3" />
+                        <span className="text-xs">👁️</span>
                         <span>{resource.downloads.toLocaleString()}</span>
                       </div>
                     </div>
                     <div className="flex items-center gap-1">
-                      <StarIcon className="w-3 h-3 text-yellow-400 fill-current" />
+                      <span className="text-xs text-yellow-400">⭐</span>
                       <span>{resource.rating}</span>
                     </div>
                   </div>
@@ -381,9 +373,9 @@ export default function ResourcesGrid() {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`w-full bg-gradient-to-r ${resource.color} text-white py-2 rounded-lg font-semibold text-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2`}
+                    className={`w-full bg-gradient-to-r ${resource.color} text-white py-2 rounded-lg font-semibold text-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 font-heading`}
                   >
-                    <DocumentArrowDownIcon className="w-4 h-4" />
+                    <span className="text-lg">📥</span>
                     <span>{language === 'ar' ? 'تحميل الآن' : 'Download Now'}</span>
                   </motion.button>
                 </div>
@@ -400,30 +392,30 @@ export default function ResourcesGrid() {
           viewport={{ once: true }}
           className="mt-20"
         >
-            <div className="bg-gradient-to-r from-emerald-600 to-teal-600 rounded-3xl p-8 lg:p-12 text-white text-center">
-              <div className="text-4xl mb-4">📧</div>
-              <h3 className="text-3xl font-bold mb-4">
-                {language === 'ar' ? 'هل تريد تحديثات عن الموارد الجديدة؟' : 'Want updates on new resources?'}
-              </h3>
-              <p className="text-xl mb-8 text-white/90">
-                {language === 'ar' ? 'اشترك في النشرة البريدية ليصلك جديد الموارد' : 'Subscribe to our newsletter and get new resources delivered to your inbox'}
-              </p>
+          <div className="bg-gradient-to-r from-emerald-600 to-teal-600 rounded-3xl p-8 lg:p-12 text-white text-center">
+            <div className="text-4xl mb-4">📧</div>
+            <h3 className="text-3xl font-bold mb-4 font-heading">
+              {language === 'ar' ? 'هل تريد تحديثات عن الموارد الجديدة؟' : 'Want updates on new resources?'}
+            </h3>
+            <p className="text-xl mb-8 text-white/90 font-primary">
+              {language === 'ar' ? 'اشترك في النشرة البريدية ليصلك جديد الموارد' : 'Subscribe to our newsletter and get new resources delivered to your inbox'}
+            </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                <input
-                  type="email"
-                  placeholder={language === 'ar' ? 'أدخل بريدك الإلكتروني' : 'Enter your email'}
-                  className="flex-1 px-4 py-3 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
-                />
-                <button className="bg-white text-emerald-600 px-6 py-3 rounded-xl font-bold hover:bg-gray-100 transition-colors">
-                  {language === 'ar' ? 'اشترك الآن 🚀' : 'Subscribe Now 🚀'}
-                </button>
-              </div>
-
-              <p className="text-sm text-white/80 mt-4">
-                {language === 'ar' ? 'مجاني تماما • بدون رسائل مزعجة • إلغاء الاشتراك في أي وقت' : 'Completely free • No spam • Unsubscribe anytime'}
-              </p>
+            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder={language === 'ar' ? 'أدخل بريدك الإلكتروني' : 'Enter your email'}
+                className="flex-1 px-4 py-3 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-white font-primary"
+              />
+              <button className="bg-white text-emerald-600 px-6 py-3 rounded-xl font-bold hover:bg-neutral-100 transition-colors font-heading">
+                {language === 'ar' ? 'اشترك الآن 🚀' : 'Subscribe Now 🚀'}
+              </button>
             </div>
+
+            <p className="text-sm text-white/80 mt-4 font-primary">
+              {language === 'ar' ? 'مجاني تماما • بدون رسائل مزعجة • إلغاء الاشتراك في أي وقت' : 'Completely free • No spam • Unsubscribe anytime'}
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>

@@ -3,23 +3,13 @@
 import { useState } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { motion } from 'framer-motion'
-import { 
-  AcademicCapIcon,
-  BriefcaseIcon,
-  LightBulbIcon,
-  HeartIcon,
-  RocketLaunchIcon,
-  UserGroupIcon,
-  ClockIcon,
-  TrophyIcon
-} from '@heroicons/react/24/outline'
 
 const categories = [
   {
     id: 'all',
     nameEn: 'All articles',
     nameAr: 'جميع المقالات',
-    icon: TrophyIcon,
+    iconChar: '🏆',
     count: 48,
     color: 'from-purple-500 to-pink-500',
     descriptionEn: 'All available content',
@@ -29,7 +19,7 @@ const categories = [
     id: 'career-guidance',
     nameEn: 'Career guidance',
     nameAr: 'التوجيه المهني',
-    icon: AcademicCapIcon,
+    iconChar: '🎓',
     count: 12,
     color: 'from-blue-500 to-cyan-500',
     descriptionEn: 'Choosing the right career direction',
@@ -39,7 +29,7 @@ const categories = [
     id: 'job-search',
     nameEn: 'Job search',
     nameAr: 'البحث عن وظيفة',
-    icon: BriefcaseIcon,
+    iconChar: '💼',
     count: 8,
     color: 'from-green-500 to-emerald-500',
     descriptionEn: 'Practical tips to land a job',
@@ -49,7 +39,7 @@ const categories = [
     id: 'personal-development',
     nameEn: 'Personal development',
     nameAr: 'التطوير الشخصي',
-    icon: LightBulbIcon,
+    iconChar: '💡',
     count: 10,
     color: 'from-yellow-500 to-orange-500',
     descriptionEn: 'Building skills and mindset',
@@ -59,7 +49,7 @@ const categories = [
     id: 'mental-health',
     nameEn: 'Mental wellbeing',
     nameAr: 'الصحة النفسية',
-    icon: HeartIcon,
+    iconChar: '❤️',
     count: 6,
     color: 'from-pink-500 to-rose-500',
     descriptionEn: 'Emotional and mental support',
@@ -69,7 +59,7 @@ const categories = [
     id: 'entrepreneurship',
     nameEn: 'Entrepreneurship',
     nameAr: 'ريادة الأعمال',
-    icon: RocketLaunchIcon,
+    iconChar: '🚀',
     count: 5,
     color: 'from-indigo-500 to-purple-500',
     descriptionEn: 'Building and launching projects',
@@ -79,7 +69,7 @@ const categories = [
     id: 'soft-skills',
     nameEn: 'Soft skills',
     nameAr: 'المهارات الناعمة',
-    icon: UserGroupIcon,
+    iconChar: '👥',
     count: 4,
     color: 'from-teal-500 to-cyan-500',
     descriptionEn: 'Communication and leadership',
@@ -89,7 +79,7 @@ const categories = [
     id: 'time-management',
     nameEn: 'Time management',
     nameAr: 'إدارة الوقت',
-    icon: ClockIcon,
+    iconChar: '⏰',
     count: 3,
     color: 'from-violet-500 to-purple-500',
     descriptionEn: 'Priorities and scheduling',
@@ -104,17 +94,11 @@ export default function BlogCategories() {
 
   return (
     <section
-      className="py-16 bg-gradient-to-br from-gray-50 via-white to-purple-50 relative overflow-hidden"
+      className="py-16 bg-neutral-50 relative overflow-hidden"
       dir={isRTL ? 'rtl' : 'ltr'}
     >
-      {/* Background decorations */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-20 -right-20 w-40 h-40 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
-        <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse delay-1000"></div>
-      </div>
-
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        
+
         {/* Header */}
         <div className="text-center mb-12">
           <motion.h2
@@ -122,18 +106,18 @@ export default function BlogCategories() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            className="text-h2 font-bold text-neutral-900 mb-4 font-heading"
           >
-            <span className="gradient-text">{t('Choose a topic', 'اختار الموضوع')}</span>
-            <span className="text-gray-700"> {t('that matters to you 📂', 'اللي يهمك 📂')}</span>
+            <span className="text-primary-600">{t('Choose a topic', 'اختار الموضوع')}</span>
+            <span className="text-neutral-700"> {t('that matters to you 📂', 'اللي يهمك 📂')}</span>
           </motion.h2>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="text-lg text-gray-600"
+            className="text-body-lg text-neutral-600 font-primary"
           >
             {t(
               'Explore articles across topics that support your career journey and personal growth.',
@@ -153,108 +137,47 @@ export default function BlogCategories() {
               viewport={{ once: true }}
               whileHover={{ y: -5, scale: 1.02 }}
               onClick={() => setSelectedCategory(category.id)}
-              className={`group cursor-pointer bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border-2 ${
-                selectedCategory === category.id 
-                  ? 'border-purple-300 bg-purple-50' 
-                  : 'border-transparent hover:border-purple-200'
-              }`}
+              className={`group cursor-pointer bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 p-6 border-2 ${selectedCategory === category.id
+                  ? 'border-primary-300 bg-primary-50'
+                  : 'border-transparent hover:border-primary-200'
+                }`}
             >
               {/* Icon and count */}
               <div className="flex items-center justify-between mb-4">
-                <div className={`w-12 h-12 bg-gradient-to-r ${category.color} rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow`}>
-                  <category.icon className="w-6 h-6 text-white" />
+                <div className={`w-12 h-12 bg-gradient-to-r ${category.color} rounded-xl flex items-center justify-center shadow-md text-2xl`}>
+                  {category.iconChar}
                 </div>
-                
+
                 <div className={isRTL ? 'text-left' : 'text-right'}>
                   <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gradient-to-r ${category.color} text-white`}>
                     {category.count} {t('articles', 'مقال')}
                   </span>
                 </div>
               </div>
-              
+
               {/* Category info */}
-              <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors">
+              <h3 className="text-lg font-bold text-neutral-900 mb-2 group-hover:text-primary-600 transition-colors font-heading">
                 {language === 'ar' ? category.nameAr : category.nameEn}
               </h3>
-              
-              <p className="text-sm text-gray-600 leading-relaxed">
+
+              <p className="text-sm text-neutral-600 leading-relaxed font-primary">
                 {language === 'ar' ? category.descriptionAr : category.descriptionEn}
               </p>
-              
+
               {/* Selection indicator */}
               {selectedCategory === category.id && (
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  className="mt-4 flex items-center gap-2 text-purple-600"
+                  className="mt-4 flex items-center gap-2 text-primary-600"
                 >
-                  <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
+                  <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
                   <span className="text-sm font-semibold">{t('Selected', 'محدد')}</span>
                 </motion.div>
               )}
             </motion.div>
           ))}
         </div>
-
-        {/* Selected category info */}
-        <motion.div
-          key={selectedCategory}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mt-12 text-center"
-        >
-          <div className="bg-white rounded-2xl shadow-lg p-8 max-w-2xl mx-auto border border-purple-100">
-            {(() => {
-              const selected = categories.find(cat => cat.id === selectedCategory)
-              return (
-                <>
-                  <div className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-r ${selected?.color} rounded-full flex items-center justify-center shadow-lg`}>
-                    {selected?.icon && <selected.icon className="w-8 h-8 text-white" />}
-                  </div>
-                  
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    {language === 'ar' ? selected?.nameAr : selected?.nameEn}
-                  </h3>
-                  
-                  <p className="text-gray-600 mb-4">
-                    {language === 'ar' ? selected?.descriptionAr : selected?.descriptionEn}
-                  </p>
-                  
-                  <div className="flex items-center justify-center gap-4 text-sm text-gray-500">
-                    <span>📝 {selected?.count} {t('articles available', 'مقال متاح')}</span>
-                    <span>•</span>
-                    <span>🔄 {t('Updated weekly', 'يتم التحديث أسبوعياً')}</span>
-                  </div>
-                </>
-              )
-            })()}
-          </div>
-        </motion.div>
-
-        {/* Quick filters */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="mt-12 flex flex-wrap justify-center gap-3"
-        >
-          <span className="text-gray-600 font-semibold">{t('Quick filters:', 'فلترة سريعة:')}</span>
-          {(language === 'ar'
-            ? ['الأحدث', 'الأكثر قراءة', 'المقالات المميزة', 'للمبتدئين']
-            : ['Newest', 'Most read', 'Featured', 'For beginners']
-          ).map((filter, index) => (
-            <motion.button
-              key={filter}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-4 py-2 bg-gray-100 hover:bg-purple-100 text-gray-700 hover:text-purple-700 rounded-full text-sm font-medium transition-colors"
-            >
-              {filter}
-            </motion.button>
-          ))}
-        </motion.div>
       </div>
     </section>
   )

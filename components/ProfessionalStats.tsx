@@ -2,12 +2,6 @@
 
 import { motion } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { 
-  ClockIcon,
-  UserGroupIcon,
-  BriefcaseIcon,
-  GlobeAltIcon
-} from '@heroicons/react/24/outline'
 
 export default function ProfessionalStats() {
   const { language, isRTL } = useLanguage()
@@ -15,25 +9,25 @@ export default function ProfessionalStats() {
 
   const stats = [
     {
-      icon: BriefcaseIcon,
+      iconChar: '💼',
       value: '10+',
       label: t('years of professional practice', 'سنوات من الممارسة المهنية'),
       color: 'from-blue-500 to-cyan-500'
     },
     {
-      icon: ClockIcon,
+      iconChar: '⏱️',
       value: '10,400+',
       label: t('training hours delivered', 'ساعة تدريب مقدمة'),
       color: 'from-green-500 to-emerald-500'
     },
     {
-      icon: UserGroupIcon,
+      iconChar: '👥',
       value: '1,000+',
       label: t('career coaching sessions', 'جلسات استشارات مهنية'),
       color: 'from-purple-500 to-pink-500'
     },
     {
-      icon: GlobeAltIcon,
+      iconChar: '🌍',
       value: t('Thousands', 'آلاف'),
       label: t('trained across MENA', 'مدربين في منطقة الشرق الأوسط وشمال أفريقيا'),
       color: 'from-orange-500 to-red-500'
@@ -41,7 +35,7 @@ export default function ProfessionalStats() {
   ]
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-white section-standard" dir={isRTL ? 'rtl' : 'ltr'}>
+    <section className="py-20 bg-gradient-to-br from-neutral-50 to-white section-standard" dir={isRTL ? 'rtl' : 'ltr'}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <motion.h2
@@ -49,9 +43,9 @@ export default function ProfessionalStats() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-playfair"
+            className="text-h2 font-bold text-neutral-900 mb-6 font-heading"
           >
-            <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary-600 to-primary-500 bg-clip-text text-transparent">
               {t('Professional Impact', 'التأثير المهني')}
             </span>
           </motion.h2>
@@ -60,7 +54,7 @@ export default function ProfessionalStats() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-xl text-gray-600 max-w-3xl mx-auto font-inter"
+            className="text-xl text-neutral-600 max-w-3xl mx-auto font-primary"
           >
             {t(
               'Numbers that reflect years of dedication to empowering careers and transforming lives.',
@@ -79,13 +73,13 @@ export default function ProfessionalStats() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="text-center"
             >
-              <div className={`w-20 h-20 mx-auto mb-6 bg-gradient-to-r ${stat.color} rounded-2xl flex items-center justify-center shadow-xl hover-lift`}>
-                <stat.icon className="w-10 h-10 text-white" />
+              <div className={`w-20 h-20 mx-auto mb-6 bg-gradient-to-r ${stat.color} rounded-2xl flex items-center justify-center shadow-xl hover-lift text-4xl text-white`}>
+                {stat.iconChar}
               </div>
-              <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-3 font-playfair">
+              <div className="text-4xl md:text-5xl font-bold text-neutral-900 mb-3 font-heading">
                 {stat.value}
               </div>
-              <div className="text-lg text-gray-600 font-inter leading-relaxed">
+              <div className="text-lg text-neutral-600 font-primary leading-relaxed">
                 {stat.label}
               </div>
             </motion.div>

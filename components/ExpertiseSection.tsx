@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { SparklesIcon } from '@heroicons/react/24/outline'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { translations as translationsData } from '@/lib/translations'
 
@@ -14,7 +13,7 @@ export default function ExpertiseSection() {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -24,15 +23,15 @@ export default function ExpertiseSection() {
           className="text-center mb-16"
         >
           <div className="flex items-center justify-center gap-3 mb-6">
-            <SparklesIcon className="w-8 h-8 text-blue-600" />
-            <h2 className="text-4xl md:text-5xl font-bold font-playfair">
+            <span className="text-3xl">✨</span>
+            <h2 className="text-4xl md:text-5xl font-bold font-heading">
               <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
                 {translations.keywords.title}
               </span>
             </h2>
-            <SparklesIcon className="w-8 h-8 text-cyan-600" />
+            <span className="text-3xl">✨</span>
           </div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-inter">
+          <p className="text-xl text-neutral-600 max-w-3xl mx-auto font-primary">
             {translations.keywords.description}
           </p>
         </motion.div>
@@ -53,7 +52,7 @@ export default function ExpertiseSection() {
               transition={{ duration: 0.5, delay: index * 0.05 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.1, y: -5 }}
-              className="px-4 py-2 bg-gradient-to-r from-blue-50 to-cyan-50 border border-blue-200 rounded-full text-gray-700 font-medium hover:from-blue-100 hover:to-cyan-100 hover:border-blue-300 transition-all duration-300 cursor-default font-inter"
+              className="px-4 py-2 bg-gradient-to-r from-blue-50 to-cyan-50 border border-blue-200 rounded-full text-neutral-700 font-medium hover:from-blue-100 hover:to-cyan-100 hover:border-blue-300 transition-all duration-300 cursor-default font-primary shadow-sm"
             >
               {keyword}
             </motion.div>

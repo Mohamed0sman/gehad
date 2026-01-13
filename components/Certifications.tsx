@@ -2,13 +2,6 @@
 
 import { motion } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { 
-  AcademicCapIcon,
-  TrophyIcon,
-  StarIcon,
-  SparklesIcon,
-  ShieldCheckIcon
-} from '@heroicons/react/24/outline'
 
 const certifications = [
   {
@@ -23,7 +16,6 @@ const certifications = [
     levelEn: 'Internationally certified',
     levelAr: 'معتمد دولياً',
     color: 'from-purple-500 to-indigo-500',
-    icon: AcademicCapIcon,
     emoji: '🏆',
     credentialId: 'NCDA-2021-EG-1247',
     gradeEn: undefined,
@@ -45,7 +37,6 @@ const certifications = [
     levelEn: "Master's",
     levelAr: 'ماجستير',
     color: 'from-blue-500 to-cyan-500',
-    icon: AcademicCapIcon,
     emoji: '🎓',
     gradeEn: 'Excellent with honors',
     gradeAr: 'امتياز مع مرتبة الشرف',
@@ -67,7 +58,6 @@ const certifications = [
     levelEn: 'Advanced diploma',
     levelAr: 'دبلوم متقدم',
     color: 'from-green-500 to-emerald-500',
-    icon: TrophyIcon,
     emoji: '📜',
     durationEn: '6 months',
     durationAr: '6 أشهر',
@@ -89,7 +79,6 @@ const certifications = [
     levelEn: 'Specialization certificate',
     levelAr: 'شهادة تخصص',
     color: 'from-pink-500 to-rose-500',
-    icon: ShieldCheckIcon,
     emoji: '💙',
     hoursEn: '120 training hours',
     hoursAr: '120 ساعة تدريبية',
@@ -150,7 +139,7 @@ export default function Certifications() {
       </div>
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        
+
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center mb-16">
           <motion.div
@@ -160,31 +149,31 @@ export default function Certifications() {
             viewport={{ once: true }}
             className="flex items-center justify-center gap-2 mb-4"
           >
-            <TrophyIcon className="w-8 h-8 text-yellow-500" />
-            <span className="text-purple-600 font-semibold text-lg">
+            <span className="text-3xl text-yellow-500">🏆</span>
+            <span className="text-purple-600 font-semibold text-lg font-heading">
               {t('Certifications & achievements', 'الشهادات والإنجازات')}
             </span>
-            <TrophyIcon className="w-8 h-8 text-yellow-500" />
+            <span className="text-3xl text-yellow-500">🏆</span>
           </motion.div>
-          
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+            className="text-h2 font-bold text-neutral-900 mb-6 font-heading"
           >
             <span className="gradient-text">{t('My academic', 'مؤهلاتي العلمية')}</span>
             <br />
-            <span className="text-gray-700">{t('and professional background 🎓', 'والمهنية 🎓')}</span>
+            <span className="text-neutral-700">{t('and professional background 🎓', 'والمهنية 🎓')}</span>
           </motion.h2>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-xl leading-8 text-gray-600"
+            className="text-xl leading-8 text-neutral-600 font-primary"
           >
             {t(
               'International and local certifications that reflect professional standards and continuous learning.',
@@ -218,60 +207,60 @@ export default function Certifications() {
                       transition={{ duration: 0.6 }}
                       className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center"
                     >
-                      <cert.icon className="w-8 h-8 text-white" />
+                      <span className="text-3xl text-white">{cert.emoji}</span>
                     </motion.div>
                     <div>
                       <div className="text-3xl mb-1">{cert.emoji}</div>
-                      <div className="text-white/90 font-semibold">
+                      <div className="text-white/90 font-semibold font-heading">
                         {language === 'ar' ? cert.levelAr : cert.levelEn}
                       </div>
                     </div>
                   </div>
                   <div className={isRTL ? 'text-left' : 'text-right'}>
-                    <div className="text-white font-bold text-lg">{cert.year}</div>
+                    <div className="text-white font-bold text-lg font-heading">{cert.year}</div>
                   </div>
                 </div>
               </div>
 
               {/* Content */}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                <h3 className="text-xl font-bold text-neutral-900 mb-2 font-heading">
                   {language === 'ar' ? cert.titleAr : cert.titleEn}
                 </h3>
-                <p className="text-purple-600 font-semibold mb-4">
+                <p className="text-purple-600 font-semibold mb-4 font-primary">
                   {language === 'ar' ? cert.organizationAr : cert.organizationEn}
                 </p>
-                <p className="text-gray-700 leading-relaxed mb-4">
+                <p className="text-neutral-700 leading-relaxed mb-4 font-primary">
                   {language === 'ar' ? cert.descriptionAr : cert.descriptionEn}
                 </p>
-                
+
                 {/* Additional info */}
-                <div className="space-y-2">
+                <div className="space-y-2 font-primary">
                   {cert.credentialId && (
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
-                      <SparklesIcon className="w-4 h-4 text-purple-500" />
+                    <div className="flex items-center gap-2 text-sm text-neutral-600">
+                      <span className="text-purple-500">✨</span>
                       <span>{t('Credential ID:', 'رقم الاعتماد:')} {cert.credentialId}</span>
                     </div>
                   )}
                   {cert.gradeEn && (
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
-                      <StarIcon className="w-4 h-4 text-yellow-500" />
+                    <div className="flex items-center gap-2 text-sm text-neutral-600">
+                      <span className="text-yellow-500">⭐</span>
                       <span>
                         {t('Grade:', 'التقدير:')} {language === 'ar' ? cert.gradeAr : cert.gradeEn}
                       </span>
                     </div>
                   )}
                   {cert.durationEn && (
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
-                      <SparklesIcon className="w-4 h-4 text-blue-500" />
+                    <div className="flex items-center gap-2 text-sm text-neutral-600">
+                      <span className="text-blue-500">⏱️</span>
                       <span>
                         {t('Duration:', 'المدة:')} {language === 'ar' ? cert.durationAr : cert.durationEn}
                       </span>
                     </div>
                   )}
                   {cert.hoursEn && (
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
-                      <SparklesIcon className="w-4 h-4 text-green-500" />
+                    <div className="flex items-center gap-2 text-sm text-neutral-600">
+                      <span className="text-green-500">⏳</span>
                       <span>
                         {t('Hours:', 'عدد الساعات:')} {language === 'ar' ? cert.hoursAr : cert.hoursEn}
                       </span>
@@ -292,10 +281,10 @@ export default function Certifications() {
           className="bg-white rounded-3xl shadow-xl p-8 lg:p-12"
         >
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-gray-900 mb-4">
+            <h3 className="text-3xl font-bold text-neutral-900 mb-4 font-heading">
               <span className="gradient-text">{t('Awards & recognition', 'الجوائز والتقديرات')}</span> 🏆
             </h3>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-neutral-600 font-primary">
               {t(
                 'Recognitions received from different institutions for my contributions and impact.',
                 'تقديرات حصلت عليها من مؤسسات مختلفة لجهودي في المجال'
@@ -316,16 +305,16 @@ export default function Certifications() {
               >
                 {/* Background decoration */}
                 <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full -translate-y-10 translate-x-10"></div>
-                
+
                 <div className="relative">
                   <div className="text-4xl mb-4">{achievement.emoji}</div>
-                  <h4 className="font-bold text-lg mb-2">
+                  <h4 className="font-bold text-lg mb-2 font-heading">
                     {language === 'ar' ? achievement.titleAr : achievement.titleEn}
                   </h4>
-                  <p className="text-white/90 text-sm mb-3">
+                  <p className="text-white/90 text-sm mb-3 font-heading">
                     {language === 'ar' ? achievement.organizationAr : achievement.organizationEn}
                   </p>
-                  <p className="text-white/80 text-sm leading-relaxed">
+                  <p className="text-white/80 text-sm leading-relaxed font-primary">
                     {language === 'ar' ? achievement.descriptionAr : achievement.descriptionEn}
                   </p>
                 </div>
@@ -342,10 +331,10 @@ export default function Certifications() {
             className="mt-12 text-center"
           >
             <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-8">
-              <h4 className="text-2xl font-bold text-gray-900 mb-4">
+              <h4 className="text-2xl font-bold text-neutral-900 mb-4 font-heading">
                 {t('🎯 Ready to help you reach your goals', '🎯 جاهزة أساعدك تحقق أهدافك')}
               </h4>
-              <p className="text-gray-600 mb-6">
+              <p className="text-neutral-600 mb-6 font-primary">
                 {t(
                   'With this background and experience, I can support you in finding clarity and taking confident next steps.',
                   'مع كل الخبرة والشهادات دي، أنا واثقة إني هقدر أساعدك تلاقي طريقك الصح'
@@ -354,7 +343,7 @@ export default function Certifications() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-lg transition-all duration-300"
+                className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-lg transition-all duration-300 font-heading"
               >
                 {t('Start your journey now 🚀', 'ابدأ رحلتك معايا الآن 🚀')}
               </motion.button>

@@ -3,14 +3,6 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { 
-  CalendarDaysIcon,
-  ClockIcon,
-  EyeIcon,
-  HeartIcon,
-  ArrowRightIcon,
-  SparklesIcon
-} from '@heroicons/react/24/outline'
 
 const blogPosts = [
   {
@@ -32,7 +24,8 @@ const blogPosts = [
     tagsEn: ['University', 'Major', 'Future'],
     tagsAr: ['جامعة', 'تخصص', 'مستقبل'],
     authorEn: 'Gehad Ashraf',
-    authorAr: 'جهاد أشرف'
+    authorAr: 'جهاد أشرف',
+    iconChar: '🎓'
   },
   {
     id: 2,
@@ -53,7 +46,8 @@ const blogPosts = [
     tagsEn: ['CV', 'Job', 'Skills'],
     tagsAr: ['سيرة ذاتية', 'وظيفة', 'مهارات'],
     authorEn: 'Gehad Ashraf',
-    authorAr: 'جهاد أشرف'
+    authorAr: 'جهاد أشرف',
+    iconChar: '📝'
   },
   {
     id: 3,
@@ -74,7 +68,8 @@ const blogPosts = [
     tagsEn: ['Confidence', 'Growth', 'Mindset'],
     tagsAr: ['ثقة', 'تطوير', 'شخصية'],
     authorEn: 'Gehad Ashraf',
-    authorAr: 'جهاد أشرف'
+    authorAr: 'جهاد أشرف',
+    iconChar: '✨'
   },
   {
     id: 4,
@@ -95,7 +90,8 @@ const blogPosts = [
     tagsEn: ['Time', 'Study', 'Productivity'],
     tagsAr: ['وقت', 'دراسة', 'تنظيم'],
     authorEn: 'Gehad Ashraf',
-    authorAr: 'جهاد أشرف'
+    authorAr: 'جهاد أشرف',
+    iconChar: '⏳'
   },
   {
     id: 5,
@@ -116,7 +112,8 @@ const blogPosts = [
     tagsEn: ['Exams', 'Anxiety', 'Wellbeing'],
     tagsAr: ['امتحانات', 'قلق', 'صحة نفسية'],
     authorEn: 'Gehad Ashraf',
-    authorAr: 'جهاد أشرف'
+    authorAr: 'جهاد أشرف',
+    iconChar: '🧘'
   },
   {
     id: 6,
@@ -137,7 +134,8 @@ const blogPosts = [
     tagsEn: ['Project', 'Business', 'Startup'],
     tagsAr: ['مشروع', 'ريادة', 'أعمال'],
     authorEn: 'Gehad Ashraf',
-    authorAr: 'جهاد أشرف'
+    authorAr: 'جهاد أشرف',
+    iconChar: '🚀'
   }
 ]
 
@@ -149,18 +147,9 @@ export default function BlogPosts() {
   const regularPosts = blogPosts.filter(post => !post.featured)
 
   return (
-    <section
-      className="py-24 bg-gradient-to-br from-white via-blue-50 to-cyan-50 relative overflow-hidden"
-      dir={isRTL ? 'rtl' : 'ltr'}
-    >
-      {/* Background decorations */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 right-20 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-20 left-20 w-64 h-64 bg-cyan-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
-      </div>
-
+    <section className="py-24 bg-white relative overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        
+
         {/* Featured Posts Section */}
         <div className="mb-20">
           <motion.div
@@ -171,14 +160,12 @@ export default function BlogPosts() {
             className="text-center mb-12"
           >
             <div className="flex items-center justify-center gap-2 mb-4">
-              <SparklesIcon className="w-8 h-8 text-lime-500" />
-              <span className="text-blue-600 font-semibold text-lg">{t('Featured articles', 'المقالات المميزة')}</span>
-              <SparklesIcon className="w-8 h-8 text-lime-500" />
+              <span className="text-primary-600 font-semibold text-lg">{t('Featured articles', 'المقالات المميزة')}</span>
             </div>
-            
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              <span className="gradient-text">{t('Most read', 'الأكثر قراءة')}</span>
-              <span className="text-gray-700">{t(' this month 🔥', ' هذا الشهر 🔥')}</span>
+
+            <h2 className="text-h2 font-bold text-neutral-900 mb-4 font-heading">
+              <span className="text-neutral-900">{t('Most read', 'الأكثر قراءة')}</span>
+              <span className="text-neutral-500">{t(' this month 🔥', ' هذا الشهر 🔥')}</span>
             </h2>
           </motion.div>
 
@@ -190,71 +177,54 @@ export default function BlogPosts() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="group bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden hover-lift"
+                className="group bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-neutral-100"
               >
                 {/* Featured badge */}
                 <div className={`absolute top-4 ${isRTL ? 'left-4' : 'right-4'} z-10`}>
-                  <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1">
+                  <span className="bg-primary-600 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1 shadow-lg">
                     {t('⭐ Featured', '⭐ مميز')}
                   </span>
                 </div>
 
                 {/* Image placeholder */}
-                <div className="relative h-48 bg-gradient-to-br from-blue-400 to-cyan-400 flex items-center justify-center">
-                  <div className="text-6xl">📚</div>
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors"></div>
+                <div className="relative h-48 bg-neutral-100 flex items-center justify-center">
+                  <div className="text-6xl">{post.iconChar}</div>
                 </div>
 
                 <div className="p-8">
                   {/* Category and meta */}
                   <div className="flex items-center justify-between mb-4">
-                    <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-semibold">
+                    <span className="bg-primary-50 text-primary-700 px-3 py-1 rounded-full text-sm font-semibold">
                       {language === 'ar' ? post.categoryAr : post.categoryEn}
                     </span>
-                    <div className="flex items-center gap-4 text-sm text-gray-500">
+                    <div className="flex items-center gap-4 text-sm text-neutral-500">
                       <div className="flex items-center gap-1">
-                        <EyeIcon className="w-4 h-4" />
-                        <span>{post.views.toLocaleString()}</span>
+                        <span>👁️ {post.views.toLocaleString()}</span>
                       </div>
                       <div className="flex items-center gap-1">
-                        <HeartIcon className="w-4 h-4" />
-                        <span>{post.likes}</span>
+                        <span>❤️ {post.likes}</span>
                       </div>
                     </div>
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
+                  <h3 className="text-xl font-bold text-neutral-900 mb-3 group-hover:text-primary-600 transition-colors line-clamp-2 font-heading">
                     {language === 'ar' ? post.titleAr : post.titleEn}
                   </h3>
 
                   {/* Excerpt */}
-                  <p className="text-gray-600 mb-4 leading-relaxed line-clamp-3">
+                  <p className="text-neutral-600 mb-4 leading-relaxed line-clamp-3 font-primary">
                     {language === 'ar' ? post.excerptAr : post.excerptEn}
                   </p>
 
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {(language === 'ar' ? post.tagsAr : post.tagsEn).map((tag, tagIndex) => (
-                      <span
-                        key={tagIndex}
-                        className="bg-gray-100 text-gray-600 px-2 py-1 rounded-lg text-xs"
-                      >
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
-
                   {/* Meta info */}
-                  <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                  <div className="flex items-center justify-between text-sm text-neutral-500 mb-4">
                     <div className="flex items-center gap-4">
                       <div className="flex items-center gap-1">
-                        <CalendarDaysIcon className="w-4 h-4" />
-                        <span>{language === 'ar' ? post.publishDateAr : post.publishDateEn}</span>
+                        <span>📅 {language === 'ar' ? post.publishDateAr : post.publishDateEn}</span>
                       </div>
                       <div className="flex items-center gap-1">
-                        <ClockIcon className="w-4 h-4" />
-                        <span>{language === 'ar' ? post.readTimeAr : post.readTimeEn}</span>
+                        <span>🕒 {language === 'ar' ? post.readTimeAr : post.readTimeEn}</span>
                       </div>
                     </div>
                   </div>
@@ -262,10 +232,10 @@ export default function BlogPosts() {
                   {/* Read more button */}
                   <Link
                     href={`/blog/${post.id}`}
-                    className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-700 transition-colors group"
+                    className="inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-700 transition-colors group font-primary"
                   >
                     <span>{t('Read full article', 'اقرأ المقال كاملاً')}</span>
-                    <ArrowRightIcon className={`w-4 h-4 transition-transform ${isRTL ? 'group-hover:-translate-x-1 rotate-180' : 'group-hover:translate-x-1'}`} />
+                    <span className={`transition-transform ${isRTL ? 'group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`}>{isRTL ? '←' : '→'}</span>
                   </Link>
                 </div>
               </motion.article>
@@ -282,10 +252,10 @@ export default function BlogPosts() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              <span className="gradient-text">{t('All articles', 'جميع المقالات')}</span> 📖
+            <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4 font-heading">
+              <span className="text-primary-600">{t('All articles', 'جميع المقالات')}</span> 📖
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-neutral-600 font-primary">
               {t('Explore more helpful articles across different topics.', 'اكتشف المزيد من المقالات المفيدة في مختلف المجالات')}
             </p>
           </motion.div>
@@ -298,39 +268,37 @@ export default function BlogPosts() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden hover-lift"
+                className="group bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-neutral-100"
               >
                 {/* Image placeholder */}
-                <div className="relative h-40 bg-gradient-to-br from-cyan-400 to-sky-400 flex items-center justify-center">
-                  <div className="text-4xl">📝</div>
+                <div className="relative h-40 bg-neutral-50 flex items-center justify-center">
+                  <div className="text-4xl">{post.iconChar}</div>
                 </div>
 
                 <div className="p-6">
                   {/* Category */}
-                  <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded-lg text-xs font-semibold mb-3 inline-block">
+                  <span className="bg-primary-50 text-primary-700 px-2 py-1 rounded-lg text-xs font-semibold mb-3 inline-block">
                     {language === 'ar' ? post.categoryAr : post.categoryEn}
                   </span>
 
                   {/* Title */}
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+                  <h3 className="text-lg font-bold text-neutral-900 mb-2 group-hover:text-primary-600 transition-colors line-clamp-2 font-heading">
                     {language === 'ar' ? post.titleAr : post.titleEn}
                   </h3>
 
                   {/* Excerpt */}
-                  <p className="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-3">
+                  <p className="text-neutral-600 mb-4 text-sm leading-relaxed line-clamp-3 font-primary">
                     {language === 'ar' ? post.excerptAr : post.excerptEn}
                   </p>
 
                   {/* Meta info */}
-                  <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
+                  <div className="flex items-center justify-between text-xs text-neutral-500 mb-4">
                     <div className="flex items-center gap-3">
                       <div className="flex items-center gap-1">
-                        <ClockIcon className="w-3 h-3" />
-                        <span>{language === 'ar' ? post.readTimeAr : post.readTimeEn}</span>
+                        <span>🕒 {language === 'ar' ? post.readTimeAr : post.readTimeEn}</span>
                       </div>
                       <div className="flex items-center gap-1">
-                        <EyeIcon className="w-3 h-3" />
-                        <span>{post.views}</span>
+                        <span>👁️ {post.views}</span>
                       </div>
                     </div>
                     <span>{language === 'ar' ? post.publishDateAr : post.publishDateEn}</span>
@@ -339,63 +307,16 @@ export default function BlogPosts() {
                   {/* Read more */}
                   <Link
                     href={`/blog/${post.id}`}
-                    className="text-blue-600 font-semibold text-sm hover:text-blue-700 transition-colors flex items-center gap-1 group"
+                    className="text-primary-600 font-semibold text-sm hover:text-primary-700 transition-colors flex items-center gap-1 group font-primary"
                   >
                     <span>{t('Read more', 'اقرأ أكثر')}</span>
-                    <ArrowRightIcon className={`w-3 h-3 transition-transform ${isRTL ? 'group-hover:-translate-x-1 rotate-180' : 'group-hover:translate-x-1'}`} />
+                    <span className={`transition-transform ${isRTL ? 'group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`}>{isRTL ? '←' : '→'}</span>
                   </Link>
                 </div>
               </motion.article>
             ))}
           </div>
         </div>
-
-        {/* Load more button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="text-center mt-12"
-        >
-          <button className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-lg transition-all duration-300 hover:scale-105">
-            {t('📚 View more articles', '📚 شوف مقالات أكتر')}
-          </button>
-        </motion.div>
-
-        {/* Newsletter signup */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          viewport={{ once: true }}
-          className="mt-20"
-        >
-          <div className="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-3xl p-8 lg:p-12 text-white text-center">
-            <div className="text-4xl mb-4">📧</div>
-            <h3 className="text-3xl font-bold mb-4">
-              {t('Subscribe to the newsletter', 'اشترك في النشرة الإخبارية')}
-            </h3>
-            <p className="text-xl mb-8 text-white/90">
-              {t('Get the latest articles and career tips straight to your email.', 'وصلك أحدث المقالات والنصائح المهنية مباشرة على إيميلك')}
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder={t('Enter your email', 'أدخل إيميلك هنا')}
-                className="flex-1 px-4 py-3 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
-              />
-              <button className="bg-white text-blue-600 px-6 py-3 rounded-xl font-bold hover:bg-gray-100 transition-colors">
-                {t('Subscribe now 🚀', 'اشترك الآن 🚀')}
-              </button>
-            </div>
-            
-            <p className="text-sm text-white/80 mt-4">
-              {t('Free • No spam • Unsubscribe anytime', 'مجاني تماماً • بدون إزعاج • يمكنك إلغاء الاشتراك في أي وقت')}
-            </p>
-          </div>
-        </motion.div>
       </div>
     </section>
   )

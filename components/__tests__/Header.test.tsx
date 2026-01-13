@@ -42,7 +42,15 @@ describe('Header Component', () => {
         const menuButton = screen.getByText('Menu')
 
         // Initial state: menu content should not be visible
-        expect(screen.queryByText('Book Session')).not.toBeVisible()
+        // Initial state: mobile menu container should not be in the document
+        // We can check if the mobile-only container is present.
+        // Or check if the mobile menu items are visible.
+        // Since mobile menu is conditionally rendered, we can check for its absence.
+        const mobileMenu = screen.queryByRole('region', { name: /mobile menu/i }) // Helper if we added role, but we didn't.
+
+        // Instead, let's look for a known mobile item uniquely.
+        // Actually, we can just check that the close button is not there (which is "Close")
+        expect(screen.queryByText('Close')).not.toBeInTheDocument()
         // Note: 'Book Session' is also in desktop, so this check might be ambiguous if we don't scope.
         // Better to check for a mobile-specific element or just the toggle text changing.
 

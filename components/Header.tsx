@@ -12,7 +12,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
   const router = useRouter()
-  const { language } = useLanguage()
+  const { language, isRTL } = useLanguage()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,10 +59,12 @@ export default function Header() {
   }
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+    <header
+      dir={isRTL ? 'rtl' : 'ltr'}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
         ? 'bg-white/98 backdrop-blur-xl shadow-sm border-b border-neutral-200'
         : 'bg-white/95 backdrop-blur-lg border-b border-transparent'
-      }`}>
+        }`}>
       <div className="container mx-auto">
         <div className="flex items-center justify-between h-20">
 
@@ -86,8 +88,8 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${isActive(item.href)
-                    ? 'text-primary-700 bg-primary-50'
-                    : 'text-neutral-600 hover:text-primary-600 hover:bg-neutral-50'
+                  ? 'text-primary-700 bg-primary-50'
+                  : 'text-neutral-600 hover:text-primary-600 hover:bg-neutral-50'
                   }`}
               >
                 {t(item.en, item.ar)}
@@ -124,8 +126,8 @@ export default function Header() {
                   key={item.href}
                   onClick={() => navigateTo(item.href)}
                   className={`block w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${isActive(item.href)
-                      ? 'text-primary-700 bg-primary-50'
-                      : 'text-neutral-700 hover:bg-neutral-50'
+                    ? 'text-primary-700 bg-primary-50'
+                    : 'text-neutral-700 hover:bg-neutral-50'
                     }`}
                 >
                   {t(item.en, item.ar)}

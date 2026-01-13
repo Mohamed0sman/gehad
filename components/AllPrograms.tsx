@@ -2,21 +2,9 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { 
-  AcademicCapIcon, 
-  UserGroupIcon, 
-  LightBulbIcon, 
-  ChartBarIcon,
-  TrophyIcon,
-  HeartIcon,
-  ClockIcon,
-  CheckCircleIcon,
-  StarIcon,
-  FireIcon,
-  SparklesIcon
-} from '@heroicons/react/24/outline'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { translations as translationsData } from '@/lib/translations'
+import Button from '@/components/Button'
 
 export default function AllPrograms() {
   const { language } = useLanguage()
@@ -39,7 +27,8 @@ export default function AllPrograms() {
         language === 'ar' ? 'متابعة شهرية' : 'Monthly follow-up',
         language === 'ar' ? 'دعم مستمر' : 'Ongoing support'
       ],
-     
+      iconChar: '🎯',
+      color: 'bg-primary-50 text-primary-600 border-primary-100',
     },
     {
       id: 'skill-development',
@@ -55,7 +44,8 @@ export default function AllPrograms() {
         language === 'ar' ? 'حل المشكلات' : 'Problem solving',
         language === 'ar' ? 'شهادة معتمدة' : 'Certified certificate'
       ],
-     
+      iconChar: '🛠️',
+      color: 'bg-emerald-50 text-emerald-600 border-emerald-100',
     },
     {
       id: 'academic-guidance',
@@ -71,7 +61,8 @@ export default function AllPrograms() {
         language === 'ar' ? 'خطة دراسية' : 'Study plan',
         language === 'ar' ? 'مقابلة توجيه' : 'Guidance interview'
       ],
-      
+      iconChar: '🎓',
+      color: 'bg-cyan-50 text-cyan-600 border-cyan-100',
     },
     {
       id: 'corporate-programs',
@@ -87,7 +78,8 @@ export default function AllPrograms() {
         language === 'ar' ? 'تدريب عملي' : 'Hands-on training',
         language === 'ar' ? 'تقرير نتائج' : 'Results report'
       ],
-     
+      iconChar: '🏢',
+      color: 'bg-blue-50 text-blue-600 border-blue-100',
     },
     {
       id: 'leadership-program',
@@ -103,7 +95,8 @@ export default function AllPrograms() {
         language === 'ar' ? 'إدارة التغيير' : 'Change management',
         language === 'ar' ? 'مشروع تخرج' : 'Graduation project'
       ],
-    
+      iconChar: '⚖️',
+      color: 'bg-indigo-50 text-indigo-600 border-indigo-100',
     },
     {
       id: 'freelancing-career',
@@ -119,56 +112,15 @@ export default function AllPrograms() {
         language === 'ar' ? 'تسعير الخدمات' : 'Service pricing',
         language === 'ar' ? 'إدارة المشاريع' : 'Project management'
       ],
-     
+      iconChar: '💻',
+      color: 'bg-rose-50 text-rose-600 border-rose-100',
     }
-  ].map((program, index) => {
-    // Static configuration mapping based on index or ID
-    const icons = [AcademicCapIcon, UserGroupIcon, LightBulbIcon, ChartBarIcon, TrophyIcon, HeartIcon]
-    const colors = [
-      'from-purple-500 to-pink-500',
-      'from-blue-500 to-cyan-500',
-      'from-yellow-500 to-orange-500',
-      'from-green-500 to-emerald-500',
-      'from-indigo-500 to-purple-500',
-      'from-pink-500 to-rose-500'
-    ]
-    const bgColors = [
-      'bg-gradient-to-br from-purple-50 to-pink-50',
-      'bg-gradient-to-br from-blue-50 to-cyan-50',
-      'bg-gradient-to-br from-yellow-50 to-orange-50',
-      'bg-gradient-to-br from-green-50 to-emerald-50',
-      'bg-gradient-to-br from-indigo-50 to-purple-50',
-      'bg-gradient-to-br from-pink-50 to-rose-50'
-    ]
-    const emojis = ['🎯', '👥', '💡', '📚', '🚀', '💪']
-    // Simulated ratings and counts (could be dynamic later)
-    const ratings = [4.9, 4.8, 4.9, 4.7, 4.8, 4.6]
-    const studentsCounts = [150, 200, 80, 120, 60, 90]
-    const popularStatus = [true, false, false, false, true, false]
-
-    return {
-      ...program,
-      icon: icons[index] || AcademicCapIcon,
-      color: colors[index] || 'from-gray-500 to-gray-600',
-      bgColor: bgColors[index] || 'bg-gray-50',
-      emoji: emojis[index] || '✨',
-      rating: ratings[index] || 5.0,
-      studentsCount: studentsCounts[index] || 0,
-      popular: popularStatus[index] || false
-    }
-  })
+  ]
 
   return (
-    <section className="py-24 sm:py-32 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
-      {/* Background decorations */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-[rgba(var(--brand-blue-500),0.1)] rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-[rgba(var(--brand-green-400),0.1)] rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[rgba(var(--brand-cyan-500,6,182,212),0.05)] rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-2000"></div>
-      </div>
-
+    <section className="py-24 sm:py-32 bg-neutral-50 relative overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        
+
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center mb-16">
           <motion.div
@@ -178,28 +130,25 @@ export default function AllPrograms() {
             viewport={{ once: true }}
             className="flex items-center justify-center gap-2 mb-4"
           >
-            <SparklesIcon className="w-8 h-8 text-purple-500" />
-            <span className="text-purple-600 font-semibold text-lg">{translations.allPrograms.title}</span>
-            <SparklesIcon className="w-8 h-8 text-purple-500" />
+            <span className="text-primary-600 font-semibold text-lg">{translations.allPrograms.title}</span>
           </motion.div>
-          
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+            className="text-h2 font-bold text-neutral-900 mb-6 font-heading"
           >
-            <span className="brand-gradient-text">{translations.allPrograms.subtitle}</span>
-            <br />
+            {translations.allPrograms.subtitle}
           </motion.h2>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-xl leading-8 text-gray-600"
+            className="text-body-lg text-neutral-600 font-primary"
           >
             {translations.allPrograms.description}
           </motion.p>
@@ -207,159 +156,61 @@ export default function AllPrograms() {
 
         {/* Programs Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-          {programs.map((program: any, index: number) => (
+          {programs.map((program, index) => (
             <motion.div
               key={program.id}
               initial={{ opacity: 0, y: 30, scale: 0.95 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className={`relative ${program.bgColor} rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group`}
+              className="group relative bg-white rounded-3xl shadow-sm hover:shadow-xl border border-neutral-100 transition-all duration-300 overflow-hidden flex flex-col"
             >
-              {/* Popular badge */}
-              {program.popular && (
-                <div className={`absolute top-4 ${isRTL ? 'left-4' : 'right-4'} z-10`}>
-                  <motion.div
-                    animate={{ rotate: [0, 5, -5, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1"
-                  >
-                    <FireIcon className="w-4 h-4" />
-                    {translations.allPrograms.popular}
-                  </motion.div>
-                </div>
-              )}
-
-              {/* Category badge */}
-              <div className={`absolute top-4 ${isRTL ? 'right-4' : 'left-4'} z-10`}>
-                <span className={`bg-gradient-to-r ${program.color} text-white px-3 py-1 rounded-full text-xs font-semibold`}>
+              {/* Category */}
+              <div className="absolute top-6 right-6 z-10">
+                <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${program.color.replace('bg-', 'bg-opacity-20 ')}`}>
                   {program.category}
                 </span>
               </div>
 
-              {/* Gradient overlay */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${program.color} opacity-5 group-hover:opacity-10 transition-opacity duration-300`}></div>
-              
-              <div className="relative p-6">
+              <div className="p-8 flex flex-col h-full">
                 {/* Header */}
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <motion.div 
-                      className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${program.color} shadow-lg`}
-                      whileHover={{ rotate: 360, scale: 1.1 }}
-                      transition={{ duration: 0.6 }}
-                    >
-                      <program.icon className="h-6 w-6 text-white" />
-                    </motion.div>
-                    <div>
-                      <div className="text-2xl mb-1">{program.emoji}</div>
-                    </div>
-                  </div>
-                  
-                  {/* Rating */}
-                  <div className={`text-${isRTL ? 'left' : 'right'}`}>
-                    <div className="flex items-center gap-1 mb-1 justify-end">
-                      <StarIcon className="w-4 h-4 text-yellow-400 fill-current" />
-                      <span className="text-sm font-semibold text-gray-700">{program.rating}</span>
-                    </div>
-                    <div className="text-xs text-gray-500">{program.studentsCount} {translations.allPrograms.students}</div>
+                <div className="flex items-start justify-between mb-6">
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-3xl ${program.color} bg-opacity-20`}>
+                    {program.iconChar}
                   </div>
                 </div>
 
-                <h3 className="text-lg font-bold text-gray-900 mb-1">{program.title}</h3>
-                <p className="text-sm text-purple-600 font-semibold mb-3">{program.subtitle}</p>
-                
-                <p className="text-gray-700 mb-4 leading-relaxed text-sm">{program.description}</p>
-                
-                {/* Program details */}
-                <div className="grid grid-cols-2 gap-3 mb-4">
-                    <div className="flex items-center gap-2 text-xs text-gray-600">
-                      <ClockIcon className="w-4 h-4 text-purple-500" />
-                      <span>{program.duration}</span>
-                    </div>
-                  <div className="flex items-center gap-2 text-xs text-gray-600">
-                    <AcademicCapIcon className="w-4 h-4 text-blue-500" />
-                    {/* Assuming sessions count is consistent with array index or hardcoded, 
-                        but it was part of static data. 
-                        Let's extract it from duration string if possible or just use static map */}
-                    <span>{program.duration.includes('جلسات') || program.duration.includes('sessions') ? program.duration : ''}</span>
+                <h3 className="text-xl font-bold text-neutral-900 mb-2 font-heading">{program.title}</h3>
+                <p className="text-sm text-primary-600 font-medium mb-4 font-primary">{program.subtitle}</p>
+                <p className="text-body text-neutral-600 mb-6 font-primary line-clamp-3">{program.description}</p>
+
+                {/* Meta */}
+                <div className="grid grid-cols-2 gap-4 mb-6 pt-6 border-t border-neutral-100">
+                  <div className="flex flex-col">
+                    <span className="text-xs text-neutral-400 font-medium uppercase font-primary">{isRTL ? 'المدة' : 'Duration'}</span>
+                    <span className="text-sm font-semibold text-neutral-700 font-primary">{program.duration}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-xs text-gray-600">
-                    <TrophyIcon className="w-4 h-4 text-yellow-500" />
-                    <span>{program.level}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-xs text-gray-600">
-                    <CheckCircleIcon className="w-4 h-4 text-green-500" />
-                    <span>{isRTL ? 'شهادة معتمدة' : 'Accredited certificate'}</span>
+                  <div className="flex flex-col">
+                    <span className="text-xs text-neutral-400 font-medium uppercase font-primary">{isRTL ? 'المستوى' : 'Level'}</span>
+                    <span className="text-sm font-semibold text-neutral-700 font-primary">{program.level}</span>
                   </div>
                 </div>
-                
-                {/* Features - show first 3 */}
-                <ul className="space-y-2 mb-6">
-                  {program.features.slice(0, 3).map((feature: any, idx: number) => (
-                    <motion.li 
-                      key={idx} 
-                      className="flex items-center text-xs text-gray-600"
-                      initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.3 + idx * 0.1 }}
-                      viewport={{ once: true }}
-                    >
-                      <motion.div 
-                        className={`w-1.5 h-1.5 bg-gradient-to-r ${program.color} rounded-full ${isRTL ? 'ml-2' : 'mr-2'}`}
-                        animate={{ scale: [1, 1.2, 1] }}
-                        transition={{ duration: 2, repeat: Infinity, delay: idx * 0.2 }}
-                      />
+
+                {/* Features */}
+                <ul className="mb-8 space-y-2 flex-grow">
+                  {program.features.slice(0, 3).map((feature, idx) => (
+                    <li key={idx} className="flex items-center text-sm text-neutral-600 font-primary">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary-500 mr-2 ml-2"></span>
                       {feature}
-                    </motion.li>
-                  ))}
-                  {program.features.length > 3 && (
-                    <li className="text-xs text-purple-600 font-semibold">
-                      +{program.features.length - 3} {isRTL ? 'مميزات أخرى' : 'more features'}
                     </li>
-                  )}
+                  ))}
                 </ul>
-                
-                {/* Price and CTA */}
-                <div className="flex items-center justify-between">
-                  <div className={`text-${isRTL ? 'right' : 'left'}`}>
-                    <div className="flex items-center gap-3">
-                      <span className="text-sm text-gray-500 font-inter">{translations.allPrograms.currency}</span>
-                      <div className="flex items-baseline gap-3">
-                        <span className="text-3xl font-extrabold text-[rgb(var(--brand-emphasis-rgb))]">{program.price}</span>
-                        {program.originalPrice && (
-                          <span className="text-sm text-gray-500 line-through">{program.originalPrice}</span>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex gap-2">
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Link
-                        href={`/programs/${program.id}`}
-                        className="px-3 py-2 border border-purple-200 text-purple-600 rounded-lg font-semibold hover:bg-purple-50 transition-colors text-xs"
-                      >
-                        {isRTL ? 'التفاصيل' : 'Details'}
-                      </Link>
-                    </motion.div>
-                    
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Link
-                        href="/booking"
-                        className={`px-4 py-2 bg-gradient-to-r ${program.color} text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 text-xs flex items-center gap-1`}>
-                        <HeartIcon className="w-3 h-3" />
-                        {translations.allPrograms.bookNow}
-                      </Link>
-                    </motion.div>
-                  </div>
+
+                {/* Action */}
+                <div className="mt-auto">
+                  <Button href={`/programs/${program.id}`} variant="primary" className="w-full justify-center">
+                    {isRTL ? 'عرض التفاصيل' : 'View Details'}
+                  </Button>
                 </div>
               </div>
             </motion.div>
@@ -367,45 +218,32 @@ export default function AllPrograms() {
         </div>
 
         {/* Bottom CTA */}
-        <motion.div 
-          className="mt-16 text-center"
+        <motion.div
+          className="mt-20 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <div className="bg-white rounded-3xl shadow-xl p-8 max-w-4xl mx-auto">
-            <h3 className="text-3xl font-bold text-gray-900 mb-4">
-              {isRTL ? '🤔 محتار تختار إيه؟' : '🤔 Unsure which program to choose?'}
-            </h3>
-            <p className="text-lg text-gray-600 mb-6">
-              {isRTL ? 'احجز استشارة مجانية معايا وهساعدك تختار البرنامج المناسب ليك' : "Book a free consultation and I'll help you pick the right program."}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                  <Link
-                    href="/contact"
-                    className="brand-cta px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300"
-                  >
-                  {isRTL ? 'استشارة مجانية 💬' : 'Free Consultation 💬'}
-                </Link>
-              </motion.div>
-              
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link
-                  href="https://wa.me/201015362414"
-                  target="_blank"
-                  className="border-2 border-purple-200 text-purple-600 px-8 py-4 rounded-2xl font-semibold hover:bg-purple-50 transition-colors"
-                >
-                  {isRTL ? 'واتساب مباشر 📱' : 'WhatsApp Chat 📱'}
-                </Link>
-              </motion.div>
+          <div className="bg-neutral-900 rounded-3xl p-12 max-w-4xl mx-auto shadow-2xl relative overflow-hidden">
+            {/* Decorative */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-primary-900/50 rounded-bl-full opacity-50"></div>
+
+            <div className="relative z-10">
+              <h3 className="text-3xl font-bold text-white mb-4 font-heading">
+                {isRTL ? '🤔 محتار تختار إيه؟' : '🤔 Unsure which program to choose?'}
+              </h3>
+              <p className="text-lg text-neutral-300 mb-8 font-primary">
+                {isRTL ? 'احجز استشارة مجانية وهساعدك تختار البرنامج المناسب ليك' : "Book a free consultation and I'll help you pick the right program."}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button href="/contact" variant="primary">
+                  {isRTL ? 'استشارة مجانية' : 'Free Consultation'}
+                </Button>
+                <Button href="https://wa.me/201015362414" variant="secondary" className="border-neutral-700 text-neutral-300 hover:bg-neutral-800">
+                  {isRTL ? 'واتساب' : 'WhatsApp'}
+                </Button>
+              </div>
             </div>
           </div>
         </motion.div>

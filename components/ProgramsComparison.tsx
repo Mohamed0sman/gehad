@@ -1,12 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { 
-  CheckIcon,
-  XMarkIcon,
-  SparklesIcon,
-  TrophyIcon
-} from '@heroicons/react/24/outline'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { translations as translationsData } from '@/lib/translations'
 
@@ -56,71 +50,71 @@ export default function ProgramsComparison() {
   const comparisonData: Array<
     { feature: string } & Record<ProgramKey, boolean | string>
   > = [
-    {
-      feature: translations.programsComparison.features.sessions,
-      individual: format(translations.programsComparison.values.sessions, { count: 4 }),
-      group: format(translations.programsComparison.values.sessions, { count: 2 }),
-      comprehensive: format(translations.programsComparison.values.sessions, { count: 8 }),
-      academic: format(translations.programsComparison.values.sessions, { count: 3 })
-    },
-    {
-      feature: translations.programsComparison.features.duration,
-      individual: format(translations.programsComparison.values.weeks, { count: 4 }),
-      group: format(translations.programsComparison.values.hours, { count: 6 }),
-      comprehensive: format(translations.programsComparison.values.weeks, { count: 8 }),
-      academic: format(translations.programsComparison.values.weeks, { count: 3 })
-    },
-    {
-      feature: translations.programsComparison.features.assessment,
-      individual: true,
-      group: false,
-      comprehensive: true,
-      academic: true
-    },
-    {
-      feature: translations.programsComparison.features.plan,
-      individual: true,
-      group: false,
-      comprehensive: true,
-      academic: true
-    },
-    {
-      feature: translations.programsComparison.features.followup,
-      individual: true,
-      group: false,
-      comprehensive: true,
-      academic: true
-    },
-    {
-      feature: translations.programsComparison.features.activities,
-      individual: false,
-      group: true,
-      comprehensive: false,
-      academic: false
-    },
-    {
-      feature: translations.programsComparison.features.certificate,
-      individual: true,
-      group: true,
-      comprehensive: true,
-      academic: true
-    },
-    {
-      feature: translations.programsComparison.features.materials,
-      individual: true,
-      group: true,
-      comprehensive: true,
-      academic: true
-    },
-    {
-      feature: translations.programsComparison.features.support,
-      individual: format(translations.programsComparison.values.month, { count: 1 }),
-      group: format(translations.programsComparison.values.weeks, { count: 2 }),
-      comprehensive: format(translations.programsComparison.values.months, { count: 3 }),
-      academic: format(translations.programsComparison.values.month, { count: 1 })
-    },
-    // Price row intentionally removed (site displays no prices)
-  ]
+      {
+        feature: translations.programsComparison.features.sessions,
+        individual: format(translations.programsComparison.values.sessions, { count: 4 }),
+        group: format(translations.programsComparison.values.sessions, { count: 2 }),
+        comprehensive: format(translations.programsComparison.values.sessions, { count: 8 }),
+        academic: format(translations.programsComparison.values.sessions, { count: 3 })
+      },
+      {
+        feature: translations.programsComparison.features.duration,
+        individual: format(translations.programsComparison.values.weeks, { count: 4 }),
+        group: format(translations.programsComparison.values.hours, { count: 6 }),
+        comprehensive: format(translations.programsComparison.values.weeks, { count: 8 }),
+        academic: format(translations.programsComparison.values.weeks, { count: 3 })
+      },
+      {
+        feature: translations.programsComparison.features.assessment,
+        individual: true,
+        group: false,
+        comprehensive: true,
+        academic: true
+      },
+      {
+        feature: translations.programsComparison.features.plan,
+        individual: true,
+        group: false,
+        comprehensive: true,
+        academic: true
+      },
+      {
+        feature: translations.programsComparison.features.followup,
+        individual: true,
+        group: false,
+        comprehensive: true,
+        academic: true
+      },
+      {
+        feature: translations.programsComparison.features.activities,
+        individual: false,
+        group: true,
+        comprehensive: false,
+        academic: false
+      },
+      {
+        feature: translations.programsComparison.features.certificate,
+        individual: true,
+        group: true,
+        comprehensive: true,
+        academic: true
+      },
+      {
+        feature: translations.programsComparison.features.materials,
+        individual: true,
+        group: true,
+        comprehensive: true,
+        academic: true
+      },
+      {
+        feature: translations.programsComparison.features.support,
+        individual: format(translations.programsComparison.values.month, { count: 1 }),
+        group: format(translations.programsComparison.values.weeks, { count: 2 }),
+        comprehensive: format(translations.programsComparison.values.months, { count: 3 }),
+        academic: format(translations.programsComparison.values.month, { count: 1 })
+      },
+      // Price row intentionally removed (site displays no prices)
+    ]
 
 
   return (
@@ -132,7 +126,7 @@ export default function ProgramsComparison() {
       </div>
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        
+
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center mb-16">
           <motion.div
@@ -142,35 +136,35 @@ export default function ProgramsComparison() {
             viewport={{ once: true }}
             className="flex items-center justify-center gap-2 mb-4"
           >
-            <TrophyIcon className="w-8 h-8 text-lime-500" />
-            <span className="text-blue-600 font-semibold text-lg">
+            <span className="text-3xl">🏆</span>
+            <span className="text-blue-600 font-semibold text-lg font-primary">
               {translations.programsComparison.header.badge}
             </span>
-            <TrophyIcon className="w-8 h-8 text-lime-500" />
+            <span className="text-3xl">🏆</span>
           </motion.div>
-          
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+            className="text-4xl md:text-5xl font-bold text-neutral-900 mb-6 font-heading"
           >
             <span className="gradient-text">
               {translations.programsComparison.header.titleTop}
             </span>
             <br />
-            <span className="text-gray-700">
+            <span className="text-neutral-700">
               {translations.programsComparison.header.titleBottom}
             </span>
           </motion.h2>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-xl leading-8 text-gray-600"
+            className="text-xl leading-8 text-neutral-600 font-primary"
           >
             {translations.programsComparison.header.subtitle}
             <br />
@@ -191,7 +185,7 @@ export default function ProgramsComparison() {
           {/* Table Header */}
           <div className="bg-gradient-to-r from-blue-600 to-cyan-600 p-6">
             <div className="grid grid-cols-5 gap-4">
-              <div className="text-white font-bold text-lg">
+              <div className="text-white font-bold text-lg font-heading">
                 {translations.programsComparison.table.features}
               </div>
               {programs.map((program, index) => (
@@ -215,7 +209,7 @@ export default function ProgramsComparison() {
                     </div>
                   )}
                   <div className="text-3xl mb-2">{program.emoji}</div>
-                  <div className="text-white font-semibold text-sm">{program.name}</div>
+                  <div className="text-white font-semibold text-sm font-heading">{program.name}</div>
                 </motion.div>
               ))}
             </div>
@@ -230,14 +224,13 @@ export default function ProgramsComparison() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: rowIndex * 0.05 }}
                 viewport={{ once: true }}
-                className={`grid grid-cols-5 gap-4 py-4 border-b border-gray-100 last:border-b-0 ${
-                  rowIndex % 2 === 0 ? 'bg-gray-50' : 'bg-white'
-                } rounded-lg mb-2`}
+                className={`grid grid-cols-5 gap-4 py-4 border-b border-gray-100 last:border-b-0 ${rowIndex % 2 === 0 ? 'bg-gray-50' : 'bg-white'
+                  } rounded-lg mb-2`}
               >
-                <div className="font-semibold text-gray-900 flex items-center">
+                <div className="font-semibold text-neutral-900 flex items-center font-primary">
                   {row.feature}
                 </div>
-                
+
                 {programs.map((program) => (
                   <div key={program.key} className="text-center flex items-center justify-center">
                     {typeof row[program.key as keyof typeof row] === 'boolean' ? (
@@ -246,18 +239,18 @@ export default function ProgramsComparison() {
                           whileHover={{ scale: 1.2 }}
                           className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center"
                         >
-                          <CheckIcon className="w-4 h-4 text-white" />
+                          <span className="text-white text-xs">✓</span>
                         </motion.div>
                       ) : (
                         <motion.div
                           whileHover={{ scale: 1.2 }}
                           className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center"
                         >
-                          <XMarkIcon className="w-4 h-4 text-white" />
+                          <span className="text-white text-xs">✕</span>
                         </motion.div>
                       )
                     ) : (
-                      <span className="text-gray-700 font-medium text-sm">
+                      <span className="text-neutral-700 font-medium text-sm font-primary">
                         {row[program.key as keyof typeof row]}
                       </span>
                     )}
@@ -270,10 +263,10 @@ export default function ProgramsComparison() {
           {/* CTA Section */}
           <div className="bg-gradient-to-r from-blue-50 to-cyan-50 p-8">
             <div className="text-center mb-6">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+              <h3 className="text-2xl font-bold text-neutral-900 mb-2 font-heading">
                 🎯 {translations.programsComparison.cta.title}
               </h3>
-              <p className="text-gray-600">
+              <p className="text-neutral-600 font-primary">
                 {translations.programsComparison.cta.description}
               </p>
             </div>
@@ -292,16 +285,16 @@ export default function ProgramsComparison() {
                 >
                   {program.popular && (
                     <div className="absolute top-2 right-2">
-                      <SparklesIcon className="w-5 h-5 text-yellow-300" />
+                      <span className="text-yellow-300">✨</span>
                     </div>
                   )}
-                  
+
                   <div className="text-3xl mb-2">{program.emoji}</div>
-                  <div className="font-bold text-lg mb-3 tracking-tight">{program.name}</div>
-                  
+                  <div className="font-bold text-lg mb-3 tracking-tight font-heading">{program.name}</div>
+
                   <motion.button
                     whileHover={{ scale: 1.03 }}
-                    className="w-full bg-white text-blue-700 py-2 rounded-lg text-sm font-semibold hover:shadow-md transition-all"
+                    className="w-full bg-white text-blue-700 py-2 rounded-lg text-sm font-semibold hover:shadow-md transition-all font-heading"
                   >
                     {translations.common.bookNow}
                   </motion.button>
@@ -321,16 +314,16 @@ export default function ProgramsComparison() {
         >
           <div className="bg-white rounded-2xl shadow-lg p-8 max-w-2xl mx-auto">
             <div className="text-4xl mb-4">🤝</div>
-            <h4 className="text-xl font-bold text-gray-900 mb-4">
+            <h4 className="text-xl font-bold text-neutral-900 mb-4 font-heading">
               {translations.programsComparison.help.title}
             </h4>
-            <p className="text-gray-600 mb-6">
+            <p className="text-neutral-600 mb-6 font-primary">
               {translations.programsComparison.help.description}
             </p>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300"
+              className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 font-heading"
             >
               {translations.programsComparison.help.button}
             </motion.button>

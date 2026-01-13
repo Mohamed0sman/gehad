@@ -3,7 +3,6 @@
 import { useMemo, useState } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
-import { XMarkIcon } from '@heroicons/react/24/outline'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 type GalleryImage = {
@@ -43,7 +42,7 @@ export default function PhotoGallery() {
   const [active, setActive] = useState<GalleryImage | null>(null)
 
   return (
-    <section className="relative section-padding bg-gradient-to-b from-white via-slate-50 to-white overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
+    <section className="relative section-padding bg-gradient-to-b from-neutral-50 via-slate-50 to-neutral-50 overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
       <div className="absolute inset-0 opacity-[0.04]" style={{
         backgroundImage: `linear-gradient(rgba(15,163,164,0.22) 1px, transparent 1px),\n                         linear-gradient(90deg, rgba(15,163,164,0.22) 1px, transparent 1px)`,
         backgroundSize: '60px 60px'
@@ -59,7 +58,7 @@ export default function PhotoGallery() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-3xl md:text-4xl font-bold text-slate-900 font-playfair"
+            className="text-h2 font-bold text-neutral-900 font-heading"
           >
             {t('Moments & Highlights', 'لحظات وأهم اللقطات')}
           </motion.h2>
@@ -68,7 +67,7 @@ export default function PhotoGallery() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="mt-4 text-slate-600 text-lg font-inter"
+            className="mt-4 text-neutral-600 text-lg font-primary"
           >
             {t(
               'A few moments from workshops, trainings, and community events.',
@@ -87,7 +86,7 @@ export default function PhotoGallery() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: Math.min(idx * 0.05, 0.25) }}
-              className="group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-xl transition-all duration-300"
+              className="group relative overflow-hidden rounded-3xl border border-neutral-200/80 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-xl transition-all duration-300"
             >
               <div className="relative w-full aspect-[4/3]">
                 <Image
@@ -100,17 +99,17 @@ export default function PhotoGallery() {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/0 to-slate-950/0 opacity-80" />
                 {img.tag && (
                   <div className={`absolute top-4 ${isRTL ? 'right-4' : 'left-4'}`}>
-                    <span className="inline-flex items-center rounded-full bg-white/90 text-slate-800 px-3 py-1 text-xs font-semibold border border-white/50">
+                    <span className="inline-flex items-center rounded-full bg-white/90 text-neutral-800 px-3 py-1 text-xs font-semibold border border-white/50 font-primary">
                       {t(img.tag.en, img.tag.ar)}
                     </span>
                   </div>
                 )}
               </div>
               <div className={`p-5 ${isRTL ? 'text-right' : 'text-left'}`}>
-                <div className="text-sm font-semibold text-slate-900 font-inter">
+                <div className="text-sm font-semibold text-neutral-900 font-heading">
                   {t(img.alt.en, img.alt.ar)}
                 </div>
-                <div className="mt-1 text-sm text-slate-600 font-inter">
+                <div className="mt-1 text-sm text-neutral-600 font-primary">
                   {t('Click to view', 'اضغط عشان تشوف')}
                 </div>
               </div>
@@ -140,13 +139,13 @@ export default function PhotoGallery() {
               <button
                 type="button"
                 onClick={() => setActive(null)}
-                className={`absolute top-4 ${isRTL ? 'left-4' : 'right-4'} z-10 inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/90 border border-slate-200 text-slate-700 hover:bg-white`}
+                className={`absolute top-4 ${isRTL ? 'left-4' : 'right-4'} z-10 inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/90 border border-neutral-200 text-neutral-700 hover:bg-white text-xl`}
                 aria-label={t('Close', 'إغلاق')}
               >
-                <XMarkIcon className="w-6 h-6" />
+                ✕
               </button>
 
-              <div className="relative w-full aspect-[16/10] bg-slate-100">
+              <div className="relative w-full aspect-[16/10] bg-neutral-100">
                 <Image
                   src={active.src}
                   alt={t(active.alt.en, active.alt.ar)}
@@ -157,10 +156,10 @@ export default function PhotoGallery() {
               </div>
 
               <div className="p-6">
-                <div className="text-lg font-bold text-slate-900 font-playfair">
+                <div className="text-lg font-bold text-neutral-900 font-heading">
                   {t(active.alt.en, active.alt.ar)}
                 </div>
-                <div className="mt-1 text-slate-600 font-inter">
+                <div className="mt-1 text-neutral-600 font-primary">
                   {t('Part of workshops & trainings portfolio.', 'جزء من شغل الورش والتدريبات.')}
                 </div>
               </div>
