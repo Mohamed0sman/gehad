@@ -82,33 +82,50 @@ export const designTokens: DesignTokens = {
   
   colors: {
     primary: {
-      '50': '#f0f9ff',
-      '100': '#e0f2fe',
-      '200': '#bae6fd',
-      '300': '#7dd3fc',
-      '400': '#38bdf8',
-      '500': '#0ea5e9',  // Primary brand color
-      '600': '#0284c7',
-      '700': '#0369a1',
-      '800': '#075985',
-      '900': '#0c4a6e',
+      // Deep Blue/Navy - Professional & Trustworthy
+      '50': '#eff6ff',
+      '100': '#dbeafe',
+      '200': '#bfdbfe',
+      '300': '#93c5fd',
+      '400': '#60a5fa',
+      '500': '#2563eb',  // Primary brand color
+      '600': '#1e3a8a',  // Deep Navy
+      '700': '#1e40af',
+      '800': '#1e3a8a',
+      '900': '#1e3a8a',
     },
     accent: {
-      emerald: '#10b981',
-      cyan: '#06b6d4',
-      gold: '#f59e0b',
+      // Warm Orange/Gold - Energy & Motivation
+      orange: '#f59e0b',
+      'orange-dark': '#ea580c',
+      // Teal/Turquoise - Growth & Development
+      teal: '#0891b2',
+      turquoise: '#06b6d4',
+      // Success Green
+      green: '#10b981',
+      // Warning Amber
+      amber: '#f59e0b',
+      // Soft Purple for badges
+      purple: '#8b5cf6',
     },
     neutral: {
-      '50': '#fafafa',
-      '100': '#f4f4f5',
-      '200': '#e4e4e7',
-      '300': '#d4d4d8',
-      '400': '#a1a1aa',
-      '500': '#71717a',
-      '600': '#52525b',
-      '700': '#3f3f46',
-      '800': '#27272a',
-      '900': '#18181b',
+      '25': '#fefefe',
+      '50': '#f8fafc',  // Light Gray
+      '100': '#f1f5f9', // Light Gray
+      '200': '#e2e8f0',
+      '300': '#cbd5e1',
+      '400': '#94a3b8',
+      '500': '#6b7280', // Medium Gray
+      '600': '#4b5563',
+      '700': '#374151',
+      '800': '#1f2937', // Dark Gray
+      '900': '#111827', // Dark Gray
+    },
+    background: {
+      white: '#ffffff',
+      'light-gray': '#f8fafc',
+      'light-gray-alt': '#f1f5f9',
+      cream: '#fefce8', // Soft Cream for highlights
     },
   },
   

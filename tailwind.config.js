@@ -12,30 +12,78 @@ module.exports = {
         display: ["Orbitron", "sans-serif"],
       },
       colors: {
-        neon: {
-          orange: "#ff6b35",
-          blue: "#00d4ff",
-          purple: "#b845ed",
-          green: "#39ff14",
-          pink: "#ff007f",
-          cyan: "#00ffff",
-          yellow: "#ffff00",
+        // Professional Primary Colors
+        navy: {
+          50: "#eff6ff",
+          100: "#dbeafe",
+          200: "#bfdbfe",
+          300: "#93c5fd",
+          400: "#60a5fa",
+          500: "#2563eb",
+          600: "#1e3a8a",
+          700: "#1e40af",
+          800: "#1e3a8a",
+          900: "#1e3a8a",
         },
-        dark: {
-          primary: "#0a0a0a",
-          secondary: "#111111",
-          tertiary: "#1a1a1a",
-          card: "#151515",
-          glass: "rgba(20, 20, 20, 0.8)",
+        // Warm Orange/Gold
+        orange: {
+          50: "#fff7ed",
+          100: "#ffedd5",
+          200: "#fed7aa",
+          300: "#fdba74",
+          400: "#fb923c",
+          500: "#f59e0b",
+          600: "#ea580c",
+          700: "#c2410c",
+          800: "#9a3412",
+          900: "#7c2d12",
         },
-        text: {
-          primary: "#ffffff",
-          secondary: "#e0e0e0",
-          muted: "#a0a0a0",
+        // Teal/Turquoise
+        teal: {
+          50: "#f0fdfa",
+          100: "#ccfbf1",
+          200: "#99f6e4",
+          300: "#5eead4",
+          400: "#2dd4bf",
+          500: "#14b8a6",
+          600: "#0891b2",
+          700: "#0e7490",
+          800: "#155e75",
+          900: "#164e63",
         },
-        border: {
-          default: "#333333",
-          subtle: "#2a2a2a",
+        turquoise: {
+          500: "#06b6d4",
+          600: "#0891b2",
+        },
+        // Success Green
+        success: {
+          500: "#10b981",
+          600: "#059669",
+        },
+        // Soft Purple
+        purple: {
+          500: "#8b5cf6",
+          600: "#7c3aed",
+        },
+        // Neutral Colors
+        gray: {
+          50: "#f8fafc",
+          100: "#f1f5f9",
+          200: "#e2e8f0",
+          300: "#cbd5e1",
+          400: "#94a3b8",
+          500: "#6b7280",
+          600: "#4b5563",
+          700: "#374151",
+          800: "#1f2937",
+          900: "#111827",
+        },
+        // Background Colors
+        background: {
+          white: "#ffffff",
+          "light-gray": "#f8fafc",
+          "light-gray-alt": "#f1f5f9",
+          cream: "#fefce8",
         },
       },
       backgroundImage: {

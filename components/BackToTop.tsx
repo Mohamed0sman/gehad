@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronUp, ArrowUp } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 
 interface BackToTopProps {
   showAfter?: number;
@@ -54,11 +54,11 @@ const BackToTop: React.FC<BackToTopProps> = ({
         >
           <motion.button
             onClick={scrollToTop}
-            className="relative w-14 h-14 bg-dark-card border-2 border-neon-orange rounded-full flex items-center justify-center shadow-neon transition-all duration-300 group overflow-hidden"
+            className="relative w-14 h-14 bg-white border-2 border-navy-600 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 group overflow-hidden hover:bg-navy-50"
             whileHover={{
               scale: 1.1,
-              borderColor: "var(--neon-blue)",
-              boxShadow: "0 0 30px rgba(0, 212, 255, 0.6)",
+              borderColor: "#2563eb",
+              boxShadow: "0 4px 12px rgba(37, 99, 235, 0.3)",
             }}
             whileTap={{ scale: 0.9 }}
             aria-label="Back to top"
@@ -73,7 +73,7 @@ const BackToTop: React.FC<BackToTopProps> = ({
                 cy="28"
                 r="26"
                 fill="none"
-                stroke="rgba(255, 107, 53, 0.2)"
+                stroke="rgba(37, 99, 235, 0.2)"
                 strokeWidth="2"
               />
               <motion.circle
@@ -81,12 +81,12 @@ const BackToTop: React.FC<BackToTopProps> = ({
                 cy="28"
                 r="26"
                 fill="none"
-                stroke="var(--neon-orange)"
+                stroke="#2563eb"
                 strokeWidth="2"
                 strokeLinecap="round"
-                strokeDasharray={163.36} // 2π * 26
+                strokeDasharray={163.36}
                 strokeDashoffset={163.36 - (163.36 * scrollProgress) / 100}
-                className="transition-all duration-300 group-hover:stroke-neon-blue"
+                className="transition-all duration-300"
               />
             </svg>
 
@@ -102,67 +102,9 @@ const BackToTop: React.FC<BackToTopProps> = ({
                 ease: "easeInOut",
               }}
             >
-              <ArrowUp className="w-6 h-6 text-neon-orange group-hover:text-neon-blue transition-colors" />
+              <ArrowUp className="w-6 h-6 text-navy-600 group-hover:text-navy-700 transition-colors" />
             </motion.div>
-
-            {/* Glow Effect */}
-            <motion.div
-              className="absolute inset-0 rounded-full bg-neon-orange/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              animate={{
-                scale: [1, 1.2, 1],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-
-            {/* Hover Ripple */}
-            <motion.div
-              className="absolute inset-0 rounded-full border border-neon-orange/50 opacity-0 group-hover:opacity-100"
-              animate={{
-                scale: [1, 1.5, 2],
-                opacity: [0, 0.5, 0],
-              }}
-              transition={{
-                duration: 1,
-                repeat: Infinity,
-                ease: "easeOut",
-              }}
-            />
           </motion.button>
-
-          {/* Tooltip */}
-          <motion.div
-            className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 px-3 py-2 bg-dark-card border border-neon-orange/30 rounded-lg backdrop-blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-            initial={{ y: 10, opacity: 0 }}
-            whileHover={{ y: 0, opacity: 1 }}
-          >
-            <div className="text-text-primary font-medium text-sm whitespace-nowrap">
-              Back to Top
-            </div>
-            <div className="text-neon-orange text-xs">
-              {Math.round(scrollProgress)}%
-            </div>
-
-            {/* Tooltip Arrow */}
-            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-2 h-2 bg-dark-card border-r border-b border-neon-orange/30 rotate-45" />
-          </motion.div>
-
-          {/* Pulse Animation */}
-          <motion.div
-            className="absolute inset-0 rounded-full border-2 border-neon-orange pointer-events-none"
-            animate={{
-              scale: [1, 1.3, 1],
-              opacity: [0.8, 0, 0.8],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
         </motion.div>
       )}
     </AnimatePresence>
