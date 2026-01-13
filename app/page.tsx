@@ -7,7 +7,8 @@ import StatsBar from "@/components/StatsBar";
 import IntroductionSection from "@/components/IntroductionSection";
 import WhatIDoSection from "@/components/WhatIDoSection";
 import MyApproachSection from "@/components/MyApproachSection";
-import FeaturedPrograms from "@/components/FeaturedPrograms";
+import LeadMagnet from "@/components/LeadMagnet";
+import ProgramsComparison from "@/components/ProgramsComparison";
 import Testimonials from "@/components/Testimonials";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
@@ -27,9 +28,14 @@ export default function Home() {
           <Hero />
         </section>
 
-        {/* Stats Bar Section */}
+        {/* Stats Bar Section - Social Proof First */}
         <section id="stats-bar">
           <StatsBar />
+        </section>
+
+        {/* Lead Magnet Section */}
+        <section id="lead-magnet">
+          <LeadMagnet />
         </section>
 
         {/* Introduction Section */}
@@ -42,14 +48,14 @@ export default function Home() {
           <WhatIDoSection />
         </section>
 
-        {/* My Approach Section */}
+        {/* My Approach Section - Signature Approach with 3 bullets */}
         <section id="my-approach">
           <MyApproachSection />
         </section>
 
-        {/* Featured Programs Section */}
-        <section id="programs" className="bg-gradient-to-br from-yellow-50 via-white to-white">
-          <FeaturedPrograms />
+        {/* Programs Comparison Section */}
+        <section id="programs" className="bg-gradient-to-br from-purple-50/30 via-white to-soft-blue-50/30">
+          <ProgramsComparison />
         </section>
 
         {/* Testimonials Section */}

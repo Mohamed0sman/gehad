@@ -4,39 +4,31 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const MyApproachSection: React.FC = () => {
+  // Simplified to 3 bullets only
   const pillars = [
     {
       icon: "📊",
       title: "Data-Driven Coaching",
-      items: [
-        "Assessment-based insights",
-        "Analytics frameworks",
-        "Structured decision models",
-      ],
-      bgColor: "bg-blue-50",
-      borderColor: "border-blue-200",
+      description: "Assessment-based insights and analytics frameworks for structured decision-making",
+      bgColor: "bg-purple-50",
+      borderColor: "border-purple-200",
+      iconBg: "bg-purple-100",
     },
     {
       icon: "🧠",
       title: "Psychology + Decision Science",
-      items: [
-        "Emotional intelligence",
-        "Cognitive science",
-        "Behavioral psychology",
-      ],
-      bgColor: "bg-orange-50",
-      borderColor: "border-orange-200",
+      description: "Emotional intelligence, cognitive science, and behavioral psychology integration",
+      bgColor: "bg-soft-blue-50",
+      borderColor: "border-soft-blue-200",
+      iconBg: "bg-soft-blue-100",
     },
     {
       icon: "🔬",
       title: "Evidence-Based Practice",
-      items: [
-        "NCDA frameworks",
-        "Global best practices",
-        "Measurable outcomes",
-      ],
+      description: "NCDA frameworks, global best practices, and measurable outcomes",
       bgColor: "bg-teal-50",
       borderColor: "border-teal-200",
+      iconBg: "bg-teal-100",
     },
   ];
 
@@ -59,35 +51,37 @@ const MyApproachSection: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Pillars Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Pillars Grid - 3 bullets only */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {pillars.map((pillar, index) => (
             <motion.div
               key={pillar.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * 0.15, duration: 0.6 }}
               className="group"
+              whileHover={{ y: -5 }}
             >
-              <div className={`${pillar.bgColor} rounded-2xl p-8 border-2 ${pillar.borderColor} h-full transition-all duration-300 hover:shadow-lg`}>
-                {/* Icon */}
-                <div className="text-5xl mb-6">{pillar.icon}</div>
+              <div className={`${pillar.bgColor} rounded-2xl p-8 border-2 ${pillar.borderColor} h-full transition-all duration-300 hover:shadow-xl`}>
+                {/* Icon with animation */}
+                <motion.div
+                  className={`w-16 h-16 ${pillar.iconBg} rounded-xl flex items-center justify-center mb-6 text-3xl`}
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  {pillar.icon}
+                </motion.div>
 
                 {/* Title */}
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
                   {pillar.title}
                 </h3>
 
-                {/* Items */}
-                <ul className="space-y-3">
-                  {pillar.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex items-start gap-3">
-                      <span className="text-green-600 mt-1">✓</span>
-                      <span className="text-gray-700">{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                {/* Description - Single bullet point */}
+                <p className="text-gray-700 leading-relaxed">
+                  {pillar.description}
+                </p>
               </div>
             </motion.div>
           ))}

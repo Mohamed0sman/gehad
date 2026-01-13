@@ -46,19 +46,19 @@ const BackToTop: React.FC<BackToTopProps> = ({
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          className="fixed bottom-6 left-6 z-50"
-          initial={{ opacity: 0, scale: 0, x: -20 }}
-          animate={{ opacity: 1, scale: 1, x: 0 }}
-          exit={{ opacity: 0, scale: 0, x: -20 }}
+          className="fixed bottom-6 left-6 z-40"
+          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.8, y: 20 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
         >
           <motion.button
             onClick={scrollToTop}
-            className="relative w-14 h-14 bg-white border-2 border-navy-600 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 group overflow-hidden hover:bg-navy-50"
+            className="relative w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 group overflow-hidden"
             whileHover={{
               scale: 1.1,
-              borderColor: "#2563eb",
-              boxShadow: "0 4px 12px rgba(37, 99, 235, 0.3)",
+              borderColor: "#3b82f6",
+              backgroundColor: "#f8fafc",
             }}
             whileTap={{ scale: 0.9 }}
             aria-label="Back to top"
@@ -66,27 +66,27 @@ const BackToTop: React.FC<BackToTopProps> = ({
             {/* Progress Ring */}
             <svg
               className="absolute inset-0 w-full h-full transform -rotate-90"
-              viewBox="0 0 56 56"
+              viewBox="0 0 48 48"
             >
               <circle
-                cx="28"
-                cy="28"
-                r="26"
+                cx="24"
+                cy="24"
+                r="22"
                 fill="none"
-                stroke="rgba(37, 99, 235, 0.2)"
+                stroke="rgba(59, 130, 246, 0.2)"
                 strokeWidth="2"
               />
               <motion.circle
-                cx="28"
-                cy="28"
-                r="26"
+                cx="24"
+                cy="24"
+                r="22"
                 fill="none"
-                stroke="#2563eb"
+                stroke="#3b82f6"
                 strokeWidth="2"
                 strokeLinecap="round"
-                strokeDasharray={163.36}
-                strokeDashoffset={163.36 - (163.36 * scrollProgress) / 100}
-                className="transition-all duration-300"
+                strokeDasharray={138.2}
+                strokeDashoffset={138.2 - (138.2 * scrollProgress) / 100}
+                className="transition-all duration-200"
               />
             </svg>
 
@@ -102,7 +102,7 @@ const BackToTop: React.FC<BackToTopProps> = ({
                 ease: "easeInOut",
               }}
             >
-              <ArrowUp className="w-6 h-6 text-navy-600 group-hover:text-navy-700 transition-colors" />
+              <ArrowUp className="w-5 h-5 text-blue-600 group-hover:text-blue-700 transition-colors" />
             </motion.div>
           </motion.button>
         </motion.div>

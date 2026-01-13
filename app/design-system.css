@@ -5,13 +5,13 @@
  */
 
 /* Import clean, professional fonts */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Cairo:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&family=Noto+Sans+Arabic:wght@300;400;500;600;700;800;900&display=swap");
 
 /* Design Tokens - CSS Custom Properties */
 :root {
     /* Typography System */
     --font-primary: "Inter", system-ui, sans-serif;
-    --font-heading: "Playfair Display", Georgia, serif;
+    --font-heading: "Inter", system-ui, sans-serif;
     --font-arabic: "Cairo", "Noto Sans Arabic", sans-serif;
 
     /* Font Sizes (Desktop) */
@@ -476,17 +476,35 @@ p {
     text-align: left;
 }
 
-/* Arabic Support */
-[lang="ar"] {
+/* Arabic Support - Better spacing and typography */
+[lang="ar"],
+[dir="rtl"] {
     font-family: var(--font-arabic);
+    letter-spacing: 0;
 }
+
 [lang="ar"] h1,
 [lang="ar"] h2,
 [lang="ar"] h3,
 [lang="ar"] h4,
 [lang="ar"] h5,
-[lang="ar"] h6 {
+[lang="ar"] h6,
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6 {
     font-family: var(--font-arabic);
+    font-weight: var(--weight-bold);
+    line-height: var(--leading-relaxed);
+}
+
+/* Better spacing for Arabic text */
+[lang="ar"] p,
+[dir="rtl"] p {
+    line-height: var(--leading-loose);
+    margin-bottom: var(--spacing-lg);
 }
 
 /* Enhanced Typography Utilities */

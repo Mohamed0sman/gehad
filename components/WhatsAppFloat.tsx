@@ -50,24 +50,24 @@ const WhatsAppFloat: React.FC<WhatsAppFloatProps> = ({
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0, y: 20 }}
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0, y: 20 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="absolute bottom-20 right-0 bg-white border-2 border-gray-200 rounded-2xl p-4 shadow-xl backdrop-blur-xl min-w-[280px]"
+            exit={{ opacity: 0, scale: 0.8, y: 20 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="absolute bottom-20 right-0 bg-white rounded-2xl p-6 shadow-xl border border-gray-100 backdrop-blur-xl min-w-[320px]"
           >
             {/* Header */}
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
-                  <MessageCircle className="w-5 h-5 text-white" />
+                <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center">
+                  <MessageCircle className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900">
-                    Get in Touch
+                  <h3 className="font-semibold text-gray-900 text-lg">
+                    Let's Connect
                   </h3>
                   <p className="text-gray-600 text-sm">
-                    Choose your preferred method
+                    Choose your preferred way to reach out
                   </p>
                 </div>
               </div>
@@ -84,19 +84,19 @@ const WhatsAppFloat: React.FC<WhatsAppFloatProps> = ({
               {/* WhatsApp */}
               <motion.button
                 onClick={openWhatsApp}
-                className="w-full flex items-center gap-3 p-3 bg-gray-50 hover:bg-green-50 rounded-xl border border-gray-200 hover:border-green-300 transition-all duration-300 group"
+                className="w-full flex items-center gap-4 p-4 bg-gradient-to-r from-green-50 to-green-100 hover:from-green-100 hover:to-green-200 rounded-xl border border-green-200 hover:border-green-300 transition-all duration-200 group"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center group-hover:bg-green-200 transition-colors">
-                  <MessageCircle className="w-5 h-5 text-green-600" />
+                <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center group-hover:bg-green-600 transition-colors">
+                  <MessageCircle className="w-6 h-6 text-white" />
                 </div>
-                <div className="text-left">
-                  <div className="font-medium text-gray-900 group-hover:text-green-700 transition-colors">
+                <div className="text-left flex-1">
+                  <div className="font-semibold text-gray-900 group-hover:text-green-800 transition-colors">
                     WhatsApp Chat
                   </div>
                   <div className="text-gray-600 text-sm">
-                    Start a conversation
+                    Quick response guaranteed
                   </div>
                 </div>
               </motion.button>
@@ -104,49 +104,45 @@ const WhatsAppFloat: React.FC<WhatsAppFloatProps> = ({
               {/* Phone Call */}
               <motion.button
                 onClick={openPhone}
-                className="w-full flex items-center gap-3 p-3 bg-gray-50 hover:bg-blue-50 rounded-xl border border-gray-200 hover:border-blue-300 transition-all duration-300 group"
+                className="w-full flex items-center gap-4 p-4 bg-gradient-to-r from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 rounded-xl border border-blue-200 hover:border-blue-300 transition-all duration-200 group"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 transition-colors">
-                  <Phone className="w-5 h-5 text-blue-600" />
+                <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center group-hover:bg-blue-600 transition-colors">
+                  <Phone className="w-6 h-6 text-white" />
                 </div>
-                <div className="text-left">
-                  <div className="font-medium text-gray-900 group-hover:text-blue-700 transition-colors">
+                <div className="text-left flex-1">
+                  <div className="font-semibold text-gray-900 group-hover:text-blue-800 transition-colors">
                     Phone Call
                   </div>
-                  <div className="text-gray-600 text-sm">
-                    +20 101 536 2414
-                  </div>
+                  <div className="text-gray-600 text-sm">+20 101 536 2414</div>
                 </div>
               </motion.button>
 
               {/* Email */}
               <motion.button
                 onClick={openEmail}
-                className="w-full flex items-center gap-3 p-3 bg-gray-50 hover:bg-orange-50 rounded-xl border border-gray-200 hover:border-orange-300 transition-all duration-300 group"
+                className="w-full flex items-center gap-4 p-4 bg-gradient-to-r from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 rounded-xl border border-purple-200 hover:border-purple-300 transition-all duration-200 group"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center group-hover:bg-orange-200 transition-colors">
-                  <Mail className="w-5 h-5 text-orange-600" />
+                <div className="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center group-hover:bg-purple-600 transition-colors">
+                  <Mail className="w-6 h-6 text-white" />
                 </div>
-                <div className="text-left">
-                  <div className="font-medium text-gray-900 group-hover:text-orange-700 transition-colors">
+                <div className="text-left flex-1">
+                  <div className="font-semibold text-gray-900 group-hover:text-purple-800 transition-colors">
                     Email
                   </div>
-                  <div className="text-gray-600 text-sm">
-                    gfeps@yahoo.com
-                  </div>
+                  <div className="text-gray-600 text-sm">gfeps@yahoo.com</div>
                 </div>
               </motion.button>
             </div>
 
             {/* Status */}
-            <div className="mt-4 pt-3 border-t border-gray-200">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                <span className="text-gray-600 text-sm">
+            <div className="mt-6 pt-4 border-t border-gray-200">
+              <div className="flex items-center gap-3">
+                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+                <span className="text-gray-600 text-sm font-medium">
                   Available for consultation
                 </span>
               </div>
@@ -158,8 +154,10 @@ const WhatsAppFloat: React.FC<WhatsAppFloatProps> = ({
       {/* Main Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className={`relative w-16 h-16 rounded-full bg-green-500 text-white flex items-center justify-center shadow-lg transition-all duration-300 ${
-          isOpen ? "bg-orange-500" : "hover:scale-110 hover:bg-green-600"
+        className={`relative w-16 h-16 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 ${
+          isOpen
+            ? "bg-gradient-to-r from-gray-500 to-gray-600"
+            : "bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700"
         }`}
         whileHover={{ scale: isOpen ? 1 : 1.1 }}
         whileTap={{ scale: 0.9 }}
@@ -173,7 +171,7 @@ const WhatsAppFloat: React.FC<WhatsAppFloatProps> = ({
               exit={{ rotate: 90, opacity: 0 }}
               transition={{ duration: 0.2 }}
             >
-              <X className="w-7 h-7" />
+              <X className="w-7 h-7 text-white" />
             </motion.div>
           ) : (
             <motion.div
@@ -183,10 +181,15 @@ const WhatsAppFloat: React.FC<WhatsAppFloatProps> = ({
               exit={{ rotate: -90, opacity: 0 }}
               transition={{ duration: 0.2 }}
             >
-              <MessageCircle className="w-7 h-7" />
+              <MessageCircle className="w-7 h-7 text-white" />
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* Pulse Ring */}
+        {!isOpen && (
+          <div className="absolute inset-0 rounded-full bg-green-500 animate-ping opacity-75"></div>
+        )}
       </motion.button>
     </div>
   );
