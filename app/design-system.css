@@ -4,15 +4,11 @@
  * Requirements: 3.1, 3.2, 2.1
  */
 
-/* Import clean, professional fonts */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&family=Noto+Sans+Arabic:wght@300;400;500;600;700;800;900&display=swap");
-
 /* Design Tokens - CSS Custom Properties */
 :root {
     /* Typography System */
     --font-primary: "Inter", system-ui, sans-serif;
-    --font-heading: "Inter", system-ui, sans-serif;
-    --font-arabic: "Cairo", "Noto Sans Arabic", sans-serif;
+    --font-heading: "Poppins", system-ui, sans-serif;
 
     /* Font Sizes (Desktop) */
     --text-display: 4rem; /* Hero titles */
@@ -84,7 +80,7 @@
     --color-accent-amber-500: #f59e0b;
     --color-accent-amber-600: #ea580c;
     --color-accent-amber-700: #c2410c;
-    
+
     /* Teal/Turquoise - Growth & Development */
     --color-accent-teal-500: #0891b2;
     --color-accent-turquoise-500: #06b6d4;
@@ -108,7 +104,7 @@
     --color-neutral-800: #1f2937;
     --color-neutral-900: #111827;
     --color-neutral-950: #030712;
-    
+
     /* Background Colors */
     --bg-white: #ffffff;
     --bg-light-gray: #f8fafc;
@@ -163,30 +159,6 @@
         --text-h3: 1.5rem; /* 24px */
         --text-h4: 1.125rem; /* 18px */
     }
-}
-
-/* Base Styles */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-}
-
-body {
-    font-family: var(--font-primary);
-    font-size: var(--text-body);
-    line-height: var(--leading-relaxed);
-    color: var(--color-neutral-700);
-    background-color: var(--color-neutral-50);
-    max-width: 100vw;
-    overflow-x: hidden;
 }
 
 /* Typography Hierarchy */
@@ -463,48 +435,6 @@ p {
 }
 .text-muted {
     color: var(--color-neutral-500);
-}
-
-/* RTL Support */
-[dir="rtl"] {
-    text-align: right;
-}
-[dir="rtl"] .text-left {
-    text-align: right;
-}
-[dir="rtl"] .text-right {
-    text-align: left;
-}
-
-/* Arabic Support - Better spacing and typography */
-[lang="ar"],
-[dir="rtl"] {
-    font-family: var(--font-arabic);
-    letter-spacing: 0;
-}
-
-[lang="ar"] h1,
-[lang="ar"] h2,
-[lang="ar"] h3,
-[lang="ar"] h4,
-[lang="ar"] h5,
-[lang="ar"] h6,
-[dir="rtl"] h1,
-[dir="rtl"] h2,
-[dir="rtl"] h3,
-[dir="rtl"] h4,
-[dir="rtl"] h5,
-[dir="rtl"] h6 {
-    font-family: var(--font-arabic);
-    font-weight: var(--weight-bold);
-    line-height: var(--leading-relaxed);
-}
-
-/* Better spacing for Arabic text */
-[lang="ar"] p,
-[dir="rtl"] p {
-    line-height: var(--leading-loose);
-    margin-bottom: var(--spacing-lg);
 }
 
 /* Enhanced Typography Utilities */
