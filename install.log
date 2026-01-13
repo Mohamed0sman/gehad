@@ -1,0 +1,8 @@
+[19:59:12 2026-01-13] FETCHING Version 1.2.1
+[19:59:12 2026-01-13] DOWNLOADING https://github.com/spicetify/cli/releases/download/v1.2.1/spicetify-1.2.1-linux-amd64.tar.gz
+[19:59:14 2026-01-13] EXTRACTING /home/el300s/.spicetify/spicetify.tar.gz
+[19:59:14 2026-01-13] SETTING EXECUTABLE PERMISSIONS TO /home/el300s/.spicetify/spicetify
+[19:59:14 2026-01-13] REMOVING /home/el300s/.spicetify/spicetify.tar.gz
+[19:59:14 2026-01-13] spicetify path already set in /home/el300s/.bashrc, continuing...
+[19:59:14 2026-01-13] spicetify v1.2.1 was installed successfully to /home/el300s/.spicetify
+[19:59:14 2026-01-13] Run 'spicetify --help' to get started

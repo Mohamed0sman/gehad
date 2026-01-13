@@ -1,52 +1,253 @@
 /* Import Clean Design System */
-@import './design-system.css';
+@import "./design-system.css";
 
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
-/* Base styles are handled in design-system.css and Tailwind logic */
-
+/* Enhanced CSS Variables */
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 255, 255, 255;
-  --background-end-rgb: 255, 255, 255;
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 255, 255, 255;
+    --background-end-rgb: 255, 255, 255;
+
+    /* Performance optimizations */
+    --gpu-acceleration: translateZ(0);
+    --will-change-transform: transform;
+    --will-change-opacity: opacity;
+    --will-change-auto: auto;
 }
 
-/* RTL Support */
+/* Enhanced RTL Support */
 [dir="rtl"] {
-  text-align: right;
+    text-align: right;
 }
 
-/* Smooth scrolling */
+[dir="rtl"] .flex {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .space-x-reverse > :not(:last-child) {
+    margin-right: 0;
+    margin-left: var(--spacing-md);
+}
+
+/* Enhanced smooth scrolling with better performance */
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
 }
 
-/* Custom scrollbar */
+/* Enhanced Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-neutral-100);
+    background: var(--color-neutral-50);
+    border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-neutral-400);
-  border-radius: 4px;
+    background: linear-gradient(
+        180deg,
+        var(--color-primary-400),
+        var(--color-primary-600)
+    );
+    border-radius: 4px;
+    transition: background 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-neutral-500);
+    background: linear-gradient(
+        180deg,
+        var(--color-primary-500),
+        var(--color-primary-700)
+    );
 }
 
-/* Mobile-optimized animations preference */
+/* Firefox scrollbar */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary-500) var(--color-neutral-100);
+}
+
+/* Performance optimizations */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Enhanced focus states for better accessibility */
+*:focus-visible {
+    outline: 2px solid var(--color-primary-500);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .card {
+        border: 2px solid var(--color-neutral-900);
+    }
+
+    .btn {
+        border: 2px solid;
+    }
+}
+
+/* Dark mode preference */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-neutral-50: #18181b;
+        --color-neutral-900: #fafafa;
+    }
+}
+
+/* Enhanced mobile-optimized animations */
 @media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Print styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+
+    * {
+        color: #000 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    .btn {
+        border: 1px solid #000 !important;
+        padding: 8px 16px !important;
+    }
+}
+
+/* Enhanced loading states */
+.loading-skeleton {
+    background: linear-gradient(
+        90deg,
+        var(--color-neutral-200) 25%,
+        var(--color-neutral-100) 50%,
+        var(--color-neutral-200) 75%
+    );
+    background-size: 200% 100%;
+    animation: loading-skeleton 1.5s infinite;
+}
+
+@keyframes loading-skeleton {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Enhanced utility classes */
+.text-gradient {
+    background: linear-gradient(
+        135deg,
+        var(--color-primary-600),
+        var(--brand-primary-600)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hover-lift {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Enhanced animation utilities */
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-scale-in {
+    animation: scaleIn 0.4s ease forwards;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Enhanced responsive typography */
+@media (max-width: 640px) {
+    .text-responsive {
+        font-size: clamp(1rem, 4vw, 1.25rem);
+    }
+
+    .text-responsive-lg {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+}
+
+/* Enhanced container queries support */
+@container (min-width: 768px) {
+    .card-responsive {
+        padding: 2rem;
+    }
+}
+
+/* Enhanced selection styles */
+::selection {
+    background: var(--color-primary-200);
+    color: var(--color-primary-900);
+}
+
+::-moz-selection {
+    background: var(--color-primary-200);
+    color: var(--color-primary-900);
 }
