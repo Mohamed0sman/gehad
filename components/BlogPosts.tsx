@@ -149,15 +149,19 @@ const BlogPosts: React.FC = () => {
                   className="group bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-gray-200 overflow-hidden"
                 >
                   {/* Image */}
-                  <div className="aspect-[16/9] bg-gradient-to-br from-blue-100 to-purple-100 relative overflow-hidden">
+                  <div className="aspect-[16/9] bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-50 relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-100/20 to-purple-100/20"></div>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-6xl">{post.icon}</span>
+                      <div className="w-20 h-20 bg-white/80 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg">
+                        <span className="text-4xl">{post.icon}</span>
+                      </div>
                     </div>
                     <div className="absolute top-4 left-4">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/90 backdrop-blur-sm text-sm font-medium text-gray-700">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/95 backdrop-blur-sm text-sm font-semibold text-gray-800 shadow-sm">
                         {post.category}
                       </span>
                     </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/5 via-transparent to-transparent"></div>
                   </div>
 
                   {/* Content */}
@@ -225,15 +229,19 @@ const BlogPosts: React.FC = () => {
                   className="group bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-gray-200 overflow-hidden"
                 >
                   {/* Image */}
-                  <div className="aspect-[16/10] bg-gradient-to-br from-gray-100 to-blue-100 relative overflow-hidden">
+                  <div className="aspect-[16/10] bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-purple-50/30"></div>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-4xl">{post.icon}</span>
+                      <div className="w-16 h-16 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-md">
+                        <span className="text-3xl">{post.icon}</span>
+                      </div>
                     </div>
                     <div className="absolute top-3 left-3">
-                      <span className="inline-flex items-center px-2 py-1 rounded-full bg-white/90 backdrop-blur-sm text-xs font-medium text-gray-700">
+                      <span className="inline-flex items-center px-2 py-1 rounded-full bg-white/95 backdrop-blur-sm text-xs font-semibold text-gray-800 shadow-sm">
                         {post.category}
                       </span>
                     </div>
+                    <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-white/10 to-transparent"></div>
                   </div>
 
                   {/* Content */}

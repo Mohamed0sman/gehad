@@ -171,35 +171,69 @@ const Hero: React.FC = () => {
           >
             <div className="relative">
               {/* Professional Photo Container */}
-              <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden shadow-2xl">
-                {/* Professional gradient placeholder - replace with actual image */}
-                <div className="w-full h-full bg-gradient-to-br from-blue-100 via-purple-50 to-blue-50 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-6xl font-bold text-blue-600 mb-2">
-                      GA
-                    </div>
-                    <div className="text-lg text-gray-600 font-medium">
-                      Gehad Ashraf
-                    </div>
-                    <div className="text-sm text-gray-500">
-                      Career Development Professional
+              <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden shadow-2xl group">
+                {/* Professional gradient background with avatar design */}
+                <div className="w-full h-full bg-gradient-to-br from-blue-50 via-white to-purple-50 relative">
+                  {/* Professional Avatar Circle */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-48 h-48 lg:w-56 lg:h-56 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center shadow-xl group-hover:scale-105 transition-transform duration-300">
+                      <div className="text-center">
+                        <div className="text-4xl lg:text-5xl font-bold text-white mb-2">
+                          GA
+                        </div>
+                        <div className="text-sm text-blue-100 font-medium">
+                          NCDA Certified
+                        </div>
+                      </div>
                     </div>
                   </div>
+
+                  {/* Professional Details Overlay */}
+                  <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
+                    <div className="text-center">
+                      <h3 className="text-xl font-bold text-gray-900 mb-1">
+                        Gehad Ashraf
+                      </h3>
+                      <p className="text-blue-600 font-medium text-sm">
+                        Career Development Professional
+                      </p>
+                      <div className="flex items-center justify-center space-x-4 mt-2 text-xs text-gray-600">
+                        <span className="flex items-center">
+                          <div className="w-2 h-2 bg-green-500 rounded-full mr-1"></div>
+                          Available
+                        </span>
+                        <span>12K+ Trained</span>
+                        <span>NCDA Certified</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Subtle pattern overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent"></div>
                 </div>
-                {/* Uncomment when you have the actual photo:
-                <Image
-                  src="/images/gehad-ashraf-professional.jpg"
-                  alt="Gehad Ashraf - NCDA Certified Career Development Professional"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                */}
               </div>
 
-              {/* Decorative elements */}
-              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-10 blur-2xl" />
-              <div className="absolute -top-4 -left-4 w-24 h-24 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full opacity-10 blur-2xl" />
+              {/* Enhanced decorative elements */}
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-20 blur-3xl animate-pulse" />
+              <div className="absolute -top-6 -left-6 w-24 h-24 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full opacity-15 blur-2xl" />
+
+              {/* Additional floating elements */}
+              <div
+                className="absolute top-12 -right-2 w-4 h-4 bg-yellow-400 rounded-full opacity-60 animate-bounce"
+                style={{ animationDelay: "0.5s" }}
+              />
+              <div
+                className="absolute bottom-16 -left-2 w-3 h-3 bg-green-400 rounded-full opacity-50 animate-bounce"
+                style={{ animationDelay: "1s" }}
+              />
+
+              {/* Success indicators */}
+              <div className="absolute top-8 left-8 bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium animate-fade-in-down">
+                ✓ NCDA Certified
+              </div>
+              <div className="absolute bottom-8 right-8 bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium animate-fade-in-up">
+                🏆 12K+ Success Stories
+              </div>
             </div>
           </motion.div>
         </div>
