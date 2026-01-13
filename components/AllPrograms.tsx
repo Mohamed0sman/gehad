@@ -1,253 +1,325 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import { motion } from 'framer-motion'
-import { useLanguage } from '@/contexts/LanguageContext'
-import { translations as translationsData } from '@/lib/translations'
-import Button from '@/components/Button'
+import React from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import {
+  Target,
+  Wrench,
+  GraduationCap,
+  Building2,
+  Crown,
+  Briefcase,
+  ArrowRight,
+  Clock,
+  BarChart3,
+  Users,
+} from "lucide-react";
 
 export default function AllPrograms() {
-  const { language } = useLanguage()
-  const isRTL = language === 'ar'
-
-  const translations = translationsData[language] as any
-
   const programs = [
     {
-      id: 'career-counseling',
-      title: language === 'ar' ? 'استشارات مهنية' : 'Career Counseling',
-      subtitle: language === 'ar' ? 'توجيه مهني فردي' : 'Individual Career Guidance',
-      description: language === 'ar' ? 'جلسات فردية شاملة لتوضيح مسارك المهني وتحديد أهدافك.' : 'Comprehensive one-on-one sessions to clarify your career path and set goals.',
-      duration: language === 'ar' ? '4 جلسات' : '4 sessions',
-      level: language === 'ar' ? 'مبتدئ' : 'Beginner',
-      category: language === 'ar' ? 'تطوير شخصي' : 'Personal Development',
+      id: "career-counseling",
+      title: "Career Counseling",
+      subtitle: "Individual Career Guidance",
+      description:
+        "Comprehensive one-on-one sessions to clarify your career path, identify opportunities, and set strategic goals for professional growth.",
+      duration: "4 Sessions",
+      level: "All Levels",
+      category: "Personal Development",
       features: [
-        language === 'ar' ? 'تقييم شخصي متكامل' : 'Comprehensive personality assessment',
-        language === 'ar' ? 'خطة عمل مهنية' : 'Career action plan',
-        language === 'ar' ? 'متابعة شهرية' : 'Monthly follow-up',
-        language === 'ar' ? 'دعم مستمر' : 'Ongoing support'
+        "Comprehensive personality assessment",
+        "Career action plan development",
+        "Monthly progress tracking",
+        "Ongoing professional support",
       ],
-      iconChar: '🎯',
-      color: 'bg-primary-50 text-primary-600 border-primary-100',
+      icon: Target,
+      color: "from-blue-500 to-blue-600",
+      bgColor: "bg-blue-50",
+      textColor: "text-blue-600",
+      borderColor: "border-blue-200",
     },
     {
-      id: 'skill-development',
-      title: language === 'ar' ? 'تطوير المهارات' : 'Skill Development',
-      subtitle: language === 'ar' ? 'مهارات القرن 21' : '21st Century Skills',
-      description: language === 'ar' ? 'ورش عمل لتطوير المهارات الناعمة والأساسية المطلوبة في سوق العمل.' : 'Workshops to develop soft and essential skills required in the job market.',
-      duration: language === 'ar' ? '6 أسابيع' : '6 weeks',
-      level: language === 'ar' ? 'متوسط' : 'Intermediate',
-      category: language === 'ar' ? 'تدريب' : 'Training',
+      id: "skill-development",
+      title: "Professional Skills Development",
+      subtitle: "21st Century Skills",
+      description:
+        "Interactive workshops designed to develop essential soft skills and technical competencies required in today's competitive job market.",
+      duration: "6 Weeks",
+      level: "Intermediate",
+      category: "Training",
       features: [
-        language === 'ar' ? 'تواصل فعال' : 'Effective communication',
-        language === 'ar' ? 'قيادة فرق' : 'Team leadership',
-        language === 'ar' ? 'حل المشكلات' : 'Problem solving',
-        language === 'ar' ? 'شهادة معتمدة' : 'Certified certificate'
+        "Effective communication mastery",
+        "Advanced team leadership",
+        "Strategic problem solving",
+        "Industry-recognized certification",
       ],
-      iconChar: '🛠️',
-      color: 'bg-emerald-50 text-emerald-600 border-emerald-100',
+      icon: Wrench,
+      color: "from-green-500 to-green-600",
+      bgColor: "bg-green-50",
+      textColor: "text-green-600",
+      borderColor: "border-green-200",
     },
     {
-      id: 'academic-guidance',
-      title: language === 'ar' ? 'التوجيه الأكاديمي' : 'Academic Guidance',
-      subtitle: language === 'ar' ? 'اختيار التخصص المناسب' : 'Choosing the Right Major',
-      description: language === 'ar' ? 'مساعدة الطلاب في اختيار التخصص الجامعي والمسار المهني المناسب.' : 'Helping students choose the right university major and career path.',
-      duration: language === 'ar' ? '3 جلسات' : '3 sessions',
-      level: language === 'ar' ? 'مبتدئ' : 'Beginner',
-      category: language === 'ar' ? 'تعليم' : 'Education',
+      id: "academic-guidance",
+      title: "Academic & Career Guidance",
+      subtitle: "Educational Path Planning",
+      description:
+        "Expert guidance for students and recent graduates to choose the right academic major and align their educational journey with career goals.",
+      duration: "3 Sessions",
+      level: "Beginner",
+      category: "Education",
       features: [
-        language === 'ar' ? 'اختبار اهتمامات هولاند' : 'Holland Interest Test',
-        language === 'ar' ? 'تحليل شخصي' : 'Personality analysis',
-        language === 'ar' ? 'خطة دراسية' : 'Study plan',
-        language === 'ar' ? 'مقابلة توجيه' : 'Guidance interview'
+        "Holland Interest Inventory",
+        "Comprehensive personality analysis",
+        "Strategic study planning",
+        "Career pathway mapping",
       ],
-      iconChar: '🎓',
-      color: 'bg-cyan-50 text-cyan-600 border-cyan-100',
+      icon: GraduationCap,
+      color: "from-purple-500 to-purple-600",
+      bgColor: "bg-purple-50",
+      textColor: "text-purple-600",
+      borderColor: "border-purple-200",
     },
     {
-      id: 'corporate-programs',
-      title: language === 'ar' ? 'برامج الشركات' : 'Corporate Programs',
-      subtitle: language === 'ar' ? 'تدريب للمؤسسات' : 'Training for Organizations',
-      description: language === 'ar' ? 'برامج تدريبية مصممة خصيصًا للشركات والمؤسسات لتطوير فرق العمل.' : 'Custom-designed training programs for companies and organizations to develop teams.',
-      duration: language === 'ar' ? 'حسب الطلب' : 'Custom',
-      level: language === 'ar' ? 'جميع المستويات' : 'All Levels',
-      category: language === 'ar' ? 'تدريب مؤسسي' : 'Corporate Training',
+      id: "corporate-programs",
+      title: "Corporate Training Programs",
+      subtitle: "Organizational Development",
+      description:
+        "Customized training solutions designed specifically for companies and organizations to enhance team performance and leadership capabilities.",
+      duration: "Customizable",
+      level: "All Levels",
+      category: "Corporate Training",
       features: [
-        language === 'ar' ? 'تقييم احتياجات' : 'Needs assessment',
-        language === 'ar' ? 'برنامج مخصص' : 'Custom program',
-        language === 'ar' ? 'تدريب عملي' : 'Hands-on training',
-        language === 'ar' ? 'تقرير نتائج' : 'Results report'
+        "Comprehensive needs assessment",
+        "Tailored program design",
+        "Hands-on practical training",
+        "Detailed outcome reporting",
       ],
-      iconChar: '🏢',
-      color: 'bg-blue-50 text-blue-600 border-blue-100',
+      icon: Building2,
+      color: "from-orange-500 to-orange-600",
+      bgColor: "bg-orange-50",
+      textColor: "text-orange-600",
+      borderColor: "border-orange-200",
     },
     {
-      id: 'leadership-program',
-      title: language === 'ar' ? 'برنامج القيادة' : 'Leadership Program',
-      subtitle: language === 'ar' ? 'صناعة القادة' : 'Building Leaders',
-      description: language === 'ar' ? 'برنامج متكامل لتطوير مهارات القيادة والإدارة للمديرين والمشرفين.' : 'Comprehensive program to develop leadership and management skills for managers and supervisors.',
-      duration: language === 'ar' ? '8 أسابيع' : '8 weeks',
-      level: language === 'ar' ? 'متقدم' : 'Advanced',
-      category: language === 'ar' ? 'قيادة' : 'Leadership',
+      id: "leadership-program",
+      title: "Executive Leadership Program",
+      subtitle: "Advanced Leadership Development",
+      description:
+        "Comprehensive leadership development program for managers, supervisors, and aspiring executives to build strategic leadership capabilities.",
+      duration: "8 Weeks",
+      level: "Advanced",
+      category: "Leadership",
       features: [
-        language === 'ar' ? 'أسس القيادة' : 'Leadership fundamentals',
-        language === 'ar' ? 'اتخاذ القرار' : 'Decision making',
-        language === 'ar' ? 'إدارة التغيير' : 'Change management',
-        language === 'ar' ? 'مشروع تخرج' : 'Graduation project'
+        "Leadership fundamentals mastery",
+        "Strategic decision-making skills",
+        "Change management expertise",
+        "Capstone leadership project",
       ],
-      iconChar: '⚖️',
-      color: 'bg-indigo-50 text-indigo-600 border-indigo-100',
+      icon: Crown,
+      color: "from-indigo-500 to-indigo-600",
+      bgColor: "bg-indigo-50",
+      textColor: "text-indigo-600",
+      borderColor: "border-indigo-200",
     },
     {
-      id: 'freelancing-career',
-      title: language === 'ar' ? 'مسيرة الحرية' : 'Freelancing Career',
-      subtitle: language === 'ar' ? 'احتراف العمل الحر' : 'Professional Freelancing',
-      description: language === 'ar' ? 'دليل شامل للنجاح في عالم العمل الحر من البداية للاحتراف.' : 'Complete guide to succeed in the freelancing world from beginner to pro.',
-      duration: language === 'ar' ? '5 أسابيع' : '5 weeks',
-      level: language === 'ar' ? 'مبتدئ' : 'Beginner',
-      category: language === 'ar' ? 'عمل حر' : 'Freelancing',
+      id: "freelancing-career",
+      title: "Freelance Career Mastery",
+      subtitle: "Independent Professional Success",
+      description:
+        "Complete guide to building a successful freelance career, from initial setup to advanced business strategies and client management.",
+      duration: "5 Weeks",
+      level: "Beginner to Advanced",
+      category: "Entrepreneurship",
       features: [
-        language === 'ar' ? 'بناء معرض أعمال' : 'Portfolio building',
-        language === 'ar' ? 'جذب العملاء' : 'Client acquisition',
-        language === 'ar' ? 'تسعير الخدمات' : 'Service pricing',
-        language === 'ar' ? 'إدارة المشاريع' : 'Project management'
+        "Professional portfolio development",
+        "Client acquisition strategies",
+        "Strategic service pricing",
+        "Advanced project management",
       ],
-      iconChar: '💻',
-      color: 'bg-rose-50 text-rose-600 border-rose-100',
-    }
-  ]
+      icon: Briefcase,
+      color: "from-teal-500 to-teal-600",
+      bgColor: "bg-teal-50",
+      textColor: "text-teal-600",
+      borderColor: "border-teal-200",
+    },
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
 
   return (
-    <section className="py-24 sm:py-32 bg-neutral-50 relative overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+    <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <div className="container mx-auto px-6">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-100 rounded-full mb-6">
+            <BarChart3 className="w-5 h-5 text-blue-600" />
+            <span className="text-blue-700 font-semibold text-sm">
+              Professional Development Programs
+            </span>
+          </div>
 
-        {/* Header */}
-        <div className="mx-auto max-w-3xl text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="flex items-center justify-center gap-2 mb-4"
-          >
-            <span className="text-primary-600 font-semibold text-lg">{translations.allPrograms.title}</span>
-          </motion.div>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+            Transform Your Career with
+            <span className="text-gradient bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              {" "}
+              Expert Guidance
+            </span>
+          </h2>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-            className="text-h2 font-bold text-neutral-900 mb-6 font-heading"
-          >
-            {translations.allPrograms.subtitle}
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="text-body-lg text-neutral-600 font-primary"
-          >
-            {translations.allPrograms.description}
-          </motion.p>
-        </div>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Choose from our comprehensive range of evidence-based programs
+            designed to accelerate your professional growth and career success.
+          </p>
+        </motion.div>
 
         {/* Programs Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
           {programs.map((program, index) => (
-            <motion.div
-              key={program.id}
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="group relative bg-white rounded-3xl shadow-sm hover:shadow-xl border border-neutral-100 transition-all duration-300 overflow-hidden flex flex-col"
-            >
-              {/* Category */}
-              <div className="absolute top-6 right-6 z-10">
-                <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${program.color.replace('bg-', 'bg-opacity-20 ')}`}>
-                  {program.category}
-                </span>
-              </div>
-
-              <div className="p-8 flex flex-col h-full">
-                {/* Header */}
-                <div className="flex items-start justify-between mb-6">
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-3xl ${program.color} bg-opacity-20`}>
-                    {program.iconChar}
+            <motion.div key={program.id} variants={itemVariants}>
+              <div className="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-gray-200 overflow-hidden h-full">
+                {/* Program Header */}
+                <div className={`${program.bgColor} p-6 relative`}>
+                  <div
+                    className={`w-12 h-12 rounded-xl bg-gradient-to-r ${program.color} flex items-center justify-center mb-4`}
+                  >
+                    <program.icon className="w-6 h-6 text-white" />
                   </div>
+
+                  <div className="mb-4">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-gray-800 transition-colors">
+                      {program.title}
+                    </h3>
+                    <p className={`text-sm font-medium ${program.textColor}`}>
+                      {program.subtitle}
+                    </p>
+                  </div>
+
+                  <p className="text-gray-600 leading-relaxed">
+                    {program.description}
+                  </p>
                 </div>
 
-                <h3 className="text-xl font-bold text-neutral-900 mb-2 font-heading">{program.title}</h3>
-                <p className="text-sm text-primary-600 font-medium mb-4 font-primary">{program.subtitle}</p>
-                <p className="text-body text-neutral-600 mb-6 font-primary line-clamp-3">{program.description}</p>
-
-                {/* Meta */}
-                <div className="grid grid-cols-2 gap-4 mb-6 pt-6 border-t border-neutral-100">
-                  <div className="flex flex-col">
-                    <span className="text-xs text-neutral-400 font-medium uppercase font-primary">{isRTL ? 'المدة' : 'Duration'}</span>
-                    <span className="text-sm font-semibold text-neutral-700 font-primary">{program.duration}</span>
+                {/* Program Details */}
+                <div className="p-6">
+                  {/* Meta Information */}
+                  <div className="flex items-center justify-between mb-6 text-sm">
+                    <div className="flex items-center space-x-4">
+                      <div className="flex items-center space-x-1">
+                        <Clock className="w-4 h-4 text-gray-400" />
+                        <span className="text-gray-600 font-medium">
+                          {program.duration}
+                        </span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <Users className="w-4 h-4 text-gray-400" />
+                        <span className="text-gray-600 font-medium">
+                          {program.level}
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex flex-col">
-                    <span className="text-xs text-neutral-400 font-medium uppercase font-primary">{isRTL ? 'المستوى' : 'Level'}</span>
-                    <span className="text-sm font-semibold text-neutral-700 font-primary">{program.level}</span>
+
+                  {/* Features List */}
+                  <div className="mb-6">
+                    <h4 className="font-semibold text-gray-900 mb-3 text-sm">
+                      What You'll Get:
+                    </h4>
+                    <ul className="space-y-2">
+                      {program.features.map((feature, featureIndex) => (
+                        <li
+                          key={featureIndex}
+                          className="flex items-start space-x-2 text-sm text-gray-600"
+                        >
+                          <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 mt-2 flex-shrink-0"></div>
+                          <span className="leading-relaxed">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                </div>
 
-                {/* Features */}
-                <ul className="mb-8 space-y-2 flex-grow">
-                  {program.features.slice(0, 3).map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-neutral-600 font-primary">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary-500 mr-2 ml-2"></span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+                  {/* Category Badge */}
+                  <div className="mb-6">
+                    <span
+                      className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${program.bgColor} ${program.textColor} ${program.borderColor} border`}
+                    >
+                      {program.category}
+                    </span>
+                  </div>
 
-                {/* Action */}
-                <div className="mt-auto">
-                  <Button href={`/programs/${program.id}`} variant="primary" className="w-full justify-center">
-                    {isRTL ? 'عرض التفاصيل' : 'View Details'}
-                  </Button>
+                  {/* Action Button */}
+                  <Link
+                    href={`/programs/${program.id}`}
+                    className={`group/btn w-full inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r ${program.color} hover:shadow-lg text-white font-semibold rounded-xl transition-all duration-300 transform hover:-translate-y-1`}
+                  >
+                    Learn More
+                    <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                  </Link>
                 </div>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Bottom CTA */}
+        {/* Call to Action */}
         <motion.div
-          className="mt-20 text-center"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
           viewport={{ once: true }}
+          className="text-center mt-16"
         >
-          <div className="bg-neutral-900 rounded-3xl p-12 max-w-4xl mx-auto shadow-2xl relative overflow-hidden">
-            {/* Decorative */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-primary-900/50 rounded-bl-full opacity-50"></div>
-
-            <div className="relative z-10">
-              <h3 className="text-3xl font-bold text-white mb-4 font-heading">
-                {isRTL ? '🤔 محتار تختار إيه؟' : '🤔 Unsure which program to choose?'}
-              </h3>
-              <p className="text-lg text-neutral-300 mb-8 font-primary">
-                {isRTL ? 'احجز استشارة مجانية وهساعدك تختار البرنامج المناسب ليك' : "Book a free consultation and I'll help you pick the right program."}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button href="/contact" variant="primary">
-                  {isRTL ? 'استشارة مجانية' : 'Free Consultation'}
-                </Button>
-                <Button href="https://wa.me/201015362414" variant="secondary" className="border-neutral-700 text-neutral-300 hover:bg-neutral-800">
-                  {isRTL ? 'واتساب' : 'WhatsApp'}
-                </Button>
-              </div>
-            </div>
+          <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 max-w-2xl mx-auto">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              Not Sure Which Program is Right for You?
+            </h3>
+            <p className="text-gray-600 mb-6 leading-relaxed">
+              Book a free consultation session to discuss your goals and find
+              the perfect program for your career development needs.
+            </p>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link
+                href="/booking"
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                Schedule Free Consultation
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+            </motion.div>
           </div>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
