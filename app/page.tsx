@@ -3,13 +3,10 @@
 import React from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import StatsBar from "@/components/StatsBar";
-import IntroductionSection from "@/components/IntroductionSection";
-import WhatIDoSection from "@/components/WhatIDoSection";
-import MyApproachSection from "@/components/MyApproachSection";
-import LeadMagnet from "@/components/LeadMagnet";
+import SocialProof from "@/components/SocialProof";
+import WhoIHelp from "@/components/WhoIHelp";
+import SignatureApproach from "@/components/SignatureApproach";
 import ProgramsComparison from "@/components/ProgramsComparison";
-import Testimonials from "@/components/Testimonials";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
@@ -28,39 +25,24 @@ export default function Home() {
           <Hero />
         </section>
 
-        {/* Stats Bar Section - Social Proof First */}
-        <section id="stats-bar">
-          <StatsBar />
+        {/* Social Proof Section */}
+        <section id="social-proof">
+          <SocialProof />
         </section>
 
-        {/* Lead Magnet Section */}
-        <section id="lead-magnet">
-          <LeadMagnet />
+        {/* Who I Help Section */}
+        <section id="who-i-help">
+          <WhoIHelp />
         </section>
 
-        {/* Introduction Section */}
-        <section id="introduction">
-          <IntroductionSection />
-        </section>
-
-        {/* What I Do Section */}
-        <section id="what-i-do">
-          <WhatIDoSection />
-        </section>
-
-        {/* My Approach Section - Signature Approach with 3 bullets */}
-        <section id="my-approach">
-          <MyApproachSection />
+        {/* Signature Approach Section */}
+        <section id="signature-approach">
+          <SignatureApproach />
         </section>
 
         {/* Programs Comparison Section */}
         <section id="programs" className="bg-gradient-to-br from-purple-50/30 via-white to-soft-blue-50/30">
           <ProgramsComparison />
-        </section>
-
-        {/* Testimonials Section */}
-        <section id="testimonials" className="bg-white">
-          <Testimonials />
         </section>
 
         {/* CTA Section */}

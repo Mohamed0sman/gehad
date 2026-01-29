@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 interface NavigationItem {
   label: string;
@@ -55,8 +56,14 @@ const Header: React.FC = () => {
             whileTap={{ scale: 0.98 }}
           >
             <Link href="/" className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center shadow-md">
-                <span className="text-white font-bold text-lg">GA</span>
+              <div className="relative w-14 h-14">
+                <Image
+                  src="/logs /gehad (1).png"
+                  alt="Gehad Ashraf Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
               </div>
               <div className="hidden sm:block">
                 <h1 className="font-bold text-xl text-gray-900">

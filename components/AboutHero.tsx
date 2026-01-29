@@ -3,9 +3,58 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Award, Users, Calendar } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function AboutHero() {
+  const { language, isRTL } = useLanguage();
+
+  const copy = {
+    badge: {
+      en: "NCDA Certified Professional",
+      ar: "محترف معتمد من NCDA"
+    },
+    title: {
+      en: "About Gehad Ashraf",
+      ar: "عن جهاد أشرف"
+    },
+    subtitle: {
+      en: "Empowering Careers Through Evidence-Based Practice",
+      ar: "تمكين المسارات المهنية من خلال الممارسة القائمة على الأدلة"
+    },
+    description: {
+      en: "Discover my journey from statistics to psychology, and how I help professionals and organizations design careers with intention, purpose, and strategic clarity. With over a decade of experience, I've transformed thousands of career paths through evidence-based methodologies and personalized guidance.",
+      ar: "اكتشف رحلتي من الإحصاء إلى علم النفس، وكيف أساعد المحترفين والمؤسسات على تصميم مساراتهم المهنية بوضوح واستراتيجية. مع أكثر من عقد من الخبرة، حولت آلاف المسارات المهنية من خلال المنهجيات القائمة على الأدلة والإرشاد الشخصي."
+    },
+    ctaPrimary: {
+      en: "Book a Session",
+      ar: "احجز جلسة"
+    },
+    ctaSecondary: {
+      en: "Read My Story",
+      ar: "اقرأ قصتي"
+    },
+    stats: {
+      ncda: {
+        labelEn: "NCDA",
+        labelAr: "NCDA",
+        valueEn: "Certified Professional",
+        valueAr: "محترف معتمد"
+      },
+      trained: {
+        value: "12K+",
+        labelEn: "Professionals Trained",
+        labelAr: "محترف تم تدريبه"
+      },
+      experience: {
+        value: "10+",
+        labelEn: "Years of Experience",
+        labelAr: "سنوات من الخبرة"
+      }
+    }
+  };
+
+  const t = (en: any, ar: any) => (language === "ar" ? ar : en);
+
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 overflow-hidden flex items-center justify-center">
       {/* Background Pattern */}
@@ -13,28 +62,6 @@ export default function AboutHero() {
         <div className="absolute top-20 right-20 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 left-20 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-3xl"></div>
-      </div>
-
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <svg className="w-full h-full" viewBox="0 0 100 100">
-          <defs>
-            <pattern
-              id="grid"
-              width="10"
-              height="10"
-              patternUnits="userSpaceOnUse"
-            >
-              <path
-                d="M 10 0 L 0 0 0 10"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="0.5"
-              />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
       </div>
 
       <div className="relative z-10 container mx-auto px-6 py-20 text-center">
@@ -46,9 +73,8 @@ export default function AboutHero() {
           className="inline-block mb-8"
         >
           <div className="flex items-center space-x-2 px-6 py-3 rounded-full bg-blue-500/20 border border-blue-400/30 backdrop-blur-sm">
-            <Award className="w-5 h-5 text-blue-300" />
             <span className="text-blue-200 font-semibold text-sm tracking-wide">
-              NCDA Certified Professional
+              {t(copy.badge.en, copy.badge.ar)}
             </span>
           </div>
         </motion.div>
@@ -60,10 +86,7 @@ export default function AboutHero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-white leading-tight"
         >
-          About{" "}
-          <span className="text-gradient bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            Gehad Ashraf
-          </span>
+          {t(copy.title.en, copy.title.ar)}
         </motion.h1>
 
         {/* Subtitle */}
@@ -73,7 +96,7 @@ export default function AboutHero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-2xl md:text-3xl font-medium text-blue-200 mb-8 leading-relaxed"
         >
-          Empowering Careers Through Evidence-Based Practice
+          {t(copy.subtitle.en, copy.subtitle.ar)}
         </motion.p>
 
         {/* Description */}
@@ -83,11 +106,7 @@ export default function AboutHero() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto mb-12 leading-relaxed"
         >
-          Discover my journey from statistics to psychology, and how I help
-          professionals and organizations design careers with intention,
-          purpose, and strategic clarity. With over a decade of experience, I've
-          transformed thousands of career paths through evidence-based
-          methodologies and personalized guidance.
+          {t(copy.description.en, copy.description.ar)}
         </motion.p>
 
         {/* Action Buttons */}
@@ -100,10 +119,10 @@ export default function AboutHero() {
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
               href="/booking"
-              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 group"
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300"
             >
-              Book a Session
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              {t(copy.ctaPrimary.en, copy.ctaPrimary.ar)}
+              <span className="ml-2">→</span>
             </Link>
           </motion.div>
 
@@ -112,7 +131,7 @@ export default function AboutHero() {
               href="#story"
               className="inline-flex items-center px-8 py-4 bg-transparent border-2 border-gray-400 hover:border-blue-400 text-gray-300 hover:text-white font-semibold rounded-xl transition-all duration-300"
             >
-              Read My Story
+              {t(copy.ctaSecondary.en, copy.ctaSecondary.ar)}
             </Link>
           </motion.div>
         </motion.div>
@@ -125,33 +144,30 @@ export default function AboutHero() {
           className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
         >
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-            <div className="flex items-center justify-center mb-4">
-              <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center">
-                <Award className="w-6 h-6 text-blue-300" />
-              </div>
+            <div className="text-3xl font-bold text-white mb-2">
+              {t(copy.stats.ncda.labelEn, copy.stats.ncda.labelAr)}
             </div>
-            <div className="text-3xl font-bold text-white mb-2">NCDA</div>
-            <div className="text-gray-300 text-sm">Certified Professional</div>
+            <div className="text-gray-300 text-sm">
+              {t(copy.stats.ncda.valueEn, copy.stats.ncda.valueAr)}
+            </div>
           </div>
 
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-            <div className="flex items-center justify-center mb-4">
-              <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
-                <Users className="w-6 h-6 text-green-300" />
-              </div>
+            <div className="text-3xl font-bold text-white mb-2">
+              {copy.stats.trained.value}
             </div>
-            <div className="text-3xl font-bold text-white mb-2">12K+</div>
-            <div className="text-gray-300 text-sm">Professionals Trained</div>
+            <div className="text-gray-300 text-sm">
+              {t(copy.stats.trained.labelEn, copy.stats.trained.labelAr)}
+            </div>
           </div>
 
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-            <div className="flex items-center justify-center mb-4">
-              <div className="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
-                <Calendar className="w-6 h-6 text-purple-300" />
-              </div>
+            <div className="text-3xl font-bold text-white mb-2">
+              {copy.stats.experience.value}
             </div>
-            <div className="text-3xl font-bold text-white mb-2">10+</div>
-            <div className="text-gray-300 text-sm">Years of Experience</div>
+            <div className="text-gray-300 text-sm">
+              {t(copy.stats.experience.labelEn, copy.stats.experience.labelAr)}
+            </div>
           </div>
         </motion.div>
 

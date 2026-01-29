@@ -120,7 +120,9 @@ const MyApproachSection: React.FC = () => {
           viewport={{ once: true }}
           className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16"
         >
-          {pillars.map((pillar, index) => (
+          {pillars.map((pillar, index) => {
+            const IconComponent = pillar.icon;
+            return (
             <motion.div
               key={pillar.title}
               variants={itemVariants}
@@ -134,7 +136,7 @@ const MyApproachSection: React.FC = () => {
                   <div
                     className={`w-14 h-14 bg-gradient-to-r ${pillar.color} rounded-xl flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300`}
                   >
-                    <pillar.icon className="w-7 h-7 text-white" />
+                    <IconComponent className="w-7 h-7 text-white" />
                   </div>
                 </div>
 
@@ -162,7 +164,8 @@ const MyApproachSection: React.FC = () => {
                 </div>
               </div>
             </motion.div>
-          ))}
+            );
+          })}
         </motion.div>
 
         {/* Process Flow */}

@@ -19,19 +19,19 @@ import {
 export default function AllPrograms() {
   const programs = [
     {
-      id: "career-counseling",
-      title: "Career Counseling",
-      subtitle: "Individual Career Guidance",
+      id: "self-leadership",
+      title: "Self-Leadership & Career Ownership Program",
+      subtitle: "Take Control of Your Career",
       description:
-        "Comprehensive one-on-one sessions to clarify your career path, identify opportunities, and set strategic goals for professional growth.",
-      duration: "4 Sessions",
+        "Develop the mindset and skills to lead yourself and take ownership of your career path with confidence and clarity.",
+      duration: "40 Hours",
       level: "All Levels",
       category: "Personal Development",
       features: [
-        "Comprehensive personality assessment",
-        "Career action plan development",
-        "Monthly progress tracking",
-        "Ongoing professional support",
+        "Self-awareness development",
+        "Career ownership strategies",
+        "Leadership mindset cultivation",
+        "Goal setting and achievement",
       ],
       icon: Target,
       color: "from-blue-500 to-blue-600",
@@ -40,19 +40,19 @@ export default function AllPrograms() {
       borderColor: "border-blue-200",
     },
     {
-      id: "skill-development",
-      title: "Professional Skills Development",
-      subtitle: "21st Century Skills",
+      id: "professional-effectiveness",
+      title: "Professional Effectiveness & Core Skills Program",
+      subtitle: "Master Essential Workplace Skills",
       description:
-        "Interactive workshops designed to develop essential soft skills and technical competencies required in today's competitive job market.",
-      duration: "6 Weeks",
+        "Build a strong foundation of core professional skills that are essential for success in any modern workplace environment.",
+      duration: "60 Hours",
       level: "Intermediate",
-      category: "Training",
+      category: "Professional Skills",
       features: [
-        "Effective communication mastery",
-        "Advanced team leadership",
-        "Strategic problem solving",
-        "Industry-recognized certification",
+        "Effective communication",
+        "Time management mastery",
+        "Problem-solving skills",
+        "Professional etiquette",
       ],
       icon: Wrench,
       color: "from-green-500 to-green-600",
@@ -61,19 +61,19 @@ export default function AllPrograms() {
       borderColor: "border-green-200",
     },
     {
-      id: "academic-guidance",
-      title: "Academic & Career Guidance",
-      subtitle: "Educational Path Planning",
+      id: "career-development",
+      title: "Career Development & Job Redlines",
+      subtitle: "Navigate Your Career Path",
       description:
-        "Expert guidance for students and recent graduates to choose the right academic major and align their educational journey with career goals.",
-      duration: "3 Sessions",
+        "Understand career development principles and identify your redlines to make informed decisions about your professional journey.",
+      duration: "35 Hours",
       level: "Beginner",
-      category: "Education",
+      category: "Career Development",
       features: [
-        "Holland Interest Inventory",
-        "Comprehensive personality analysis",
-        "Strategic study planning",
-        "Career pathway mapping",
+        "Career path analysis",
+        "Redline identification",
+        "Decision-making frameworks",
+        "Career transition strategies",
       ],
       icon: GraduationCap,
       color: "from-purple-500 to-purple-600",
@@ -82,61 +82,19 @@ export default function AllPrograms() {
       borderColor: "border-purple-200",
     },
     {
-      id: "corporate-programs",
-      title: "Corporate Training Programs",
-      subtitle: "Organizational Development",
+      id: "freelancing",
+      title: "Freelancing & Independent Career Development",
+      subtitle: "Build Your Independent Career",
       description:
-        "Customized training solutions designed specifically for companies and organizations to enhance team performance and leadership capabilities.",
-      duration: "Customizable",
+        "Learn how to successfully navigate the freelance world and build a sustainable independent career with confidence.",
+      duration: "40 Hours",
       level: "All Levels",
-      category: "Corporate Training",
-      features: [
-        "Comprehensive needs assessment",
-        "Tailored program design",
-        "Hands-on practical training",
-        "Detailed outcome reporting",
-      ],
-      icon: Building2,
-      color: "from-orange-500 to-orange-600",
-      bgColor: "bg-orange-50",
-      textColor: "text-orange-600",
-      borderColor: "border-orange-200",
-    },
-    {
-      id: "leadership-program",
-      title: "Executive Leadership Program",
-      subtitle: "Advanced Leadership Development",
-      description:
-        "Comprehensive leadership development program for managers, supervisors, and aspiring executives to build strategic leadership capabilities.",
-      duration: "8 Weeks",
-      level: "Advanced",
-      category: "Leadership",
-      features: [
-        "Leadership fundamentals mastery",
-        "Strategic decision-making skills",
-        "Change management expertise",
-        "Capstone leadership project",
-      ],
-      icon: Crown,
-      color: "from-indigo-500 to-indigo-600",
-      bgColor: "bg-indigo-50",
-      textColor: "text-indigo-600",
-      borderColor: "border-indigo-200",
-    },
-    {
-      id: "freelancing-career",
-      title: "Freelance Career Mastery",
-      subtitle: "Independent Professional Success",
-      description:
-        "Complete guide to building a successful freelance career, from initial setup to advanced business strategies and client management.",
-      duration: "5 Weeks",
-      level: "Beginner to Advanced",
       category: "Entrepreneurship",
       features: [
-        "Professional portfolio development",
+        "Freelance business setup",
         "Client acquisition strategies",
-        "Strategic service pricing",
-        "Advanced project management",
+        "Portfolio development",
+        "Financial management",
       ],
       icon: Briefcase,
       color: "from-teal-500 to-teal-600",
@@ -204,7 +162,7 @@ export default function AllPrograms() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
           {programs.map((program, index) => (
             <motion.div key={program.id} variants={itemVariants}>
@@ -218,7 +176,7 @@ export default function AllPrograms() {
                   </div>
 
                   <div className="mb-4">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-gray-800 transition-colors">
+                    <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-gray-800 transition-colors">
                       {program.title}
                     </h3>
                     <p className={`text-sm font-medium ${program.textColor}`}>
@@ -226,7 +184,7 @@ export default function AllPrograms() {
                     </p>
                   </div>
 
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed text-sm">
                     {program.description}
                   </p>
                 </div>

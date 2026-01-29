@@ -126,7 +126,9 @@ const WhatIDoSection: React.FC = () => {
           viewport={{ once: true }}
           className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16"
         >
-          {services.map((service, index) => (
+          {services.map((service, index) => {
+            const IconComponent = service.icon;
+            return (
             <motion.div key={service.title} variants={itemVariants}>
               <div className="group h-full bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-gray-200 overflow-hidden">
                 {/* Header */}
@@ -134,7 +136,7 @@ const WhatIDoSection: React.FC = () => {
                   <div
                     className={`w-12 h-12 ${service.iconBg} rounded-xl flex items-center justify-center mb-4`}
                   >
-                    <service.icon className="w-6 h-6 text-gray-700" />
+                    <IconComponent className="w-6 h-6 text-gray-700" />
                   </div>
 
                   <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-gray-800 transition-colors">
@@ -174,7 +176,8 @@ const WhatIDoSection: React.FC = () => {
                 </div>
               </div>
             </motion.div>
-          ))}
+            );
+          })}
         </motion.div>
 
         {/* Stats Section */}

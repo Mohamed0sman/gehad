@@ -3,108 +3,99 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Check, ArrowRight } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ProgramsComparison: React.FC = () => {
+  const { language } = useLanguage();
+
+  const copy = {
+    title: {
+      en: "PROGRAMS",
+      ar: "البرامج"
+    },
+    subtitle: {
+      en: "Comprehensive programs designed to accelerate your professional growth",
+      ar: "برامج شاملة مصممة لتسريع نموك المهني"
+    },
+    duration: {
+      en: "Hours",
+      ar: "ساعة"
+    },
+    ctaView: {
+      en: "Learn More",
+      ar: "اعرف المزيد"
+    }
+  };
+
+  const t = (en: any, ar: any) => (language === "ar" ? ar : en);
+
   const programs = [
     {
       id: "self-leadership",
-      title: "Self-Leadership",
-      focus: "Self-Awareness & Branding",
-      improvements: [
-        "سعر: متاح عند الطلب",
-        "مدة: 40 ساعة",
-        "شهادة معتمدة",
-        "CTA: ابدأ الآن"
-      ],
-      features: [
-        "Self-Awareness Framework",
-        "Personal Branding Strategy",
-        "Leadership Development",
-        "Action Planning"
-      ],
-      cta: "ابدأ الآن",
-      ctaLink: "/programs/self-leadership",
-      colorClasses: {
-        bg: "bg-purple-50",
+      title: {
+        en: "Self-Leadership & Career Ownership",
+        ar: "القيادة الذاتية وامتلاك المسار"
+      },
+      duration: 40,
+      features: {
+        en: ["Self-Awareness Framework", "Personal Branding", "Leadership Development", "Action Planning"],
+        ar: ["إطار الوعي الذاتي", "بناء الشخصية المهنية", "تطوير القيادة", "تخطيط العمل"]
+      },
+      color: {
+        bg: "from-purple-500 to-indigo-600",
         border: "border-purple-200",
-        icon: "text-purple-600",
-        button: "from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800"
+        hover: "hover:border-purple-300"
       }
     },
     {
       id: "professional-effectiveness",
-      title: "Professional Effectiveness",
-      focus: "Communication & Time Management",
-      improvements: [
-        "4 bullets واضحة",
-        "Infographic تفاعلي",
-        "سعر: متاح عند الطلب",
-        "مدة: 32 ساعة"
-      ],
-      features: [
-        "Effective Communication Skills",
-        "Time Management Systems",
-        "Productivity Frameworks",
-        "Team Collaboration"
-      ],
-      cta: "تعرف أكثر",
-      ctaLink: "/programs/professional-effectiveness",
-      colorClasses: {
-        bg: "bg-blue-50",
+      title: {
+        en: "Professional Effectiveness & Core Skills",
+        ar: "الفعالية المهنية والمهارات الأساسية"
+      },
+      duration: 60,
+      features: {
+        en: ["Communication Skills", "Time Management", "Productivity Frameworks", "Team Collaboration"],
+        ar: ["مهارات التواصل", "إدارة الوقت", "أطر الإنتاجية", "التعاون في الفريق"]
+      },
+      color: {
+        bg: "from-blue-500 to-cyan-600",
         border: "border-blue-200",
-        icon: "text-blue-600",
-        button: "from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800"
-      }
-    },
-    {
-      id: "freelancing",
-      title: "Freelancing Skills",
-      focus: "Business Setup & Marketing",
-      improvements: [
-        "ربط بـ case study: Mariam Ali",
-        "سعر: متاح عند الطلب",
-        "مدة: 36 ساعة",
-        "شهادة + دعم مستمر"
-      ],
-      features: [
-        "Business Setup Guide",
-        "Marketing Strategies",
-        "Client Management",
-        "Financial Planning"
-      ],
-      cta: "اقرأ قصة نجاح",
-      ctaLink: "/testimonials#mariam-ali",
-      colorClasses: {
-        bg: "bg-teal-50",
-        border: "border-teal-200",
-        icon: "text-teal-600",
-        button: "from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800"
+        hover: "hover:border-blue-300"
       }
     },
     {
       id: "career-development",
-      title: "Career Development",
-      focus: "Resume & Interviews",
-      improvements: [
-        "Free webinar signup",
-        "سعر: متاح عند الطلب",
-        "مدة: 24 ساعة",
-        "مواد إضافية مجانية"
-      ],
-      features: [
-        "Resume Optimization",
-        "Interview Preparation",
-        "LinkedIn Profile",
-        "Job Search Strategy"
-      ],
-      cta: "سجل في الويبينار المجاني",
-      ctaLink: "/webinar",
-      colorClasses: {
-        bg: "bg-orange-50",
+      title: {
+        en: "Career Development & Job Readiness",
+        ar: "تطوير المسار والاستعداد للوظيفة"
+      },
+      duration: 35,
+      features: {
+        en: ["Resume Optimization", "Interview Preparation", "LinkedIn Profile", "Job Search Strategy"],
+        ar: ["تحسين السيرة الذاتية", "التحضير للمقابلات", "الملف على لينكدإن", "استراتيجية البحث"]
+      },
+      color: {
+        bg: "from-orange-500 to-amber-600",
         border: "border-orange-200",
-        icon: "text-orange-600",
-        button: "from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800"
+        hover: "hover:border-orange-300"
+      }
+    },
+    {
+      id: "freelancing",
+      title: {
+        en: "Freelancing & Independent Career",
+        ar: "العمل الحر والمسار المستقل"
+      },
+      duration: 40,
+      features: {
+        en: ["Business Setup Guide", "Marketing Strategies", "Client Management", "Financial Planning"],
+        ar: ["دليل تأسيس الأعمال", "استراتيجيات التسويق", "إدارة العملاء", "التخطيط المالي"]
+      },
+      color: {
+        bg: "from-green-500 to-emerald-600",
+        border: "border-green-200",
+        hover: "hover:border-green-300"
       }
     }
   ];
@@ -112,23 +103,24 @@ const ProgramsComparison: React.FC = () => {
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
+        {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-14"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            البرامج والخدمات
+            {t(copy.title.en, copy.title.ar)}
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            برامج شاملة مصممة لتسريع نموك المهني
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            {t(copy.subtitle.en, copy.subtitle.ar)}
           </p>
         </motion.div>
 
         {/* Programs Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {programs.map((program, index) => (
             <motion.div
               key={program.id}
@@ -136,51 +128,49 @@ const ProgramsComparison: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className={`${program.colorClasses.bg} rounded-2xl p-8 border-2 ${program.colorClasses.border} shadow-lg hover:shadow-xl transition-all duration-300`}
+              whileHover={{ y: -5 }}
+              className="group relative"
             >
-              {/* Header */}
-              <div className="mb-6">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                  {program.title}
+              {/* Gradient accent on hover */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${program.color.bg} rounded-3xl opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
+
+              <div className={`relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl border-2 ${program.color.border} ${program.color.hover} transition-all duration-300 h-full`}>
+                {/* Header */}
+                <div className="flex items-start justify-between mb-6">
+                  <div className={`inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br ${program.color.bg} rounded-xl text-white font-bold text-lg shadow-lg`}>
+                    {index + 1}
+                  </div>
+                  <div className="text-right">
+                    <div className={`inline-flex items-center px-3 py-1 rounded-full bg-gradient-to-r ${program.color.bg} text-white text-sm font-semibold`}>
+                      {program.duration} {t(copy.duration.en, copy.duration.ar)}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Title */}
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  {t(program.title.en, program.title.ar)}
                 </h3>
-                <p className="text-gray-600 font-medium">
-                  {program.focus}
-                </p>
-              </div>
 
-              {/* Features */}
-              <ul className="space-y-3 mb-6">
-                {program.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
-                    <Check className={`w-5 h-5 ${program.colorClasses.icon} flex-shrink-0 mt-0.5`} />
-                    <span className="text-gray-700">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Improvements */}
-              <div className="bg-white/50 rounded-xl p-4 mb-6 border border-gray-200">
-                <p className="text-sm font-semibold text-gray-900 mb-2">
-                  التحسينات الجديدة:
-                </p>
-                <ul className="space-y-1">
-                  {program.improvements.map((improvement, idx) => (
-                    <li key={idx} className="text-sm text-gray-600 flex items-start gap-2">
-                      <span className="text-purple-500">•</span>
-                      <span>{improvement}</span>
+                {/* Features */}
+                <ul className="space-y-3 mb-6">
+                  {t(program.features.en, program.features.ar).map((feature: string, idx: number) => (
+                    <li key={idx} className="flex items-center gap-3">
+                      <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${program.color.bg} flex-shrink-0`} />
+                      <span className="text-gray-600 text-sm">{feature}</span>
                     </li>
                   ))}
                 </ul>
-              </div>
 
-              {/* CTA */}
-              <Link
-                href={program.ctaLink}
-                className={`inline-flex items-center justify-center w-full px-6 py-3 bg-gradient-to-r ${program.colorClasses.button} text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all duration-300`}
-              >
-                {program.cta}
-                <ArrowRight className="w-5 h-5 mr-2" />
-              </Link>
+                {/* CTA */}
+                <Link
+                  href={`/programs#${program.id}`}
+                  className={`inline-flex items-center justify-center w-full py-3 bg-gradient-to-r ${program.color.bg} text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all duration-300`}
+                >
+                  {t(copy.ctaView.en, copy.ctaView.ar)}
+                  <span className="ml-2">→</span>
+                </Link>
+              </div>
             </motion.div>
           ))}
         </div>

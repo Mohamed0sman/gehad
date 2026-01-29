@@ -2,158 +2,129 @@
 
 import { motion } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
-
-const certifications = [
-  {
-    id: 1,
-    titleEn: 'NCDA Certified Career Counselor',
-    titleAr: 'NCDA Certified Career Counselor',
-    organizationEn: 'National Career Development Association',
-    organizationAr: 'National Career Development Association',
-    year: '2021',
-    descriptionEn: 'Internationally recognized certification in career guidance and career counseling.',
-    descriptionAr: 'شهادة معتمدة دولياً في التوجيه المهني والاستشارات المهنية',
-    levelEn: 'Internationally certified',
-    levelAr: 'معتمد دولياً',
-    color: 'from-purple-500 to-indigo-500',
-    emoji: '🏆',
-    credentialId: 'NCDA-2021-EG-1247',
-    gradeEn: undefined,
-    gradeAr: undefined,
-    durationEn: undefined,
-    durationAr: undefined,
-    hoursEn: undefined,
-    hoursAr: undefined
-  },
-  {
-    id: 2,
-    titleEn: 'MSc in Applied Psychology',
-    titleAr: 'ماجستير علم النفس التطبيقي',
-    organizationEn: 'Cairo University',
-    organizationAr: 'جامعة القاهرة',
-    year: '2020',
-    descriptionEn: 'Specialization in applied psychology with a focus on psychological and career counseling.',
-    descriptionAr: 'تخصص في علم النفس التطبيقي مع التركيز على الإرشاد النفسي والمهني',
-    levelEn: "Master's",
-    levelAr: 'ماجستير',
-    color: 'from-blue-500 to-cyan-500',
-    emoji: '🎓',
-    gradeEn: 'Excellent with honors',
-    gradeAr: 'امتياز مع مرتبة الشرف',
-    credentialId: undefined,
-    durationEn: undefined,
-    durationAr: undefined,
-    hoursEn: undefined,
-    hoursAr: undefined
-  },
-  {
-    id: 3,
-    titleEn: 'Professional Training Diploma',
-    titleAr: 'دبلوم التدريب المهني',
-    organizationEn: 'Arab Training Institute',
-    organizationAr: 'المعهد العربي للتدريب',
-    year: '2019',
-    descriptionEn: 'Specialized diploma in designing and delivering effective training programs.',
-    descriptionAr: 'دبلوم متخصص في تصميم وتنفيذ البرامج التدريبية الفعالة',
-    levelEn: 'Advanced diploma',
-    levelAr: 'دبلوم متقدم',
-    color: 'from-green-500 to-emerald-500',
-    emoji: '📜',
-    durationEn: '6 months',
-    durationAr: '6 أشهر',
-    credentialId: undefined,
-    gradeEn: undefined,
-    gradeAr: undefined,
-    hoursEn: undefined,
-    hoursAr: undefined
-  },
-  {
-    id: 4,
-    titleEn: 'Cognitive Behavioral Therapy (CBT) Certificate',
-    titleAr: 'شهادة العلاج النفسي المعرفي',
-    organizationEn: 'Egyptian Association for Psychotherapy',
-    organizationAr: 'الجمعية المصرية للعلاج النفسي',
-    year: '2019',
-    descriptionEn: 'Specialized training in cognitive behavioral therapy techniques.',
-    descriptionAr: 'تدريب متخصص في تقنيات العلاج النفسي المعرفي السلوكي',
-    levelEn: 'Specialization certificate',
-    levelAr: 'شهادة تخصص',
-    color: 'from-pink-500 to-rose-500',
-    emoji: '💙',
-    hoursEn: '120 training hours',
-    hoursAr: '120 ساعة تدريبية',
-    credentialId: undefined,
-    gradeEn: undefined,
-    gradeAr: undefined,
-    durationEn: undefined,
-    durationAr: undefined
-  }
-]
-
-const achievements = [
-  {
-    titleEn: 'Best Trainer Award 2023',
-    titleAr: 'جائزة أفضل مدرب لعام 2023',
-    organizationEn: 'Egyptian Trainers Union',
-    organizationAr: 'اتحاد المدربين المصريين',
-    descriptionEn: 'Recognition for outstanding effort in training and professional development.',
-    descriptionAr: 'تقديراً للجهود المتميزة في مجال التدريب والتطوير',
-    emoji: '🏆',
-    color: 'from-yellow-400 to-orange-500'
-  },
-  {
-    titleEn: 'Recognition Certificate from the Ministry of Education',
-    titleAr: 'شهادة تقدير من وزارة التعليم',
-    organizationEn: 'Ministry of Education',
-    organizationAr: 'وزارة التربية والتعليم',
-    descriptionEn: 'For contributions to improving students’ career guidance programs.',
-    descriptionAr: 'لمساهمتي في تطوير برامج التوجيه المهني للطلاب',
-    emoji: '🎖️',
-    color: 'from-blue-500 to-indigo-500'
-  },
-  {
-    titleEn: 'Membership — International Association of Counselors',
-    titleAr: 'عضوية الجمعية الدولية للمرشدين',
-    organizationEn: 'International Association of Counselors',
-    organizationAr: 'International Association of Counselors',
-    descriptionEn: 'Active membership in the international association of professional counselors.',
-    descriptionAr: 'عضوية فعالة في الجمعية الدولية للمرشدين النفسيين',
-    emoji: '🌍',
-    color: 'from-purple-500 to-pink-500'
-  }
-]
+import Link from 'next/link'
 
 export default function Certifications() {
   const { language, isRTL } = useLanguage()
   const t = (en: string, ar: string) => (language === 'ar' ? ar : en)
 
+  const copy = {
+    title: {
+      en: "My academic and professional background",
+      ar: "مؤهلاتي العلمية والمهنية"
+    },
+    subtitle: {
+      en: "International and local certifications that reflect professional standards and continuous learning.",
+      ar: "شهادات معتمدة دولياً ومحلياً تعكس المعايير المهنية والتعلم المستمر."
+    },
+    learning: {
+      en: "Continuous learning is a key part of my work.",
+      ar: "التعلم المستمر هو جزء أساسي من عملي."
+    },
+    achievementsTitle: {
+      en: "Awards & recognition",
+      ar: "الجوائز والتقديرات"
+    },
+    achievementsSubtitle: {
+      en: "Recognitions received from different institutions for my contributions and impact.",
+      ar: "تقديرات حصلت عليها من مؤسسات مختلفة لجهودي في المجال."
+    },
+    ctaTitle: {
+      en: "Ready to help you reach your goals",
+      ar: "مستعد لمساعدتك لتحقيق أهدافك"
+    },
+    ctaSubtitle: {
+      en: "With this background and experience, I can support you in finding clarity and taking confident next steps.",
+      ar: "مع هذا الخلفية والخبرة، يمكنني دعمك في إيجاد الوثوق واتخاذ خطوات واثقة."
+    },
+    ctaButton: {
+      en: "Start your journey now",
+      ar: "ابدأ رحلتك الآن"
+    }
+  }
+
+  const certifications = [
+    {
+      id: 1,
+      title: { en: 'NCDA Certified Career Counselor', ar: 'مستشار مهني معتمد من NCDA' },
+      organization: { en: 'National Career Development Association', ar: 'جمعية التنمية المهنية الوطنية' },
+      year: '2021',
+      description: { en: 'Internationally recognized certification in career guidance and career counseling.', ar: 'شهادة معتمدة دولياً في التوجيه المهني والاستشارات المهنية.' },
+      level: { en: 'Internationally certified', ar: 'معتمد دولياً' },
+      color: 'from-purple-500 to-indigo-500',
+      credentialId: 'NCDA-2021-EG-1247'
+    },
+    {
+      id: 2,
+      title: { en: 'MSc in Applied Psychology', ar: 'ماجستير علم النفس التطبيقي' },
+      organization: { en: 'Cairo University', ar: 'جامعة القاهرة' },
+      year: '2020',
+      description: { en: 'Specialization in applied psychology with a focus on psychological and career counseling.', ar: 'تخصص في علم النفس التطبيقي مع التركيز على الإرشاد النفسي والمهني.' },
+      level: { en: "Master's", ar: 'ماجستير' },
+      color: 'from-blue-500 to-cyan-500',
+      grade: { en: 'Excellent with honors', ar: 'امتياز مع مرتبة الشرف' }
+    },
+    {
+      id: 3,
+      title: { en: 'Professional Training Diploma', ar: 'دبلوم التدريب المهني' },
+      organization: { en: 'Arab Training Institute', ar: 'المعهد العربي للتدريب' },
+      year: '2019',
+      description: { en: 'Specialized diploma in designing and delivering effective training programs.', ar: 'دبلوم متخصص في تصميم وتنفيذ البرامج التدريبية الفعالة.' },
+      level: { en: 'Advanced diploma', ar: 'دبلوم متقدم' },
+      color: 'from-green-500 to-emerald-500',
+      duration: { en: '6 months', ar: '6 أشهر' }
+    },
+    {
+      id: 4,
+      title: { en: 'Cognitive Behavioral Therapy (CBT) Certificate', ar: 'شهادة العلاج المعرفي السلوكي' },
+      organization: { en: 'Egyptian Association for Psychotherapy', ar: 'الجمعية المصرية للعلاج النفسي' },
+      year: '2019',
+      description: { en: 'Specialized training in cognitive behavioral therapy techniques.', ar: 'تدريب متخصص في تقنيات العلاج النفسي المعرفي السلوكي.' },
+      level: { en: 'Specialization certificate', ar: 'شهادة تخصص' },
+      color: 'from-pink-500 to-rose-500',
+      hours: { en: '120 training hours', ar: '120 ساعة تدريبية' }
+    }
+  ]
+
+  const achievements = [
+    {
+      title: { en: 'Best Trainer Award 2023', ar: 'جائزة أفضل مدرب لعام 2023' },
+      organization: { en: 'Egyptian Trainers Union', ar: 'اتحاد المدربين المصريين' },
+      description: { en: 'Recognition for outstanding effort in training and professional development.', ar: 'تقديراً للجهود المتميزة في مجال التدريب والتطوير.' },
+      color: 'from-yellow-400 to-orange-500'
+    },
+    {
+      title: { en: 'Recognition Certificate from the Ministry of Education', ar: 'شهادة تقدير من وزارة التعليم' },
+      organization: { en: 'Ministry of Education', ar: 'وزارة التربية والتعليم' },
+      description: { en: "For contributions to improving students career guidance programs.", ar: "لمساهمتي في تطوير برامج التوجيه المهني للطلاب." },
+      color: 'from-blue-500 to-indigo-500'
+    },
+    {
+      title: { en: 'Membership — International Association of Counselors', ar: 'عضوية الجمعية الدولية للمرشدين' },
+      organization: { en: 'International Association of Counselors', ar: 'الجمعية الدولية للمرشدين' },
+      description: { en: 'Active membership in the international association of professional counselors.', ar: 'عضوية فعالة في الجمعية الدولية للمرشدين النفسيين.' },
+      color: 'from-purple-500 to-pink-500'
+    }
+  ]
+
   return (
     <section
-      className="py-24 sm:py-32 bg-gradient-to-br from-indigo-50 via-white to-purple-50 relative overflow-hidden"
+      className="py-20 bg-gradient-to-br from-gray-50 via-white to-purple-50"
       dir={isRTL ? 'rtl' : 'ltr'}
     >
-      {/* Background decorations */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-20 w-64 h-64 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-20 right-20 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
-      </div>
-
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mx-auto max-w-3xl text-center mb-16">
+        <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="flex items-center justify-center gap-2 mb-4"
+            className="mb-4"
           >
-            <span className="text-3xl text-yellow-500">🏆</span>
-            <span className="text-purple-600 font-semibold text-lg font-heading">
+            <span className="text-purple-600 font-semibold text-lg">
               {t('Certifications & achievements', 'الشهادات والإنجازات')}
             </span>
-            <span className="text-3xl text-yellow-500">🏆</span>
           </motion.div>
 
           <motion.h2
@@ -161,11 +132,9 @@ export default function Certifications() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="text-h2 font-bold text-neutral-900 mb-6 font-heading"
+            className="text-3xl md:text-4xl font-bold text-gray-900 mb-6"
           >
-            <span className="gradient-text">{t('My academic', 'مؤهلاتي العلمية')}</span>
-            <br />
-            <span className="text-neutral-700">{t('and professional background 🎓', 'والمهنية 🎓')}</span>
+            {t(copy.title.en, copy.title.ar)}
           </motion.h2>
 
           <motion.p
@@ -173,15 +142,12 @@ export default function Certifications() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-xl leading-8 text-neutral-600 font-primary"
+            className="text-lg text-gray-600 max-w-3xl mx-auto"
           >
-            {t(
-              'International and local certifications that reflect professional standards and continuous learning.',
-              'شهادات معتمدة دولياً ومحلياً تضمن لك الحصول على أفضل خدمة'
-            )}
+            {t(copy.subtitle.en, copy.subtitle.ar)}
             <br />
             <span className="text-purple-600 font-semibold">
-              {t('✨ Continuous learning is a key part of my work.', '✨ التعلم المستمر هو سر نجاحي معاكم')}
+              {t(copy.learning.en, copy.learning.ar)}
             </span>
           </motion.p>
         </div>
@@ -195,75 +161,60 @@ export default function Certifications() {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group"
+              whileHover={{ y: -5 }}
+              className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300"
             >
               {/* Gradient header */}
               <div className={`bg-gradient-to-r ${cert.color} p-6`}>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
-                    <motion.div
-                      whileHover={{ rotate: 360, scale: 1.1 }}
-                      transition={{ duration: 0.6 }}
-                      className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center"
-                    >
-                      <span className="text-3xl text-white">{cert.emoji}</span>
-                    </motion.div>
-                    <div>
-                      <div className="text-3xl mb-1">{cert.emoji}</div>
-                      <div className="text-white/90 font-semibold font-heading">
-                        {language === 'ar' ? cert.levelAr : cert.levelEn}
-                      </div>
+                    <div className={`inline-flex items-center justify-center w-12 h-12 bg-white/20 rounded-xl text-white font-bold text-lg`}>
+                      {index + 1}
+                    </div>
+                    <div className="text-white/90 font-semibold">
+                      {t(cert.level.en, cert.level.ar)}
                     </div>
                   </div>
-                  <div className={isRTL ? 'text-left' : 'text-right'}>
-                    <div className="text-white font-bold text-lg font-heading">{cert.year}</div>
-                  </div>
+                  <div className="text-white font-bold text-lg">{cert.year}</div>
                 </div>
               </div>
 
               {/* Content */}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-neutral-900 mb-2 font-heading">
-                  {language === 'ar' ? cert.titleAr : cert.titleEn}
+                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  {t(cert.title.en, cert.title.ar)}
                 </h3>
-                <p className="text-purple-600 font-semibold mb-4 font-primary">
-                  {language === 'ar' ? cert.organizationAr : cert.organizationEn}
+                <p className="text-purple-600 font-medium mb-3">
+                  {t(cert.organization.en, cert.organization.ar)}
                 </p>
-                <p className="text-neutral-700 leading-relaxed mb-4 font-primary">
-                  {language === 'ar' ? cert.descriptionAr : cert.descriptionEn}
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  {t(cert.description.en, cert.description.ar)}
                 </p>
 
                 {/* Additional info */}
-                <div className="space-y-2 font-primary">
+                <div className="space-y-2 text-sm text-gray-500">
                   {cert.credentialId && (
-                    <div className="flex items-center gap-2 text-sm text-neutral-600">
-                      <span className="text-purple-500">✨</span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-purple-500">◆</span>
                       <span>{t('Credential ID:', 'رقم الاعتماد:')} {cert.credentialId}</span>
                     </div>
                   )}
-                  {cert.gradeEn && (
-                    <div className="flex items-center gap-2 text-sm text-neutral-600">
-                      <span className="text-yellow-500">⭐</span>
-                      <span>
-                        {t('Grade:', 'التقدير:')} {language === 'ar' ? cert.gradeAr : cert.gradeEn}
-                      </span>
+                  {cert.grade && (
+                    <div className="flex items-center gap-2">
+                      <span className="text-yellow-500">◆</span>
+                      <span>{t('Grade:', 'التقدير:')} {t(cert.grade.en, cert.grade.ar)}</span>
                     </div>
                   )}
-                  {cert.durationEn && (
-                    <div className="flex items-center gap-2 text-sm text-neutral-600">
-                      <span className="text-blue-500">⏱️</span>
-                      <span>
-                        {t('Duration:', 'المدة:')} {language === 'ar' ? cert.durationAr : cert.durationEn}
-                      </span>
+                  {cert.duration && (
+                    <div className="flex items-center gap-2">
+                      <span className="text-blue-500">◆</span>
+                      <span>{t('Duration:', 'المدة:')} {t(cert.duration.en, cert.duration.ar)}</span>
                     </div>
                   )}
-                  {cert.hoursEn && (
-                    <div className="flex items-center gap-2 text-sm text-neutral-600">
-                      <span className="text-green-500">⏳</span>
-                      <span>
-                        {t('Hours:', 'عدد الساعات:')} {language === 'ar' ? cert.hoursAr : cert.hoursEn}
-                      </span>
+                  {cert.hours && (
+                    <div className="flex items-center gap-2">
+                      <span className="text-green-500">◆</span>
+                      <span>{t('Hours:', 'الساعات:')} {t(cert.hours.en, cert.hours.ar)}</span>
                     </div>
                   )}
                 </div>
@@ -278,17 +229,14 @@ export default function Certifications() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="bg-white rounded-3xl shadow-xl p-8 lg:p-12"
+          className="bg-white rounded-3xl shadow-lg p-8 lg:p-12"
         >
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-neutral-900 mb-4 font-heading">
-              <span className="gradient-text">{t('Awards & recognition', 'الجوائز والتقديرات')}</span> 🏆
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+              {t(copy.achievementsTitle.en, copy.achievementsTitle.ar)}
             </h3>
-            <p className="text-lg text-neutral-600 font-primary">
-              {t(
-                'Recognitions received from different institutions for my contributions and impact.',
-                'تقديرات حصلت عليها من مؤسسات مختلفة لجهودي في المجال'
-              )}
+            <p className="text-lg text-gray-600">
+              {t(copy.achievementsSubtitle.en, copy.achievementsSubtitle.ar)}
             </p>
           </div>
 
@@ -296,26 +244,26 @@ export default function Certifications() {
             {achievements.map((achievement, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -5, scale: 1.05 }}
-                className={`relative bg-gradient-to-br ${achievement.color} rounded-2xl p-6 text-white overflow-hidden group`}
+                whileHover={{ y: -5, scale: 1.02 }}
+                className={`relative bg-gradient-to-br ${achievement.color} rounded-2xl p-6 text-white overflow-hidden`}
               >
-                {/* Background decoration */}
                 <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full -translate-y-10 translate-x-10"></div>
-
                 <div className="relative">
-                  <div className="text-4xl mb-4">{achievement.emoji}</div>
-                  <h4 className="font-bold text-lg mb-2 font-heading">
-                    {language === 'ar' ? achievement.titleAr : achievement.titleEn}
+                  <div className={`inline-flex items-center justify-center w-10 h-10 bg-white/20 rounded-lg mb-4 text-white font-bold`}>
+                    {index + 1}
+                  </div>
+                  <h4 className="font-bold text-lg mb-2">
+                    {t(achievement.title.en, achievement.title.ar)}
                   </h4>
-                  <p className="text-white/90 text-sm mb-3 font-heading">
-                    {language === 'ar' ? achievement.organizationAr : achievement.organizationEn}
+                  <p className="text-white/90 text-sm mb-2">
+                    {t(achievement.organization.en, achievement.organization.ar)}
                   </p>
-                  <p className="text-white/80 text-sm leading-relaxed font-primary">
-                    {language === 'ar' ? achievement.descriptionAr : achievement.descriptionEn}
+                  <p className="text-white/80 text-sm leading-relaxed">
+                    {t(achievement.description.en, achievement.description.ar)}
                   </p>
                 </div>
               </motion.div>
@@ -331,22 +279,19 @@ export default function Certifications() {
             className="mt-12 text-center"
           >
             <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-8">
-              <h4 className="text-2xl font-bold text-neutral-900 mb-4 font-heading">
-                {t('🎯 Ready to help you reach your goals', '🎯 جاهزة أساعدك تحقق أهدافك')}
+              <h4 className="text-2xl font-bold text-gray-900 mb-4">
+                {t(copy.ctaTitle.en, copy.ctaTitle.ar)}
               </h4>
-              <p className="text-neutral-600 mb-6 font-primary">
-                {t(
-                  'With this background and experience, I can support you in finding clarity and taking confident next steps.',
-                  'مع كل الخبرة والشهادات دي، أنا واثقة إني هقدر أساعدك تلاقي طريقك الصح'
-                )}
+              <p className="text-gray-600 mb-6">
+                {t(copy.ctaSubtitle.en, copy.ctaSubtitle.ar)}
               </p>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-lg transition-all duration-300 font-heading"
+              <Link
+                href="/booking"
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold rounded-2xl hover:shadow-lg transition-all duration-300"
               >
-                {t('Start your journey now 🚀', 'ابدأ رحلتك معايا الآن 🚀')}
-              </motion.button>
+                {t(copy.ctaButton.en, copy.ctaButton.ar)}
+                <span className="ml-2">→</span>
+              </Link>
             </div>
           </motion.div>
         </motion.div>

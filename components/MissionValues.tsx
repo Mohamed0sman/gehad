@@ -56,15 +56,15 @@ export default function MissionValues() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 font-playfair">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8">
             <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
               Mission
             </span>
           </h2>
           
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100">
-              <p className="text-xl md:text-2xl text-gray-700 leading-relaxed font-inter font-medium">
+            <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100 hover:shadow-2xl transition-shadow duration-300">
+              <p className="text-xl md:text-2xl text-gray-700 leading-relaxed font-medium">
                 {mission}
               </p>
             </div>
@@ -80,12 +80,12 @@ export default function MissionValues() {
           className="mb-20"
         >
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 font-playfair">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
               <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
                 Values
               </span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto font-inter">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Core principles that guide every interaction and decision
             </p>
           </div>
@@ -110,12 +110,12 @@ export default function MissionValues() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl font-bold text-gray-800 mb-4 font-playfair">
+                  <h3 className="text-xl font-bold text-gray-800 mb-4">
                     {value.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-gray-600 font-inter leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed">
                     {value.description}
                   </p>
                 </div>
@@ -132,12 +132,12 @@ export default function MissionValues() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="bg-gradient-to-r from-gray-800 to-gray-900 rounded-3xl p-8 md:p-12 text-white">
+          <div className="bg-gradient-to-r from-gray-800 to-gray-900 rounded-3xl p-8 md:p-12 text-white shadow-xl hover:shadow-2xl transition-shadow duration-300">
             <div className="max-w-3xl mx-auto">
               {closingLines.map((line, index) => (
                 <p 
                   key={index}
-                  className="text-xl md:text-2xl font-playfair mb-4 last:mb-0"
+                  className="text-xl md:text-2xl mb-4 last:mb-0"
                 >
                   {index === 0 ? (
                     <span className="text-gray-300">{line}</span>
